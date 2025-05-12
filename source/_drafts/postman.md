@@ -1,0 +1,176 @@
+---
+title: 📨 Postman 使用指南 —— 测试工程师的快乐源泉
+tags:
+  - Postman
+  - 使用教程
+categories: 基础知识 & 测试方法（Testing Fundamentals & Methodologies）
+keywords: Postman
+description: Postman的基础功能使用教程,
+top_img: /img/postman-m.png
+cover: /img/postman-s.png
+date: 2025-03-14 11:44:16
+updated: 2025-03-17 16:18:16
+---
+
+# 📨 Postman 使用指南 —— 测试工程师的快乐源泉
+
+## 🎉 前言
+
+作为一名测试工程师，我们的日常离不开 **Postman**。它不仅是接口测试的神器，还是 Debug 的利器，甚至能拯救你的加班生活！
+
+如果你还没用过 Postman，或者用得不够 6，那就跟我一起探索它的魅力吧！
+
+---
+
+## 🤔 什么是 Postman？
+
+Postman 是一个强大的 **API 开发与测试工具**，它可以帮助开发人员和测试人员更高效地与 API 交互。它提供了一个用户友好的界面，让你可以轻松发送请求、检查响应、编写测试脚本，甚至进行自动化测试。
+
+![Postman 产品 Logo](https://mms.businesswire.com/media/20210818005151/en/761650/23/postman-logo-vert-2018.jpg)
+
+
+### 🔥 Postman 的核心优势
+- **简单直观**：可视化界面，降低 API 调试难度
+- **支持多种请求类型**：GET、POST、PUT、DELETE、PATCH 等
+- **环境变量管理**：一键切换不同测试环境，减少手动修改的烦恼
+- **自动化测试**：可编写 JavaScript 脚本来自动检查接口响应
+- **接口集合（Collections）**：批量管理请求，提高工作效率
+- **Mock 服务**：模拟 API 响应，适用于前端开发调试
+- **团队协作**：共享 API 文档、测试用例，提高团队协作效率
+
+---
+
+## 🚀 1. 安装 Postman
+
+安装 Postman 简直比泡杯速溶咖啡还简单。
+
+1. **官网下载安装**：[Postman 官网](https://www.postman.com/)
+2. **安装完成，打开软件**
+3. **注册或直接使用**（有些功能需要登录）
+
+> 🎯 **Tips：** Postman 还有浏览器插件版，不过推荐使用桌面版，功能更强大！
+
+---
+
+## 🛠️ 2. 发送你的第一个请求
+
+1. **打开 Postman**，点击 **New Request**
+2. 选择请求方法（GET、POST、PUT、DELETE 等）
+3. 在 URL 输入框填入 `https://jsonplaceholder.typicode.com/posts/1`
+4. 点击 **Send**
+5. **Boom！** 你就收到了响应 🎉
+
+```json
+{
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit..."
+}
+```
+
+<img src="/img/postman-get.png" 
+     alt="postman-get" 
+     style="border: 3px dashed #2196F3;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 8px rgba(33,150,243,0.2);">
+
+> 🧐 **如果失败？**
+> - 确保 URL 正确
+> - 检查网络
+> - 关掉 VPN 或代理试试
+
+---
+
+## 📩 3. POST 请求——让接口“吃”点数据
+
+GET 请求只是获取数据，**POST 请求** 则是往接口里“塞”数据。
+
+### 🌟 示例：提交一篇新文章
+
+1. **方法选择 POST**
+2. **URL**: `https://jsonplaceholder.typicode.com/posts`
+3. **Headers**：添加 `Content-Type: application/json`
+4. **Body** 选择 `raw`，填入 JSON 数据：
+
+```json
+{
+  "title": "测试工程师的自白",
+  "body": "写测试的我有一颗写代码的心",
+  "userId": 1
+}
+```
+
+5. 点击 **Send**，你会收到一个带 `id` 的响应 🎉
+
+<img src="/img/postman-post.png" 
+     alt="postman-post" 
+     style="border: 3px dashed #2196F3;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 8px rgba(33,150,243,0.2);">
+
+> **小技巧 💡**
+> - **用变量**：支持环境变量，减少手动改 URL 的麻烦
+> - **保存请求**：方便后续复用
+
+---
+
+## 🧰 4. 进阶玩法
+
+### 🔄 **环境变量**
+
+写接口测试，**环境变量** 绝对是提高效率的法宝！
+
+#### 1. 设置变量
+- 进入 `Environments`（环境）
+- 添加变量，如 `base_url = https://jsonplaceholder.typicode.com`
+
+#### 2. 使用变量
+- URL 替换成 `{{base_url}}/posts/1`
+- 这样换个环境只要改变量，不用改每个请求！
+
+<img src="/img/postman-url.png" 
+     alt="postman-get" 
+     style="border: 3px dashed #2196F3;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 8px rgba(33,150,243,0.2);">
+
+---
+
+## 🎯 5. 终极杀器——Postman Collection
+
+如果你有 **一堆接口要测**，不想一个个手动点，那 **Postman Collection** 就是你的救星！
+
+1. **新建 Collection**
+2. **添加多个请求**，按模块组织
+3. **一键运行所有请求**，Postman 自动帮你测试
+4. **支持测试脚本**，让 Postman 自动检查返回值
+
+> **🔥 组合技能：环境变量 + Collection + 测试脚本 = 一键自动化测试！**
+
+---
+
+## 🎭 6. 结语
+
+Postman 是测试工程师的瑞士军刀，掌握它能让你的工作事半功倍！
+
+- **基础玩法**：GET、POST 请求
+- **进阶技巧**：环境变量、测试脚本
+- **终极杀器**：Collection 自动化测试
+
+还等什么？快打开 Postman，释放你的测试技能吧！🚀
+
+---
+
+<small>**📚 参考资料：**  
+- [JSONPlaceholder 基本使用](https://blog.csdn.net/qq_36259143/article/details/120761674)
+- [Postman 使用教程合集指南，从新手到大师](https://apifox.com/apiskills/postman-tutorial-series/)【Apifox的Postman教程，推荐！】
+<small>
+
+
+
+
+
