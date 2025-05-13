@@ -2,7 +2,14 @@
 Thumbs.db
 db.json
 *.log
-node_modules/
+# 忽略 Hexo 生成的文件
 public/
-.deploy*/
+.deploy_git/
+
+# 忽略 Node.js 相关文件
+node_modules/
+package-lock.json
+
+# 忽略日志文件
+*.log
 _multiconfig.yml
