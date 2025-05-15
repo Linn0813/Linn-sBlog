@@ -1,0 +1,15 @@
+# 创建草稿
+hexo new draft "新的数据库搭建教程"
+# 编辑草稿内容
+# 发布草稿
+hexo publish "新的数据库搭建教程"
+# 本地预览
+hexo server
+# 生成静态文件并部署
+hexo g -d
+# 添加文件到暂存区
+git add .
+# 提交更改
+git commit -m "更新博客内容"
+# 推送代码到远程仓库
+git push -u origin main
