@@ -1,8 +1,30 @@
 ---
-title: testplatform-login-and-registration
-tags:
+title: 自动化测试平台添加登录注册功能 🚀
+date: 2025-05-16 15:16:55
+updated: {{current_date_time}} 
+categories: 自动化测试 & 工具开发（Test Automation & Tool Development）            
+tags: [登录注册功能, 自动化测试平台, MySQL, Flask, Vue3]            
+keywords: 登录注册功能, 自动化测试平台, MySQL, Flask, Vue3, 数据库搭建
+description: '以实际项目为例，详细介绍为自动化测试平台添加登录注册功能的全流程，涵盖数据库表结构设计、Flask 后端代码实现、Vue 3 + Element Plus + Vue Router 前端代码实现等内容。'
+top_img: /img/testplatform-login-and-registration.png
+comments: true  
+cover: /img/testplatform-login-and-registration.png
+toc: true  
+toc_number: true  
+toc_style_simple: false  
+copyright: true  
+copyright_author: yuxiaoling  
+copyright_info: 版权所有，转载请注明出处。  
+mathjax: false  
+katex: false  
+aplayer: false  
+highlight_shrink: false  
+aside: true  
+abcjs: false  
+noticeOutdate: false 
 ---
-# 自动化测试平台添加登录注册功能设计与实现 🚀
+
+# 自动化测试平台添加登录注册功能 🚀
 
 在上一篇博客中，我们详细介绍了如何使用 MySQL 搭建一个用于登录注册模块的数据库🛢️。有了这个坚实的基础，接下来我们就可以为自动化测试平台添加登录注册功能啦👏。下面，我们将从数据库表结构设计、后端代码实现和前端代码实现三个方面来详细介绍。
 
@@ -124,7 +146,7 @@ def get_user(username):
 接下来，我们要新增 `apis/user_api.py` 文件，用于处理用户注册和登录的 API 请求。以下是该文件的详细代码：
 ```python
 from flask import Blueprint, request, jsonify
-from RingConn_TestPlatform.backend.models.user import create_user, get_user, hash_password
+from ..backend.models.user import create_user, get_user, hash_password
 import logging
 
 log = logging.getLogger(__name__)
@@ -176,8 +198,8 @@ user_bp = Blueprint('user', __name__)
 最后，我们要修改 `app.py` 文件，将用户 API 蓝图注册到 Flask 应用中。以下是修改后的代码：
 ```python
 from flask import Flask, jsonify
-from RingConn_TestPlatform.backend.apis.binding_number_api import binding_number_bp
-from RingConn_TestPlatform.backend.apis.user_api import user_bp
+from ..backend.apis.binding_number_api import binding_number_bp
+from ..backend.apis.user_api import user_bp
 from flask_cors import CORS
 
 app = Flask(__name__)
