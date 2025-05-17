@@ -17,7 +17,7 @@ copyright_author: yuxiaoling
 copyright_info: 版权所有，转载请注明出处。  
 mathjax: false  
 katex: false  
-aplayer: false  
+aplayer: false  5同样
 highlight_shrink: false  
 aside: true  
 abcjs: false  

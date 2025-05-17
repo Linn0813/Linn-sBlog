@@ -113,7 +113,7 @@ deploy:
 
 nav:
   # 导航栏 Logo 图片
-  logo: /img/logo.png
+  logo: /img/logo.jpg
   # 是否显示标题
   display_title: true
   # 是否固定导航栏
@@ -125,14 +125,14 @@ menu:
     分类: /categories/ || fa fa-archive
     标签: /tags/ || fa fa-tags
     归档: /archives/ || fa fa-folder-open
-  生活 || fas fa-list:
-    分享: /shuoshuo/ || fa fa-comments-o
-    相册: /photos/ || fa fa-camera-retro
-    音乐: /music/ || fa fa-music
-    影视: /movies/ || fas fa-video
+  # 生活 || fas fa-list:
+    # 分享: /shuoshuo/ || fa fa-comments-o
+    # 相册: /photos/ || fa fa-camera-retro
+    # 音乐: /music/ || fa fa-music
+    # 影视: /movies/ || fas fa-video
   友链: /links/ || fa fa-link
   # 留言板: /comment/ || fa fa-paper-plane
-  留言板: /messageboard/ || fa fa-paper-plane
+  # 留言板: /messageboard/ || fa fa-paper-plane
   关于笔者: /about/ || fas fa-heart  
 
 
@@ -182,7 +182,7 @@ social:
 # --------------------------------------
 
 # 网站的 favicon 图标
-favicon: /img/favicon.png
+favicon: /img/favicon.jpg
 
 # 头像设置
 avatar: 
@@ -472,7 +472,7 @@ aside:
       # 按钮文本
       text: Follow Me
       # 按钮链接
-      link: https://github.com/xxxxxx
+      link: https://github.com/Linn0813
   card_announcement:
     # 是否显示公告卡片
     enable: true
