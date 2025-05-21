@@ -1,7 +1,29 @@
 ---
-title: build-blog
-tags:
+title: Hexo和Markdown搭建个人博客教程🎈
+date: 2025-05-21 18:17:26
+updated: {{current_date_time}} 
+categories: 技术学习 & 行业趋势（Learning Notes & Industry Trends）            
+tags: [Hexo, Markdown, 个人博客搭建]            
+keywords: Hexo, Markdown, 个人博客搭建, GitHub, 博客部署
+description: '手把手教你使用 Hexo 和 Markdown 搭建个人博客，涵盖准备工作、Hexo 安装、主题配置、部署到 GitHub 等全流程，同时提供常见问题解决方法。'
+top_img: /img/build-blog.png
+cover: /img/build-blog.png
+comments: true 
+toc: true  
+toc_number: true  
+toc_style_simple: false  
+copyright: true  
+copyright_author: yuxiaoling  
+copyright_info: 版权所有，转载请注明出处。  
+mathjax: false  
+katex: false  
+aplayer: false  
+highlight_shrink: false  
+aside: true  
+abcjs: false  
+noticeOutdate: false 
 ---
+
 # Hexo和Markdown搭建个人博客教程🎈
 
 在当今数字化的时代，拥有一个属于自己的个人博客是一件非常酷的事情😎。它不仅可以记录我们的生活、分享我们的知识，还能让我们结识更多志同道合的朋友。今天，我就来手把手地教大家如何使用Hexo和Markdown搭建一个属于自己的个人博客🎉。
@@ -77,7 +99,7 @@ hexo server
 hexo g
 hexo s
 ```
-启动成功后，在浏览器中访问http://localhost:4000，我们就可以看到Hexo默认主题的博客页面啦🎉。如果要停止服务器，在命令行中按Ctrl + C就可以了。
+启动成功后，在浏览器中访问http://localhost:4000   ，我们就可以看到Hexo默认主题的博客页面啦🎉。如果要停止服务器，在命令行中按Ctrl + C就可以了。
 
 ## 五、安装和配置Butterfly主题🌈
 
