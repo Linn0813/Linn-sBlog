@@ -1,15 +1,26 @@
 ---
 title: 📨 Postman 使用指南 —— 测试工程师的快乐源泉
-tags:
-  - Postman
-  - 使用教程
 categories: 基础知识 & 测试方法（Testing Fundamentals & Methodologies）
-keywords: Postman
-description: Postman的基础功能使用教程,
-top_img: /img/postman-m.png
-cover: /img/postman-s.png
-date: 2025-03-14 11:44:16
-updated: 2025-03-17 16:18:16
+updated: {{current_date_time}} 
+tags: [Postman, API测试, 自动化测试, 接口调试, Mock服务]
+keywords: Postman, API测试, 自动化测试, 接口调试, Mock服务, 环境变量, Postman Collection
+description: '详细介绍 Postman 这一强大的 API 开发与测试工具，涵盖安装方法、基本使用、进阶功能，如环境变量管理、自动化测试、Postman Collection 等，帮助测试工程师提升工作效率。'
+top_img: /img/postman.png
+cover: /img/postman.png
+comments: true 
+toc: true  
+toc_number: true  
+toc_style_simple: false  
+copyright: true  
+copyright_author: yuxiaoling  
+copyright_info: 版权所有，转载请注明出处。  
+mathjax: false  
+katex: false  
+aplayer: false  
+highlight_shrink: false  
+aside: true  
+abcjs: false  
+noticeOutdate: false
 ---
 
 # 📨 Postman 使用指南 —— 测试工程师的快乐源泉

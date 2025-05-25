@@ -1,29 +1,26 @@
 ---
 title: 🎯 应届生求职指南：前端、后端、测试、算法、产品，我该怎么选？
-date: 2025-03-12 11:44:16   
-updated: 2025-03-12 17:21:16 
-categories: 这里什么都聊！（Random Thoughts & Life）           
-tags: [求职指南]             
-keywords: it-career
-description: '如何选择就业方向'
-top_img: /img/it-career-m.png
-comments:
-cover: /img/it-career-s.png
-toc:
-toc_number:
-toc_style_simple:
-copyright:
-copyright_author:
-copyright_author_href:
-copyright_url:
-copyright_info:
-mathjax:
-katex:
-aplayer:
-highlight_shrink:
-aside:
-abcjs:
-noticeOutdate:
+categories: 这里什么都聊！（Random Thoughts & Life）      
+updated: {{current_date_time}} 
+tags: [应届生求职, 前端开发, 后端开发, 测试开发, 算法工程师, 产品经理]
+keywords: 应届生求职, 前端开发, 后端开发, 测试开发, 算法工程师, 产品经理, 职业选择, 职业发展
+description: '应届生求职指南，从工作内容、技能要求、发展前景、适合人群等角度深入对比前端、后端、测试、算法、产品等职业方向，帮助应届生做出最佳职业决策。'
+top_img: /img/it-career.png
+cover: /img/it-career.png
+comments: true 
+toc: true  
+toc_number: true  
+toc_style_simple: false  
+copyright: true  
+copyright_author: yuxiaoling  
+copyright_info: 版权所有，转载请注明出处。  
+mathjax: false  
+katex: false  
+aplayer: false  
+highlight_shrink: false  
+aside: true  
+abcjs: false  
+noticeOutdate: false     
 ---
 
 # 🎯 **应届生求职指南：前端、后端、测试、算法、产品，我该怎么选？**

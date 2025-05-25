@@ -1,15 +1,6 @@
 ---
 title: python_api_testing
-tags:
-  - 接口自动化测试
-  - python
 categories: 自动化测试 & 工具开发（Test Automation & Tool Development）
-keywords: 接口测试
-description: 用python搭建接口自动化测试平台,
-top_img: /img/python_api_testing_m.png
-cover: /img/python_api_testing_s.png
-date: 2025-03-24 13:34:42
-updated: 2025-03-24 13:34:42
 ---
 
 # **如何用 Python 搭建接口自动化测试？🚀**

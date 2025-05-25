@@ -1,16 +1,28 @@
 ---
 title: 🚀 Apifox 使用指南 —— 开发 & 测试的效率神器
-tags:
-  - Apifox
-  - 使用教程
 categories: 基础知识 & 测试方法（Testing Fundamentals & Methodologies）
-keywords: Apifox
-description: Apifox的基础功能使用教程,
-top_img: /img/apifox-m.png
-cover: /img/apifox-s.png
-date: 2025-03-24 11:34:42
-updated: 2025-03-24 19:34:42
+updated: {{current_date_time}} 
+tags: [Apifox, API测试, 接口文档, Mock数据, 自动化测试, Postman对比]
+keywords: Apifox, API测试, 接口文档, Mock数据, 自动化测试, 压力测试, Postman对比, 团队协作
+description: '详细介绍 Apifox 这一强大的 API 开发与测试工具，涵盖安装方法、基本使用、进阶功能，如环境变量、Mock 数据、自动化测试和压力测试等，同时对比 Apifox 与 Postman 的差异，帮助测试工程师提升工作效率。'
+top_img: /img/apifox.png
+cover: /img/apifox.png
+comments: true 
+toc: true  
+toc_number: true  
+toc_style_simple: false  
+copyright: true  
+copyright_author: yuxiaoling  
+copyright_info: 版权所有，转载请注明出处。  
+mathjax: false  
+katex: false  
+aplayer: false  
+highlight_shrink: false  
+aside: true  
+abcjs: false  
+noticeOutdate: false
 ---
+
 
 # 🚀 Apifox 使用指南 —— 开发 & 测试的效率神器
 
