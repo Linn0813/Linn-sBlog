@@ -1,0 +1,337 @@
+---
+title: pinia
+tags:
+---
+# 前端Pinia状态管理实践
+
+## 一、引言
+在前端开发的世界里，随着项目规模的不断扩大和功能的日益复杂，状态管理成为了一个至关重要的问题😵。想象一下，在一个大型的管理平台中，有多个组件需要共享和管理用户的登录状态、个人信息等数据，如果没有一个有效的状态管理方案，那么代码将会变得混乱不堪，维护起来也会异常困难😫。
+
+Pinia 作为一个轻量级的状态管理库，就像是一位贴心的管家🧑‍管家，为 Vue 应用提供了一种简单、高效的状态管理解决方案。它可以帮助我们更好地组织和管理应用的状态，让代码更加清晰、可维护和易于扩展👏。本文将结合管理平台项目，以保姆级的教程详细介绍 Pinia 在前端状态管理中的实践应用，即使是新手小白也能轻松理解哦😎。
+
+## 二、前置知识准备
+### 2.1 Vue 基础
+在学习 Pinia 之前，我们需要对 Vue 有一定的了解。Vue 是一个用于构建用户界面的渐进式 JavaScript 框架，它采用了组件化的开发思想，让我们可以将页面拆分成多个小的、可复用的组件。如果你还不熟悉 Vue，建议先学习一下 Vue 的基础知识，包括组件、指令、响应式原理等。
+
+### 2.2 JavaScript 基础
+Pinia 是基于 JavaScript 开发的，所以我们需要掌握一些基本的 JavaScript 知识，如变量、函数、对象、数组、Promise 等。这些知识将帮助我们更好地理解 Pinia 的工作原理和使用方法。
+
+## 三、Pinia 简介
+### 3.1 什么是 Pinia
+Pinia 是一个基于 Vue 3 的状态管理库，它是 Vuex 的继任者，专为 Vue 3 设计，但也支持 Vue 2。Pinia 的设计理念是简单、直观和灵活，它采用了组合式 API 的风格，使得状态管理更加符合现代 Vue 开发的方式🤩。
+
+### 3.2 Pinia 的特点
+- **简单易用**：Pinia 的 API 设计简洁明了，易于上手。它没有复杂的概念和语法，只需要定义一个 store，就可以轻松管理状态啦😃。
+- **类型安全**：Pinia 支持 TypeScript，能够在编译时提供类型检查，减少运行时错误。这就好比给代码加上了一层安全防护网🛡️，让我们的开发更加放心。
+- **模块化**：Pinia 允许将状态分割成多个 store，每个 store 可以独立管理自己的状态和逻辑，使得代码更加模块化和可维护。就像把一个大项目拆分成多个小模块，每个模块都有自己的职责，分工明确👍。
+- **插件支持**：Pinia 提供了插件机制，可以方便地扩展其功能，如持久化存储、日志记录等。这就像是给 Pinia 装上了各种“插件翅膀”，让它可以根据我们的需求自由飞翔🚀。
+
+## 四、在管理平台中引入 Pinia
+### 4.1 创建 Vue 项目
+首先，我们需要创建一个 Vue 项目。如果你还没有安装 Vue CLI，可以使用以下命令进行安装：
+```bash
+npm install -g @vue/cli
+```
+安装完成后，使用以下命令创建一个新的 Vue 项目：
+```bash
+vue create my-pinia-project
+cd my-pinia-project
+```
+### 4.2 安装 Pinia
+在项目中，我们可以使用 npm 或 yarn 来安装 Pinia。打开终端，输入以下命令：
+```bash
+npm install pinia
+```
+或者
+```bash
+yarn add pinia
+```
+### 4.3 初始化 Pinia
+在项目的入口文件 `src/main.js`（如果是 Vue 3 + TypeScript 项目则是 `src/main.ts`）中，我们需要初始化 Pinia 并将其安装到 Vue 应用中。以下是具体的代码示例：
+```javascript
+// src/main.js
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import App from './App.vue';
+
+// 创建 Pinia 实例
+const pinia = createPinia();
+
+// 创建 Vue 应用实例
+const app = createApp(App);
+
+// 将 Pinia 安装到 Vue 应用中
+app.use(pinia);
+
+// 挂载应用
+app.mount('#app');
+```
+在这段代码中，我们首先导入了 `createPinia` 函数，然后创建了一个 Pinia 实例 `pinia`。接着，我们使用 `createApp` 函数创建了一个 Vue 应用实例 `app`，并使用 `app.use(pinia)` 将 Pinia 安装到应用中。最后，我们将应用挂载到 `#app` 元素上。
+
+## 五、创建第一个 Pinia Store
+### 5.1 什么是 Store
+在 Pinia 中，Store 是一个包含状态、动作和计算属性的对象，它用于管理应用的状态。可以把 Store 想象成一个数据仓库，里面存放着我们应用中需要共享和管理的数据。
+
+### 5.2 创建用户 Store
+我们以管理平台中的用户信息管理为例，创建一个用户 Store。在 `src/store` 目录下创建一个 `user.js` 文件（如果是 TypeScript 项目则是 `user.ts`），并编写以下代码：
+```javascript
+// src/store/user.js
+import { defineStore } from 'pinia';
+
+// 定义用户 Store
+export const useUserStore = defineStore('user', {
+  // 状态
+  state: () => ({
+    username: '',
+    role: '',
+    token: localStorage.getItem('token') || '',
+  }),
+  // 动作
+  actions: {
+    setToken(token) {
+      this.token = token;
+      localStorage.setItem('token', token);
+    },
+    clearToken() {
+      this.token = '';
+      localStorage.removeItem('token');
+    },
+    async fetchUserInfo() {
+      if (!this.token) return;
+      // 模拟获取用户信息的接口调用
+      const res = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            data: {
+              status: 'success',
+              data: {
+                username: 'John Doe',
+                role: 'admin',
+              },
+            },
+          });
+        }, 1000);
+      });
+      if (res.data.status === 'success') {
+        this.username = res.data.data.username;
+        this.role = res.data.data.role;
+      }
+    },
+    clearUserInfo() {
+      this.username = '';
+      this.role = '';
+    },
+  },
+});
+```
+#### 5.2.1 状态（state）
+`state` 是 Store 的核心部分，它定义了 Store 的初始状态。在这个例子中，我们定义了三个状态：`username`、`role` 和 `token`。`token` 从本地存储中获取，如果本地存储中没有，则初始化为空字符串。状态就像是一个容器，用来存放我们的数据🎁。
+
+#### 5.2.2 动作（actions）
+`actions` 是用于修改状态的函数。在这个例子中，我们定义了四个动作：
+- `setToken`：用于设置 token 并将其保存到本地存储中。这就像是给我们的用户颁发了一个“通行证”📄，方便后续的操作。
+- `clearToken`：用于清除 token 并从本地存储中移除。就像把“通行证”收回来一样，确保用户的安全🔒。
+- `fetchUserInfo`：用于异步获取用户信息，并更新 `username` 和 `role` 状态。这就像是从服务器上“拉取”用户的详细信息📋。
+- `clearUserInfo`：用于清除用户信息。就像把用户的信息“清空”一样，恢复到初始状态🧹。
+
+## 六、在组件中使用 Pinia Store
+### 6.1 在登录组件中使用
+在登录组件中，我们可以通过 `useUserStore` 函数来获取用户 Store 的实例，并使用其中的状态和动作。以下是一个简单的登录组件示例：
+```vue
+<template>
+  <div>
+    <input v-model="username" placeholder="用户名或手机号" />
+    <input v-model="password" type="password" placeholder="密码" />
+    <button @click="login">登录</button>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { useUserStore } from '../store/user';
+import { login } from '../api/user'; // 假设这是一个登录接口
+
+const userStore = useUserStore();
+const username = ref('');
+const password = ref('');
+
+const login = async () => {
+  const res = await login({ username: username.value, password: password.value });
+  if (res.data.status === 'success') {
+    userStore.setToken(res.data.token);
+    // 登录成功后跳转到主页
+    window.location.href = '/';
+  }
+};
+</script>
+```
+在这个登录组件中，我们首先导入了 `useUserStore` 函数和 `login` 接口，然后创建了 `userStore` 实例和两个响应式变量 `username` 和 `password`。当用户点击登录按钮时，调用 `login` 函数进行登录验证，如果登录成功，调用 `userStore.setToken` 方法设置 token，并跳转到主页🎉。
+
+### 6.2 在需要获取用户信息的组件中使用
+在需要获取用户信息的组件中，我们可以调用 `fetchUserInfo` 动作来更新用户信息。以下是一个简单的组件示例：
+```vue
+<template>
+  <div>
+    <p>用户名: {{ userStore.username }}</p>
+    <p>角色: {{ userStore.role }}</p>
+  </div>
+</template>
+
+<script setup>
+import { useUserStore } from '../store/user';
+
+const userStore = useUserStore();
+userStore.fetchUserInfo();
+</script>
+```
+在这个组件中，我们导入了 `useUserStore` 函数并创建了 `userStore` 实例，然后调用 `fetchUserInfo` 方法获取用户信息，并在模板中显示出来😎。
+
+## 七、Pinia 的高级用法
+### 7.1 计算属性（getters）
+Pinia 支持计算属性，用于从状态中派生数据。计算属性就像是一个“加工厂”，可以根据现有的状态数据生成新的数据。例如，我们可以在用户 Store 中定义一个计算属性来判断用户是否登录：
+```javascript
+// src/store/user.js
+import { defineStore } from 'pinia';
+
+export const useUserStore = defineStore('user', {
+  state: () => ({
+    username: '',
+    role: '',
+    token: localStorage.getItem('token') || '',
+  }),
+  getters: {
+    isLoggedIn: (state) => !!state.token,
+  },
+  actions: {
+    setToken(token) {
+      this.token = token;
+      localStorage.setItem('token', token);
+    },
+    clearToken() {
+      this.token = '';
+      localStorage.removeItem('token');
+    },
+    async fetchUserInfo() {
+      if (!this.token) return;
+      const res = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            data: {
+              status: 'success',
+              data: {
+                username: 'John Doe',
+                role: 'admin',
+              },
+            },
+          });
+        }, 1000);
+      });
+      if (res.data.status === 'success') {
+        this.username = res.data.data.username;
+        this.role = res.data.data.role;
+      }
+    },
+    clearUserInfo() {
+      this.username = '';
+      this.role = '';
+    },
+  },
+});
+```
+在这个例子中，我们定义了一个计算属性 `isLoggedIn`，它返回一个布尔值，表示用户是否登录。在组件中，我们可以直接使用这个计算属性：
+```vue
+<template>
+  <div>
+    <p v-if="userStore.isLoggedIn">已登录</p>
+    <p v-else>未登录</p>
+  </div>
+</template>
+
+<script setup>
+import { useUserStore } from '../store/user';
+
+const userStore = useUserStore();
+</script>
+```
+### 7.2 插件的使用
+Pinia 提供了插件机制，可以方便地扩展其功能。例如，我们可以使用 `pinia-plugin-persistedstate` 插件来实现状态的持久化存储，这样即使用户刷新页面，状态数据也不会丢失🧐。
+
+#### 7.2.1 安装插件
+首先，使用 npm 或 yarn 安装 `pinia-plugin-persistedstate` 插件：
+```bash
+npm install pinia-plugin-persistedstate
+```
+或者
+```bash
+yarn add pinia-plugin-persistedstate
+```
+#### 7.2.2 使用插件
+在 `src/main.js` 中使用插件：
+```javascript
+// src/main.js
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+import App from './App.vue';
+
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
+
+const app = createApp(App);
+app.use(pinia);
+app.mount('#app');
+```
+#### 7.2.3 配置插件
+在 Store 中配置插件，让用户 Store 的状态数据持久化：
+```javascript
+// src/store/user.js
+import { defineStore } from 'pinia';
+
+export const useUserStore = defineStore('user', {
+  state: () => ({
+    username: '',
+    role: '',
+    token: localStorage.getItem('token') || '',
+  }),
+  actions: {
+    setToken(token) {
+      this.token = token;
+      localStorage.setItem('token', token);
+    },
+    clearToken() {
+      this.token = '';
+      localStorage.removeItem('token');
+    },
+    async fetchUserInfo() {
+      if (!this.token) return;
+      const res = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            data: {
+              status: 'success',
+              data: {
+                username: 'John Doe',
+                role: 'admin',
+              },
+            },
+          });
+        }, 1000);
+      });
+      if (res.data.status === 'success') {
+        this.username = res.data.data.username;
+        this.role = res.data.data.role;
+      }
+    },
+    clearUserInfo() {
+      this.username = '';
+      this.role = '';
+    },
+  },
+  // 开启持久化存储
+  persist: true,
+});
+```
+通过以上配置，用户 Store 的状态数据将会自动持久化存储到本地存储中，实现了数据的持久化🎉。
+
+## 八、总结
+通过在管理平台项目中使用 Pinia 进行状态管理，我们可以更加方便地管理用户信息和登录状态。Pinia 的简单易用、类型安全和模块化等特点，使得我们的代码更加清晰、可维护和易于扩展👏。在实际开发中，我们可以根据项目的需求，灵活运用 Pinia 的各种功能，如计算属性、插件等，提高开发效率和代码质量💯。希望本文能够帮助新手小白更好地理解和掌握 Pinia 状态管理，让我们在前端开发的道路上越走越远🚀！
