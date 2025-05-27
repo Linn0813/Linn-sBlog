@@ -14,4 +14,4 @@ git commit -m "更新博客内容"
 # 推送代码到远程仓库
 git push -u origin main
 
-PS D:\blog> git remote set-url origin git@github.com:Linn0813/Linn-sBlog.git^C
+git remote set-url origin git@github.com:Linn0813/Linn-sBlog.git
