@@ -1,27 +1,36 @@
 ---
 title: 后端JWT认证机制深入解析
+tags:
+  - JWT
+  - 后端认证
+  - 用户认证
+  - JSON Web Token
+  - API认证
 updated: {{current_date_time}} 
-categories: 技术学习 & 行业趋势（Learning Notes & Industry Trends）            
-tags: [JWT, 后端认证, 用户认证, JSON Web Token, API认证]
+categories: 技术学习 & 行业趋势（Learning Notes & Industry Trends）
 keywords: JWT, JSON Web Token, 后端认证, 用户认证, API认证, Session认证, 安全认证
-description: '深入解析后端 JWT 认证机制，涵盖 JWT 基础概念、组成部分、工作流程、使用场景，对比其他认证方式的优势，介绍实现方法、安全性、局限性及注意事项，并提供相关扩展阅读链接。'
+description: >-
+  深入解析后端 JWT 认证机制，涵盖 JWT
+  基础概念、组成部分、工作流程、使用场景，对比其他认证方式的优势，介绍实现方法、安全性、局限性及注意事项，并提供相关扩展阅读链接。
 top_img: /img/json-web-token.png
 cover: /img/json-web-token.png
-comments: true 
-toc: true  
-toc_number: true  
-toc_style_simple: false  
-copyright: true  
-copyright_author: yuxiaoling  
-copyright_info: 版权所有，转载请注明出处。  
-mathjax: false  
-katex: false  
-aplayer: false  
-highlight_shrink: false  
-aside: true  
-abcjs: false  
-noticeOutdate: false 
+comments: true
+toc: true
+toc_number: true
+toc_style_simple: false
+copyright: true
+copyright_author: yuxiaoling
+copyright_info: 版权所有，转载请注明出处。
+mathjax: false
+katex: false
+aplayer: false
+highlight_shrink: false
+aside: true
+abcjs: false
+noticeOutdate: false
+date: 2025-05-29 19:58:47
 ---
+
 
 # 后端JWT认证机制深入解析
 

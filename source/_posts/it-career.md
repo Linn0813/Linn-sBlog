@@ -1,27 +1,35 @@
 ---
 title: 🎯 应届生求职指南：前端、后端、测试、算法、产品，我该怎么选？
-categories: 这里什么都聊！（Random Thoughts & Life）      
+tags:
+  - 应届生求职
+  - 前端开发
+  - 后端开发
+  - 测试开发
+  - 算法工程师
+  - 产品经理
+categories: 这里什么都聊！（Random Thoughts & Life）
 updated: {{current_date_time}} 
-tags: [应届生求职, 前端开发, 后端开发, 测试开发, 算法工程师, 产品经理]
 keywords: 应届生求职, 前端开发, 后端开发, 测试开发, 算法工程师, 产品经理, 职业选择, 职业发展
-description: '应届生求职指南，从工作内容、技能要求、发展前景、适合人群等角度深入对比前端、后端、测试、算法、产品等职业方向，帮助应届生做出最佳职业决策。'
+description: 应届生求职指南，从工作内容、技能要求、发展前景、适合人群等角度深入对比前端、后端、测试、算法、产品等职业方向，帮助应届生做出最佳职业决策。
 top_img: /img/it-career.png
 cover: /img/it-career.png
-comments: true 
-toc: true  
-toc_number: true  
-toc_style_simple: false  
-copyright: true  
-copyright_author: yuxiaoling  
-copyright_info: 版权所有，转载请注明出处。  
-mathjax: false  
-katex: false  
-aplayer: false  
-highlight_shrink: false  
-aside: true  
-abcjs: false  
-noticeOutdate: false     
+comments: true
+toc: true
+toc_number: true
+toc_style_simple: false
+copyright: true
+copyright_author: yuxiaoling
+copyright_info: 版权所有，转载请注明出处。
+mathjax: false
+katex: false
+aplayer: false
+highlight_shrink: false
+aside: true
+abcjs: false
+noticeOutdate: false
+date: 2025-05-29 19:58:03
 ---
+
 
 # 🎯 **应届生求职指南：前端、后端、测试、算法、产品，我该怎么选？**
 

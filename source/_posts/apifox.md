@@ -1,27 +1,37 @@
 ---
 title: 🚀 Apifox 使用指南 —— 开发 & 测试的效率神器
+tags:
+  - Apifox
+  - API测试
+  - 接口文档
+  - Mock数据
+  - 自动化测试
+  - Postman对比
 categories: 基础知识 & 测试方法（Testing Fundamentals & Methodologies）
 updated: {{current_date_time}} 
-tags: [Apifox, API测试, 接口文档, Mock数据, 自动化测试, Postman对比]
 keywords: Apifox, API测试, 接口文档, Mock数据, 自动化测试, 压力测试, Postman对比, 团队协作
-description: '详细介绍 Apifox 这一强大的 API 开发与测试工具，涵盖安装方法、基本使用、进阶功能，如环境变量、Mock 数据、自动化测试和压力测试等，同时对比 Apifox 与 Postman 的差异，帮助测试工程师提升工作效率。'
+description: >-
+  详细介绍 Apifox 这一强大的 API 开发与测试工具，涵盖安装方法、基本使用、进阶功能，如环境变量、Mock 数据、自动化测试和压力测试等，同时对比
+  Apifox 与 Postman 的差异，帮助测试工程师提升工作效率。
 top_img: /img/apifox.png
 cover: /img/apifox.png
-comments: true 
-toc: true  
-toc_number: true  
-toc_style_simple: false  
-copyright: true  
-copyright_author: yuxiaoling  
-copyright_info: 版权所有，转载请注明出处。  
-mathjax: false  
-katex: false  
-aplayer: false  
-highlight_shrink: false  
-aside: true  
-abcjs: false  
+comments: true
+toc: true
+toc_number: true
+toc_style_simple: false
+copyright: true
+copyright_author: yuxiaoling
+copyright_info: 版权所有，转载请注明出处。
+mathjax: false
+katex: false
+aplayer: false
+highlight_shrink: false
+aside: true
+abcjs: false
 noticeOutdate: false
+date: 2025-05-29 19:57:05
 ---
+
 
 
 # 🚀 Apifox 使用指南 —— 开发 & 测试的效率神器
@@ -32,7 +42,7 @@ noticeOutdate: false
 
 它不仅可以 **发送 API 请求、管理接口文档、生成 Mock 数据、进行自动化测试**，还能一键同步接口数据，让开发和测试效率翻倍！
 
-在上一期《[📨 Postman 使用指南 —— 测试工程师的快乐源泉](/2025/03/14/postman/)》中，我们介绍了 Postman 作为 API 测试工具的强大功能。今天，我们来看看 Apifox 如何进一步提升效率，并对比它们的不同之处！
+在上一期《[📨 Postman 使用指南 —— 测试工程师的快乐源泉](https://linn0813.github.io/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%EF%BC%88Testing-Fundamentals-Methodologies%EF%BC%89/postman/)》中，我们介绍了 Postman 作为 API 测试工具的强大功能。今天，我们来看看 Apifox 如何进一步提升效率，并对比它们的不同之处！
 
 ---
 
