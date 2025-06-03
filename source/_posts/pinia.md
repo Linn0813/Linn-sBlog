@@ -1,7 +1,34 @@
 ---
-title: pinia
+title: 前端Pinia状态管理实践
+date: 2025-06-03 22:55:19
 tags:
+  - Pinia
+  - Vue
+  - 前端状态管理
+  - Vue3
+updated: {{current_date_time}} 
+categories: 技术学习 & 行业趋势（Learning Notes & Industry Trends）
+keywords: Pinia, Vue, 前端状态管理, Vue3, Vuex, 状态持久化, 计算属性
+description: >-
+  详细介绍前端 Pinia 状态管理库的实践应用，涵盖 Pinia 简介、在管理平台项目中的引入步骤、创建和使用 Store 的方法，以及计算属性、插件等高级用法，帮助开发者高效管理前端状态。
+top_img: /img/Pinia.png
+cover: /img/Pinia.png
+comments: true
+toc: true
+toc_number: true
+toc_style_simple: false
+copyright: true
+copyright_author: yuxiaoling
+copyright_info: 版权所有，转载请注明出处。
+mathjax: false
+katex: false
+aplayer: false
+highlight_shrink: false
+aside: true
+abcjs: false
+noticeOutdate: false
 ---
+
 # 前端Pinia状态管理实践
 
 ## 一、引言
