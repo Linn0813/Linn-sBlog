@@ -22,6 +22,6 @@ updated: {{current_date_time}}
 
 ## 联系我
 如果你有任何问题、建议或者想和我交流技术，欢迎通过以下方式联系我：
-- **邮箱**：[yuxiaoling.yxl@163.com](mailto:yuxiaoling.yxl@163.com)
+- **邮箱**：[yuxiaoling.yxl@qq.com](mailto:yuxiaoling.yxl@qq.com)
 - **GitHub**：[https://github.com/Linn0813](https://github.com/Linn0813)
 - **公众号**：LinnNotes
