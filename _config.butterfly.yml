@@ -143,7 +143,7 @@ menu:
 highlight_theme: mac  #  darker / pale night / light / ocean / mac / mac light / false 代码主题
 highlight_copy: true # 复制按钮
 highlight_lang: false # 是否显示代码语言
-highlight_shrink: false # true: 代码块默认不展开 / false: 代码块默认展开 | none: 展开并隐藏折叠按钮
+highlight_shrink: true # true: 代码块默认不展开 / false: 代码块默认展开 | none: 展开并隐藏折叠按钮
 highlight_height_limit: false # unit: px
 code_word_wrap: true #代码自动换行，关闭滚动条
 
@@ -175,6 +175,8 @@ local_search:
 social:
   fab fa-github:  https://github.com/Linn0813 || GitHub
   fa fa-envelope-open-text: mailto:yuxiaoling_yxl@163.com || Email
+  fab fa-weixin: javascript:alert('微信公众号：Linn的技术笔记') || 微信
+  fab fa-weibo: https://weibo.com/Linn0813 || 微博
 
 
 # --------------------------------------
@@ -322,10 +324,10 @@ subtitle:
   # 开头不允許转义字元，如需要，请把整個句子用双引号包住
   # 如果关闭打字效果，subtitle只会现示sub的第一行文字
   sub:
-    - 哈哈哈
-    - 哈哈哈哈哈哈
-    - 哈哈哈哈哈哈哈哈哈哈哈哈
-    - 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+    - 分享技术成长之路
+    - 探索前端与测试的无限可能
+    - 记录学习心得与实战经验
+    - 欢迎交流，共同进步
 
 # 首页文章佈局
 # 1: 行佈局
@@ -375,7 +377,7 @@ post_copyright:
 # 贊助/打赏
 reward:
   # 是否启用打赏
-  enable: false
+  enable: true
   # 打赏案例文本
   text:
   QR_code:
@@ -413,7 +415,7 @@ post_pagination: 1
 # 显示文章过期通知
 noticeOutdate:
   # 是否启用过期通知
-  enable: false
+  enable: true
   # 样式: simple / flat
   style: flat
   # 多少天后显示通知
@@ -488,12 +490,12 @@ aside:
     sort_order:
   card_newest_comments:
     # 是否显示最新评论卡片
-    enable: false
+    enable: true
     sort_order:
     # 显示评论数量
     limit: 6
-    # 单位：分钟，保存数据到 localStorage
-    storage: 10
+    # 单位：分钟，保存数据到 localStorage (减少缓存时间以加快评论显示)
+    storage: 1
     # 是否显示头像
     avatar: true
   card_categories:
@@ -573,8 +575,10 @@ translate:
   msgToSimplifiedChinese: '简'
 
 # 閲读模式
-readmode: true
-
+readmode:
+  enable: true
+  # 阅读模式下自动隐藏侧边栏
+  auto_hide_aside: true
 # 暗黑模式设置
 darkmode:
   # 是否启用暗黑模式
@@ -591,7 +595,7 @@ darkmode:
   end:
 
 # 在返回顶部按钮中显示滚动百分比
-rightside_scroll_percent: false
+rightside_scroll_percent: true
 
 # 不要修改以下设置，除非你知道它们的工作原理
 # 选择：readmode,translate,darkmode,hideAside,toc,chat,comment
@@ -611,12 +615,12 @@ rightside_item_order:
 # 锚点设置
 anchor:
   # 滚动时，URL 将根据标题 ID 更新
-  auto_update: false
+  auto_update: true
   # 点击标题滚动并更新锚点
-  click_to_scroll: false
+  click_to_scroll: true
 
 # 图片标题
-photofigcaption: false
+photofigcaption: true
 
 # 复制设置
 # copy settings
@@ -733,7 +737,7 @@ comments:
   # 如果不需要评论功能，保持为空
   # 选择：Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   # 两个评论系统的格式：Disqus,Waline
-  use:
+  use: Utterances
   # 按钮旁边显示评论系统名称
   text: true
   # 懒加载：评论系统将在评论元素进入浏览器视口时加载
@@ -818,7 +822,7 @@ waline:
 # 官方文档：https://utteranc.es/
 utterances:
   # 存储评论的 GitHub 仓库
-  repo:
+  repo: Linn0813/Linn0813.github.io
   # 问题映射方式，可选值：pathname/url/title/og:title
   issue_term: pathname
   # 浅色主题，可选值：github-light
@@ -1036,11 +1040,11 @@ mask:
 # 加载动画
 preloader:
   # 是否启用加载动画
-  enable: false
+  enable: true
   # 资源
   # 1. 全屏加载
   # 2. 进度条
-  source: 1
+  source: 2
   # pace 主题 (参见 https://codebyzach.github.io/pace/)
   pace_css_url:
 
@@ -1053,13 +1057,13 @@ display_mode: light
 # 美化文章内容的配置
 beautify:
   # 是否启用美化
-  enable: false
+  enable: true
   # 指定美化的范围 (site 或 post)
   field: post
-  # 指定标题前缀图标，如 '\f0c1'
-  title-prefix-icon:
-  # 指定标题前缀图标的颜色，如 '#F47466'
-  title-prefix-icon-color:
+  # 指定标题前缀图标
+  title-prefix-icon: '\f0c1'
+  # 指定标题前缀图标的颜色
+  title-prefix-icon-color: '#F47466'
 
 # 全局字体设置
 # 除非您知道它们的工作原理，否则不要修改以下设置
@@ -1085,8 +1089,8 @@ hr_icon:
 # 打字机效果
 # https://github.com/disjukr/activate-power-mode
 activate_power_mode:
-  # 是否启用打字机效果
-  enable: true
+  # 是否启用打字机效果 - 已禁用以提高性能
+  enable: false
   # 是否启用彩色效果
   colorful: true
   # 是否启用震动效果
@@ -1122,13 +1126,12 @@ canvas_fluttering_ribbon:
 # canvas_nest
 # https://github.com/hustcc/canvas-nest.js
 canvas_nest:
-  # 是否启用 canvas_nest
+  # 是否启用 canvas_nest - 已禁用以提高性能
   enable: false
   # 线条颜色，默认: '0,0,0'; RGB 值: (R,G,B).(注意: 使用 ',' 分隔.)
-  color: '0,0,255'
+  color: '100,149,237'
   # 线条的不透明度 (0~1)
-  opacity: 0.7
-  # 背景的 z-index 属性
+  alpha: 0.7
   zIndex: -1
   # 线条数量
   count: 99
@@ -1145,8 +1148,8 @@ fireworks:
 
 # 鼠标点击效果: 心形符号
 click_heart:
-  # 是否启用心形符号效果
-  enable: true
+  # 是否启用心形符号效果 - 已禁用以提高性能
+  enable: false
   # 是否在移动设备上启用
   mobile: false
 
@@ -1172,7 +1175,7 @@ clickShowText:
 # https://github.com/francoischalifour/medium-zoom
 # https://fancyapps.com/fancybox/
 # 如果不需要灯箱效果，请留空
-lightbox:
+lightbox: fancybox
 
 # --------------------------------------
 # 标签外挂设置
@@ -1285,11 +1288,11 @@ lazyload:
   enable: true
   loadingImg: /img/loading.gif
   # 使用浏览器的原生 lazyload 而不是 vanilla-lazyload
-  native: false
+  native: true
   # 指定使用 Lazyload 的范围 (site 或 post)
   field: site
   placeholder:
-  blur: false
+  blur: true
 
 # PWA
 # 参见 https://github.com/JLHwung/hexo-offline
@@ -1345,7 +1348,7 @@ CDN:
   # 两者的选项：local/jsdelivr/unpkg/cdnjs/custom
   # 注意： Dev 版本只能使用 'local' 作为内部脚本
   # 注意：将第三方脚本设置为 'local' 时，需要安装 hexo-butterfly-extjs
-  internal_provider: local
+  internal_provider: jsdelivr
   third_party_provider: jsdelivr
 
   # 是否在 URL 中添加版本号，true 或 false
