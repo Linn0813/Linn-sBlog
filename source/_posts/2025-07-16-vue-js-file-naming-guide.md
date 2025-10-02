@@ -8,17 +8,14 @@ tags:
   - 代码规范
   - 前端规范
   - JavaScript
-- 测试专业实践
-  - 自动化测试
- 
-- 前端开发
-- 代码规范
+  - 前端开发
 updated: {{current_date_time}}
 
 categories:
-- 测试专业实践
-  - 测试平台开发
-keywords: Vue, JS文件命名, 命名规范, 代码规范
+- 技术学习 & 行业趋势（Learning Notes & Industry Trends）
+- 前端开发
+- 代码规范
+keywords: Vue, JS文件命名, 命名规范, 代码规范, 前端规范, JavaScript
 description: '全面介绍 Vue 项目中 JS 文件的命名规范，涵盖不同命名格式、适用场景、命名建议及注意事项，助你让项目代码结构更清晰、维护更高效！'
 top_img: /img/vue-js-naming.png
 cover: /img/vue-js-naming.png
@@ -35,7 +32,7 @@ aplayer: false
 highlight_shrink: false
 aside: true
 abcjs: false
-noticeOutdate: falsetags
+noticeOutdate: false
 ---
 
 # 🧠Vue 项目中的 JS 文件命名规范实战指南：让代码一眼读懂！
