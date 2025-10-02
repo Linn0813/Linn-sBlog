@@ -6,7 +6,10 @@ tags:
   - 抓包工具
   - 实战技巧
   - 移动端抓包
-categories: 技术学习 & 行业趋势（Learning Notes & Industry Trends）
+categories:
+- 技术学习 & 行业趋势（Learning Notes & Industry Trends）
+- 网络工具
+- 抓包技术
 updated: {{current_date_time}}
 keywords: Fiddler, 移动端抓包, 实战技巧
 description: 'Fiddler 是一个功能强大的 HTTP/HTTPS 抓包工具，能拦截客户端和服务器之间的请求。本文将带你从零开始，详细掌握 Fiddler 移动端抓包与实战技巧，让你快速上手。'
@@ -25,7 +28,7 @@ aplayer: false
 highlight_shrink: false
 aside: true
 abcjs: false
-noticeOutdate: falsetags
+noticeOutdate: false
 ---
 
 # Fiddler 移动端抓包与实战技巧 📱🕵️‍♂️

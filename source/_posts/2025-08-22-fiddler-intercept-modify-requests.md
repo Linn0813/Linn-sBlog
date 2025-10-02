@@ -13,7 +13,10 @@ tags:
   - 修改请求
   - 修改响应
   - 模拟异常场景
-categories: 技术学习 & 行业趋势（Learning Notes & Industry Trends）
+categories:
+- 技术学习 & 行业趋势（Learning Notes & Industry Trends）
+- 网络工具
+- 抓包技术
 updated: {{current_date_time}}
 keywords: Fiddler, 抓包工具, HTTP/HTTPS, 中间人代理, 网络调试, 接口测试, 移动端抓包, 拦截请求, 修改请求, 修改响应, 模拟异常场景
 description: 'Fiddler 是一个功能强大的 HTTP/HTTPS 抓包工具，能拦截客户端和服务器之间的请求。本文将带你从零开始，详细掌握 Fiddler 拦截与修改请求的基础操作，让你快速上手。'

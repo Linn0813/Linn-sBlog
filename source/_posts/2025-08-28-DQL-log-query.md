@@ -6,7 +6,10 @@ tags:
   - DQL
   - 日志查询
   - 测试实战
-categories: 项目实战 & 测试经验（Testing Practices & Case Studies）
+categories:
+- 项目实战 & 测试经验（Testing Practices & Case Studies）
+- 日志查询
+- 测试工具
 updated: {{current_date_time}}
 keywords: OpenSearch Dashboards, DQL, 日志查询, 测试实战
 description: '本文分享 OpenSearch Dashboards 日志查询全攻略，涵盖 DQL 查询技巧、半结构化日志处理方法以及测试实战经验，帮助你快速掌握日志查询技能，提升问题排查效率。'
@@ -25,7 +28,7 @@ aplayer: false
 highlight_shrink: false
 aside: true
 abcjs: false
-noticeOutdate: falsetags
+noticeOutdate: false
 ---
 
 # 🚀 OpenSearch Dashboards 日志查询全攻略：DQL 技巧与测试实战经验分享
