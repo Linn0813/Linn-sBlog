@@ -6,7 +6,6 @@ categories:
 - 这里什么都聊！（Random Thoughts & Life）            
   - 博客介绍
   - 个人成长
-  
 tags:
   - 博客介绍
   - 个人碎碎念

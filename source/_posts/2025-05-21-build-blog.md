@@ -3,9 +3,9 @@ title: Hexo和Markdown搭建个人博客教程🎈
 date: 2025-05-21 18:17:26
 updated: {{current_date_time}} 
 categories:
-- 技术学习 & 行业趋势（Learning Notes & Industry Trends）            
-- 开发工具
-- 博客搭建
+- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 开发工具
+  - 博客搭建
   
 tags:
   - Hexo

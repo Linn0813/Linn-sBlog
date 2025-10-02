@@ -6,9 +6,9 @@ tags:
   - 编码规范
   - 编程指南
 categories:
-- 基础知识 & 测试方法（Testing Fundamentals & Methodologies）
-- 编程规范
-- 开发实践
+- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 开发实践
+  - 编程规范
 updated: {{current_date_time}}
 keywords: Python, 编码规范, 编程指南
 description: '分享Python关键编码规范，涵盖命名、缩进、注释、导入、函数设计等方面，适合初学者和项目开发者参考。'

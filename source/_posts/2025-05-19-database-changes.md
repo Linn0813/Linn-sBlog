@@ -6,7 +6,6 @@ categories:
 - 自动化测试 & 工具开发（Test Automation & Tool Development）            
   - 数据库维护
   - 后端开发
-  
 tags:
   - 数据库维护
   - MySQL

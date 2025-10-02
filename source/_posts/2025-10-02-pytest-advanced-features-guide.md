@@ -2,19 +2,22 @@
 title: 🔍 Pytest高级特性实战：从码尚教育课程中学到的进阶技巧
 subtitle: 深入理解fixture机制、数据驱动与Allure报告，打造更强大的测试框架
 date: 2025-10-02 19:00:00
-- 测试专业实践
-  - 自动化测试
-
-- 自动化测试
-- Python
-- 测试进阶
 tags:
-- pytest
-- fixture
-- 数据驱动
-- Allure
-- YAML
-- 测试报告
+  - pytest
+  - fixture
+  - 数据驱动
+  - Allure
+  - YAML
+  - 测试报告
+  - Python
+  - 测试进阶
+categories:
+- 自动化测试 & 工具开发（Test Automation & Tool Development）
+  - 测试框架
+  - 自动化测试
+updated: {{current_date_time}}
+keywords: pytest, fixture, 数据驱动, Allure, YAML, 测试报告, Python, 测试进阶
+description: '深入探讨Pytest高级特性，包括fixture机制、数据驱动测试和Allure报告生成，结合实战案例分享。'
 top_img: /img/pytest.png
 cover: /img/pytest.png
 comments: true
@@ -24,8 +27,13 @@ toc_style_simple: false
 copyright: true
 copyright_author: yuxiaoling
 copyright_info: 版权所有，转载请注明出处。
-keywords: pytest fixture, 数据驱动测试, Allure报告, YAML测试数据, 测试框架进阶, 参数化测试
-description: '分享从码尚教育pytest课程中学到的高级特性，深入解析fixture机制、数据驱动测试、Allure报告生成等实战技巧。'
+mathjax: false
+katex: false
+abcjs: false
+aplayer: false
+highlight_shrink: false
+aside: true
+noticeOutdate: false
 ---
 
 # 🔍 Pytest高级特性实战：从码尚教育课程中学到的进阶技巧

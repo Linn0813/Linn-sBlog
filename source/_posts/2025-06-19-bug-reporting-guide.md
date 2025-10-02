@@ -11,8 +11,8 @@ tags:
 updated: {{current_date_time}} 
 categories:
 - 项目实战 & 测试经验（Testing Practices & Case Studies）
-- 测试方法
-- Bug管理
+  - 测试方法
+  - Bug管理
 keywords: Bug提报, 测试工程师, 前端测试, 后端测试, 移动端测试, 测试工具, 提Bug技巧, Bug沟通
 description: 分享测试工程师高效、优雅提Bug的实战技巧，涵盖不同端（前端、后端、移动端）的Bug描述方法、证据准备、优先级评估、沟通方式等，提升开发响应速度和修复意愿，提高Bug修复效率。
 top_img: /img/bug-reporting-guide.png

@@ -12,9 +12,9 @@ tags:
 updated: {{current_date_time}}
 
 categories:
-- 技术学习 & 行业趋势（Learning Notes & Industry Trends）
-- 前端开发
-- 代码规范
+- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 前端开发
+  - 代码规范
 keywords: Vue, JS文件命名, 命名规范, 代码规范, 前端规范, JavaScript
 description: '全面介绍 Vue 项目中 JS 文件的命名规范，涵盖不同命名格式、适用场景、命名建议及注意事项，助你让项目代码结构更清晰、维护更高效！'
 top_img: /img/vue-js-naming.png

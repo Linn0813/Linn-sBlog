@@ -9,8 +9,8 @@ tags:
   - 代码规范
 categories:
 - 项目实战 & 测试经验（Testing Practices & Case Studies）
-- 后端开发
-- 架构设计
+  - 后端开发
+  - 架构设计
 updated: {{current_date_time}}
 keywords: 后端架构, MVC, 分层设计, 项目结构, 代码规范, 模块划分
 description: '分享后端开发中基于 MVC 模型的分层架构设计，介绍经典 MVC 架构、五大核心模块、典型项目目录结构，以及实际开发中的扩展模块，助力构建职责清晰、可维护、易扩展的项目骨架！'

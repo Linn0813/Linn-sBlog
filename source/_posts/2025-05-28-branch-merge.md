@@ -7,9 +7,9 @@ tags:
   - 版本控制
   - 软件开发
 categories:
-- 技术学习 & 行业趋势（Learning Notes & Industry Trends）
-- 开发工具
-- 版本控制
+- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 开发工具
+  - 版本控制
 updated: {{current_date_time}} 
 keywords: Git, 代码合并, 版本控制, 软件开发, develop 分支, master 分支, 合并请求
 description: '详细介绍软件开发中从 develop 分支到 master 分支的代码合并指南，涵盖准备工作、创建合并请求的多种方式（命令行、图形化工具、不同代码托管平台）以及注意事项，帮助开发者顺利完成代码合并操作。'

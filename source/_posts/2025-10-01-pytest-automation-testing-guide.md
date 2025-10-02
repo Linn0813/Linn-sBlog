@@ -2,18 +2,20 @@
 title: 🚀 Pytest自动化测试框架入门到实战：我的学习笔记与实战经验
 subtitle: 从基础到高级，从理论到实践，全面掌握Python测试利器
 date: 2025-10-01 18:00:00
-- 测试专业实践
-  - 自动化测试
-
-- 自动化测试
-- Python
-- 测试框架
 tags:
-- pytest
-- 自动化测试
-- Python测试
-- 测试框架
-- 学习笔记
+  - pytest
+  - 自动化测试
+  - Python测试
+  - 测试框架
+  - 学习笔记
+  - Python
+categories:
+- 自动化测试 & 工具开发（Test Automation & Tool Development）
+  - 测试框架
+  - 自动化测试
+updated: {{current_date_time}}
+keywords: pytest, 自动化测试, Python测试, 测试框架, 学习笔记, Python
+description: '全面的Pytest自动化测试框架学习笔记，从基础概念到高级特性，结合实战经验，助你快速掌握Python测试利器。'
 top_img: /img/pytest.png
 cover: /img/pytest.png
 comments: true
@@ -23,8 +25,13 @@ toc_style_simple: false
 copyright: true
 copyright_author: yuxiaoling
 copyright_info: 版权所有，转载请注明出处。
-keywords: pytest, 自动化测试, Python测试框架, fixture, 参数化测试, 测试报告, 测试最佳实践
-description: '分享pytest自动化测试框架的全面学习笔记，从基础入门到高级特性，包含实战案例和个人经验总结。'
+mathjax: false
+katex: false
+abcjs: false
+aplayer: false
+highlight_shrink: false
+aside: true
+noticeOutdate: false
 ---
 
 # 🚀 Pytest自动化测试框架入门到实战：我的学习笔记与实战经验

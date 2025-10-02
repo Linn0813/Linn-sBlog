@@ -9,8 +9,8 @@ tags:
   - SQLAlchemy
 categories:
 - 项目实战 & 测试经验（Testing Practices & Case Studies）
-- 后端开发
-- 问题排查
+  - 后端开发
+  - 问题排查
 updated: {{current_date_time}}
 keywords: MySQL, 数据库连接, 连接泄露, 连接池, SQLAlchemy
 description: '记录一次测试平台中 MySQL 连接数暴涨问题的排查过程，分享使用连接池和自动释放机制解决连接泄露的方案，并给出优化建议！'

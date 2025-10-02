@@ -8,8 +8,8 @@ tags:
   - 开发实践
 categories:
 - 项目实战 & 测试经验（Testing Practices & Case Studies）
-- 前后端分离
-- 会话管理
+  - 前后端分离
+  - 会话管理
 updated: {{current_date_time}}
 keywords: session_id, 前后端分离, 会话管理, 前端生成session_id, 后端生成session_id
 description: '详解前后端生成 `session_id` 的两种方案，对比其优缺点、适用场景，并给出实战推荐做法！'

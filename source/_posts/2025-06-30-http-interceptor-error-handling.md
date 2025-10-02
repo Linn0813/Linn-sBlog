@@ -9,8 +9,8 @@ tags:
   - axios
 categories:
 - 项目实战 & 测试经验（Testing Practices & Case Studies）
-- 前端实践
-- 错误处理
+  - 前端实践
+  - 错误处理
 updated: {{current_date_time}}
 keywords: HTTP拦截器, 请求拦截, 响应拦截, 错误处理, axios
 description: '通过 axios 示例，讲解前端 HTTP 请求拦截与响应拦截机制，以及统一处理异常、提升用户体验与开发效率的方法！'

@@ -13,8 +13,8 @@ tags:
 updated: {{current_date_time}} 
 categories:
 - 项目实战 & 测试经验（Testing Practices & Case Studies）
-- Bug分析
-- 测试经验
+  - Bug分析
+  - 测试经验
 keywords: Bug定位, 测试开发, 现象分析, 工具定位, 协作验证, 日志溯源, 边界场景处理, AI辅助, 责任端判断
 description: 分享测试开发过程中快速定位 Bug 责任端的实战指南，涵盖现象分析法、工具定位法、协作验证法、日志溯源法、边界场景处理策略以及 AI 辅助法，帮助提高 Bug 定位效率和协作效率。
 top_img: /img/Bug-classification.png

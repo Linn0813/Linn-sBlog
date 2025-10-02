@@ -1,5 +1,5 @@
 ---
-title: 你真的会比较版本号吗？我因为“3.9.0 > 3.11.0”翻了车
+title: 你真的会比较版本号吗？我因为"3.9.0 > 3.11.0"翻了车
 date: 2025-08-06 13:27:40
 tags:
   - 版本比较
@@ -7,13 +7,13 @@ tags:
   - 测试bug
   - 开发
   - 字符串比较
-categories: 
+categories:
 - 项目实战 & 测试经验（Testing Practices & Case Studies）
-- 测试经验
-- 测试bug
+  - 测试经验
+  - 测试bug
 updated: {{current_date_time}}
 keywords: 版本比较, 版本号, 字符串比较, 测试数据, 版本比较逻辑
-description: '分享因版本号比较 “3.9.0 > 3.11.0” 引发的问题，深入解析错误原因、正确方法及测试建议，帮助开发和测试人员避免版本号比较的常见误区！'
+description: '分享因版本号比较 "3.9.0 > 3.11.0" 引发的问题，深入解析错误原因、正确方法及测试建议，帮助开发和测试人员避免版本号比较的常见误区！'
 top_img: /img/version-compare.png
 cover: /img/version-compare.png
 comments: true

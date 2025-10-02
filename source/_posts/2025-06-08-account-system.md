@@ -4,9 +4,14 @@ date: 2025-06-08 15:05:50
 updated: {{current_date_time}} 
 categories:
 - 自动化测试 & 工具开发（Test Automation & Tool Development）
-- 测试平台
-- 后端开发
-tags: [测试平台, 账号体系, 注册模块, 登录模块, 忘记密码模块]
+  - 测试平台
+  - 后端开发
+tags:
+  - 测试平台
+  - 账号体系
+  - 注册模块
+  - 登录模块
+  - 忘记密码模块
 keywords: 测试平台, 账号体系, 注册模块, 登录模块, 忘记密码模块, JWT, 安全策略
 description: '详细介绍独立开发测试平台过程中账号体系模块技术方案，涵盖注册、登录、忘记密码等核心功能的设计与实现，包含功能拆解、接口设计、逻辑校验、异常处理及安全策略等内容。'
 top_img: /img/account-system.png
