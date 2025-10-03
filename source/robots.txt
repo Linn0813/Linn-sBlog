@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://Linn0813.github.io/sitemap.xml
+
+# 禁止爬取的文件
+Disallow: /css/
+Disallow: /js/
+Disallow: /img/
+Disallow: /archives/
+Disallow: /categories/
+Disallow: /tags/

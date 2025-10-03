@@ -128,7 +128,7 @@ feed:
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repo: https://github.com/Linn0813/Linn0813.github.io.git
-  branch: main
-  message: 'Update blog content'
+  - type: git
+    repo: https://github.com/Linn0813/Linn0813.github.io.git
+    branch: main
+    message: 'Update blog content'

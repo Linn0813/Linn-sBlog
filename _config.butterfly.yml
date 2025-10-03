@@ -6,15 +6,15 @@
 title: 别管我                          #标题
 # 副标题
 # subtitle:
-description:  下班快跑           #个性签名
-keywords:
+description: 分享软件测试学习、实战经验和踩坑历程的个人技术博客
+keywords: 软件测试,测试博客,自动化测试,测试开发,测试经验,技术博客
 author: yuxiaoling                 #作者
 language: zh-CN                    #语言
 timezone:  Asia/Shanghai    #中国的时区
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://Linn0813.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -174,7 +174,7 @@ local_search:
 #   icon: 链接 || 描述 || 颜色
 social:
   fab fa-github:  https://github.com/Linn0813 || GitHub
-  fa fa-envelope-open-text: mailto:yuxiaoling_yxl@163.com || Email
+  fa fa-envelope-open-text: mailto:yuxiaoling.yxl@qq.com || Email
   fab fa-weixin: javascript:alert('微信公众号：Linn的技术笔记') || 微信
   fab fa-weibo: https://weibo.com/Linn0813 || 微博
 
@@ -185,6 +185,18 @@ social:
 
 # 网站的 favicon 图标
 favicon: /img/favicon.jpg
+
+# SEO 优化配置
+
+# Sitemap 配置
+sitemap:
+  path: sitemap.xml
+
+# RSS 配置
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
 
 # 头像设置
 avatar: 
@@ -433,7 +445,7 @@ footer:
     # 是否启用所有者显示
     enable: true
     # 网站创建年份
-    since: 2019
+    since: 2025
   # 自定义文本
   custom_text:
   # 主题和框架的版权声明
@@ -1026,7 +1038,8 @@ site_verification:
 # 分类和标签页面的用户界面设置
 # 选择：index - 与主页 UI 相同 / default - 与归档 UI 相同
 # 留空或设置为 index
-category_ui:
+category_ui: default
+# 将分类页面设置为归档风格，这样可以更好地展示分类层级结构
 tag_ui:
 
 # 拉伸行使每行宽度相等
