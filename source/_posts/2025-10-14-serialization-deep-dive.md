@@ -3,8 +3,8 @@ title: 深入理解「可序列化」：开发与测试都绕不开的隐形规�
 date: 2025-10-14 01:00:00
 categories:
 - 自动化测试 & 工具开发（Test Automation & Tool Development）
-  - 测试理论
-  - 开发技巧
+- 测试理论
+- 开发技巧
 tags:
   - 序列化
   - JSON

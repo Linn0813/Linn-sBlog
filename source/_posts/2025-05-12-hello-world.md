@@ -3,7 +3,7 @@ title: ✨Hello, 世界！我的测试成长之旅开启啦！🚀
 date: 2025-05-12 16:49:16   
 updated: {{current_date_time}} 
 categories:
-- 这里什么都聊！（Random Thoughts & Life）            
+  - 这里什么都聊！（Random Thoughts & Life）            
   - 博客介绍
   - 个人成长
 tags:

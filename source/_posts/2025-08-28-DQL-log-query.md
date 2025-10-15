@@ -7,7 +7,7 @@ tags:
   - 日志查询
   - 测试实战
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - 日志查询
   - 测试工具
 updated: {{current_date_time}}

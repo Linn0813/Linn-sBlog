@@ -8,7 +8,7 @@ tags:
   - API规范
   - 系统设计
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - API设计
   - 系统设计
 updated: {{current_date_time}}

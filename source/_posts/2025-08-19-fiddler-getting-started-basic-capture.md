@@ -11,7 +11,7 @@ tags:
   - 接口测试
   - 移动端抓包
 categories:
-- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 技术学习 & 行业趋势（Learning & Industry Trends）
   - 网络工具
   - 抓包技术
 updated: {{current_date_time}}

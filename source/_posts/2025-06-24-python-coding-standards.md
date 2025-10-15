@@ -6,7 +6,7 @@ tags:
   - 编码规范
   - 编程指南
 categories:
-- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 技术学习 & 行业趋势（Learning & Industry Trends）
   - 开发实践
   - 编程规范
 updated: {{current_date_time}}

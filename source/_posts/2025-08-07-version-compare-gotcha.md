@@ -8,7 +8,7 @@ tags:
   - 开发
   - 字符串比较
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - 测试经验
   - 测试bug
 updated: {{current_date_time}}

@@ -8,7 +8,7 @@ tags:
   - GPT-4
   - VPN
 categories:
-- 这里什么都聊！（Random Thoughts & Life）
+  - 这里什么都聊！（Random Thoughts & Life）
   - 代理服务器
   - TUN模式
 updated: {{current_date_time}}

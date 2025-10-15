@@ -6,7 +6,7 @@ tags:
   - 测试方法
   - 质量度量
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - 测试度量
   - 质量管理
 updated: {{current_date_time}}

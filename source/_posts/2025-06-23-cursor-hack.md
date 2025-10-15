@@ -9,7 +9,7 @@ tags:
   - 设备限制绕过
   - 第三方服务
 categories:
-- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 技术学习 & 行业趋势（Learning & Industry Trends）
   - 开发工具
   - 软件使用
 updated: {{current_date_time}}

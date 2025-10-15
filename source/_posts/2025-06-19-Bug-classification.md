@@ -12,7 +12,7 @@ tags:
   - AI辅助
 updated: {{current_date_time}} 
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - Bug分析
   - 测试经验
 keywords: Bug定位, 测试开发, 现象分析, 工具定位, 协作验证, 日志溯源, 边界场景处理, AI辅助, 责任端判断

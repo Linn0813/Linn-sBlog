@@ -8,7 +8,7 @@ tags:
   - 数据分析方法
 updated: {{current_date_time}} 
 categories:
-- 认证学习 & 培训（Certification & Training）
+  - 认证学习 & 培训（Certification & Training）
   - 数据分析
   - SACA课程
 keywords: 数据分析, SACA课程, 神策分析师认证, 数据驱动增长, 活动效果分析, 事件分析, 漏斗分析, 留存分析, 分布分析, 间隔分析, 归因分析, Session分析, 路径分析, 网页热力分析, 用户分群, 自定义查询

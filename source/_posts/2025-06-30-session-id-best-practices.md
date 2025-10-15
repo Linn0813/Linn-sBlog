@@ -7,7 +7,7 @@ tags:
   - 会话管理
   - 开发实践
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - 前后端分离
   - 会话管理
 updated: {{current_date_time}}

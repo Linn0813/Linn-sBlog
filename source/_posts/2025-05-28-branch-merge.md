@@ -7,7 +7,7 @@ tags:
   - 版本控制
   - 软件开发
 categories:
-- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 技术学习 & 行业趋势（Learning & Industry Trends）
   - 开发工具
   - 版本控制
 updated: {{current_date_time}} 

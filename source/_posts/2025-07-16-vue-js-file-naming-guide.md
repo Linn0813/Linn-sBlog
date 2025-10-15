@@ -12,7 +12,7 @@ tags:
 updated: {{current_date_time}}
 
 categories:
-- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 技术学习 & 行业趋势（Learning & Industry Trends）
   - 前端开发
   - 代码规范
 keywords: Vue, JS文件命名, 命名规范, 代码规范, 前端规范, JavaScript

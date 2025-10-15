@@ -3,7 +3,7 @@ title: 自动化测试平台添加登录注册功能 🚀
 date: 2025-05-16 15:16:55
 updated: {{current_date_time}} 
 categories:
-- 自动化测试 & 工具开发（Test Automation & Tool Development）
+  - 自动化测试 & 工具开发（Test Automation & Tool Development）
   - 平台开发
   - 功能实现
 tags:

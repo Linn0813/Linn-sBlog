@@ -10,7 +10,7 @@ tags:
   - AI测试
 updated: {{current_date_time}} 
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - API设计
   - 测试方法
 keywords: 接口文档, 测试开发, Swagger, Markdown, Postman, AI辅助, 文档维护, 接口压测

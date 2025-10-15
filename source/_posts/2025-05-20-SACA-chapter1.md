@@ -4,7 +4,7 @@ date: 2025-05-20 17:26:12
 updated: {{current_date_time}}
 
 categories:
-- 认证学习 & 培训（Certification & Training）
+  - 认证学习 & 培训（Certification & Training）
   - 数据分析
   - SACA课程
 

@@ -10,7 +10,7 @@ tags:
   - 测试工具
 updated: {{current_date_time}} 
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - 测试方法
   - Bug管理
 keywords: Bug提报, 测试工程师, 前端测试, 后端测试, 移动端测试, 测试工具, 提Bug技巧, Bug沟通

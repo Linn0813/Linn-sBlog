@@ -8,7 +8,7 @@ tags:
   - 前后端分离
   - 开发配置
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - 前端实践
   - 开发配置
 updated: {{current_date_time}}

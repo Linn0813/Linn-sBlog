@@ -8,7 +8,7 @@ tags:
   - 连接池
   - SQLAlchemy
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - 后端开发
   - 问题排查
 updated: {{current_date_time}}

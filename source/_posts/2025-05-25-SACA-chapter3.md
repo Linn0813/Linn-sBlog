@@ -8,7 +8,7 @@ tags:
   - 数据分析思维
 updated: {{current_date_time}} 
 categories:
-- 认证学习 & 培训（Certification & Training）
+  - 认证学习 & 培训（Certification & Training）
   - 数据分析
   - SACA课程
 keywords: 数据分析, SACA课程, 神策分析师认证, 数据分析思维, 问题思维, 对比思维, 逻辑树思维, 分类思维, 假设推断思维, 因果思维

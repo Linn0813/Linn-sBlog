@@ -10,7 +10,7 @@ tags:
   - 学习笔记
   - Python
 categories:
-- 自动化测试 & 工具开发（Test Automation & Tool Development）
+  - 自动化测试 & 工具开发（Test Automation & Tool Development）
   - 测试框架
   - 自动化测试
 updated: {{current_date_time}}

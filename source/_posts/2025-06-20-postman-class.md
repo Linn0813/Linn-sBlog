@@ -10,7 +10,7 @@ tags:
   - Newman
   - Mock Server
 categories:
-- 技术学习 & 行业趋势（Learning & Industry Trends）
+  - 技术学习 & 行业趋势（Learning & Industry Trends）
   - 测试技术
   - API测试
 updated: {{current_date_time}}

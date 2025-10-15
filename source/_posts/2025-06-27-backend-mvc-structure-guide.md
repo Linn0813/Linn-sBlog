@@ -8,7 +8,7 @@ tags:
   - 项目结构
   - 代码规范
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - 后端开发
   - 架构设计
 updated: {{current_date_time}}

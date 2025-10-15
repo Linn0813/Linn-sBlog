@@ -8,7 +8,7 @@ tags:
   - 测试技能
   - 测试流程
 categories:
-- 这里什么都聊！（Random Thoughts & Life）
+  - 这里什么都聊！（Random Thoughts & Life）
   - 职场经验
   - 测试培训
 updated: {{current_date_time}}

@@ -8,7 +8,7 @@ tags:
   - Groovy脚本
   - 性能测试
 categories:
-- 性能、安全 & 特殊测试（Performance, Security & Special Testing）
+  - 性能、安全 & 特殊测试（Performance, Security & Special Testing）
   - 性能测试
   - 接口压测
 updated: {{current_date_time}}

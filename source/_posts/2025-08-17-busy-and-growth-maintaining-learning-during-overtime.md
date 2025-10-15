@@ -8,7 +8,7 @@ tags:
   - 心态调整
   - 行动策略
 categories:
-- 这里什么都聊！（Random Thoughts & Life）
+  - 这里什么都聊！（Random Thoughts & Life）
   - 职场经验
   - 学习方法
 updated: {{current_date_time}}

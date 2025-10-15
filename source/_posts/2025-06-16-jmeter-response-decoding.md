@@ -9,7 +9,7 @@ tags:
   - 问题解决
 updated: {{current_date_time}} 
 categories:
-- 性能、安全 & 特殊测试（Performance, Security & Special Testing）
+  - 性能、安全 & 特殊测试（Performance, Security & Special Testing）
   - 性能测试
   - 问题排查
 keywords: JMeter, 接口压测, 响应解码, Base64编码, gzip压缩, 断言失效, 问题解决

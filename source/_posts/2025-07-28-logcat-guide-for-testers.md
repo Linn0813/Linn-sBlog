@@ -7,7 +7,7 @@ tags:
   - 日志分析
   - 自动化测试
 categories:
-- 项目实战 & 测试经验（Testing Practices & Case Studies）
+  - 项目实战 & 测试经验（Testing Practices & Case Studies）
   - 日志分析
   - 测试实践
 updated: {{current_date_time}}
