@@ -8,9 +8,9 @@ tags:
   - 测试技能
   - 测试流程
 categories:
-  - 这里什么都聊！（Random Thoughts & Life）
-  - 职场经验
-  - 测试培训
+  - 职业成长与思考 / Career & Thoughts
+  - 个人成长 / Personal Growth
+  - 求职与职场经验 / Job & Workplace Experience
 updated: {{current_date_time}}
 keywords: 软件测试, 实习生培养, 测试计划, 测试技能, 测试流程
 description: '分享一份系统的软件测试实习生培养计划，包含思考过程、核心结构、常见问题及实践技巧，助力导师高效培养实习生！'

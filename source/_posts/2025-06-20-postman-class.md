@@ -10,9 +10,9 @@ tags:
   - Newman
   - Mock Server
 categories:
-  - 技术学习 & 行业趋势（Learning & Industry Trends）
-  - 测试技术
-  - API测试
+  - 测试基础与理论 / Testing Fundamentals
+  - 测试理念与方法 / Testing Concepts & Methods
+  - 测试方法 / Testing Methods
 updated: {{current_date_time}}
 keywords: 接口测试, Postman, 软件测试, 自动化测试, 测试用例, 断言, 数据驱动测试, Mock Server
 description: '分享码尚教育Postman课程的学习内容，详细介绍接口测试的概念、分类、流程与用例设计，全面讲解 Postman 的使用方法，包括界面操作、断言设置、数据驱动测试和 Mock Server 等功能，适合接口测试初学者与自动化测试入门者学习。'

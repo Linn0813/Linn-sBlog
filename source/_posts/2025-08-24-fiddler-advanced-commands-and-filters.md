@@ -10,9 +10,9 @@ tags:
   - 团队协作
   - 实战思路
 categories:
-  - 技术学习 & 行业趋势（Learning & Industry Trends）
-  - 网络工具
-  - 抓包技术
+  - 项目实战与案例经验 / Testing Practices & Case Studies
+  - 测试经验与落地 / Testing Experience
+  - 测试工具应用 / Test Tool Application
 updated: {{current_date_time}}
 keywords: Fiddler, 高级命令, 过滤技巧, 正则匹配, 团队协作, 实战思路
 description: 'Fiddler 是一个功能强大的 HTTP/HTTPS 抓包工具，能拦截客户端和服务器之间的请求。本文将带你从零开始，详细掌握 Fiddler 高级命令与过滤技巧，让你快速上手。'

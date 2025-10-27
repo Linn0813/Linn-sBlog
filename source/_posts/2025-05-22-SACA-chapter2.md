@@ -4,10 +4,9 @@ date: 2025-05-22 17:49:57
 updated: {{current_date_time}}
 
 categories:
-  - 认证学习 & 培训（Certification & Training）
-  - 数据分析
-  - SACA课程
-
+  - 测试基础与理论 / Testing Fundamentals
+  - 测试知识沉淀 / Testing Knowledge
+  - 测试培训笔记 / Training Notes
 tags:
   - 数据分析
   - SACA课程

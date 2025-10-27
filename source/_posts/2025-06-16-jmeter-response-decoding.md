@@ -9,9 +9,9 @@ tags:
   - 问题解决
 updated: {{current_date_time}} 
 categories:
-  - 性能、安全 & 特殊测试（Performance, Security & Special Testing）
-  - 性能测试
-  - 问题排查
+  - 性能、安全与专项测试 / Performance, Security & Special Testing
+  - 性能类测试 / Performance Testing
+  - 性能测试 / Performance Testing
 keywords: JMeter, 接口压测, 响应解码, Base64编码, gzip压缩, 断言失效, 问题解决
 description: 分享在接口压测中使用JMeter对Base64编码+gzip压缩的接口响应字段进行解码时，遇到断言失效问题的排查过程及解决方案，帮助提高接口压测效率。
 top_img: /img/jmeter-response-decoding.png

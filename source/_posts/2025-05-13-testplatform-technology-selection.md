@@ -3,9 +3,9 @@ title: 测试工具平台技术选型调研 🕵️‍♂️
 date: 2025-05-13 17:13:58
 updated: {{current_date_time}} 
 categories:
-  - 自动化测试 & 工具开发（Test Automation & Tool Development）
-  - 平台开发
-  - 技术选型
+  - 自动化测试与工具开发 / Test Automation & Tool Development
+  - 工具与平台开发 / Tools & Platform Development
+  - 平台开发 / Platform Development
 tags:
   - 技术选型
   - 测试工具平台

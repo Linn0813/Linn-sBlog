@@ -12,9 +12,9 @@ tags:
   - Python
   - 测试进阶
 categories:
-  - 自动化测试 & 工具开发（Test Automation & Tool Development）
-  - 测试框架
-  - 自动化测试
+  - 自动化测试与工具开发 / Test Automation & Tool Development
+  - 自动化测试体系 / Automation Testing System
+  - 测试框架设计 / Test Framework Design
 updated: {{current_date_time}}
 keywords: pytest, fixture, 数据驱动, Allure, YAML, 测试报告, Python, 测试进阶
 description: '深入探讨Pytest高级特性，包括fixture机制、数据驱动测试和Allure报告生成，结合实战案例分享。'

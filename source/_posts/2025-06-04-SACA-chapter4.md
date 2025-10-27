@@ -8,9 +8,9 @@ tags:
   - 数据分析方法
 updated: {{current_date_time}} 
 categories:
-  - 认证学习 & 培训（Certification & Training）
-  - 数据分析
-  - SACA课程
+  - 测试基础与理论 / Testing Fundamentals
+  - 测试知识沉淀 / Testing Knowledge
+  - 测试培训笔记 / Training Notes
 keywords: 数据分析, SACA课程, 神策分析师认证, 数据分析方法, 事件分析, 漏斗分析, 留存分析, 分布分析, 间隔分析, 归因分析, Session分析, 路径分析, 网页热力分析, 用户分群, 自定义查询
 description: 记录SACA（神策分析师认证）课程第四章的学习内容，详细介绍多种数据分析方法，包括事件分析、漏斗分析、留存分析等，帮助理解用户行为、评估业务效果和优化产品体验。
 top_img: /img/SACA-chapter4.png

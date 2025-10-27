@@ -3,9 +3,9 @@ title: 使用 MySQL 搭建登录注册模块数据库 🛢️
 date: 2025-05-15 16:33:18
 updated: {{current_date_time}} 
 categories:
-  - 自动化测试 & 工具开发（Test Automation & Tool Development）
-  - 平台开发
-  - 数据库设计
+  - 自动化测试与工具开发 / Test Automation & Tool Development
+  - 工具与平台开发 / Tools & Platform Development
+  - 平台开发 / Platform Development
 tags:
   - 数据库搭建
   - MySQL

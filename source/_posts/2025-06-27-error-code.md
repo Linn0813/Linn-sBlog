@@ -8,9 +8,9 @@ tags:
   - API规范
   - 系统设计
 categories:
-  - 项目实战 & 测试经验（Testing Practices & Case Studies）
-  - API设计
-  - 系统设计
+  - 技术学习与行业趋势 / Learning & Industry Trends
+  - 开发与技术栈 / Development & Tech Stack
+  - API设计 / API Design
 updated: {{current_date_time}}
 keywords: 错误码, 错误码设计, 错误处理, API规范, 系统设计, 错误码体系
 description: '分享如何构建一个清晰、统一、可扩展的错误码体系，提升系统效率与用户体验，涵盖设计原则、方案对比、实战示例等内容！'

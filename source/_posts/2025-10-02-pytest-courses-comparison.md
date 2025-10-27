@@ -11,9 +11,9 @@ tags:
   - Python
   - 测试学习
 categories:
-  - 自动化测试 & 工具开发（Test Automation & Tool Development）
-  - 测试框架
-  - 自动化测试
+  - 自动化测试与工具开发 / Test Automation & Tool Development
+  - 自动化测试体系 / Automation Testing System
+  - 测试框架设计 / Test Framework Design
 updated: {{current_date_time}}
 keywords: pytest, 学习方法, 课程对比, 自动化测试, 测试框架, Python, 测试学习
 description: '对比白月黑羽与码尚教育的pytest课程特点，分享如何结合两门课程高效学习pytest自动化测试框架。'

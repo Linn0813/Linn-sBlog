@@ -1,10 +1,10 @@
 ---
 title: 🤖 手把手教你用Coze打造专属测试用例编写助手
 date: 2025-10-15 23:00:00
-categories: 
-  - 自动化测试 & 工具开发（Test Automation & Tool Development）
-  - 测试工具开发
-  - 智能体开发
+categories:
+  - 自动化测试与工具开发 / Test Automation & Tool Development
+  - 工具与平台开发 / Tools & Platform Development
+  - 测试工具开发 / Test Tool Development
 tags:
   - Coze
   - 测试工具

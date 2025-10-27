@@ -9,9 +9,9 @@ tags:
   - API认证
 updated: {{current_date_time}} 
 categories:
-  - 技术学习 & 行业趋势（Learning & Industry Trends）
-  - 后端开发
-  - 安全认证
+  - 技术学习与行业趋势 / Learning & Industry Trends
+  - 开发与技术栈 / Development & Tech Stack
+  - 后端开发 / Backend Development
 keywords: JWT, JSON Web Token, 后端认证, 用户认证, API认证, Session认证, 安全认证
 description: >-
   深入解析后端 JWT 认证机制，涵盖 JWT

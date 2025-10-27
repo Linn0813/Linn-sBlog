@@ -3,9 +3,9 @@ title: 手把手教你：数据库新增字段与调整唯一约束实战指南 
 date: 2025-05-19 17:47:59
 updated: {{current_date_time}} 
 categories:
-  - 自动化测试 & 工具开发（Test Automation & Tool Development）            
-  - 数据库维护
-  - 后端开发
+  - 自动化测试与工具开发 / Test Automation & Tool Development
+  - 工具与平台开发 / Tools & Platform Development
+  - 数据库设计与维护 / Database Design & Maintenance
 tags:
   - 数据库维护
   - MySQL

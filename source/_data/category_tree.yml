@@ -1,0 +1,114 @@
+# Canonical category tree for the blog
+# Use this to keep posts consistent. Each post should list categories
+# from top-level to third-level to reflect its placement.
+
+- name: 测试基础与理论 / Testing Fundamentals
+  sub:
+    - name: 测试理念与方法 / Testing Concepts & Methods
+      sub:
+        - 测试概念 / Testing Concepts
+        - 测试方法 / Testing Methods
+        - 测试理论 / Testing Theory
+        - 测试基础 / Testing Basics
+    - name: 质量度量与改进 / Quality Metrics & Improvement
+      sub:
+        - 测试度量 / Test Metrics
+        - 质量管理 / Quality Management
+        - Bug管理 / Bug Management
+    - name: 测试知识沉淀 / Testing Knowledge
+      sub:
+        - 测试经验总结 / Testing Experience
+        - 测试培训笔记 / Training Notes
+
+- name: 自动化测试与工具开发 / Test Automation & Tool Development
+  sub:
+    - name: 自动化测试体系 / Automation Testing System
+      sub:
+        - 自动化测试 / Automation Testing
+        - 测试框架设计 / Test Framework Design
+        - 测试平台实现 / Test Platform Implementation
+    - name: 工具与平台开发 / Tools & Platform Development
+      sub:
+        - 平台开发 / Platform Development
+        - 测试工具开发 / Test Tool Development
+        - 自动化工具 / Automation Tools
+    - name: 智能化与创新方向 / Intelligence & Innovation
+      sub:
+        - 智能体开发 / Agent Development
+        - 技术选型与架构设计 / Tech Selection & Architecture
+        - 数据库设计与维护 / Database Design & Maintenance
+
+- name: 性能、安全与专项测试 / Performance, Security & Special Testing
+  sub:
+    - name: 性能类测试 / Performance Testing
+      sub:
+        - 性能测试 / Performance Testing
+        - 接口压测 / API Stress Testing
+    - name: 安全与稳定性 / Security & Stability
+      sub:
+        - 安全测试 / Security Testing
+        - 安全认证 / Security Authentication
+        - 问题排查 / Issue Diagnosis
+    - name: 专项与特殊测试 / Special Testing
+      sub:
+        - 网络专项测试 / Network Testing
+        - 特殊测试 / Special Testing
+
+- name: 项目实战与案例经验 / Testing Practices & Case Studies
+  sub:
+    - name: 项目实战 / Project Practices
+      sub:
+        - 项目实战案例 / Project Case Studies
+        - 数据驱动测试 / Data-driven Testing
+        - 系统设计 / System Design
+        - 前后端分离 / Frontend-Backend Separation
+    - name: 问题与解决 / Issues & Solutions
+      sub:
+        - Bug分析 / Bug Analysis
+        - 日志分析与查询 / Log Analysis & Query
+        - 错误处理与问题排查 / Error Handling & Troubleshooting
+    - name: 测试经验与落地 / Testing Experience
+      sub:
+        - 测试实践总结 / Testing Practice Summary
+        - 测试工具应用 / Test Tool Application
+        - 测试度量改进 / Test Metric Improvement
+
+- name: 技术学习与行业趋势 / Learning & Industry Trends
+  sub:
+    - name: AI与研究 / AI & Research
+      sub:
+        - AI 框架与应用 / AI Frameworks & Applications
+        - 研究实践 / Research Practices
+        - 研究解读 / Research Analysis
+        - 提示工程 / Prompt Engineering
+    - name: 开发与技术栈 / Development & Tech Stack
+      sub:
+        - 前端开发 / Frontend Development
+        - 状态管理 / State Management
+        - 前端实践 / Frontend Practices
+        - 后端开发 / Backend Development
+        - API设计 / API Design
+        - 会话管理 / Session Management
+        - 安全认证 / Security Authentication
+    - name: 学习与工具 / Learning & Tools
+      sub:
+        - 编程规范 / Coding Standards
+        - 代码规范 / Code Guidelines
+        - 开发工具 / Development Tools
+        - 版本控制 / Version Control
+        - 博客搭建 / Blog Setup
+        - 软件使用 / Software Usage
+
+- name: 职业成长与思考 / Career & Thoughts
+  sub:
+    - name: 个人成长 / Personal Growth
+      sub:
+        - 学习方法 / Learning Methods
+        - 职业规划 / Career Planning
+        - 求职与职场经验 / Job & Workplace Experience
+    - name: 生活与思考 / Life & Thoughts
+      sub:
+        - 博客介绍 / Blog Introduction
+        - 代理服务器 / Proxy Server
+        - TUN模式 / TUN Mode
+        - 随笔类内容 / Random Thoughts

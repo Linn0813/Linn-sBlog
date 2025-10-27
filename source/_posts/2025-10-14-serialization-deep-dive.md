@@ -2,9 +2,9 @@
 title: 深入理解「可序列化」：开发与测试都绕不开的隐形规则
 date: 2025-10-14 01:00:00
 categories:
-- 自动化测试 & 工具开发（Test Automation & Tool Development）
-- 测试理论
-- 开发技巧
+  - 技术学习与行业趋势 / Learning & Industry Trends
+  - 开发与技术栈 / Development & Tech Stack
+  - 后端开发 / Backend Development
 tags:
   - 序列化
   - JSON

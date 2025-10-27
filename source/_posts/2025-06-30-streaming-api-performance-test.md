@@ -8,9 +8,9 @@ tags:
   - Groovy脚本
   - 性能测试
 categories:
-  - 性能、安全 & 特殊测试（Performance, Security & Special Testing）
-  - 性能测试
-  - 接口压测
+  - 性能、安全与专项测试 / Performance, Security & Special Testing
+  - 性能类测试 / Performance Testing
+  - 性能测试 / Performance Testing
 updated: {{current_date_time}}
 keywords: 流式接口, 接口压测, JMeter, Groovy脚本, 性能测试
 description: '分享流式接口压测的实践经验，介绍使用 JMeter + Groovy 脚本应对流式接口压测挑战的方案，包含踩坑经历与解决方案！'

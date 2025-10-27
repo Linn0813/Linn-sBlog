@@ -2,9 +2,9 @@
 title: 🧠 LLM 与智能体（Agent）知识记录
 date: 2025-10-21 21:00:00
 categories:
-  - 自动化测试 & 工具开发（Test Automation & Tool Development）
-  - 测试工具开发
-  - 智能体开发
+  - 技术学习与行业趋势 / Learning & Industry Trends
+  - AI与研究 / AI & Research
+  - 提示工程 / Prompt Engineering
 tags:
   - LLM
   - Agent

@@ -8,9 +8,9 @@ tags:
   - 开发
   - 字符串比较
 categories:
-  - 项目实战 & 测试经验（Testing Practices & Case Studies）
-  - 测试经验
-  - 测试bug
+  - 项目实战与案例经验 / Testing Practices & Case Studies
+  - 测试经验与落地 / Testing Experience
+  - 测试实践总结 / Testing Practice Summary
 updated: {{current_date_time}}
 keywords: 版本比较, 版本号, 字符串比较, 测试数据, 版本比较逻辑
 description: '分享因版本号比较 "3.9.0 > 3.11.0" 引发的问题，深入解析错误原因、正确方法及测试建议，帮助开发和测试人员避免版本号比较的常见误区！'

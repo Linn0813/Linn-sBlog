@@ -10,9 +10,9 @@ tags:
   - AI测试
 updated: {{current_date_time}} 
 categories:
-  - 项目实战 & 测试经验（Testing Practices & Case Studies）
-  - API设计
-  - 测试方法
+  - 技术学习与行业趋势 / Learning & Industry Trends
+  - 开发与技术栈 / Development & Tech Stack
+  - API设计 / API Design
 keywords: 接口文档, 测试开发, Swagger, Markdown, Postman, AI辅助, 文档维护, 接口压测
 description: 分享测试开发过程中接口文档的避坑指南，包括核心目标、工具选择、内容结构、维护流程等，结合 Swagger、Markdown、Postman 等工具以及 AI 辅助，提高文档准确率和可维护性，缩短联调时间，降低 bug 率。
 top_img: /img/interface-documentation-guide.png
