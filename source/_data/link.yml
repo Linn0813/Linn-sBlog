@@ -21,3 +21,47 @@
     #   link: https://twitter.com/
     #   avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
     #   descr: 社交分享平台
+
+- class_name: 技术社区
+  class_desc: 优质技术社区网站
+  link_list:
+    - name: 掘金
+      link: https://juejin.im
+      avatar: https://lf-cdn-tos.bytescm.com/obj/static/xitu_extension/static/gold.00d3d825.svg
+      descr: 高质量技术文章分享社区
+    - name: 开源中国
+      link: https://www.oschina.net
+      avatar: https://static.oschina.net/uploads/user/0/12_50.jpg
+      descr: 开源技术社区
+    - name: 知乎专栏
+      link: https://www.zhihu.com
+      avatar: https://static.zhihu.com/heifetz/assets/logo.1896104.png
+      descr: 高质量问答与专栏平台
+    - name: 思否(SegmentFault)
+      link: https://segmentfault.com
+      avatar: https://sfault-avatar.b0.upaiyun.com/115/733/1157336073-101921208987397567_huge256
+      descr: 开发者问答社区
+    - name: CSDN
+      link: https://blog.csdn.net
+      avatar: https://img-home.csdnimg.cn/images/20201124032511.png
+      descr: 中文开发者社区
+    - name: 博客园
+      link: https://www.cnblogs.com
+      avatar: https://common.cnblogs.com/images/logo.svg
+      descr: 技术博客社区
+    - name: 简书
+      link: https://www.jianshu.com
+      avatar: https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png
+      descr: 创作社区
+    - name: 慕课网手记
+      link: https://www.imooc.com
+      avatar: https://www.imooc.com/static/img/index/logo.png
+      descr: 编程学习平台
+    - name: 腾讯云社区
+      link: https://cloud.tencent.com/developer
+      avatar: https://imgcache.qq.com/open_proj/proj_qcloud_v2/gateway/event/pc/images/CloudBrand.svg
+      descr: 云计算开发者社区
+    - name: 51CTO博客
+      link: http://blog.51cto.com
+      avatar: https://edu.51cto.com/images/header/logo_51cto.png
+      descr: IT技术博客平台

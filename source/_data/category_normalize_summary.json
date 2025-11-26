@@ -295,8 +295,18 @@
     "reason": "already-standard-or-no-change"
   },
   {
-    "file": "2025-11-02-uat-acceptance-testing-guide.md",
+    "file": "2025-11-15-uat-acceptance-testing-guide.md",
     "changed": false,
     "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-11-16-pe-engineer-role-explained.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-11-26-python-virtual-environment-guide.md",
+    "changed": false,
+    "reason": "no-categories"
   }
 ]

@@ -7,6 +7,10 @@ hexo publish "新的数据库搭建教程"
 hexo server
 # 生成静态文件并部署
 hexo g -d
+
+# 使用部署重试脚本（推荐，包含自动重试机制）
+./deploy_with_retry.sh
+
 # 添加文件到暂存区
 git add .
 # 提交更改
@@ -14,4 +18,40 @@ git commit -m "更新博客内容"
 # 推送代码到远程仓库
 git push -u origin main
 
-git remote set-url origin git@github.com:Linn0813/Linn-sBlog.git
+# 部署问题排查指南
+
+## 1. 网络连接问题
+如果遇到GitHub连接超时，有以下解决方法：
+
+### 1.1 切换到SSH协议（已配置在_config.yml中）
+SSH通常提供更稳定的连接。配置已更新为：
+```
+deploy:
+  - type: git
+    repo: git@github.com:Linn0813/Linn0813.github.io.git
+    branch: main
+    message: 'Update blog content'
+    timeout: 300
+```
+
+### 1.2 使用部署重试脚本
+我们创建了带有重试机制的部署脚本：
+- 最多尝试3次部署
+- 每次失败后等待5秒再重试
+- 自动处理生成和部署步骤
+
+### 1.3 手动部署步骤
+如果脚本也失败，可以尝试手动分步执行：
+1. 先生成静态文件：`hexo generate`
+2. 手动将public目录内容推送到GitHub Pages仓库
+
+## 2. 配置检查
+确保：
+- _config.yml中的URL配置正确
+- 部署仓库地址正确
+- SSH密钥已正确配置
+
+## 3. 其他常见问题
+- 权限问题：确保GitHub仓库有写入权限
+- 网络防火墙：检查是否有防火墙阻止连接
+- GitHub限制：有时GitHub会有临时限流，稍后再试
