@@ -308,5 +308,10 @@
     "file": "2025-11-26-python-virtual-environment-guide.md",
     "changed": false,
     "reason": "no-categories"
+  },
+  {
+    "file": "2025-12-01-feishu-ai-knowledge-integration-guide.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
   }
 ]
