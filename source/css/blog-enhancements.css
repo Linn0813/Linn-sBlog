@@ -3,6 +3,36 @@
  * 使用 !important 确保样式优先级，避免被主题样式覆盖
  */
 
+/* ==================== 文章页面系列信息显示 ==================== */
+/* 系列信息样式与分类保持一致 */
+.article-meta__series {
+  display: inline-block;
+  margin-left: 0;
+}
+
+.article-meta__series-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.article-meta__series-link:hover {
+  color: #49b1f5;
+}
+
+.article-meta__series-link i {
+  font-size: 0.9em;
+  color: #49b1f5;
+}
+
+.article-meta__series .article-meta-separator {
+  margin: 0 8px;
+  color: #999;
+}
+
 /* ==================== 阅读进度条 ==================== */
 .reading-progress-bar {
   position: fixed;

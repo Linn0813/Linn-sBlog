@@ -1355,6 +1355,7 @@ inject:
     - <script src="/js/blog-enhancements.js"></script>
     - <script src="/js/category-enhancements.js"></script>
     - <script src="/js/series-enhancements.js"></script>
+    - <script src="/js/post-series-meta.js"></script>
     - <script src="/js/archive-enhancements.js"></script>
     - <script src="/js/tag-enhancements.js"></script>
     - <script src="/js/index-enhancements.js"></script>
