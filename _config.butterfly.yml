@@ -154,8 +154,8 @@ code_word_wrap: true #代码自动换行，关闭滚动条
 local_search:
   enable: true
   labels:
-    input_placeholder: Search for Posts
-    hits_empty: "We didn't find any results for the search: ${query}" # 如果没有查到内容相关内容显示
+    input_placeholder: 搜索文章、分类、标签...
+    hits_empty: "未找到与「${query}」相关的内容" # 如果没有查到内容相关内容显示
 
 
 
@@ -414,7 +414,7 @@ related_post:
   # 是否显示相关文章
   enable: true
   # 显示的文章数量
-  limit: 6
+  limit: 8
   # 选择: created / updated
   date_type: created
 
@@ -706,11 +706,11 @@ search:
   # 本地搜索
   local_search:
     # 页面加载时预加载搜索数据
-    preload: false
+    preload: true
     # 每篇文章显示的顶部 n 个搜索结果，设置为 -1 显示所有结果
-    top_n_per_article: 1
+    top_n_per_article: 3
     # 将 HTML 字符串反转义为可读内容
-    unescape: false
+    unescape: true
     CDN:
 
   # Docsearch
@@ -1197,7 +1197,7 @@ lightbox: fancybox
 # 系列
 series:
   # 是否启用系列
-  enable: false
+  enable: true
   # 按标题或日期排序
   orderBy: 'title'
   # 排序方式。1, asc 为升序; -1, desc 为降序
@@ -1350,9 +1350,14 @@ css_prefix: true
 # 插入代码到 head（在 '</head>' 标签之前）和底部（在 '</body>' 标签之前）
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    - <link rel="stylesheet" href="/css/blog-enhancements.css">
   bottom:
-    # - <script src="xxxx"></script>
+    - <script src="/js/blog-enhancements.js"></script>
+    - <script src="/js/category-enhancements.js"></script>
+    - <script src="/js/series-enhancements.js"></script>
+    - <script src="/js/archive-enhancements.js"></script>
+    - <script src="/js/tag-enhancements.js"></script>
+    - <script src="/js/index-enhancements.js"></script>
 
 # CDN 设置
 # 除非你知道它们的工作原理，否则不要修改以下设置

@@ -307,10 +307,95 @@
   {
     "file": "2025-11-26-python-virtual-environment-guide.md",
     "changed": false,
-    "reason": "no-categories"
+    "reason": "already-standard-or-no-change"
   },
   {
-    "file": "2025-12-01-feishu-ai-knowledge-integration-guide.md",
+    "file": "2025-11-28-feishu-ai-knowledge-integration-guide.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-11-29-fastapi-python-high-performance-api-guide.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-11-29-llm-agent-core-concepts-guide.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-11-30-llm-working-principle-token-embedding-transformer.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-01-llm-prompt-context-in-context-learning.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-02-llm-prompt-engineering-practices.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-03-llm-rag-deep-integration.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-04-llm-agent-concept-overview.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-05-llm-agent-decision-engine.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-06-llm-agent-memory-management.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-07-llm-agent-tool-system.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-08-llm-agent-security-governance.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-09-llm-multi-agent-collaboration.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-10-llm-agent-engineering-evaluation.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-11-llm-agent-capability-tuning.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-12-llm-agent-enterprise-applications.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-13-llm-agent-ethical-boundaries.md",
+    "changed": false,
+    "reason": "already-standard-or-no-change"
+  },
+  {
+    "file": "2025-12-14-llm-agent-future-summary.md",
     "changed": false,
     "reason": "already-standard-or-no-change"
   }

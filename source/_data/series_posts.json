@@ -1,0 +1,21 @@
+{
+  "LLM/Agent系列教程": {
+    "meta": {},
+    "posts": [
+      {
+        "title": "🚀 告别浅尝辄止：《LLM/Agent 核心概念与新手快速上手指南》系列开篇",
+        "date": "2025-11-29 18",
+        "updated": "2025-11-29 18",
+        "order": "1",
+        "url": "/2025-11-29-llm-agent-core-concepts-guide.html",
+        "description": "系列开篇：介绍LLM和Agent技术核心概念与学习路径",
+        "categories": [
+          "技术学习与行业趋势 / Learning & Industry Trends",
+          "AI与研究 / AI & Research",
+          "提示工程 / Prompt Engineering"
+        ],
+        "tags": []
+      }
+    ]
+  }
+}

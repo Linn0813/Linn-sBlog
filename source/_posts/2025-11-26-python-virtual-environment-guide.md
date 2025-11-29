@@ -1,10 +1,10 @@
 ---
 title: 再也不怕环境冲突！测试工程师的虚拟环境学习笔记 🧪✨
 date: 2025-11-26 19:50:00
-categories: 
+updated: 2025-11-26 19:50:00
+categories:
   - 技术学习与行业趋势
   - 学习与工具
-  - 开发工具
 tags:
   - Python
   - 虚拟环境
@@ -18,7 +18,11 @@ keywords:
   - venv教程
   - 测试工程师技能
   - 依赖管理
+description: '测试工程师必备的Python虚拟环境完全指南，从基础概念到实战应用，解决环境冲突问题，提升测试效率'
+top_img: /img/python-virtual-env.png
 cover: /img/python-virtual-env.png
+comments: true
+toc: true
 ---
 
 # 🧪 测试工程师为什么要懂"虚拟环境"？——从实战到最佳实践的全面解析

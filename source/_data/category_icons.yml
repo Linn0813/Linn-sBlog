@@ -1,0 +1,33 @@
+# 分类图标配置
+# 使用 Font Awesome 图标类名
+
+测试基础与理论 / Testing Fundamentals:
+  icon: fa fa-flask
+  color: "#49b1f5"
+  description: "测试基础理论、测试方法与质量度量"
+
+自动化测试与工具开发 / Test Automation & Tool Development:
+  icon: fa fa-cogs
+  color: "#00c4b6"
+  description: "自动化测试框架、工具开发与平台建设"
+
+性能、安全与专项测试 / Performance, Security & Special Testing:
+  icon: fa fa-shield-alt
+  color: "#ff7242"
+  description: "性能测试、安全测试与专项测试实践"
+
+项目实战与案例经验 / Testing Practices & Case Studies:
+  icon: fa fa-briefcase
+  color: "#f56c6c"
+  description: "项目实战经验、案例分析与问题解决"
+
+技术学习与行业趋势 / Learning & Industry Trends:
+  icon: fa fa-graduation-cap
+  color: "#95de64"
+  description: "技术学习、行业趋势与前沿技术探索"
+
+职业成长与思考 / Career & Thoughts:
+  icon: fa fa-heart
+  color: "#ff9a9e"
+  description: "职业规划、个人成长与生活思考"
+

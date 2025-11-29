@@ -3,9 +3,8 @@ title: 🚀 Cursor 模型全解析与 2.0 升级深度解读
 date: 2025-11-01 00:00:00
 updated: 2025-11-01 00:00:00
 categories:
-  - 技术学习与行业趋势 / Learning & Industry Trends
-  - 学习与工具 / Learning & Tools
-  - 开发工具 / Development Tools
+  - 技术学习与行业趋势
+  - 学习与工具
 tags:
   - Cursor
   - Composer

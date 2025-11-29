@@ -8,9 +8,8 @@ tags:
   - 数据分析思维
 updated: {{current_date_time}} 
 categories:
-  - 测试基础与理论 / Testing Fundamentals
-  - 测试知识沉淀 / Testing Knowledge
-  - 测试培训笔记 / Training Notes
+  - 测试基础与理论
+  - 测试知识沉淀
 keywords: 数据分析, SACA课程, 神策分析师认证, 数据分析思维, 问题思维, 对比思维, 逻辑树思维, 分类思维, 假设推断思维, 因果思维
 description: 记录SACA（神策分析师认证）课程第三章的学习内容，深入探讨建立数据分析思维，包括问题思维、对比思维、逻辑树思维等多种思维方式，同时提供模拟测试题及解析。
 top_img: /img/SACA-chapter3.png

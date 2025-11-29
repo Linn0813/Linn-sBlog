@@ -9,9 +9,8 @@ tags:
   - API规范
   - 系统设计
 categories:
-  - 技术学习与行业趋势 / Learning & Industry Trends
-  - 开发与技术栈 / Development & Tech Stack
-  - API设计 / API Design
+  - 技术学习与行业趋势
+  - 开发与技术栈
 updated: {{current_date_time}}
 keywords: API返回结构, 错误码, 错误码设计, 错误处理, API规范, 系统设计, 错误码体系
 description: '分享如何构建统一规范的 API 返回结构，介绍标准格式、设计与落地方法，结合错误码体系提升系统效率与用户体验，涵盖实践建议、代码示例等内容！'

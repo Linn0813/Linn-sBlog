@@ -2,9 +2,8 @@
 title: 🧠 LLM 与智能体（Agent）知识记录
 date: 2025-10-21 21:00:00
 categories:
-  - 技术学习与行业趋势 / Learning & Industry Trends
-  - AI与研究 / AI & Research
-  - 提示工程 / Prompt Engineering
+  - 技术学习与行业趋势
+  - AI与研究
 tags:
   - LLM
   - Agent

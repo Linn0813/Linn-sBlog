@@ -2,9 +2,8 @@
 title: 🧩 Mind Your Tone：为什么我们不必再对 AI 太客气
 date: 2025-10-24 19:00:00
 categories:
-  - 技术学习与行业趋势 / Learning & Industry Trends
-  - AI与研究 / AI & Research
-  - 提示工程 / Prompt Engineering
+  - 技术学习与行业趋势
+  - AI与研究
 tags:
   - LLM
   - Prompt

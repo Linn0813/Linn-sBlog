@@ -9,9 +9,8 @@ tags:
   - 设备限制绕过
   - 第三方服务
 categories:
-  - 技术学习与行业趋势 / Learning & Industry Trends
-  - 学习与工具 / Learning & Tools
-  - 开发工具 / Development Tools
+  - 技术学习与行业趋势
+  - 学习与工具
 updated: {{current_date_time}}
 keywords: Cursor软件, 破解方法, 免费试用, 绕过设备限制, 第三方服务, AI编程助手
 description: '详细介绍Cursor AI编程助手的功能、优势，分享延续官方试用、绕过设备限制以及借助第三方服务等免费使用Pro功能的方法，仅供学习和技术研究。'

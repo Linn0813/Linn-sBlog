@@ -8,9 +8,8 @@ tags:
   - 连接池
   - SQLAlchemy
 categories:
-  - 技术学习与行业趋势 / Learning & Industry Trends
-  - 开发与技术栈 / Development & Tech Stack
-  - 后端开发 / Backend Development
+  - 项目实战与案例经验
+  - 问题与解决
 updated: {{current_date_time}}
 keywords: MySQL, 数据库连接, 连接泄露, 连接池, SQLAlchemy
 description: '记录一次测试平台中 MySQL 连接数暴涨问题的排查过程，分享使用连接池和自动释放机制解决连接泄露的方案，并给出优化建议！'

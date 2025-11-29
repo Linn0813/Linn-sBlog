@@ -3,9 +3,8 @@ title: 🧠【硬核实战】打通 AI 知识库的"任督二脉"：飞书开放
 date: 2025-11-28 10:20:00
 updated: {{current_date_time}}
 categories:
-  - 技术学习与行业趋势 / Learning & Industry Trends
-  - AI与研究 / AI & Research
-  - AI 框架与应用 / AI Frameworks & Applications
+  - 技术学习与行业趋势
+  - AI与研究
 tags:
   - 飞书
   - RAG

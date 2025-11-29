@@ -6,9 +6,8 @@ tags:
   - 测试方法
   - 质量度量
 categories:
-  - 测试基础与理论 / Testing Fundamentals
-  - 质量度量与改进 / Quality Metrics & Improvement
-  - 测试度量 / Test Metrics
+  - 测试基础与理论
+  - 质量度量与改进
 updated: {{current_date_time}}
 keywords: 测试指标, 测试方法, 质量度量, 测试效率, 缺陷管理
 description: '从七大维度全面梳理测试指标体系，结合实践经验与扩展建议，助你构建可落地、有反馈、有价值的测试度量体系！'

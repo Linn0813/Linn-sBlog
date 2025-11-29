@@ -4,9 +4,8 @@ date: 2025-05-20 17:26:12
 updated: {{current_date_time}}
 
 categories:
-  - 测试基础与理论 / Testing Fundamentals
-  - 测试知识沉淀 / Testing Knowledge
-  - 测试培训笔记 / Training Notes
+  - 测试基础与理论
+  - 测试知识沉淀
 tags:
   - 数据分析
   - SACA课程

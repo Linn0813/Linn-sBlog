@@ -10,9 +10,8 @@ tags:
   - 学习笔记
   - Python
 categories:
-  - 自动化测试与工具开发 / Test Automation & Tool Development
-  - 自动化测试体系 / Automation Testing System
-  - 测试框架设计 / Test Framework Design
+  - 自动化测试与工具开发
+  - 自动化测试体系
 updated: {{current_date_time}}
 keywords: pytest, 自动化测试, Python测试, 测试框架, 学习笔记, Python
 description: '全面的Pytest自动化测试框架学习笔记，从基础概念到高级特性，结合实战经验，助你快速掌握Python测试利器。'

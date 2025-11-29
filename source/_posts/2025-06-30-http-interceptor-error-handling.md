@@ -8,9 +8,8 @@ tags:
   - 错误处理
   - axios
 categories:
-  - 技术学习与行业趋势 / Learning & Industry Trends
-  - 开发与技术栈 / Development & Tech Stack
-  - 前端实践 / Frontend Practices
+  - 技术学习与行业趋势
+  - 开发与技术栈
 updated: {{current_date_time}}
 keywords: HTTP拦截器, 请求拦截, 响应拦截, 错误处理, axios
 description: '通过 axios 示例，讲解前端 HTTP 请求拦截与响应拦截机制，以及统一处理异常、提升用户体验与开发效率的方法！'

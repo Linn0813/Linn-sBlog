@@ -7,9 +7,8 @@ tags:
   - 实战技巧
   - 移动端抓包
 categories:
-  - 项目实战与案例经验 / Testing Practices & Case Studies
-  - 测试经验与落地 / Testing Experience
-  - 测试工具应用 / Test Tool Application
+  - 项目实战与案例经验
+  - 测试经验与落地
 updated: {{current_date_time}}
 keywords: Fiddler, 移动端抓包, 实战技巧
 description: 'Fiddler 是一个功能强大的 HTTP/HTTPS 抓包工具，能拦截客户端和服务器之间的请求。本文将带你从零开始，详细掌握 Fiddler 移动端抓包与实战技巧，让你快速上手。'

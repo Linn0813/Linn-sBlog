@@ -1,0 +1,1050 @@
+{
+  "timestamp": "2025-11-29T15:19:58.091Z",
+  "summary": {
+    "total": 80,
+    "changed": 0,
+    "unchanged": 80
+  },
+  "results": [
+    {
+      "file": "2025-05-12-hello-world.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-13-testplatform-technology-selection.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-14-testplatform-implementation.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-15-apifox.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-15-user-module-database.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-16-testplatform-login-and-registration.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-18-postman.md",
+      "changed": false,
+      "original": [
+        "测试基础与理论",
+        "测试理念与方法"
+      ],
+      "normalized": [
+        "测试基础与理论",
+        "测试理念与方法"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-19-database-changes.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-20-SACA-chapter1.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-21-build-blog.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-22-SACA-chapter2.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-25-SACA-chapter3.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-26-json-web-token.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-05-28-branch-merge.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-03-pinia.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-04-SACA-chapter4.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-05-AI-heima.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-08-account-system.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-11-SACA-chapter5.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-15-it-career.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-16-jmeter-response-decoding.md",
+      "changed": false,
+      "original": [
+        "性能、安全与专项测试",
+        "性能类测试"
+      ],
+      "normalized": [
+        "性能、安全与专项测试",
+        "性能类测试"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-19-Bug-classification.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-19-bug-reporting-guide.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-19-interface-documentation-guide.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-20-postman-class.md",
+      "changed": false,
+      "original": [
+        "测试基础与理论",
+        "测试理念与方法"
+      ],
+      "normalized": [
+        "测试基础与理论",
+        "测试理念与方法"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-23-cursor-hack.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-24-python-coding-standards.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-26-test-indicators.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-27-api-response-standard.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-27-backend-mvc-structure-guide.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-27-error-code.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-30-api-baseurl-vs-vite-proxy.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-30-http-interceptor-error-handling.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-30-mysql-connection-leak-fix.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-30-pytest.md",
+      "changed": false,
+      "original": [
+        "自动化测试与工具开发",
+        "自动化测试体系"
+      ],
+      "normalized": [
+        "自动化测试与工具开发",
+        "自动化测试体系"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-30-session-id-best-practices.md",
+      "changed": false,
+      "original": [
+        "项目实战与案例经验",
+        "项目实战"
+      ],
+      "normalized": [
+        "项目实战与案例经验",
+        "项目实战"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-06-30-streaming-api-performance-test.md",
+      "changed": false,
+      "original": [
+        "性能、安全与专项测试",
+        "性能类测试"
+      ],
+      "normalized": [
+        "性能、安全与专项测试",
+        "性能类测试"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-07-14-A-B-test.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-07-16-vue-js-file-naming-guide.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-07-28-logcat-guide-for-testers.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-07-30-cursor-region-limit-solution.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-08-06-qps-vs-rps.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-08-07-version-compare-gotcha.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-08-16-software-testing-intern-training.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-08-17-busy-and-growth-maintaining-learning-during-overtime.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-08-19-fiddler-getting-started-basic-capture.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-08-22-fiddler-intercept-modify-requests.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-08-24-fiddler-advanced-commands-and-filters.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-08-26-fiddler-mobile-capture-and-practical-tips.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-08-28-DQL-log-query.md",
+      "changed": false,
+      "original": [
+        "项目实战与案例经验",
+        "问题与解决"
+      ],
+      "normalized": [
+        "项目实战与案例经验",
+        "问题与解决"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-10-01-pytest-automation-testing-guide.md",
+      "changed": false,
+      "original": [
+        "自动化测试与工具开发",
+        "自动化测试体系"
+      ],
+      "normalized": [
+        "自动化测试与工具开发",
+        "自动化测试体系"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-10-02-pytest-advanced-features-guide.md",
+      "changed": false,
+      "original": [
+        "自动化测试与工具开发",
+        "自动化测试体系"
+      ],
+      "normalized": [
+        "自动化测试与工具开发",
+        "自动化测试体系"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-10-02-pytest-courses-comparison.md",
+      "changed": false,
+      "original": [
+        "自动化测试与工具开发",
+        "自动化测试体系"
+      ],
+      "normalized": [
+        "自动化测试与工具开发",
+        "自动化测试体系"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-10-14-serialization-deep-dive.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "开发与技术栈"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "开发与技术栈"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-10-15-coze-testcase-assistant.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-10-21-llm-agent-guide.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-10-24-mind-your-tone.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-10-27-langchain-framework.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-11-01-cursor-models-20-upgrade.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-11-15-uat-acceptance-testing-guide.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-11-16-pe-engineer-role-explained.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-11-26-python-virtual-environment-guide.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "学习与工具"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-11-28-feishu-ai-knowledge-integration-guide.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-11-29-fastapi-python-high-performance-api-guide.md",
+      "changed": false,
+      "original": [
+        "性能、安全与专项测试",
+        "性能类测试"
+      ],
+      "normalized": [
+        "性能、安全与专项测试",
+        "性能类测试"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-11-29-llm-agent-core-concepts-guide.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-11-30-llm-working-principle-token-embedding-transformer.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-01-llm-prompt-context-in-context-learning.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-02-llm-prompt-engineering-practices.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-03-llm-rag-deep-integration.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-04-llm-agent-concept-overview.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-05-llm-agent-decision-engine.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-06-llm-agent-memory-management.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-07-llm-agent-tool-system.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-08-llm-agent-security-governance.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-09-llm-multi-agent-collaboration.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-10-llm-agent-engineering-evaluation.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-11-llm-agent-capability-tuning.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-12-llm-agent-enterprise-applications.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-13-llm-agent-ethical-boundaries.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    },
+    {
+      "file": "2025-12-14-llm-agent-future-summary.md",
+      "changed": false,
+      "original": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "normalized": [
+        "技术学习与行业趋势",
+        "AI与研究"
+      ],
+      "reason": "no-change"
+    }
+  ]
+}

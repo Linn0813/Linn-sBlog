@@ -3,9 +3,8 @@ title: 🧠 LangChain：让大语言模型真正“动起来”的框架
 date: 2025-10-27 19:00:00
 updated: {{current_date_time}}
 categories:
-  - 技术学习与行业趋势 / Learning & Industry Trends
-  - AI与研究 / AI & Research
-  - 提示工程 / Prompt Engineering
+  - 技术学习与行业趋势
+  - AI与研究
 tags:
   - LangChain
   - LLM
