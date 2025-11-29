@@ -1148,4 +1148,60 @@ body .post-list .post-list-title {
   border-color: #444;
 }
 
+/* ==================== 侧边栏系列卡片 ==================== */
+/* 使用与分类卡片相同的样式结构 */
+.card-widget.card-series {
+  /* 继承主题的 card-widget 样式 */
+}
+
+.card-series-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-series-list-item {
+  margin-bottom: 0;
+}
+
+.card-series-list-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  text-decoration: none;
+  color: var(--font-color);
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.card-series-list-link:hover {
+  color: var(--theme-color);
+  padding-left: 8px;
+}
+
+.card-series-list-name {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.card-series-list-count {
+  margin-left: 8px;
+  font-size: 14px;
+  color: var(--font-color);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* 暗黑模式适配 */
+[data-theme='dark'] .card-series-list-link {
+  color: var(--font-color);
+}
+
+[data-theme='dark'] .card-series-list-link:hover {
+  color: var(--theme-color);
+}
+
 

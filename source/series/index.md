@@ -12,7 +12,7 @@ comments: false
 <div class="category-lists">
   <ul class="category-list">
     <li class="category-list-item">
-      <a class="category-list-link" href="./LLM-Agent系列教程.html">LLM/Agent系列教程</a>
+      <a class="category-list-link" href="/series/LLM-Agent系列教程.html">LLM/Agent系列教程</a>
       <span class="category-list-count">16</span>
     </li>
   </ul>

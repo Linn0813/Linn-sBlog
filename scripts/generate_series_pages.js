@@ -249,7 +249,7 @@ comments: false
   for (const [seriesName, posts] of sortedSeries) {
     const fileName = sanitizeFileName(seriesName);
     content += `    <li class="category-list-item">
-      <a class="category-list-link" href="./${fileName}.html">${seriesName}</a>
+      <a class="category-list-link" href="/series/${fileName}.html">${seriesName}</a>
       <span class="category-list-count">${posts.length}</span>
     </li>
 `;
