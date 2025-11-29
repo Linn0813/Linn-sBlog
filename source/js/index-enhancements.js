@@ -125,7 +125,7 @@
           <div class="recommend-card sidebar-recommend-card">
             <div class="recommend-card-title">📚 系列文章</div>
             <ul class="recommend-list">
-              <li><a href="/series/LLM%2FAgent%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B.html">LLM/Agent系列教程</a></li>
+              <li><a href="/series/LLM-Agent系列教程.html">LLM/Agent系列教程</a></li>
               <li><a href="/categories/技术学习与行业趋势-Learning-Industry-Trends/">更多系列...</a></li>
             </ul>
           </div>

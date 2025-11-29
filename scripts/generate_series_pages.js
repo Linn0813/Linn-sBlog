@@ -101,8 +101,10 @@ function main() {
     const filePath = path.join(SERIES_DIR, `${fileName}.md`);
     
     // 生成系列页面内容 - 使用主题统一的文章列表样式
+    // 将 title 中的特殊字符替换为连字符，避免 URL 解析错误
+    const safeTitle = seriesName.replace(/[\/\\:*?"<>|]/g, '-');
     let content = `---
-title: "${seriesName}"
+title: "${safeTitle}"
 date: ${new Date().toISOString().split('T')[0]}
 layout: page
 comments: false
