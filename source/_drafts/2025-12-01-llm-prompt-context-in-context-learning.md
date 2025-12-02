@@ -1,7 +1,7 @@
 ---
 title: 🧠 2/15｜理解 LLM 的"语言"：Prompt、上下文与 In‑Context Learning
 date: 2025-12-01 18:00:00
-series: LLM/Agent系列教程
+series: LLM/Agent 核心概念与新手快速上手指南
 categories:
   - 技术学习与行业趋势
   - AI与研究

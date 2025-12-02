@@ -1,7 +1,7 @@
 ---
 title: ⚖️ 14/15｜Agent的伦理边界：偏见、问责制与负责任的AI
 date: 2025-12-13 18:00:00
-series: LLM/Agent系列教程
+series: LLM/Agent 核心概念与新手快速上手指南
 categories:
   - 技术学习与行业趋势
   - AI与研究

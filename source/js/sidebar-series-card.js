@@ -38,7 +38,7 @@
     // 默认系列数据（如果无法动态获取，使用默认数据）
     const defaultSeriesData = [
       {
-        name: 'LLM/Agent系列教程',
+        name: 'LLM/Agent 核心概念与新手快速上手指南',
         url: '/series/LLM-Agent系列教程.html',
         count: 16
       }

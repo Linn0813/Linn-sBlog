@@ -1,7 +1,7 @@
 ---
 title: 🧠 6/15｜Agent 的决策引擎：ReAct / Self-Ask / Tree of Thoughts 深度解析
 date: 2025-12-05 18:00:00
-series: LLM/Agent系列教程
+series: LLM/Agent 核心概念与新手快速上手指南
 categories:
   - 技术学习与行业趋势
   - AI与研究

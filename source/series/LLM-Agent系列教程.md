@@ -1,12 +1,12 @@
 ---
 title: "LLM-Agent系列教程"
-date: 2025-11-29
+date: 2025-12-01
 layout: page
 comments: false
-series: LLM/Agent系列教程
+series: LLM/Agent 核心概念与新手快速上手指南
 ---
 
-# LLM/Agent系列教程
+# LLM/Agent 核心概念与新手快速上手指南
 
 <div class="article-sort">
   <div class="article-sort-item year">2025</div>
