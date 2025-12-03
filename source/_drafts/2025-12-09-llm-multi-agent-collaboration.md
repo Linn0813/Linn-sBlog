@@ -1,7 +1,7 @@
 ---
 title: 🤝 10/15｜多 Agent 协作：让 Agent 像团队一样高效工作
 date: 2025-12-09 18:00:00
-series: LLM/Agent 核心概念与新手快速上手指南
+series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
 categories:
   - 技术学习与行业趋势
   - AI与研究

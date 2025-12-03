@@ -1,7 +1,7 @@
 ---
 title: 🧠 4/15｜RAG深度融合：构建抗幻觉的知识增强系统
 date: 2025-12-03 18:00:00
-series: LLM/Agent 核心概念与新手快速上手指南
+series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
 categories:
   - 技术学习与行业趋势
   - AI与研究

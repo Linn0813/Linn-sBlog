@@ -53,6 +53,17 @@ function sanitizeFileName(name) {
     .replace(/^-|-$/g, '');            // 移除首尾连字符
 }
 
+// 从 title 生成 URL slug（模拟 Hexo 的 URL 生成逻辑）
+function titleToSlug(title) {
+  return title
+    .toLowerCase()                      // 转小写
+    .replace(/[^\w\s-]/g, '')          // 移除特殊字符（保留字母、数字、空格、连字符）
+    .replace(/[\u{1F300}-\u{1F9FF}]/gu, '') // 移除 emoji
+    .replace(/\s+/g, '-')              // 空格替换为连字符
+    .replace(/-+/g, '-')               // 多个连字符合并为一个
+    .replace(/^-|-$/g, '');            // 移除首尾连字符
+}
+
 // 主函数
 function main() {
   const files = fs.readdirSync(POSTS_DIR).filter(f => f.endsWith('.md'));
@@ -110,16 +121,17 @@ function main() {
     }
     
     // 生成文章 URL（根据 permalink 规则 :category/:title/）
+    // 注意：Hexo 的 :title 实际上使用的是文件名（去掉 .md 扩展名），而不是从 title 生成的 slug
     const fileName = file.replace('.md', '');
     let url = '';
     if (categories.length >= 2) {
-      // 二级分类：/一级分类/二级分类/文章名/
+      // 二级分类：/一级分类/二级分类/文件名/
       url = `/${categories[0]}/${categories[1]}/${fileName}/`;
     } else if (categories.length === 1) {
-      // 一级分类：/分类/文章名/
+      // 一级分类：/分类/文件名/
       url = `/${categories[0]}/${fileName}/`;
     } else {
-      // 无分类：/文章名/
+      // 无分类：/文件名/
       url = `/${fileName}/`;
     }
     
@@ -160,11 +172,11 @@ series: ${seriesName}
 <div class="article-sort">
 `;
     
-    // 按日期倒序排列（最新的在前）
+    // 按日期正序排列（系列文章从开篇到最新）
     const sortedPosts = [...posts].sort((a, b) => {
       const dateA = new Date(a.date);
       const dateB = new Date(b.date);
-      return dateB - dateA; // 倒序
+      return dateA - dateB; // 正序（从早到晚）
     });
     
     // 按年份分组
@@ -179,7 +191,7 @@ series: ${seriesName}
     });
     
     // 生成文章列表（使用与分类页面相同的结构）
-    const sortedYears = Array.from(postsByYear.keys()).sort((a, b) => b - a); // 倒序
+    const sortedYears = Array.from(postsByYear.keys()).sort((a, b) => a - b); // 正序（从早到晚）
     
     sortedYears.forEach((year) => {
       // 年份标题
@@ -213,6 +225,15 @@ series: ${seriesName}
     
     // 写入文件
     fs.writeFileSync(filePath, content, 'utf8');
+    
+    // 同时创建目录和 index.html，以支持 pretty URLs
+    const seriesDir = path.join(SERIES_DIR, fileName);
+    if (!fs.existsSync(seriesDir)) {
+      fs.mkdirSync(seriesDir, { recursive: true });
+    }
+    const indexPath = path.join(seriesDir, 'index.md');
+    fs.writeFileSync(indexPath, content, 'utf8');
+    
     console.log(`✓ 生成系列页面: ${seriesName} -> ${fileName}.md (${posts.length} 篇文章)`);
   }
   
@@ -227,15 +248,15 @@ function updateSeriesIndex(seriesMap) {
   const indexPath = path.join(SERIES_DIR, 'index.md');
   
   let content = `---
-title: 文章系列
+title: 系列
 date: ${new Date().toISOString().split('T')[0]}
 layout: page
 comments: false
 ---
 
-# 文章系列
+# 系列
 
-这里汇集了我编写的主题系列文章，方便您系统学习相关知识。
+这里汇集了我编写的主题系列文章，方便系统学习相关知识。
 
 <div class="category-lists">
   <ul class="category-list">

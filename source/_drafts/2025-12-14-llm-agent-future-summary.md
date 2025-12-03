@@ -1,7 +1,7 @@
 ---
 title: 🌐 15/15｜Agent工程的未来：趋势、机会与最终总结
 date: 2025-12-14 18:00:00
-series: LLM/Agent 核心概念与新手快速上手指南
+series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
 categories:
   - 技术学习与行业趋势
   - AI与研究

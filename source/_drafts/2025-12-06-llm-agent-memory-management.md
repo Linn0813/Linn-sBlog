@@ -1,7 +1,7 @@
 ---
 title: 🧠 7/15｜Agent 记忆管理：打造长期且健忘的智能体
 date: 2025-12-06 18:00:00
-series: LLM/Agent 核心概念与新手快速上手指南
+series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
 categories:
   - 技术学习与行业趋势
   - AI与研究

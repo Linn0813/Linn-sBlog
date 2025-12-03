@@ -1,7 +1,7 @@
 ---
 title: 🔬 12/15｜Agent能力调优：微调与 Prompt 工程进阶
 date: 2025-12-11 18:00:00
-series: LLM/Agent 核心概念与新手快速上手指南
+series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
 categories:
   - 技术学习与行业趋势
   - AI与研究

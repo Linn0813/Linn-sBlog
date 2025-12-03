@@ -1,7 +1,7 @@
 ---
 title: 🧠 5/15｜Agent 概念全景：Agent 是如何从 LLM 进化而来的？
 date: 2025-12-04 18:00:00
-series: LLM/Agent 核心概念与新手快速上手指南
+series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
 categories:
   - 技术学习与行业趋势
   - AI与研究

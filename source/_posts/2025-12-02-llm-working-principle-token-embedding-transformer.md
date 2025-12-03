@@ -1,7 +1,7 @@
 ---
 title: 🧠 主题1｜LLM 工作原理深度解析：Token、向量、Transformer，到底在算什么？
-date: 2025-11-30 18:00:00
-series: LLM/Agent 核心概念与新手快速上手指南
+date: 2025-12-02 18:00:00
+series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
 categories:
   - 技术学习与行业趋势
   - AI与研究
@@ -31,7 +31,7 @@ aside: true
 noticeOutdate: false
 ---
 
-> **这是[《LLM/Agent 核心概念与新手快速上手指南》](/series/LLM-Agent系列教程/)系列第 1 篇。**
+> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 1 篇。**
 
 > 本篇将深入解析 LLM 的工作原理：从 Token 分词、Embedding 向量化到 Transformer 架构。未来，我们将继续探讨 Prompt 工程、RAG、Agent 等核心概念，带你系统理解"AI 是怎么运作的"。
 

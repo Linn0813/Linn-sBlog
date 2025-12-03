@@ -1,7 +1,7 @@
 ---
 title: 🏭 13/15｜Agent的应用前沿：RPA、流程自动化与企业落地
 date: 2025-12-12 18:00:00
-series: LLM/Agent 核心概念与新手快速上手指南
+series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
 categories:
   - 技术学习与行业趋势
   - AI与研究

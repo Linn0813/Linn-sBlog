@@ -38,9 +38,9 @@
     // 默认系列数据（如果无法动态获取，使用默认数据）
     const defaultSeriesData = [
       {
-        name: 'LLM/Agent 核心概念与新手快速上手指南',
-        url: '/series/LLM-Agent系列教程.html',
-        count: 16
+        name: '🧠 LLM/Agent 从入门到精通：告别浅尝辄止',
+        url: '/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/',
+        count: 3
       }
     ];
 
@@ -50,7 +50,7 @@
     seriesCard.innerHTML = `
       <div class="item-headline">
         <i class="fas fa-book"></i>
-        <span>文章系列</span>
+        <span>系列</span>
         <a class="card-more-btn" href="/series/" title="查看更多">
           <i class="fas fa-angle-right"></i>
         </a>
