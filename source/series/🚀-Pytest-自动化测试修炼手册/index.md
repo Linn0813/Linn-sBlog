@@ -1,6 +1,6 @@
 ---
 title: "🚀 Pytest 自动化测试修炼手册"
-date: 2025-12-04
+date: 2025-12-08
 layout: page
 comments: false
 series: 🚀 Pytest 自动化测试修炼手册

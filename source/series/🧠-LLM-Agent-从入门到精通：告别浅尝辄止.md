@@ -1,6 +1,6 @@
 ---
 title: "🧠 LLM-Agent 从入门到精通：告别浅尝辄止"
-date: 2025-12-04
+date: 2025-12-08
 layout: page
 comments: false
 series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
@@ -56,6 +56,18 @@ series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
         <time class="post-meta-date-created" datetime="2025-12-04T10:00:00.000Z" title="发表于 2025-12-04">2025-12-04</time>
       </div>
       <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-04-llm-prompt-engineering-practices/" title="🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出">🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-08-llm-rag-deep-integration/" title="🧠 主题4｜解决"幻觉"：RAG机制与外部知识融合">
+      <img src="/img/llm-rag-deep-integration.png" alt="🧠 主题4｜解决"幻觉"：RAG机制与外部知识融合" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-08T10:00:00.000Z" title="发表于 2025-12-08">2025-12-08</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-08-llm-rag-deep-integration/" title="🧠 主题4｜解决"幻觉"：RAG机制与外部知识融合">🧠 主题4｜解决"幻觉"：RAG机制与外部知识融合</a>
     </div>
   </div>
 </div>
