@@ -1,6 +1,6 @@
 ---
 title: "🧠 LLM-Agent 从入门到精通：告别浅尝辄止"
-date: 2025-12-08
+date: 2025-12-10
 layout: page
 comments: false
 series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
@@ -68,6 +68,30 @@ series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
         <time class="post-meta-date-created" datetime="2025-12-08T10:00:00.000Z" title="发表于 2025-12-08">2025-12-08</time>
       </div>
       <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-08-llm-rag-deep-integration/" title="🧠 主题4｜解决"幻觉"：RAG机制与外部知识融合">🧠 主题4｜解决"幻觉"：RAG机制与外部知识融合</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-09-llm-model-evaluation-selection/" title="🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比">
+      <img src="/img/llm-model-evaluation-selection.png" alt="🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-09T08:00:00.000Z" title="发表于 2025-12-09">2025-12-09</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-09-llm-model-evaluation-selection/" title="🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比">🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-10-llm-agent-concept-overview/" title="🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？">
+      <img src="/img/llm-agent-concept-overview.png" alt="🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-10T10:00:00.000Z" title="发表于 2025-12-10">2025-12-10</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-10-llm-agent-concept-overview/" title="🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？">🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？</a>
     </div>
   </div>
 </div>
