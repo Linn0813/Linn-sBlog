@@ -1,6 +1,6 @@
 ---
 title: 系列
-date: 2025-12-10
+date: 2025-12-18
 layout: page
 comments: false
 ---
@@ -21,11 +21,11 @@ comments: false
     </li>
     <li class="category-list-item">
       <a class="category-list-link" href="/series/🕵️‍♂️-Fiddler-抓包实战全攻略.html">🕵️‍♂️ Fiddler 抓包实战全攻略</a>
-      <span class="category-list-count">4</span>
+      <span class="category-list-count">5</span>
     </li>
     <li class="category-list-item">
       <a class="category-list-link" href="/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止.html">🧠 LLM/Agent 从入门到精通：告别浅尝辄止</a>
-      <span class="category-list-count">7</span>
+      <span class="category-list-count">16</span>
     </li>
     <li class="category-list-item">
       <a class="category-list-link" href="/series/🚀-Pytest-自动化测试修炼手册.html">🚀 Pytest 自动化测试修炼手册</a>

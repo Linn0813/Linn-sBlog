@@ -1,6 +1,6 @@
 ---
 title: "🧠 LLM-Agent 从入门到精通：告别浅尝辄止"
-date: 2025-12-10
+date: 2025-12-18
 layout: page
 comments: false
 series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
@@ -92,6 +92,114 @@ series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
         <time class="post-meta-date-created" datetime="2025-12-10T10:00:00.000Z" title="发表于 2025-12-10">2025-12-10</time>
       </div>
       <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-10-llm-agent-concept-overview/" title="🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？">🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-16-llm-agent-decision-engine/" title="🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用">
+      <img src="/img/llm-agent-decision-engine.png" alt="🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-16T10:00:00.000Z" title="发表于 2025-12-16">2025-12-16</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-16-llm-agent-decision-engine/" title="🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用">🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-17-llm-agent-memory-management/" title="🧠 主题8｜Agent 记忆管理：打造长期且健忘的智能体">
+      <img src="/img/llm-agent-memory-management.png" alt="🧠 主题8｜Agent 记忆管理：打造长期且健忘的智能体" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-17T10:00:00.000Z" title="发表于 2025-12-17">2025-12-17</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-17-llm-agent-memory-management/" title="🧠 主题8｜Agent 记忆管理：打造长期且健忘的智能体">🧠 主题8｜Agent 记忆管理：打造长期且健忘的智能体</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-18-llm-agent-tool-system/" title="🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接">
+      <img src="/img/llm-agent-tool-system.png" alt="🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-18T10:00:00.000Z" title="发表于 2025-12-18">2025-12-18</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-18-llm-agent-tool-system/" title="🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接">🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-19-llm-agent-task-planning/" title="🎯 主题10｜任务规划：Agent 如何把复杂任务拆成可执行步骤？">
+      <img src="/img/llm-agent-task-planning.png" alt="🎯 主题10｜任务规划：Agent 如何把复杂任务拆成可执行步骤？" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-19T10:00:00.000Z" title="发表于 2025-12-19">2025-12-19</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-19-llm-agent-task-planning/" title="🎯 主题10｜任务规划：Agent 如何把复杂任务拆成可执行步骤？">🎯 主题10｜任务规划：Agent 如何把复杂任务拆成可执行步骤？</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-20-llm-agent-framework-comparison/" title="🏗️ 主题11｜Agent 框架对比：LangChain、AutoGPT、LlamaIndex 深度解析">
+      <img src="/img/llm-agent-framework-comparison.png" alt="🏗️ 主题11｜Agent 框架对比：LangChain、AutoGPT、LlamaIndex 深度解析" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-20T10:00:00.000Z" title="发表于 2025-12-20">2025-12-20</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-20-llm-agent-framework-comparison/" title="🏗️ 主题11｜Agent 框架对比：LangChain、AutoGPT、LlamaIndex 深度解析">🏗️ 主题11｜Agent 框架对比：LangChain、AutoGPT、LlamaIndex 深度解析</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-21-llm-agent-spec-design/" title="📐 主题12｜Spec 设计：用 Schema 限制 Agent 输出，提升稳定性">
+      <img src="/img/llm-agent-spec-design.png" alt="📐 主题12｜Spec 设计：用 Schema 限制 Agent 输出，提升稳定性" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-21T10:00:00.000Z" title="发表于 2025-12-21">2025-12-21</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-21-llm-agent-spec-design/" title="📐 主题12｜Spec 设计：用 Schema 限制 Agent 输出，提升稳定性">📐 主题12｜Spec 设计：用 Schema 限制 Agent 输出，提升稳定性</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-22-llm-agent-security-governance/" title="🔒 主题13｜Agent 安全治理：日志、审计、可观测性与安全审计">
+      <img src="/img/llm-agent-security-governance.png" alt="🔒 主题13｜Agent 安全治理：日志、审计、可观测性与安全审计" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-22T10:00:00.000Z" title="发表于 2025-12-22">2025-12-22</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-22-llm-agent-security-governance/" title="🔒 主题13｜Agent 安全治理：日志、审计、可观测性与安全审计">🔒 主题13｜Agent 安全治理：日志、审计、可观测性与安全审计</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-23-llm-agent-multi-agent-collaboration/" title="👥 主题14｜多 Agent 协作：像团队一样工作的一群智能体">
+      <img src="/img/llm-agent-multi-agent-collaboration.png" alt="👥 主题14｜多 Agent 协作：像团队一样工作的一群智能体" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-23T10:00:00.000Z" title="发表于 2025-12-23">2025-12-23</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-23-llm-agent-multi-agent-collaboration/" title="👥 主题14｜多 Agent 协作：像团队一样工作的一群智能体">👥 主题14｜多 Agent 协作：像团队一样工作的一群智能体</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-24-llm-agent-evaluation/" title="📊 主题15｜Agent 评估：指标体系与避坑指南">
+      <img src="/img/llm-agent-evaluation.png" alt="📊 主题15｜Agent 评估：指标体系与避坑指南" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-24T10:00:00.000Z" title="发表于 2025-12-24">2025-12-24</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-24-llm-agent-evaluation/" title="📊 主题15｜Agent 评估：指标体系与避坑指南">📊 主题15｜Agent 评估：指标体系与避坑指南</a>
     </div>
   </div>
 </div>
