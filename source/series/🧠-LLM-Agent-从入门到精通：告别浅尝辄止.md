@@ -1,6 +1,6 @@
 ---
 title: "🧠 LLM-Agent 从入门到精通：告别浅尝辄止"
-date: 2025-12-22
+date: 2025-12-23
 layout: page
 comments: false
 series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
@@ -200,6 +200,18 @@ series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
         <time class="post-meta-date-created" datetime="2025-12-24T10:00:00.000Z" title="发表于 2025-12-24">2025-12-24</time>
       </div>
       <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-24-llm-agent-evaluation/" title="📊 主题15｜Agent 评估：指标体系与避坑指南">📊 主题15｜Agent 评估：指标体系与避坑指南</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2025-12-27-llm-agent-glossary/" title="📚 工具篇｜LLM/Agent 系列术语速查手册">
+      <img src="/img/llm-agent-glossary.png" alt="📚 工具篇｜LLM/Agent 系列术语速查手册" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2025-12-27T12:00:00.000Z" title="发表于 2025-12-27">2025-12-27</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-27-llm-agent-glossary/" title="📚 工具篇｜LLM/Agent 系列术语速查手册">📚 工具篇｜LLM/Agent 系列术语速查手册</a>
     </div>
   </div>
 </div>
