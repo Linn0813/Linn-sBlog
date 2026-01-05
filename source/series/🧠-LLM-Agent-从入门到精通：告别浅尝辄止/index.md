@@ -1,6 +1,6 @@
 ---
 title: "🧠 LLM-Agent 从入门到精通：告别浅尝辄止"
-date: 2025-12-23
+date: 2026-01-05
 layout: page
 comments: false
 series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
@@ -212,6 +212,55 @@ series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
         <time class="post-meta-date-created" datetime="2025-12-27T12:00:00.000Z" title="发表于 2025-12-27">2025-12-27</time>
       </div>
       <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2025-12-27-llm-agent-glossary/" title="📚 工具篇｜LLM/Agent 系列术语速查手册">📚 工具篇｜LLM/Agent 系列术语速查手册</a>
+    </div>
+  </div>
+  <div class="article-sort-item year">2026</div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2026-01-02-llm-agent-capability-tuning/" title="🔬 主题16｜Agent 能力调优：微调与 Prompt 工程进阶">
+      <img src="/img/llm-agent-capability-tuning.png" alt="🔬 主题16｜Agent 能力调优：微调与 Prompt 工程进阶" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2026-01-02T10:00:00.000Z" title="发表于 2026-01-02">2026-01-02</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2026-01-02-llm-agent-capability-tuning/" title="🔬 主题16｜Agent 能力调优：微调与 Prompt 工程进阶">🔬 主题16｜Agent 能力调优：微调与 Prompt 工程进阶</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地">
+      <img src="/img/llm-agent-enterprise-applications.png" alt="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2026-01-03T10:00:00.000Z" title="发表于 2026-01-03">2026-01-03</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地">🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI">
+      <img src="/img/llm-agent-ethical-boundaries.png" alt="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2026-01-04T10:00:00.000Z" title="发表于 2026-01-04">2026-01-04</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI">⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI</a>
+    </div>
+  </div>
+  <div class="article-sort-item">
+    <a class="article-sort-item-img" href="/技术学习与行业趋势/AI与研究/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结">
+      <img src="/img/llm-agent-future-summary.png" alt="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    </a>
+    <div class="article-sort-item-info">
+      <div class="article-sort-item-time">
+        <i class="far fa-calendar-alt"></i>
+        <time class="post-meta-date-created" datetime="2026-01-05T10:00:00.000Z" title="发表于 2026-01-05">2026-01-05</time>
+      </div>
+      <a class="article-sort-item-title" href="/技术学习与行业趋势/AI与研究/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结">🌐 主题19｜Agent 工程未来：趋势、机会与系列总结</a>
     </div>
   </div>
 </div>
