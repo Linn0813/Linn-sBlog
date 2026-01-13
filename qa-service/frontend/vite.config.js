@@ -4,9 +4,23 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [vue()],
+  // 设置基础路径，生产环境使用 /qa/，开发环境使用 /
+  base: '/qa/',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
+    }
+  },
+  build: {
+    // 确保资源路径使用绝对路径
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        // 确保动态导入的资源路径也使用 base 路径
+        assetFileNames: 'assets/[name].[hash].[ext]',
+        chunkFileNames: 'assets/[name].[hash].js',
+        entryFileNames: 'assets/[name].[hash].js'
+      }
     }
   },
   server: {

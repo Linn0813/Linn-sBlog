@@ -68,6 +68,29 @@ rm -rf "$QA_TARGET_DIR"
 mkdir -p "$QA_TARGET_DIR"
 cp -r dist/* "$QA_TARGET_DIR/"
 
+# 8. 从构建后的 index.html 中提取资源路径
+echo -e "${YELLOW}提取资源路径...${NC}"
+JS_FILE=$(grep -oE 'assets/[^"]+\.js' dist/index.html | head -1)
+CSS_FILE=$(grep -oE 'assets/[^"]+\.css' dist/index.html | head -1)
+
+if [ -n "$JS_FILE" ] && [ -n "$CSS_FILE" ]; then
+    echo -e "${GREEN}找到资源文件:${NC}"
+    echo -e "  JS: $JS_FILE"
+    echo -e "  CSS: $CSS_FILE"
+    
+    # 更新博客页面中的资源路径
+    QA_PAGE_FILE="${BLOG_DIR}/source/qa/index.md"
+    if [ -f "$QA_PAGE_FILE" ]; then
+        # 使用 sed 更新资源路径
+        sed -i.bak "s|/qa/assets/index[^.]*\.js|/qa/$JS_FILE|g" "$QA_PAGE_FILE"
+        sed -i.bak "s|/qa/assets/index[^.]*\.css|/qa/$CSS_FILE|g" "$QA_PAGE_FILE"
+        rm -f "${QA_PAGE_FILE}.bak"
+        echo -e "${GREEN}✓ 已更新博客页面中的资源路径${NC}"
+    fi
+else
+    echo -e "${YELLOW}⚠️  无法自动提取资源路径，请手动更新${NC}"
+fi
+
 echo -e "${GREEN}✓ 问答前端已成功集成到博客${NC}"
 echo -e "${GREEN}目标目录: $QA_TARGET_DIR${NC}"
 

@@ -28,7 +28,7 @@ class FeishuDocumentLoader:
             use_user_token = settings.feishu_use_user_token
             if not use_user_token:
                 # 尝试从全局缓存检查是否有user_token
-                from .feishu_client import _get_cached_token
+                from .client import _get_cached_token
                 cached_user_token = _get_cached_token(settings.feishu_app_id, True)
                 if cached_user_token:
                     # 如果缓存中有user_token，优先使用它

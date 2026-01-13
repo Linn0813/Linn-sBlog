@@ -414,3 +414,84 @@ def clean_test_cases(test_cases: List[Dict]) -> List[Dict]:
         else:
             cleaned.append(case)
     return cleaned
+
+
+def assess_test_case_quality(case: Dict, requirement_doc: str = "") -> tuple[float, List[str]]:
+    """
+    评估测试用例的质量。
+    
+    Args:
+        case: 测试用例字典
+        requirement_doc: 需求文档（可选，用于验证预期结果是否来自文档）
+        
+    Returns:
+        (quality_score, quality_issues) 元组
+        - quality_score: 质量评分（0-1之间）
+        - quality_issues: 质量问题列表
+    """
+    quality_score = 1.0
+    quality_issues = []
+    
+    # 检查必需字段
+    required_fields = ["module_name", "case_name", "steps", "expected_result"]
+    for field in required_fields:
+        if field not in case or not case[field]:
+            quality_score -= 0.2
+            quality_issues.append(f"缺少必需字段: {field}")
+    
+    # 检查步骤是否完整
+    steps = case.get("steps", [])
+    if not isinstance(steps, list) or len(steps) < 3:
+        quality_score -= 0.15
+        quality_issues.append("测试步骤不足（至少需要3步）")
+    
+    # 检查预期结果是否具体
+    expected_result = case.get("expected_result", "")
+    if not expected_result or len(expected_result.strip()) < 10:
+        quality_score -= 0.15
+        quality_issues.append("预期结果过于简单或为空")
+    elif any(generic in expected_result for generic in ["正确显示", "正常显示", "验证通过", "符合预期"]):
+        quality_score -= 0.1
+        quality_issues.append("预期结果使用了通用描述，建议使用具体描述")
+    
+    # 检查用例名称是否具体
+    case_name = case.get("case_name", "")
+    if not case_name or len(case_name.strip()) < 5:
+        quality_score -= 0.1
+        quality_issues.append("用例名称过于简单")
+    
+    # 确保评分在 0-1 之间
+    quality_score = max(0.0, min(1.0, quality_score))
+    
+    return quality_score, quality_issues
+
+
+def infer_priority(case: Dict) -> str:
+    """
+    推断测试用例的优先级。
+    
+    Args:
+        case: 测试用例字典
+        
+    Returns:
+        优先级字符串：'P0'（最高）、'P1'（高）、'P2'（中）、'P3'（低）
+    """
+    # 默认优先级
+    priority = "P2"
+    
+    # 根据用例名称和内容推断优先级
+    case_name = case.get("case_name", "").lower()
+    expected_result = case.get("expected_result", "").lower()
+    
+    # P0: 核心功能、登录、支付、数据安全等
+    p0_keywords = ["登录", "支付", "密码", "安全", "数据", "核心", "主要", "基础"]
+    if any(keyword in case_name or keyword in expected_result for keyword in p0_keywords):
+        priority = "P0"
+    # P1: 重要功能、主要流程
+    elif any(keyword in case_name for keyword in ["主要", "重要", "关键", "流程"]):
+        priority = "P1"
+    # P3: 边界、异常、次要功能
+    elif any(keyword in case_name for keyword in ["边界", "异常", "错误", "次要", "辅助"]):
+        priority = "P3"
+    
+    return priority

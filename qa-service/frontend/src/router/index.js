@@ -4,13 +4,13 @@ import AiModule from '../views/ai/AiModule.vue'
 const routes = [
   {
     path: '/',
-    redirect: '/ai/test-case-generator'
+    redirect: '/ai/knowledge-base'  // 默认跳转到知识库问答
   },
   {
     path: '/ai',
     component: AiModule,
     children: [
-      { path: '', redirect: '/ai/test-case-generator' },
+      { path: '', redirect: '/ai/knowledge-base' },  // 默认显示知识库问答
       {
         path: 'test-case-generator',
         name: 'AITestCaseGenerate',
@@ -27,8 +27,11 @@ const routes = [
   }
 ]
 
+// 根据环境设置基础路径：生产环境使用 /qa，开发环境使用 /
+const basePath = import.meta.env.PROD ? '/qa' : ''
+
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(basePath),
   routes
 })
 
