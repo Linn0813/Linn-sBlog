@@ -989,9 +989,8 @@ ad:
 # --------------------------------------
 
 site_verification:
-  # 示例：
-  # - name: google-site-verification
-  #   content: xxxxxx
+  - name: google-site-verification
+    content: Xj7zV_DKnHFmJ7sXNRvdl5-UTfG4NLy-s7hDk1DZt4A
   # - name: baidu-site-verification
   #   content: xxxxxxx
 

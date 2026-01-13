@@ -14,7 +14,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://Linn0813.github.io
+url: https://linn0813.github.io
 permalink: :category/:title/
 permalink_defaults:
 pretty_urls:
@@ -118,6 +118,10 @@ plugins:
 # Sitemap 配置
 sitemap:
   path: sitemap.xml
+  # 排除某些路径，避免重复 URL
+  exclude:
+    - '**/404.html'
+    - '**/404/index.html'
 
 # RSS 配置
 feed:
