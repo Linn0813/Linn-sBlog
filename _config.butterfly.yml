@@ -697,8 +697,8 @@ math:
 search:
   # 选择：algolia_search / local_search / docsearch
   # 如果不需要搜索功能，保持为空
-  use:
-  placeholder:
+  use: local_search
+  placeholder: 搜索文章、分类、标签...
 
   # Algolia 搜索
   algolia_search:
@@ -1370,7 +1370,7 @@ CDN:
   # 两者的选项：local/jsdelivr/unpkg/cdnjs/custom
   # 注意： Dev 版本只能使用 'local' 作为内部脚本
   # 注意：将第三方脚本设置为 'local' 时，需要安装 hexo-butterfly-extjs
-  internal_provider: jsdelivr
+  internal_provider: local
   third_party_provider: jsdelivr
 
   # 是否在 URL 中添加版本号，true 或 false
