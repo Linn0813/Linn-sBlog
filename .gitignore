@@ -13,3 +13,19 @@ package-lock.json
 # 忽略日志文件
 *.log
 _multiconfig.yml
+
+# 忽略问答服务目录中的临时文件和依赖
+qa-service/backend/__pycache__/
+qa-service/backend/**/__pycache__/
+qa-service/backend/.pytest_cache/
+qa-service/backend/*.pyc
+qa-service/backend/.env
+qa-service/frontend/node_modules/
+qa-service/frontend/dist/
+qa-service/frontend/.vite/
+qa-service/frontend/.env.local
+qa-service/frontend/.env.production.local
+qa-service/storage/knowledge_base/vectors/
+qa-service/storage/knowledge_base/documents/
+qa-service/storage/uploads/
+qa-service/data/
