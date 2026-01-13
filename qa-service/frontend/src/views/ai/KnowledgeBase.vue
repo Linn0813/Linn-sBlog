@@ -925,9 +925,12 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .knowledge-base-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
   padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .header {

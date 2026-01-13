@@ -4,10 +4,10 @@
     <el-aside width="240px" class="sidebar">
       <div class="sidebar-header">
         <h3>
-          <el-icon><Cpu /></el-icon>
-          AI 智能测试
+          <el-icon><Reading /></el-icon>
+          知识库问答
         </h3>
-        <p class="sidebar-subtitle">AI 驱动的智能测试助手</p>
+        <p class="sidebar-subtitle">基于知识库的智能问答系统</p>
       </div>
 
       <el-menu
@@ -15,10 +15,6 @@
         class="sidebar-menu"
         router
       >
-        <el-menu-item index="/ai/test-case-generator">
-          <el-icon><MagicStick /></el-icon>
-          <span>测试用例生成</span>
-        </el-menu-item>
         <el-menu-item index="/ai/knowledge-base">
           <el-icon><Reading /></el-icon>
           <span>知识库问答</span>
@@ -29,13 +25,7 @@
     <!-- 主内容区 -->
     <el-main class="main-content">
       <el-breadcrumb class="breadcrumb" separator="/">
-        <el-breadcrumb-item to="/ai">AI 智能测试</el-breadcrumb-item>
-        <template v-if="route.name === 'AITestCaseGenerate'">
-          <el-breadcrumb-item>AI 测试用例生成</el-breadcrumb-item>
-        </template>
-        <template v-else-if="route.name === 'KnowledgeBase'">
-          <el-breadcrumb-item>知识库问答</el-breadcrumb-item>
-        </template>
+        <el-breadcrumb-item>知识库问答</el-breadcrumb-item>
       </el-breadcrumb>
       <router-view />
     </el-main>
@@ -43,7 +33,7 @@
 </template>
 
 <script setup>
-import { Cpu, MagicStick, Reading } from '@element-plus/icons-vue'
+import { Reading } from '@element-plus/icons-vue'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
