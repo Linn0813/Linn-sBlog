@@ -9,7 +9,7 @@ from pathlib import Path
 from datetime import datetime
 import json
 
-from infrastructure.external.feishu.loader import FeishuDocumentLoader
+from infrastructure.external.blog.loader import BlogDocumentLoader
 from infrastructure.vector_store.chroma import VectorStore
 from domain.knowledge_base.rag import RAGEngine
 from shared.logger import log
@@ -19,7 +19,7 @@ class KnowledgeBaseService:
 
     def __init__(self):
         """初始化知识库服务。"""
-        self.document_loader = FeishuDocumentLoader()
+        self.document_loader = BlogDocumentLoader()
         self._rag_engine = None
         self._web_search_service = None
         # 创建结果保存目录
@@ -48,22 +48,21 @@ class KnowledgeBaseService:
                 ) from e
         return self._rag_engine
 
-    def sync_documents_from_space(self, space_id: str, incremental: bool = True) -> Dict[str, Any]:
+    def sync_blog_posts(self, incremental: bool = True) -> Dict[str, Any]:
         """
-        从知识库空间同步文档（支持增量同步）。
+        同步博客文章（支持增量同步）。
 
         Args:
-            space_id: 知识库空间ID
             incremental: 是否使用增量同步（默认True）
 
         Returns:
             同步结果，包含同步的文档数量和状态
         """
         try:
-            log.info(f"开始同步知识库空间: {space_id} (增量模式: {incremental})")
+            log.info(f"开始同步博客文章 (增量模式: {incremental})")
 
-            # 加载所有文档
-            documents = self.document_loader.load_all_documents_from_space(space_id)
+            # 加载所有博客文章
+            documents = self.document_loader.load_all_posts()
 
             if not documents:
                 return {
@@ -75,123 +74,105 @@ class KnowledgeBaseService:
                     "skipped_count": 0,
                 }
 
-            # 增量同步：获取已有文档的更新时间
+            # 增量同步：获取已有文档
             existing_docs = {}
             if incremental:
-                existing_docs = self.rag_engine.vector_store.get_documents_by_space(space_id)
-                log.info(f"向量库中已有 {len(existing_docs)} 个文档")
-            
-            # 辅助函数：比较更新时间
-            def compare_update_time(time1: Any, time2: Any) -> int:
-                """
-                比较两个更新时间，返回：
-                -1: time1 < time2
-                 0: time1 == time2
-                 1: time1 > time2
-                """
-                if not time1 or not time2:
-                    return 0  # 如果任一时间为空，认为相等（需要同步）
-                
-                # 转换为整数时间戳进行比较
+                # 获取所有来源为 blog 的文档
                 try:
-                    t1 = int(time1) if isinstance(time1, (int, str)) else 0
-                    t2 = int(time2) if isinstance(time2, (int, str)) else 0
-                    if t1 < t2:
-                        return -1
-                    elif t1 > t2:
-                        return 1
-                    else:
-                        return 0
-                except (ValueError, TypeError):
-                    # 如果转换失败，认为需要同步
-                    return 0
+                    all_docs = self.rag_engine.vector_store._collection.get(
+                        where={"source": "blog"}
+                    )
+                    # 按文档ID分组（去除chunk后缀）
+                    for doc_id, metadata in zip(all_docs.get("ids", []), all_docs.get("metadatas", [])):
+                        # chunk_id格式：{post_id}_chunk_{idx}，提取post_id
+                        post_id = doc_id.split("_chunk_")[0]
+                        if post_id not in existing_docs:
+                            existing_docs[post_id] = metadata
+                except Exception as e:
+                    log.warning(f"获取已有文档失败: {e}")
+                log.info(f"向量库中已有 {len(existing_docs)} 个博客文章")
 
             # 准备文档数据（只同步新增或更新的文档）
             doc_data = []
             new_count = 0
             updated_count = 0
             skipped_count = 0
-            current_doc_tokens = set()
+            current_doc_ids = set()
 
             for doc in documents:
-                doc_token = doc["token"]
-                current_doc_tokens.add(doc_token)
-                doc_update_time = doc["meta"].get("update_time")
+                doc_id = doc["id"]
+                current_doc_ids.add(doc_id)
+                doc_date = doc["metadata"].get("date", 0)
                 
                 # 增量同步：检查是否需要更新
-                if incremental and doc_token in existing_docs:
-                    existing_update_time = existing_docs[doc_token].get("update_time")
-                    # 比较更新时间
-                    cmp_result = compare_update_time(doc_update_time, existing_update_time)
-                    if cmp_result <= 0:  # 文档未更新或时间相同
+                if incremental and doc_id in existing_docs:
+                    existing_date = existing_docs[doc_id].get("date", 0)
+                    # 比较日期（文件修改时间）
+                    if doc_date <= existing_date:
                         skipped_count += 1
-                        log.debug(f"跳过未更新的文档: {doc['meta'].get('title', '未知')} (更新时间: {doc_update_time})")
+                        log.debug(f"跳过未更新的文章: {doc['metadata'].get('title', '未知')}")
                         continue
                     updated_count += 1
-                    log.debug(f"文档已更新: {doc['meta'].get('title', '未知')} (旧: {existing_update_time}, 新: {doc_update_time})")
+                    log.debug(f"文章已更新: {doc['metadata'].get('title', '未知')}")
                 else:
                     new_count += 1
 
                 doc_data.append({
-                    "id": doc_token,
+                    "id": doc_id,
                     "content": doc["content"],
                     "metadata": {
-                        "title": doc["meta"].get("title", "未知标题"),
-                        "url": doc["meta"].get("url", ""),
-                        "space_id": space_id,
-                        "document_id": doc["meta"].get("document_id", ""),
-                        "update_time": doc_update_time,  # 添加更新时间
+                        **doc["metadata"],
+                        "source": "blog",
                     },
                 })
 
             # 删除已不存在的文档（增量同步时）
             deleted_count = 0
             if incremental and existing_docs:
-                deleted_tokens = set(existing_docs.keys()) - current_doc_tokens
-                if deleted_tokens:
-                    log.info(f"发现 {len(deleted_tokens)} 个已删除的文档，准备清理...")
-                    for deleted_token in deleted_tokens:
-                        # 删除该文档的所有chunk（chunk_id格式：{token}_chunk_{idx}）
+                deleted_ids = set(existing_docs.keys()) - current_doc_ids
+                if deleted_ids:
+                    log.info(f"发现 {len(deleted_ids)} 个已删除的文章，准备清理...")
+                    for deleted_id in deleted_ids:
                         try:
-                            # 查询该文档的所有chunk
+                            # 查询该文章的所有chunk
                             all_docs = self.rag_engine.vector_store._collection.get(
-                                where={"space_id": space_id}
+                                where={"source": "blog"}
                             )
                             chunk_ids_to_delete = [
                                 doc_id for doc_id in all_docs.get("ids", [])
-                                if doc_id.startswith(f"{deleted_token}_chunk_") or doc_id == deleted_token
+                                if doc_id.startswith(f"{deleted_id}_chunk_") or doc_id == deleted_id
                             ]
                             if chunk_ids_to_delete:
                                 self.rag_engine.vector_store.delete(ids=chunk_ids_to_delete)
                                 deleted_count += 1
-                                log.info(f"已删除文档: {deleted_token}")
+                                log.info(f"已删除文章: {deleted_id}")
                         except Exception as e:
-                            log.warning(f"删除文档失败 {deleted_token}: {e}")
+                            log.warning(f"删除文章失败 {deleted_id}: {e}")
 
             # 如果有需要同步的文档，先删除旧版本再索引新版本
             if doc_data:
                 # 先删除需要更新的文档的旧版本
                 if incremental:
-                    tokens_to_update = {doc["id"] for doc in doc_data}
-                    for token in tokens_to_update:
+                    ids_to_update = {doc["id"] for doc in doc_data}
+                    for doc_id in ids_to_update:
                         try:
                             all_docs = self.rag_engine.vector_store._collection.get(
-                                where={"space_id": space_id}
+                                where={"source": "blog"}
                             )
                             chunk_ids_to_delete = [
-                                doc_id for doc_id in all_docs.get("ids", [])
-                                if doc_id.startswith(f"{token}_chunk_") or doc_id == token
+                                chunk_id for chunk_id in all_docs.get("ids", [])
+                                if chunk_id.startswith(f"{doc_id}_chunk_") or chunk_id == doc_id
                             ]
                             if chunk_ids_to_delete:
                                 self.rag_engine.vector_store.delete(ids=chunk_ids_to_delete)
                         except Exception as e:
-                            log.warning(f"删除旧版本失败 {token}: {e}")
+                            log.warning(f"删除旧版本失败 {doc_id}: {e}")
 
                 # 索引文档
                 indexed_count = self.rag_engine.index_documents(doc_data)
             else:
                 indexed_count = 0
-                log.info("没有需要同步的文档")
+                log.info("没有需要同步的文章")
 
             return {
                 "success": True,
@@ -316,18 +297,15 @@ class KnowledgeBaseService:
                 self._web_search_service = None
         return self._web_search_service
 
-    def ask(self, question: str, use_realtime_search: bool = True, space_id: Optional[str] = None, use_web_search: bool = False) -> Dict[str, Any]:
+    def ask(self, question: str, space_id: Optional[str] = None, use_web_search: bool = False) -> Dict[str, Any]:
         """
         回答问题。
         
-        支持两种模式：
-        1. 实时搜索模式（默认）：直接使用飞书API搜索，无需先同步文档
-        2. 向量搜索模式：使用本地向量存储进行语义搜索（需要先同步文档）
+        使用向量搜索模式：使用本地向量存储进行语义搜索（需要先同步文档）
 
         Args:
             question: 用户问题
-            use_realtime_search: 是否使用实时搜索模式（默认True）
-            space_id: 指定搜索的知识库空间ID，如果不提供则搜索所有空间
+            space_id: 指定搜索的博客分类，如果不提供则搜索所有文章
             use_web_search: 是否启用网络搜索（默认False）。当知识库结果不理想时，会使用网络搜索补充
 
         Returns:
@@ -341,44 +319,72 @@ class KnowledgeBaseService:
                 and collection_info.get("info", {}).get("count", 0) > 0
             )
             
-            # 如果向量存储为空，自动使用实时搜索模式
             if not has_local_docs:
-                log.info("向量存储为空，使用实时搜索模式")
-                use_realtime_search = True
+                return {
+                    "success": False,
+                    "answer": "向量数据库中还没有博客文章，请先同步博客文章。\n\n提示：博客文章会在 `hexo generate` 时自动同步，或运行 `npm run sync-blog` 手动同步。",
+                    "sources": [],
+                    "suggest_web_search": True,
+                    "max_similarity": 0.0,
+                }
             
-            if use_realtime_search:
-                kb_result = self._ask_with_realtime_search(question, space_id=space_id)
-                
-                # 计算最高相似度，用于判断是否需要网络搜索
-                sources = kb_result.get("sources", [])
-                max_similarity = max([s.get("similarity", 0) for s in sources]) if sources else 0.0
-                
-                # 判断是否建议使用网络搜索
-                suggest_web_search = self._should_use_web_search(question, kb_result)
-                
-                # 如果启用了网络搜索，且知识库结果不理想，尝试网络搜索
-                if use_web_search and suggest_web_search:
-                    log.info("🌐 知识库结果不理想，尝试使用网络搜索补充...")
-                    web_result = self._search_web_and_merge(question, kb_result)
-                    return web_result
-                
-                # 如果未启用网络搜索，但建议使用，在结果中添加建议信息
-                if not use_web_search:
-                    kb_result["suggest_web_search"] = suggest_web_search
-                    kb_result["max_similarity"] = max_similarity
-                    if suggest_web_search:
-                        log.info(f"💡 建议使用网络搜索（最高相似度: {max_similarity:.3f}）")
-                
-                return kb_result
-            else:
-                # 使用向量搜索模式（暂不支持指定space_id，搜索所有文档）
-                if space_id:
-                    log.warning("向量搜索模式暂不支持指定知识库，将搜索所有文档")
+            # 使用向量搜索模式
+            # 注意：目前向量搜索不支持按分类过滤，space_id 参数暂时忽略
+            if space_id:
+                log.warning(f"向量搜索暂不支持按分类过滤，将搜索所有文章（忽略分类: {space_id}）")
             result = self.rag_engine.qa(question)
+            
+            # 从RAG结果中获取相似度信息（RAG引擎已经计算好了）
+            sources = result.get("sources", [])
+            max_similarity = result.get("max_similarity", 0.0)  # 使用RAG引擎计算的max_similarity
+            avg_similarity = result.get("avg_similarity", 0.0)  # 使用RAG引擎计算的avg_similarity
+            
+            # 如果没有从RAG结果中获取到，则从sources计算
+            if max_similarity == 0.0 and sources:
+                max_similarity = max([s.get("similarity", 0) for s in sources])
+            
+            log.info(f"问答结果 - 最高相似度: {max_similarity:.3f}, 平均相似度: {avg_similarity:.3f}, 来源数: {len(sources)}")
+            
+            # 构建用于判断网络搜索的result字典（确保包含所有必要字段）
+            kb_result_for_search = {
+                "success": len(sources) > 0,  # 有来源就认为成功
+                "sources": sources,
+                "answer": result.get("answer", ""),
+                "max_similarity": max_similarity,
+            }
+            
+            # 判断是否建议使用网络搜索
+            suggest_web_search = self._should_use_web_search(question, kb_result_for_search)
+            
+            # 如果启用了网络搜索，且知识库结果不理想，尝试网络搜索
+            if use_web_search and suggest_web_search:
+                log.info("🌐 知识库结果不理想，尝试使用网络搜索补充...")
+                web_result = self._search_web_and_merge(question, result)
+                return web_result
+            
+            # 如果未启用网络搜索，但建议使用，在结果中添加建议信息
+            if not use_web_search:
+                result["suggest_web_search"] = suggest_web_search
+                result["max_similarity"] = max_similarity
+                if suggest_web_search:
+                    log.info(f"💡 建议使用网络搜索（最高相似度: {max_similarity:.3f}）")
+            
+            # 检查答案质量：如果答案包含否定性表述但相似度较高，记录警告
+            answer = result.get("answer", "")
+            negative_keywords = ["没有找到", "未找到", "不相关", "无法找到", "没有相关信息"]
+            has_negative = any(keyword in answer for keyword in negative_keywords)
+            
+            # 如果相似度较高（>=0.7）但答案包含否定性表述，记录警告
+            if max_similarity >= 0.7 and has_negative:
+                log.warning(f"答案包含否定性表述，但文档相似度较高({max_similarity:.3f})，可能存在Prompt理解问题")
+            
             return {
                 "success": True,
                 "answer": result["answer"],
                 "sources": result["sources"],
+                "suggest_web_search": result.get("suggest_web_search", False),
+                "max_similarity": max_similarity,
+                "avg_similarity": avg_similarity,
             }
 
         except Exception as e:
@@ -391,50 +397,25 @@ class KnowledgeBaseService:
     
     def get_wiki_spaces(self) -> Dict[str, Any]:
         """
-        获取所有知识库空间列表。
+        获取博客分类列表（用于兼容 get_wiki_spaces API）。
         
         Returns:
-            知识库空间列表
+            分类列表
         """
         try:
-            spaces = self.document_loader.load_wiki_spaces()
-            space_list = []
-            for space in spaces:
-                space_list.append({
-                    "space_id": space.get("space_id", ""),
-                    "name": space.get("name", "未知"),
-                    "description": space.get("description", ""),
-                })
+            categories = self.document_loader.get_blog_categories()
             
             return {
                 "success": True,
-                "spaces": space_list,
-                "message": f"找到 {len(space_list)} 个知识库空间",
+                "spaces": categories,
+                "message": f"找到 {len(categories)} 个博客分类",
             }
         except Exception as e:
-            log.error(f"获取知识库空间列表失败: {e}")
-            error_msg = str(e)
-            # 检查是否是权限错误（包括各种权限错误码）
-            is_auth_error = (
-                "99991672" in error_msg or 
-                "99991663" in error_msg or 
-                "99991664" in error_msg or 
-                "99991679" in error_msg or
-                "权限" in error_msg or 
-                "Access denied" in error_msg or
-                "unauthorized" in error_msg.lower() or
-                "forbidden" in error_msg.lower()
-            )
-            if is_auth_error:
-                return {
-                    "success": False,
-                    "spaces": [],
-                    "message": f"权限不足: {error_msg}。请先进行飞书授权。",
-                }
+            log.error(f"获取博客分类列表失败: {e}")
             return {
                 "success": False,
                 "spaces": [],
-                "message": f"获取知识库空间列表失败: {error_msg}",
+                "message": f"获取博客分类列表失败: {str(e)}",
             }
     
     def _save_query_result(self, question: str, step: str, data: Dict[str, Any], query_timestamp: Optional[str] = None):
@@ -471,893 +452,6 @@ class KnowledgeBaseService:
         except Exception as e:
             log.warning(f"保存查询结果失败: {e}")
             return None
-    
-    def _ask_with_realtime_search(self, question: str, space_id: Optional[str] = None) -> Dict[str, Any]:
-        """
-        使用实时搜索模式回答问题（直接使用飞书API搜索，无需同步文档）。
-        
-        优化策略：
-        1. 提取关键词进行多轮搜索
-        2. 使用embedding对搜索结果进行重排序
-        3. 智能提取文档相关片段
-        4. 并行搜索多个空间
-        
-        Args:
-            question: 用户问题
-            
-        Returns:
-            答案和引用来源
-        """
-        try:
-            from infrastructure.llm.service import LLMService
-            from infrastructure.embedding.service import EmbeddingService
-            import re
-            
-            log.info("="*80)
-            log.info(f"🔍 使用实时搜索模式处理问题: {question}")
-            log.info("="*80)
-            
-            # 生成查询时间戳（所有步骤使用同一个时间戳）
-            query_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            
-            # 保存问题
-            self._save_query_result(question, "question", {"question": question, "space_id": space_id}, query_timestamp)
-            
-            # 获取知识空间列表
-            if space_id:
-                # 如果指定了space_id，只搜索该空间
-                log.info(f"指定搜索知识库空间: {space_id}")
-                # 先获取所有空间以验证space_id是否存在
-                all_spaces = self.document_loader.load_wiki_spaces()
-                spaces = [s for s in all_spaces if s.get("space_id") == space_id]
-                if not spaces:
-                    return {
-                        "success": False,
-                        "answer": f"未找到指定的知识库空间（ID: {space_id}），请检查空间ID是否正确",
-                        "sources": [],
-                    }
-                # 找到匹配的空间，记录空间名称
-                matched_space = spaces[0]
-                log.info(f"找到指定的知识库空间: {matched_space.get('name', '未知')} ({space_id})")
-            else:
-                # 如果没有指定space_id，搜索所有空间
-                spaces = self.document_loader.load_wiki_spaces()
-                if not spaces:
-                    return {
-                        "success": False,
-                        "answer": "未找到知识库空间，请检查权限配置",
-                        "sources": [],
-                    }
-                log.info(f"将搜索所有 {len(spaces)} 个知识库空间")
-            
-            # 【问题类型识别】检测问题类型
-            question_type_info = self._detect_question_type(question)
-            question_type = question_type_info.get("type", "content_qa")
-            type_confidence = question_type_info.get("confidence", 0.5)
-            subtype = question_type_info.get("subtype", "normal")
-            
-            log.info(f"📋 问题类型识别:")
-            log.info(f"  类型: {question_type} ({subtype})")
-            log.info(f"  置信度: {type_confidence:.2f}")
-            
-            # 【AI分析问题】使用LLM分析问题并提取搜索关键词和策略
-            search_strategy = self._analyze_question_with_ai(question)
-            keywords = search_strategy.get("keywords", [])
-            search_queries = search_strategy.get("search_queries", [question])
-            related_concepts = search_strategy.get("related_concepts", [])
-            
-            # 如果是文档列表查询，优先使用检测到的关键词
-            if question_type == "document_list" and question_type_info.get("keywords"):
-                keywords = list(set(keywords + question_type_info["keywords"]))
-            
-            log.info(f"📊 AI分析结果:")
-            log.info(f"  关键词: {keywords}")
-            log.info(f"  搜索查询: {search_queries}")
-            log.info(f"  相关概念: {related_concepts}")
-            
-            # 保存AI分析结果
-            self._save_query_result(question, "ai_analysis", {
-                "keywords": keywords,
-                "search_queries": search_queries,
-                "related_concepts": related_concepts
-            }, query_timestamp)
-            
-            # 优化搜索查询：去除疑问词，提取核心关键词
-            # 飞书搜索API不支持包含疑问词的完整问题，需要提取关键词
-            import re
-            def clean_query(query: str) -> str:
-                """清理查询词，去除疑问词和标点"""
-                # 去除常见的疑问词
-                question_words = ['什么', '什么是', '是什么', '如何', '怎么', '为什么', '哪个', '哪些', '吗', '呢', '？', '?']
-                cleaned = query
-                for word in question_words:
-                    cleaned = cleaned.replace(word, ' ')
-                # 去除多余空格和标点
-                cleaned = re.sub(r'[^\w\s\u4e00-\u9fff]', ' ', cleaned)
-                cleaned = ' '.join(cleaned.split())
-                return cleaned.strip()
-            
-            # 构建搜索查询列表：优先使用关键词，然后使用清理后的查询
-            final_search_queries = []
-            
-            # 1. 使用提取的关键词（最重要）
-            if keywords:
-                # 使用前2个最重要的关键词
-                for kw in keywords[:2]:
-                    if kw and len(kw) >= 2:
-                        final_search_queries.append(kw)
-            
-            # 2. 使用清理后的原始问题（去除疑问词）
-            cleaned_question = clean_query(question)
-            if cleaned_question and cleaned_question not in final_search_queries:
-                final_search_queries.append(cleaned_question)
-            
-            # 3. 如果AI生成的搜索查询中有好的关键词，也加入
-            for query in search_queries[:2]:
-                cleaned = clean_query(query)
-                if cleaned and cleaned not in final_search_queries and len(cleaned) >= 2:
-                    final_search_queries.append(cleaned)
-            
-            # 去重并限制数量
-            seen = set()
-            unique_queries = []
-            for q in final_search_queries:
-                if q.lower() not in seen:
-                    seen.add(q.lower())
-                    unique_queries.append(q)
-            
-            search_queries = unique_queries[:3]  # 最多3个查询
-            log.info(f"🔍 优化后的搜索查询（去除疑问词）: {search_queries}")
-            
-            # 保存优化后的搜索查询
-            self._save_query_result(question, "search_queries", {
-                "final_queries": search_queries,
-                "original_queries": search_strategy.get("search_queries", [])
-            }, query_timestamp)
-            
-            # 在所有空间中搜索（使用AI提取的搜索策略）
-            all_results = []
-            client = self.document_loader.client
-            
-            import time
-            
-            # 如果指定了space_id，只搜索该空间；否则限制搜索的空间数量
-            if space_id:
-                # 指定了space_id，只搜索该空间（spaces已经过滤过了）
-                spaces_to_search = spaces
-                log.info(f"将搜索指定的知识库空间: {spaces[0].get('name', '未知')}")
-            else:
-                # 限制搜索的空间数量，优先搜索前3个空间
-                spaces_to_search = spaces[:3] if len(spaces) > 3 else spaces
-                if len(spaces) > 3:
-                    log.info(f"优化：限制搜索空间数量为 {len(spaces_to_search)} 个，避免频率限制")
-            
-            for space_idx, space_item in enumerate(spaces_to_search):
-                current_space_id = space_item.get("space_id", "")
-                space_name = space_item.get("name", "未知")
-                
-                if not current_space_id:
-                    continue
-                
-                # 每个空间之间添加延迟（第一个空间不需要延迟）
-                if space_idx > 0:
-                    time.sleep(1.0)  # 每个空间之间延迟1秒
-                
-                # 尝试多个搜索词（添加延迟以避免频率限制）
-                for idx, query in enumerate(search_queries):
-                    try:
-                        # 每个查询之间添加延迟（第一个查询不需要延迟）
-                        if idx > 0:
-                            time.sleep(1.0)  # 每个查询间隔1秒（增加延迟时间）
-                        
-                        log.info(f"搜索知识库: {space_name} - 查询: {query}")
-                        search_result = client.search_wiki_nodes(
-                            space_id=current_space_id,
-                            query=query,
-                            limit=20  # 增加搜索数量
-                        )
-                        
-                        if search_result.get("code") == 0:
-                            items = search_result.get("data", {}).get("items", [])
-                            log.info(f"在知识库 {space_name} 中找到 {len(items)} 个文档（查询: {query}）")
-                            for item in items:
-                                # 打印第一个item的所有字段以便调试
-                                if len(all_results) == 0:
-                                    import json
-                                    log.info(f"📋 搜索结果原始数据结构（第一个item）: {json.dumps(item, indent=2, ensure_ascii=False)}")
-                                
-                                obj_token = item.get("obj_token", "")
-                                # 飞书搜索API返回的字段可能是 node_token（字符串token），而不是 node_id（数字ID）
-                                # 检查所有可能的字段名
-                                node_token = item.get("node_token", "") or item.get("node_id", "")
-                                # 如果 node_token 是字符串，说明它就是我们要用的token
-                                # 如果 node_id 是数字，说明它是真正的数字ID
-                                node_id = item.get("node_id", "")
-                                # 如果 node_id 是字符串token，说明字段映射有问题，应该使用 node_token
-                                if node_id and not str(node_id).isdigit():
-                                    # node_id 是字符串token，说明它实际上是 node_token
-                                    node_token = node_id
-                                    node_id = ""  # 清空，因为没有真正的数字ID
-                                
-                                title = item.get("title", "未知标题")
-                                
-                                # 去重（基于obj_token，如果没有则使用node_token）
-                                unique_key = obj_token or node_token or node_id
-                                if not any(r.get("obj_token") == obj_token or 
-                                          r.get("node_id") == node_id or 
-                                          r.get("node_token") == node_token 
-                                          for r in all_results):
-                                    # 从搜索结果中提取URL（搜索API返回的结果包含url字段）
-                                    url = item.get("url", "")
-                                    all_results.append({
-                                        "title": title,
-                                        "obj_token": obj_token,
-                                        "node_id": node_id,  # 保存node_id（数字ID，如果有）
-                                        "node_token": node_token,  # 保存node_token（字符串token，用于wiki API）
-                                        "space_id": current_space_id,
-                                        "space_name": space_name,
-                                        "search_query": query,  # 记录匹配的搜索词
-                                        "url": url,  # 保存URL（搜索API返回的）
-                                    })
-                    except Exception as e:
-                        error_str = str(e)
-                        log.warning(f"搜索知识空间 {space_name} (查询: {query}) 失败: {e}")
-                        
-                        # 如果是频率限制错误，等待更长时间并跳过后续查询
-                        if "frequency limit" in error_str.lower() or "99991400" in error_str:
-                            log.warning("检测到频率限制，等待5秒后跳过当前空间...")
-                            time.sleep(5)  # 等待5秒
-                            break  # 跳过当前空间的其他查询
-                        continue
-                    
-                    # 如果已经找到足够的结果，可以提前停止
-                    if len(all_results) >= 20:
-                        log.info(f"已找到足够的结果（{len(all_results)}个），提前停止搜索")
-                        break
-                
-                # 如果已经找到足够的结果，提前停止搜索所有空间
-                if len(all_results) >= 20:
-                    break
-            
-            if not all_results:
-                return {
-                    "success": True,
-                    "answer": "抱歉，未找到相关文档。建议：\n1. 尝试使用不同的关键词\n2. 或者先同步文档以获得更好的语义搜索效果",
-                    "sources": [],
-                }
-            
-            log.info(f"📚 找到 {len(all_results)} 个候选文档，开始加载内容并重排序...")
-            
-            # 保存搜索结果
-            self._save_query_result(question, "search_results", {
-                "total_count": len(all_results),
-                "documents": [
-                    {
-                        "title": r.get("title", "未知"),
-                        "url": r.get("url", ""),
-                        "space_name": r.get("space_name", ""),
-                        "search_query": r.get("search_query", "")
-                    }
-                    for r in all_results[:20]  # 只保存前20个
-                ]
-            }, query_timestamp)
-            
-            # 加载文档内容并计算相似度
-            doc_results = []
-            import time
-            
-            # 从搜索结果中提取URL（如果有）
-            log.info(f"📋 准备加载 {len(all_results)} 个文档的内容（限制加载前15个）...")
-            for idx, result in enumerate(all_results[:15]):  # 限制加载数量以提高性能
-                log.info(f"📋 [{idx+1}/{min(len(all_results), 15)}] 处理文档: {result.get('title', '未知标题')}")
-                try:
-                    # 添加延迟以避免频率限制（每3个文档间隔0.5秒）
-                    if idx > 0 and idx % 3 == 0:
-                        time.sleep(0.5)
-                    
-                    # 尝试获取文档内容（知识库搜索返回的都是wiki节点）
-                    doc_content = None
-                    doc_meta = None
-                    title = result.get("title", "未知标题")
-                    url = result.get("url", "")  # 搜索返回的结果包含URL
-                    node_id = result.get("node_id", "")
-                    
-                    # 如果搜索结果中没有URL，尝试从node_id构建
-                    if not url and node_id:
-                        # 从node_id构建wiki URL（格式：https://xxx.feishu.cn/wiki/{node_id}）
-                        # 但我们需要知道域名，所以先尝试获取
-                        pass  # 暂时跳过，使用搜索结果中的URL
-                    
-                    # 尝试获取文档内容（优化：优先使用搜索结果中的obj_token和obj_type，避免不必要的wiki API调用）
-                    doc_content = None
-                    try:
-                        node_id = result.get("node_id", "")
-                        node_token = result.get("node_token", "")
-                        obj_token = result.get("obj_token", "")
-                        obj_type = result.get("obj_type", "")
-                        
-                        # 打印搜索结果的所有字段以便调试
-                        import json
-                        result_keys = list(result.keys())
-                        log.info(f"📋 搜索结果字段: {result_keys}")
-                        log.info(f"📋 关键字段值: node_id={node_id[:30] if node_id else 'None'}... (类型: {type(node_id).__name__}), node_token={node_token[:30] if node_token else 'None'}..., obj_token={obj_token[:30] if obj_token else 'None'}..., obj_type={obj_type}")
-                        
-                        # 优化策略：如果搜索结果中已经有obj_token和obj_type，直接使用，避免不必要的wiki API调用
-                        if obj_token:
-                            # 如果obj_type是docx（类型8），直接使用docx API，跳过wiki API
-                            if obj_type == "docx" or obj_type == 8:
-                                log.info(f"📋 检测到obj_type={obj_type}（docx），直接使用obj_token调用docx API，跳过wiki API")
-                                doc_content = self.document_loader.load_document_content(obj_token, is_wiki_node=False)
-                                if doc_content and len(doc_content.strip()) >= 10:
-                                    log.info(f"✅ 直接使用obj_token获取docx文档内容成功，长度: {len(doc_content)} 字符")
-                                else:
-                                    log.warning(f"⚠️ 使用obj_token获取docx文档内容失败（长度: {len(doc_content) if doc_content else 0}）")
-                            else:
-                                # obj_type不是docx，先尝试作为普通文档，失败后再尝试wiki API
-                                log.info(f"📋 检测到obj_type={obj_type}，先尝试作为普通文档获取内容")
-                                doc_content = self.document_loader.load_document_content(obj_token, is_wiki_node=False)
-                                if doc_content and len(doc_content.strip()) >= 10:
-                                    log.info(f"✅ 使用obj_token作为普通文档成功获取内容，长度: {len(doc_content)} 字符")
-                                else:
-                                    log.info(f"📋 obj_token作为普通文档失败，尝试作为wiki节点...")
-                                    doc_content = self.document_loader.load_document_content(obj_token, is_wiki_node=True)
-                                    if doc_content and len(doc_content.strip()) >= 10:
-                                        log.info(f"✅ 使用obj_token作为wiki节点成功获取内容，长度: {len(doc_content)} 字符")
-                                    else:
-                                        log.warning(f"⚠️ 使用obj_token获取文档内容失败（长度: {len(doc_content) if doc_content else 0}）")
-                        
-                        # 如果没有obj_token，或者使用obj_token失败，才尝试使用wiki API
-                        if not doc_content or len(doc_content.strip()) < 10:
-                            # wiki API需要使用node_token（字符串token），而不是node_id（数字ID）
-                            # 根据飞书API文档，wiki/v2/nodes/{node_token} 需要使用node_token（字符串）
-                            # 如果node_id是字符串token，说明字段映射有问题，应该使用node_token
-                            if node_id and not str(node_id).isdigit():
-                                # node_id 是字符串token，说明它实际上是 node_token
-                                log.debug(f"node_id字段包含字符串token，使用node_token")
-                                node_token = node_id
-                                node_id = ""
-                            
-                            # 优先使用node_token（字符串token），如果没有则使用node_id（数字ID）
-                            wiki_node_token = node_token or node_id
-                            
-                            if wiki_node_token:
-                                log.info(f"📋 尝试使用wiki API获取节点信息: {wiki_node_token[:30]}...")
-                                try:
-                                    # 先获取wiki节点信息，可能包含obj_token
-                                    wiki_result = self.document_loader.client.get_wiki_node_content(wiki_node_token)
-                                    if wiki_result.get("code") == 0:
-                                        log.info(f"✅ wiki API获取节点信息成功")
-                                        wiki_data = wiki_result.get("data", {})
-                                        wiki_node = wiki_data.get("node", {})
-                                        if wiki_node:
-                                            # 从wiki节点中提取obj_token（文档的实际token）
-                                            actual_obj_token = wiki_node.get("obj_token", "")
-                                            actual_obj_type = wiki_node.get("obj_type", "")
-                                            
-                                            log.info(f"📋 从wiki节点提取信息 - obj_token: {actual_obj_token[:30] if actual_obj_token else 'None'}..., obj_type: {actual_obj_type}")
-                                            
-                                            if actual_obj_token:
-                                                log.info(f"📋 使用从wiki节点获取的obj_token获取文档内容: {actual_obj_token[:30]}...")
-                                                # 使用实际的obj_token获取文档内容
-                                                # 如果obj_type是docx，说明obj_token是文档token，不是wiki节点
-                                                if actual_obj_type == "docx" or actual_obj_type == 8:
-                                                    log.info(f"📋 obj_type是docx，使用docs/docx API")
-                                                    doc_content = self.document_loader.load_document_content(actual_obj_token, is_wiki_node=False)
-                                                else:
-                                                    log.info(f"📋 obj_type是{actual_obj_type}，先尝试wiki API，失败后尝试docs/docx API")
-                                                    doc_content = self.document_loader.load_document_content(actual_obj_token, is_wiki_node=True)
-                                                if doc_content and len(doc_content.strip()) >= 10:
-                                                    log.info(f"✅ 通过wiki API成功获取文档内容，长度: {len(doc_content)} 字符")
-                                                else:
-                                                    log.warning(f"⚠️ 获取文档内容失败或内容为空（长度: {len(doc_content) if doc_content else 0}）")
-                                            else:
-                                                log.info(f"📋 wiki节点没有obj_token，尝试直接加载节点内容")
-                                                # 如果wiki节点直接包含内容，尝试直接加载
-                                                doc_content = self.document_loader.load_document_content(wiki_node_token, is_wiki_node=True)
-                                                if doc_content and len(doc_content.strip()) >= 10:
-                                                    log.info(f"✅ 通过wiki API直接获取节点内容成功，长度: {len(doc_content)} 字符")
-                                                else:
-                                                    log.warning(f"⚠️ 直接加载节点内容失败或内容为空（长度: {len(doc_content) if doc_content else 0}）")
-                                    else:
-                                        error_code = wiki_result.get("code")
-                                        error_msg = wiki_result.get("msg", "")
-                                        log.debug(f"wiki API返回错误: {error_msg} (code: {error_code})")
-                                except Exception as e:
-                                    error_str = str(e)
-                                    if "404" in error_str or "99991679" in error_str:
-                                        log.debug(f"wiki API权限不足或404: {type(e).__name__}: {str(e)[:200]}")
-                                    else:
-                                        log.debug(f"wiki API获取节点信息失败: {type(e).__name__}: {str(e)[:200]}")
-                        if doc_content and len(doc_content.strip()) >= 10:
-                            # 成功获取内容，尝试获取元信息
-                            try:
-                                doc_meta = self.document_loader.load_document_meta(result["obj_token"])
-                                if doc_meta:
-                                    title = doc_meta.get("title", title)
-                                    # 如果元信息中有URL，优先使用
-                                    meta_url = doc_meta.get("url", "")
-                                    if meta_url:
-                                        url = meta_url
-                            except Exception:
-                                # 元信息获取失败不影响，使用搜索结果中的信息
-                                pass
-                    except Exception as e:
-                        # 静默处理，不输出大量错误日志（这些错误是预期的，因为权限不足）
-                        # 只在DEBUG级别记录
-                        log.debug(f"无法获取文档 {title} 的完整内容（权限限制）: {type(e).__name__}")
-                        # 如果无法获取内容，继续处理，至少保留标题和URL
-                    
-                    # 如果无法获取文档内容，但至少保留标题和URL作为来源
-                    if not doc_content or len(doc_content.strip()) < 10:
-                        # 如果没有内容，但至少保留标题和URL
-                        if title and title != "未知标题":
-                            # 使用标题作为内容片段（至少让用户知道找到了相关文档）
-                            log.info(f"⚠️ 文档 {title} 无法获取完整内容，但保留标题和URL")
-                            doc_results.append({
-                                "title": title,
-                                "url": url,
-                                "content": f"文档标题：{title}",
-                                "full_content": "",
-                                "similarity": 0.5,  # 给予中等相似度，因为至少标题匹配
-                                "obj_token": result.get("obj_token", ""),
-                                "has_content": False,  # 标记为没有完整内容
-                            })
-                        else:
-                            log.warning(f"⚠️ 文档标题为空，跳过: obj_token={result.get('obj_token', '')[:30]}...")
-                        continue
-                    
-                    # 提取最相关的文档片段
-                    relevant_chunk = self._extract_relevant_chunk(doc_content, question, keywords)
-                    
-                    # 验证提取的片段是否有效
-                    if not relevant_chunk or not relevant_chunk.strip():
-                        log.warning(f"文档 {title} 提取的相关片段为空，使用原始内容计算相似度")
-                        relevant_chunk = doc_content[:1000] if doc_content else ""  # 使用前1000字符作为回退
-                    
-                    if not relevant_chunk or not relevant_chunk.strip():
-                        log.warning(f"文档 {title} 内容为空，跳过相似度计算")
-                        similarity = 0.0
-                    else:
-                        # 计算相似度（使用embedding）- 使用提取的相关片段计算，而不是原始内容
-                        # 注意：这里使用relevant_chunk而不是doc_content，因为relevant_chunk是提取的最相关部分
-                        similarity = self._calculate_similarity(question, relevant_chunk)
-                        log.debug(f"文档 {title} 相似度: {similarity:.3f} (片段长度: {len(relevant_chunk)})")
-                    
-                    doc_results.append({
-                        "title": title,
-                        "url": url,
-                        "content": relevant_chunk,
-                        "full_content": doc_content,
-                        "similarity": similarity,
-                        "obj_token": result["obj_token"],
-                        "has_content": True,  # 标记为有完整内容
-                    })
-                except Exception as e:
-                    log.warning(f"❌ 处理文档 {result.get('title', '未知')} 失败: {e}")
-                    # 即使处理失败，也尝试保留标题和URL
-                    title = result.get("title", "未知标题")
-                    url = result.get("url", "")
-                    if title and title != "未知标题":
-                        log.info(f"⚠️ 文档 {title} 处理失败，但保留标题和URL")
-                        doc_results.append({
-                            "title": title,
-                            "url": url,
-                            "content": f"文档标题：{title}",
-                            "full_content": "",
-                            "similarity": 0.3,
-                            "obj_token": result.get("obj_token", ""),
-                            "has_content": False,
-                        })
-                    else:
-                        log.warning(f"⚠️ 文档处理失败且标题为空，完全跳过: obj_token={result.get('obj_token', '')[:30]}...")
-                    continue
-            
-            log.info(f"📊 内容加载完成：共处理 {len(doc_results)} 个文档结果")
-            
-            # 按相似度排序（优先有完整内容的文档）
-            doc_results.sort(key=lambda x: (x.get("has_content", False), x["similarity"]), reverse=True)
-            
-            # 分离有内容和无内容的文档
-            results_with_content = [r for r in doc_results if r.get("has_content", True)]
-            results_without_content = [r for r in doc_results if not r.get("has_content", True)]
-            
-            # 根据问题类型设置不同的相似度阈值
-            if question_type == "document_list":
-                # 文档列表查询：使用更低的阈值，返回更多文档
-                MIN_SIMILARITY_THRESHOLD = 0.2
-                MAX_RESULTS = 30  # 返回更多文档
-                log.info(f"📋 文档列表查询模式：阈值={MIN_SIMILARITY_THRESHOLD}, 最大结果数={MAX_RESULTS}")
-            else:
-                # 内容问答：使用较高的阈值，确保相关性
-                MIN_SIMILARITY_THRESHOLD = 0.5
-                MAX_RESULTS = 5  # 只返回最相关的几个文档
-                log.info(f"💬 内容问答模式：阈值={MIN_SIMILARITY_THRESHOLD}, 最大结果数={MAX_RESULTS}")
-            
-            filtered_results = [r for r in results_with_content if r["similarity"] >= MIN_SIMILARITY_THRESHOLD]
-            
-            # 记录相似度信息用于调试
-            if results_with_content:
-                max_sim = max([r["similarity"] for r in results_with_content])
-                avg_sim = sum([r["similarity"] for r in results_with_content]) / len(results_with_content)
-                log.info(f"📊 文档相似度统计: 最高={max_sim:.3f}, 平均={avg_sim:.3f}, 阈值={MIN_SIMILARITY_THRESHOLD}")
-                log.info(f"✅ 达到阈值（>={MIN_SIMILARITY_THRESHOLD}）的文档数: {len(filtered_results)}/{len(results_with_content)}")
-                
-                # 打印前10个文档的相似度
-                log.info(f"📋 文档相似度列表（前10个）:")
-                for i, doc in enumerate(results_with_content[:10], 1):
-                    sim = doc.get("similarity", 0.0)
-                    status = "✅" if sim >= MIN_SIMILARITY_THRESHOLD else "❌"
-                    log.info(f"   {status} {i}. {doc.get('title', '未知')}: {sim:.3f}")
-            
-            # 保存相似度计算结果
-            max_sim = max([r["similarity"] for r in results_with_content]) if results_with_content else 0.0
-            avg_sim = sum([r["similarity"] for r in results_with_content]) / len(results_with_content) if results_with_content else 0.0
-            self._save_query_result(question, "similarity_calculation", {
-                "total_docs": len(doc_results),
-                "with_content": len(results_with_content),
-                "without_content": len(results_without_content),
-                "filtered_count": len(filtered_results),
-                "threshold": MIN_SIMILARITY_THRESHOLD,
-                "max_similarity": max_sim,
-                "avg_similarity": avg_sim,
-                "documents": [
-                    {
-                        "title": r.get("title", "未知"),
-                        "similarity": r.get("similarity", 0.0),
-                        "has_content": r.get("has_content", False),
-                        "url": r.get("url", "")
-                    }
-                    for r in results_with_content[:15]  # 保存前15个
-                ]
-            }, query_timestamp)
-            
-            # 如果是文档列表查询，即使没有达到阈值也返回文档列表
-            if question_type == "document_list":
-                # 文档列表查询：合并有内容和无内容的文档
-                # 对于无内容的文档，给予默认相似度0.3（因为至少标题匹配）
-                all_documents = []
-                
-                # 添加有内容的文档（按相似度排序）
-                for doc in sorted(results_with_content, key=lambda x: x["similarity"], reverse=True):
-                    all_documents.append(doc)
-                
-                # 添加无内容的文档（至少显示标题和URL）
-                for doc in results_without_content:
-                    # 确保无内容文档有相似度值（如果没有则使用默认值0.3）
-                    if "similarity" not in doc or doc.get("similarity", 0) == 0:
-                        doc["similarity"] = 0.3
-                    all_documents.append(doc)
-                
-                # 限制返回数量
-                document_list_results = all_documents[:MAX_RESULTS]
-                
-                log.info(f"📋 文档列表查询：找到 {len(document_list_results)} 个文档（有内容: {len(results_with_content)}, 无内容: {len(results_without_content)}）")
-                
-                if document_list_results:
-                    # 格式化文档列表
-                    answer_text = self._format_document_list(document_list_results, question, subtype)
-                    
-                    return {
-                        "success": True,
-                        "answer": answer_text,
-                        "sources": [{"title": r["title"], "url": r["url"], "similarity": r.get("similarity", 0.3)} 
-                                   for r in document_list_results],
-                        "question_type": "document_list",
-                        "max_similarity": max([r.get("similarity", 0.3) for r in document_list_results]) if document_list_results else 0.0,
-                    }
-                else:
-                    # 没有找到文档
-                    return {
-                        "success": False,
-                        "answer": "未找到相关文档。\n\n建议：\n1. 尝试使用不同的关键词重新搜索\n2. 或者检查知识库中是否有相关文档",
-                        "sources": [],
-                        "question_type": "document_list",
-                        "max_similarity": 0.0,
-                    }
-            
-            # 🔴 内容问答模式：如果没有达到阈值的文档，明确拒绝，不再强制返回
-            if not filtered_results:
-                log.warning(f"未找到相似度>={MIN_SIMILARITY_THRESHOLD}的相关文档")
-                if results_with_content:
-                    # 记录最高相似度，帮助用户理解为什么拒绝
-                    max_sim = max([r["similarity"] for r in results_with_content])
-                    top_titles = [r["title"] for r in sorted(results_with_content, key=lambda x: x["similarity"], reverse=True)[:3]]
-            
-                    # 判断是否建议使用网络搜索
-                    suggest_web = self._should_use_web_search(question, {
-                        "success": False,
-                        "sources": [{"similarity": max_sim}]
-                    })
-                    
-                    answer_text = (
-                        f"抱歉，未找到与您的问题高度相关的文档。\n\n"
-                        f"找到的文档最高相似度为 {max_sim:.3f}，低于阈值 {MIN_SIMILARITY_THRESHOLD}。\n\n"
-                        f"找到的相关文档：\n" + "\n".join([f"- {title}" for title in top_titles]) + "\n\n"
-                    )
-                    
-                    if suggest_web:
-                        answer_text += (
-                            f"💡 建议：\n"
-                            f"1. 可以尝试使用网络搜索获取更多信息\n"
-                            f"2. 或者尝试使用不同的关键词重新提问\n"
-                            f"3. 或者检查知识库中是否有相关文档"
-                        )
-                    else:
-                        answer_text += (
-                            f"建议：\n"
-                            f"1. 尝试使用不同的关键词重新提问\n"
-                            f"2. 或者检查知识库中是否有相关文档"
-                        )
-                    
-                    return {
-                        "success": False,
-                        "answer": answer_text,
-                        "sources": [{"title": r["title"], "url": r["url"], "similarity": r["similarity"]} 
-                                   for r in sorted(results_with_content, key=lambda x: x["similarity"], reverse=True)[:3]],
-                        "suggest_web_search": suggest_web,
-                        "max_similarity": max_sim,
-                        "question_type": "content_qa",
-                    }
-                else:
-                    # 如果没有有内容的文档，也不使用无内容的文档（避免误导）
-                    # 判断是否建议使用网络搜索
-                    suggest_web = self._should_use_web_search(question, {
-                        "success": False,
-                        "sources": []
-                    })
-                    
-                    answer_text = (
-                        "抱歉，未找到与您的问题相关的文档。\n\n"
-                    )
-                    
-                    if suggest_web:
-                        answer_text += (
-                            "💡 建议：\n"
-                            "1. 可以尝试使用网络搜索获取更多信息\n"
-                            "2. 或者尝试使用不同的关键词重新提问\n"
-                            "3. 或者检查知识库中是否有相关文档"
-                        )
-                    else:
-                        answer_text += (
-                            "建议：\n"
-                            "1. 尝试使用不同的关键词重新提问\n"
-                            "2. 或者检查知识库中是否有相关文档"
-                        )
-                    
-                    return {
-                        "success": False,
-                        "answer": answer_text,
-                        "sources": [],
-                        "suggest_web_search": suggest_web,
-                        "max_similarity": 0.0,
-                    }
-            
-            # 如果没有有内容的文档，也不使用无内容的文档（避免误导）
-            # 移除原来的逻辑：if not filtered_results and results_without_content
-            
-            # 根据问题类型取不同数量的结果
-            top_results = filtered_results[:MAX_RESULTS]
-            
-            # 统计有内容和无内容的文档数量
-            content_count = sum(1 for r in top_results if r.get("has_content", True))
-            title_only_count = len(top_results) - content_count
-            if title_only_count > 0:
-                log.warning(f"找到 {len(top_results)} 个相关文档，其中 {title_only_count} 个无法获取完整内容（可能权限不足）")
-            
-            # 构建上下文（使用相关片段）
-            context_parts = []
-            sources = []
-            has_content_results = []
-            title_only_results = []
-            
-            for result in top_results:
-                # 使用有完整内容的文档构建上下文
-                if result.get("has_content", True):
-                    # 优先使用full_content（完整内容），增加长度限制到8000字符
-                    # 如果完整内容太长（超过8000字符），使用提取的相关片段
-                    full_content = result.get("full_content", "")
-                    extracted_chunk = result.get("content", "")
-                    
-                    if full_content and len(full_content) <= 8000:
-                        # 使用完整内容（如果长度合理）
-                        content_to_use = full_content
-                    elif full_content and len(full_content) > 8000:
-                        # 如果完整内容太长，使用提取的相关片段，但尽量保留更多上下文
-                        # 尝试从完整内容中提取包含相关片段的部分（前后各保留1000字符）
-                        if extracted_chunk:
-                            # 找到提取片段在完整内容中的位置
-                            chunk_start = full_content.find(extracted_chunk[:100])
-                            if chunk_start >= 0:
-                                # 提取片段前后各1000字符
-                                context_start = max(0, chunk_start - 1000)
-                                context_end = min(len(full_content), chunk_start + len(extracted_chunk) + 1000)
-                                content_to_use = full_content[context_start:context_end]
-                            else:
-                                content_to_use = extracted_chunk
-                        else:
-                            content_to_use = full_content[:8000] + "..."
-                    else:
-                        # 没有完整内容，使用提取的片段
-                        content_to_use = extracted_chunk
-                    
-                    # 结构化组织：保留文档标题，清晰分隔
-                    context_parts.append(f"【文档：{result['title']}】\n\n{content_to_use}\n")
-                    has_content_results.append(result)
-                else:
-                    # 即使没有完整内容，也记录标题信息
-                    title_only_results.append(result)
-                
-                # 所有结果都添加到sources（包括只有标题的）
-                sources.append({
-                    "title": result["title"],
-                    "url": result["url"],
-                    "similarity": result["similarity"],
-                })
-            
-            context = "\n\n".join(context_parts)
-            
-            # 如果是文档列表查询模式，且找到了文档，直接返回文档列表
-            if question_type == "document_list" and top_results:
-                log.info(f"📋 文档列表查询模式：返回 {len(top_results)} 个文档")
-                answer_text = self._format_document_list(top_results, question, subtype)
-                return {
-                    "success": True,
-                    "answer": answer_text,
-                    "sources": [{"title": r["title"], "url": r["url"], "similarity": r["similarity"]} 
-                               for r in top_results],
-                    "question_type": "document_list",
-                    "max_similarity": max([r["similarity"] for r in top_results]) if top_results else 0.0,
-                }
-            
-            # 检查是否有文档内容
-            has_document_content = len(has_content_results) > 0
-            
-            # 即使没有完整内容，也尝试使用标题信息生成答案
-            if not has_document_content:
-                log.warning("无法获取文档完整内容，尝试基于文档标题生成答案")
-                
-                # 构建基于标题的上下文
-                title_context_parts = []
-                for result in top_results[:5]:  # 使用前5个结果
-                    title = result.get("title", "未知标题")
-                    url = result.get("url", "")
-                    similarity = result.get("similarity", 0)
-                    search_query = result.get("search_query", "")
-                    
-                    # 构建标题上下文（包含标题、相似度和匹配的搜索词）
-                    title_info = f"【文档：{title}】"
-                    if search_query:
-                        title_info += f"\n匹配的搜索词：{search_query}"
-                    if similarity > 0:
-                        title_info += f"\n相关性：{similarity:.2f}"
-                    if url:
-                        title_info += f"\n链接：{url}"
-                    
-                    title_context_parts.append(title_info)
-                
-                title_context = "\n\n".join(title_context_parts)
-                
-                # 使用LLM基于标题信息生成答案
-                try:
-                    llm_service = LLMService()
-                    prompt = f"""你是一位专业的AI助手。用户提出了一个问题，但受限于权限，我只能获取到相关文档的标题信息，无法获取完整内容。
-
-【用户问题】
-{question}
-
-【提取的关键词】
-{', '.join(keywords) if keywords else '无'}
-
-【相关概念】
-{', '.join(related_concepts) if related_concepts else '无'}
-
-【找到的相关文档（仅标题）】
-{title_context}
-
-【要求】
-1. 基于文档标题，尝试推断这些文档可能包含哪些与问题相关的信息
-2. 如果标题明显与问题相关，可以基于标题进行合理推断并给出答案
-3. 如果标题信息不足以回答问题，请说明"根据文档标题，找到了以下相关文档，但由于权限限制无法获取完整内容"
-4. 列出找到的相关文档标题，并建议用户点击链接查看完整内容
-5. 使用简体中文，语言简洁明了
-
-【答案】
-请基于以上文档标题信息，回答用户问题：
-"""
-                    answer = llm_service.generate(prompt)
-                except Exception as e:
-                    log.warning(f"基于标题生成答案失败: {e}，使用默认提示")
-                    # 回退到简单的提示
-                    title_list = [r["title"] for r in top_results if r.get("title")]
-                    answer = (
-                        f"根据搜索，找到了以下相关文档：\n\n"
-                        + "\n".join([f"{i+1}. {title}" for i, title in enumerate(title_list)])
-                        + "\n\n"
-                        + "⚠️ 注意：由于权限限制，无法获取文档的完整内容。\n"
-                        + "建议：\n"
-                        + "1. 点击上方文档链接查看完整内容\n"
-                        + "2. 或者先同步文档到本地向量库以获得更好的搜索效果"
-                    )
-            else:
-                # 【AI分析搜索结果】先让AI分析搜索结果的相关性和关键信息
-                analysis_result = self._analyze_search_results_with_ai(question, has_content_results, keywords, related_concepts)
-                
-                # 【AI生成答案】使用LLM基于搜索结果和AI分析生成答案
-                llm_service = LLMService()
-                prompt = self._build_answer_prompt(question, context, has_content_results, analysis_result, keywords)
-                
-                answer = llm_service.generate(prompt)
-            
-                # 🔴 新增：验证答案相关性
-                answer_relevance = self._verify_answer_relevance(question, answer, has_content_results)
-                if not answer_relevance.get("is_relevant", True):
-                    log.warning(f"答案相关性验证失败: {answer_relevance.get('reason', '未知原因')}")
-                    # 如果答案不相关，返回提示信息
-                    return {
-                        "success": False,
-                        "answer": (
-                            f"抱歉，根据提供的文档，无法生成与您的问题高度相关的答案。\n\n"
-                            f"找到的相关文档：\n" + "\n".join([f"- {s['title']}" for s in sources[:3]]) + "\n\n"
-                            f"建议：\n"
-                            f"1. 尝试使用不同的关键词重新提问\n"
-                            f"2. 或者检查知识库中是否有更相关的文档"
-                        ),
-                        "sources": sources,
-                        "question_type": "content_qa",
-                    }
-            
-            # 计算最高相似度，判断是否需要建议网络搜索
-            sources_with_similarity = [s for s in sources if s.get("similarity", 0) > 0]
-            max_similarity = max([s.get("similarity", 0) for s in sources_with_similarity]) if sources_with_similarity else 0.0
-            
-            # 判断是否建议使用网络搜索（即使有答案，如果相似度较低，也建议网络搜索）
-            suggest_web = False
-            if max_similarity > 0 and max_similarity < 0.6:
-                # 如果相似度在0.5-0.6之间，判断是否是通用概念问题
-                if self._is_general_concept_question(question):
-                    suggest_web = True
-            
-            result = {
-                "success": True,
-                "answer": answer.strip(),
-                "sources": sources,
-                "suggest_web_search": suggest_web,
-                "max_similarity": max_similarity,
-                "question_type": question_type,
-            }
-            
-            # 保存最终结果并打印
-            log.info("="*80)
-            log.info(f"✅ 问题处理完成")
-            log.info(f"   问题: {question}")
-            log.info(f"   答案长度: {len(answer.strip())} 字符")
-            log.info(f"   引用文档数: {len(sources)}")
-            log.info(f"   最高相似度: {max_similarity:.3f}")
-            if suggest_web:
-                log.info(f"   💡 建议使用网络搜索补充信息")
-            log.info("="*80)
-            
-            self._save_query_result(question, "final_result", {
-                "success": True,
-                "answer_length": len(answer.strip()),
-                "sources_count": len(sources),
-                "max_similarity": max_similarity,
-                "suggest_web_search": suggest_web,
-                "sources": sources[:10]  # 只保存前10个来源
-            }, query_timestamp)
-            
-            return result
-            
-        except Exception as e:
-            log.error(f"实时搜索模式失败: {e}")
-            import traceback
-            traceback.print_exc()
-            return {
-                "success": False,
-                "answer": f"实时搜索失败: {str(e)}",
-                "sources": [],
-            }
-    
     def _detect_question_type(self, question: str) -> Dict[str, Any]:
         """
         检测问题类型：文档列表查询 vs 内容问答
@@ -2243,10 +1337,33 @@ class KnowledgeBaseService:
         # 如果知识库搜索成功且有相关文档，检查相似度
         if kb_result.get("success") and len(kb_result.get("sources", [])) > 0:
             sources = kb_result.get("sources", [])
-            max_similarity = max([s.get("similarity", 0) for s in sources])
+            max_similarity = kb_result.get("max_similarity", 0.0)
             
-            # 如果最高相似度>=0.6，认为知识库结果足够好，不需要网络搜索
+            # 如果没有max_similarity，从sources计算
+            if max_similarity == 0.0:
+                max_similarity = max([s.get("similarity", 0) for s in sources])
+            
+            # 如果最高相似度>=0.7，认为知识库结果足够好，不需要网络搜索
+            if max_similarity >= 0.7:
+                return False
+            
+            # 如果相似度在0.6-0.7之间，检查答案质量
             if max_similarity >= 0.6:
+                # 检查答案是否包含否定性表述
+                answer = kb_result.get("answer", "")
+                negative_keywords = ["没有找到", "未找到", "不相关", "无法找到", "没有相关信息"]
+                has_negative = any(keyword in answer for keyword in negative_keywords)
+                
+                # 如果答案包含否定性表述，建议使用网络搜索
+                if has_negative:
+                    log.info(f"答案包含否定性表述，且文档相似度中等({max_similarity:.3f})，建议使用网络搜索")
+                    return True
+                
+                # 判断是否是通用概念问题（如"是什么"、"定义"等）
+                if self._is_general_concept_question(question):
+                    log.info(f"检测到通用概念问题，且文档相似度中等({max_similarity:.3f})，建议使用网络搜索")
+                    return True
+                
                 return False
             
             # 如果相似度在0.5-0.6之间，判断是否是通用概念问题

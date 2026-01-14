@@ -412,10 +412,8 @@ def sync_documents(payload: SyncDocumentsRequest) -> SyncDocumentsResponse:
     try:
         service = _get_knowledge_base_service()
         
-        if payload.space_id:
-            result = service.sync_documents_from_space(payload.space_id, incremental=payload.incremental)
-        else:
-            result = service.sync_all_spaces(incremental=payload.incremental)
+        # 同步博客文章（忽略 space_id 参数）
+        result = service.sync_blog_posts(incremental=payload.incremental)
         
         return SyncDocumentsResponse(**result)
     except ImportError as exc:

@@ -16,6 +16,12 @@ BLOG_DIR="/Users/yuxiaoling/Blog"
 QA_FRONTEND_DIR="${BLOG_DIR}/qa-service/frontend"
 QA_TARGET_DIR="${BLOG_DIR}/public/qa"
 
+# 可选配置
+# AUTO_SYNC_BLOG: 是否在集成时自动同步博客文章（默认 false）
+# QA_BACKEND_URL: 后端服务地址（默认 http://localhost:8113）
+AUTO_SYNC_BLOG="${AUTO_SYNC_BLOG:-false}"
+QA_BACKEND_URL="${QA_BACKEND_URL:-http://localhost:8113}"
+
 echo -e "${GREEN}开始集成问答系统到博客...${NC}"
 
 # 1. 检查问答项目目录是否存在
@@ -92,6 +98,18 @@ else
 fi
 
 echo -e "${GREEN}✓ 问答前端已成功集成到博客${NC}"
+
+# 9. 可选：自动同步博客文章到向量数据库
+if [ "${AUTO_SYNC_BLOG}" = "true" ]; then
+    echo -e "${YELLOW}同步博客文章到向量数据库...${NC}"
+    export QA_BACKEND_URL
+    if node "${BLOG_DIR}/tools/sync-blog-posts.js" 2>&1; then
+        echo -e "${GREEN}✓ 博客文章同步成功${NC}"
+    else
+        echo -e "${YELLOW}⚠️  博客文章同步失败，可以稍后手动同步${NC}"
+        echo -e "   提示：可以运行 npm run sync-blog 手动同步"
+    fi
+fi
 echo -e "${GREEN}目标目录: $QA_TARGET_DIR${NC}"
 
 # 8. 检查博客页面入口是否存在
@@ -133,7 +151,7 @@ EOF
     echo -e "${GREEN}✓ 已创建问答页面入口文件${NC}"
 fi
 
-# 9. 提示下一步操作
+# 10. 提示下一步操作
 echo ""
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}集成完成！${NC}"
