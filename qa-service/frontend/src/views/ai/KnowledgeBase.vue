@@ -10,7 +10,7 @@
       <el-card class="qa-card" shadow="hover">
         <template #header>
           <div class="card-header">
-            <span>智能问答</span>
+          <span>智能问答</span>
           </div>
         </template>
         <div class="qa-content">
@@ -311,7 +311,7 @@ const loadCategories = async () => {
       }
     } else {
       const errorMsg = response.data?.message || response.data?.detail || '获取分类列表失败'
-      ElMessage.error(errorMsg)
+        ElMessage.error(errorMsg)
     }
   } catch (error) {
     console.error('加载分类列表失败:', error)

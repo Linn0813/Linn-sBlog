@@ -13,16 +13,16 @@ function initApp() {
     return
   }
 
-  const app = createApp(App)
+const app = createApp(App)
 
-  // 注册所有图标
-  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component)
-  }
+// 注册所有图标
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 
-  app.use(ElementPlus)
-  app.use(router)
-  app.mount('#app')
+app.use(ElementPlus)
+app.use(router)
+app.mount('#app')
   
   console.log('Vue 应用已成功挂载')
 }

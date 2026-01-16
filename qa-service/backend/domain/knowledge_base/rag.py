@@ -190,7 +190,7 @@ class RAGEngine:
         
         # 限制返回数量
         filtered_results = filtered_results[:top_k]
-        
+
         # 过滤低相似度结果
         final_results = []
         for result in filtered_results:
@@ -261,12 +261,12 @@ class RAGEngine:
             # 新文章，添加到结果中
             idx = len(context_parts)
             seen_titles[title] = (idx, similarity)
-            context_parts.append(content)
-            sources.append({
+                context_parts.append(content)
+                sources.append({
                 "title": title,
-                "url": metadata.get("url", ""),
-                "similarity": similarity,
-            })
+                    "url": metadata.get("url", ""),
+                    "similarity": similarity,
+                })
 
         # 限制上下文长度
         context = "\n\n".join(context_parts)

@@ -46,7 +46,13 @@ class Settings:
     
     # 后端服务配置
     backend_host: str = _env("AI_DEMO_BACKEND_HOST", "0.0.0.0")
-    backend_port: int = int(_env("AI_DEMO_BACKEND_PORT", "8113"))
+    # Render 会自动设置 PORT 环境变量，优先使用它
+    # 如果 PORT 不存在，尝试 AI_DEMO_BACKEND_PORT，最后使用默认值
+    _port_str = _env("PORT") or _env("AI_DEMO_BACKEND_PORT", "8113")
+    # 如果值是 "$PORT" 字符串，说明环境变量未正确设置，使用默认值
+    if _port_str == "$PORT":
+        _port_str = "8113"
+    backend_port: int = int(_port_str)
     backend_reload: bool = _env("AI_DEMO_BACKEND_RELOAD", "true").lower() == "true"
     cors_origins: str = _env("AI_DEMO_CORS_ORIGINS", "*")
     

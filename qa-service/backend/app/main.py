@@ -71,7 +71,12 @@ if __name__ == "__main__":
     # 像 Flask 那样直接运行：python -m ai_demo_service.main
     # 或：python src/ai_demo_service/main.py
     host = os.getenv("AI_DEMO_BACKEND_HOST", "0.0.0.0")
-    port = int(os.getenv("AI_DEMO_BACKEND_PORT", "8113"))
+    # Render 会自动设置 PORT 环境变量，优先使用它
+    port_str = os.getenv("PORT") or os.getenv("AI_DEMO_BACKEND_PORT", "8113")
+    # 如果值是 "$PORT" 字符串，说明环境变量未正确设置，使用默认值
+    if port_str == "$PORT":
+        port_str = "8113"
+    port = int(port_str)
     reload = os.getenv("AI_DEMO_BACKEND_RELOAD", "true").lower() == "true"
     
     uvicorn.run(

@@ -25,7 +25,7 @@
     <!-- 主内容区 -->
     <el-main class="main-content">
       <el-breadcrumb class="breadcrumb" separator="/">
-        <el-breadcrumb-item>知识库问答</el-breadcrumb-item>
+          <el-breadcrumb-item>知识库问答</el-breadcrumb-item>
       </el-breadcrumb>
       <router-view />
     </el-main>
