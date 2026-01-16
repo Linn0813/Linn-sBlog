@@ -261,12 +261,12 @@ class RAGEngine:
             # 新文章，添加到结果中
             idx = len(context_parts)
             seen_titles[title] = (idx, similarity)
-                context_parts.append(content)
-                sources.append({
+            context_parts.append(content)
+            sources.append({
                 "title": title,
-                    "url": metadata.get("url", ""),
-                    "similarity": similarity,
-                })
+                "url": metadata.get("url", ""),
+                "similarity": similarity,
+            })
 
         # 限制上下文长度
         context = "\n\n".join(context_parts)

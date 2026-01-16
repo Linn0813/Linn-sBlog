@@ -352,22 +352,22 @@ class KnowledgeBaseService:
                 "answer": result.get("answer", ""),
                 "max_similarity": max_similarity,
             }
-                
-                # 判断是否建议使用网络搜索
+            
+            # 判断是否建议使用网络搜索
             suggest_web_search = self._should_use_web_search(question, kb_result_for_search)
-                
-                # 如果启用了网络搜索，且知识库结果不理想，尝试网络搜索
-                if use_web_search and suggest_web_search:
-                    log.info("🌐 知识库结果不理想，尝试使用网络搜索补充...")
+            
+            # 如果启用了网络搜索，且知识库结果不理想，尝试网络搜索
+            if use_web_search and suggest_web_search:
+                log.info("🌐 知识库结果不理想，尝试使用网络搜索补充...")
                 web_result = self._search_web_and_merge(question, result)
-                    return web_result
-                
-                # 如果未启用网络搜索，但建议使用，在结果中添加建议信息
-                if not use_web_search:
+                return web_result
+            
+            # 如果未启用网络搜索，但建议使用，在结果中添加建议信息
+            if not use_web_search:
                 result["suggest_web_search"] = suggest_web_search
                 result["max_similarity"] = max_similarity
-                    if suggest_web_search:
-                        log.info(f"💡 建议使用网络搜索（最高相似度: {max_similarity:.3f}）")
+                if suggest_web_search:
+                    log.info(f"💡 建议使用网络搜索（最高相似度: {max_similarity:.3f}）")
                 
             # 检查答案质量：如果答案包含否定性表述但相似度较高，记录警告
             answer = result.get("answer", "")
@@ -412,9 +412,9 @@ class KnowledgeBaseService:
             }
         except Exception as e:
             log.error(f"获取博客分类列表失败: {e}")
-                return {
-                    "success": False,
-                    "spaces": [],
+            return {
+                "success": False,
+                "spaces": [],
                 "message": f"获取博客分类列表失败: {str(e)}",
             }
     
@@ -1341,7 +1341,7 @@ class KnowledgeBaseService:
             
             # 如果没有max_similarity，从sources计算
             if max_similarity == 0.0:
-            max_similarity = max([s.get("similarity", 0) for s in sources])
+                max_similarity = max([s.get("similarity", 0) for s in sources])
             
             # 如果最高相似度>=0.7，认为知识库结果足够好，不需要网络搜索
             if max_similarity >= 0.7:
