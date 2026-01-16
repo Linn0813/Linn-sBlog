@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional
 from infrastructure.embedding.service import EmbeddingService
 from infrastructure.llm.service import LLMService
 from shared.logger import log
-from infrastructure.external.feishu.text_splitter import TextSplitter
+from shared.utils.text_splitter import TextSplitter
 from infrastructure.vector_store.chroma import VectorStore
 
 

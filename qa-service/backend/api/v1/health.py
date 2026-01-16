@@ -10,7 +10,7 @@ from shared.config import settings
 from shared.logger import log
 from models import HealthResponse, ModelInfo
 
-from domain.test_case.service import AIDemoTestCaseService
+# 已删除 test_case 模块
 
 router = APIRouter(tags=["health"])
 
@@ -21,10 +21,5 @@ def healthz() -> HealthResponse:
     return HealthResponse(status="ok", version=settings.app_version, name=settings.app_name)
 
 
-@router.get("/models", response_model=List[ModelInfo])
-def list_models() -> List[ModelInfo]:
-    """获取可用模型列表"""
-    service = AIDemoTestCaseService()
-    models = service.get_available_models()
-    return [ModelInfo(**model) for model in models]
+# 已删除模型列表路由（test_case 模块已删除）
 

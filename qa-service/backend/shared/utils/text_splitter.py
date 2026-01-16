@@ -4,7 +4,7 @@
 """
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 
 
 class TextSplitter:
@@ -48,8 +48,8 @@ class TextSplitter:
             # 确定当前块的结束位置
             end = start + self.chunk_size
 
+            # 如果已经到达文本末尾，直接添加剩余部分
             if end >= len(text):
-                # 到达文本末尾
                 chunks.append(text[start:])
                 break
 
@@ -57,23 +57,22 @@ class TextSplitter:
             best_split = end
             for separator in self.separators:
                 if separator:
-                    # 向前查找分隔符
-                    pos = text.rfind(separator, start, end)
-                    if pos != -1:
-                        best_split = pos + len(separator)
+                    # 查找最后一个分隔符位置
+                    last_sep = text.rfind(separator, start, end)
+                    if last_sep != -1:
+                        best_split = last_sep + len(separator)
                         break
                 else:
                     # 空字符串分隔符，直接在当前位置分割
                     best_split = end
                     break
 
-            # 提取块
-            chunk = text[start:best_split].strip()
-            if chunk:
-                chunks.append(chunk)
+            # 添加当前块
+            chunk = text[start:best_split]
+            if chunk.strip():  # 只添加非空块
+                chunks.append(chunk.strip())
 
             # 移动到下一个块的开始位置（考虑重叠）
             start = max(start + 1, best_split - self.chunk_overlap)
 
         return chunks
-

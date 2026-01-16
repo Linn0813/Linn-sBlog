@@ -56,14 +56,6 @@ class Settings:
     backend_reload: bool = _env("AI_DEMO_BACKEND_RELOAD", "true").lower() == "true"
     cors_origins: str = _env("AI_DEMO_CORS_ORIGINS", "*")
     
-    # 飞书应用配置
-    feishu_app_id: str = _env("FEISHU_APP_ID", "")
-    feishu_app_secret: str = _env("FEISHU_APP_SECRET", "")
-    feishu_api_base_url: str = _env("FEISHU_API_BASE_URL", "https://open.feishu.cn/open-apis")
-    feishu_token_cache_ttl: int = int(_env("FEISHU_TOKEN_CACHE_TTL", "7200"))
-    feishu_use_user_token: bool = _env("FEISHU_USE_USER_TOKEN", "false").lower() == "true"
-    feishu_redirect_uri: str = _env("FEISHU_REDIRECT_URI", "http://localhost:8113/api/v1/feishu/oauth/callback")
-    
     # 前端地址配置
     frontend_url: str = _env("FRONTEND_URL", "http://localhost:3000")
 
