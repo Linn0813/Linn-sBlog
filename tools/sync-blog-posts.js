@@ -6,15 +6,22 @@
  */
 
 const http = require('http');
+const https = require('https');
+const { URL } = require('url');
 
 const backendUrl = process.env.QA_BACKEND_URL || process.argv[2] || 'http://localhost:8113';
-const url = `${backendUrl}/api/v1/knowledge-base/sync`;
+const urlObj = new URL(`${backendUrl}/api/v1/knowledge-base/sync`);
+const isHttps = urlObj.protocol === 'https:';
+const httpModule = isHttps ? https : http;
 
 const postData = JSON.stringify({
   incremental: true
 });
 
 const options = {
+  hostname: urlObj.hostname,
+  port: urlObj.port || (isHttps ? 443 : 80),
+  path: urlObj.pathname + urlObj.search,
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -25,7 +32,7 @@ const options = {
 
 console.log(`正在同步博客文章到向量数据库 (${backendUrl})...`);
 
-const req = http.request(url, options, (res) => {
+const req = httpModule.request(options, (res) => {
   let data = '';
   
   res.on('data', (chunk) => {

@@ -113,12 +113,12 @@ DEFAULT_CONFIG = LLM_CONFIG
 # ==================== Embedding 配置 ====================
 
 EMBEDDING_CONFIG = {
-    "provider": "ollama",
-    "ollama_base_url": "http://localhost:11434",
-    "ollama_model": "qwen2.5:7b",
-    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-    "device": "cpu",
-    "batch_size": 32,
+    "provider": _env("AI_DEMO_EMBEDDING_PROVIDER", "ollama"),  # ollama 或 sentence-transformers
+    "ollama_base_url": _env("AI_DEMO_EMBEDDING_OLLAMA_BASE_URL", "http://localhost:11434"),
+    "ollama_model": _env("AI_DEMO_EMBEDDING_OLLAMA_MODEL", "qwen2.5:7b"),
+    "model": _env("AI_DEMO_EMBEDDING_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"),
+    "device": _env("AI_DEMO_EMBEDDING_DEVICE", "cpu"),
+    "batch_size": int(_env("AI_DEMO_EMBEDDING_BATCH_SIZE", "32")),
 }
 
 

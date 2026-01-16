@@ -1,6 +1,8 @@
 const { execSync } = require('child_process');
 const path = require('path');
 const http = require('http');
+const https = require('https');
+const { URL } = require('url');
 
 // Hexo Filter: 在生成后自动同步博客文章到向量数据库
 // 这样用户直接使用 hexo generate 时也会自动同步文章
@@ -42,12 +44,18 @@ hexo.on('generateAfter', function() {
         global[globalKey] = true; // 标记为已执行
         
         // 调用后端 API 同步博客文章
-        const url = `${backendUrl}/api/v1/knowledge-base/sync`;
+        const urlObj = new URL(`${backendUrl}/api/v1/knowledge-base/sync`);
+        const isHttps = urlObj.protocol === 'https:';
+        const httpModule = isHttps ? https : http;
+        
         const postData = JSON.stringify({
           incremental: true  // 使用增量同步
         });
         
         const options = {
+          hostname: urlObj.hostname,
+          port: urlObj.port || (isHttps ? 443 : 80),
+          path: urlObj.pathname + urlObj.search,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -56,7 +64,7 @@ hexo.on('generateAfter', function() {
           timeout: 300000  // 5分钟超时（同步可能需要较长时间）
         };
         
-        const req = http.request(url, options, (res) => {
+        const req = httpModule.request(options, (res) => {
           let data = '';
           
           res.on('data', (chunk) => {
