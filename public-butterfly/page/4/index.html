@@ -1,0 +1,402 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linn's Blog - 记录软件测试成长与技术探索的个人博客</title><meta name="author" content="yuxiaoling"><meta name="copyright" content="yuxiaoling"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="分享软件测试学习、实战经验和踩坑历程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Linn&#39;s Blog">
+<meta property="og:url" content="https://linn0813.github.io/page/4/index.html">
+<meta property="og:site_name" content="Linn&#39;s Blog">
+<meta property="og:description" content="分享软件测试学习、实战经验和踩坑历程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="yuxiaoling">
+<meta property="article:tag" content="软件测试,测试博客,自动化测试,测试开发,测试经验">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://linn0813.github.io/page/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="Xj7zV_DKnHFmJ7sXNRvdl5-UTfG4NLy-s7hDk1DZt4A"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":true,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linn\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/blog-enhancements.css"><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url(/img/background.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.jpg" alt="Logo" loading='lazy'><span class="site-name">Linn's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Linn's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Linn0813" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yuxiaoling.yxl@qq.com" target="_blank" title="Email"><i class="fa fa-envelope-open-text"></i></a><a class="social-icon" href="javascript:alert('微信公众号：Linn的技术笔记')" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://weibo.com/Linn0813" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover"><a href="/2025/11/16/2025-11-16-pe-engineer-role-explained/" title="🔧 什么是 PE 工程师？从 AI 智能体项目的一个评论聊起"><img class="post-bg" src="/img/pe-engineer-role.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🔧 什么是 PE 工程师？从 AI 智能体项目的一个评论聊起" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/11/16/2025-11-16-pe-engineer-role-explained/" title="🔧 什么是 PE 工程师？从 AI 智能体项目的一个评论聊起">🔧 什么是 PE 工程师？从 AI 智能体项目的一个评论聊起</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-11-16T12:00:00.000Z" title="发表于 2025-11-16 20:00:00">2025-11-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF%E4%B8%8E%E6%80%9D%E8%80%83/">职业成长与思考</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF%E4%B8%8E%E6%80%9D%E8%80%83/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">个人成长</a></span></div><div class="content">🔧 什么是 PE 工程师？从 AI 智能体项目的一个评论聊起最近在研究 AI 智能体（AI Agent）相关项目时，我在社区评论区里看到一个词被频繁提到——PE 工程师（“人人都是 PE 工程师”）。因为之前公司内部的项目流程中并不常见这个岗位，我就去深入查了一下，也顺便整理成这篇博客，作为自己的学习记录，也分享给同样对这个词好奇的你。 有意思的是，PE 工程师并不是单一角色，在不同的公司和领域中代表不同职业。  🧩 PE 到底指什么？三大常见解释根据行业背景不同，”PE” 常见的三种含义如下：  ① Product Engineer —— 产品工程师（互联网&#x2F;AI项目常见）适用于：互联网公司、智能穿戴设备、软件与硬件混合业务、AI 产品团队 这一类的 PE，也是在 AI 智能体项目中听到最多的。 PE（产品工程师） 的特点是：  对业务理解深 参与需求讨论 会写代码或脚本（但不是纯后端） 能把产品需求转成”可落地的工程实现” 在 AI Agent 项目中，很多时候就是负责 工作流设计 + Prompt 编排 + 工具链对接  可以把 AI 领域的 Product...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/11/15/2025-11-15-uat-acceptance-testing-guide/" title="🌟 UAT 验收是什么？——一次项目流程升级带来的思考与科普"><img class="post-bg" src="/img/uat-test.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🌟 UAT 验收是什么？——一次项目流程升级带来的思考与科普" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/11/15/2025-11-15-uat-acceptance-testing-guide/" title="🌟 UAT 验收是什么？——一次项目流程升级带来的思考与科普">🌟 UAT 验收是什么？——一次项目流程升级带来的思考与科普</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-11-15T12:00:00.000Z" title="发表于 2025-11-15 20:00:00">2025-11-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E4%B8%8E%E7%90%86%E8%AE%BA/">测试基础与理论</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E4%B8%8E%E7%90%86%E8%AE%BA/%E6%B5%8B%E8%AF%95%E7%90%86%E5%BF%B5%E4%B8%8E%E6%96%B9%E6%B3%95/">测试理念与方法</a></span></div><div class="content">最近我们公司对项目流程做了一次调整，新增了一个重要节点：UAT 验收。为了更好地理解这个概念，我自己系统学习了一遍，也顺便整理成这篇博客，既是记录，也希望对看到这篇文章的你有所帮助。  🎯 什么是 UAT？UAT，全称 User Acceptance Testing，中文叫：  用户验收测试 业务验收测试 受理测试 验收测试  它是软件上线前的最后一个测试阶段，由真正的业务使用者或代表来执行，目的只有一个：  确认系统是否能在真实业务场景中正常使用、符合预期，并决定是否上线。  这和我们常说的 QA 测试是完全不同的。  🧩 UAT 到底解决了什么问题？测试人员会把功能点、逻辑、边界条件等都测得非常完整精准，但有一个问题：业务团队未必真正看过”做出来的东西”。 比如：  字段名对业务是不是友好？ 流程是不是符合真实的工作模式？ 是否符合线下&#x2F;场景&#x2F;运营流程中的「实际习惯」？ 报表数据是不是他们”能用、敢用”的？ 多系统链路是否真的跑通业务逻辑？  QA 的职责是验证”按需求实现”，而业务的职责是判断”是否满足我们的实际需求”。 所以 UAT...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/11/01/2025-11-01-cursor-models-20-upgrade/" title="🚀 Cursor 模型全解析与 2.0 升级深度解读"><img class="post-bg" src="/img/cursor-hack.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🚀 Cursor 模型全解析与 2.0 升级深度解读" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/11/01/2025-11-01-cursor-models-20-upgrade/" title="🚀 Cursor 模型全解析与 2.0 升级深度解读">🚀 Cursor 模型全解析与 2.0 升级深度解读</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-31T16:00:00.000Z" title="发表于 2025-11-01 00:00:00">2025-11-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">技术学习与行业趋势</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%B7%A5%E5%85%B7/">学习与工具</a></span></div><div class="content">一、前言：从「AI 辅助编程」到「协作式开发伙伴」自从 Cursor 推出后，这款 AI IDE 已不再只是一个”智能补全工具”。它通过 多模型协作、上下文感知增强、工程级推理能力，让开发者可以真正实现”AI 与人共写代码”。 而在 Cursor 中，不同模型的选择，决定了整个开发体验的”风格”和”上限”。本文将系统梳理 Cursor 目前可选模型的区别、推荐使用场景，以及 Cursor 2.0 升级带来的核心变化。  二、Cursor 可选模型一览（2025 版）🧩 1. Auto 模式 类型：智能选择模式 描述：由 Cursor 自动判断任务复杂度、代码上下文长度、推理难度，动态选择最优模型（如 GPT-5、Composer、Grok Code 等）。 优点：简单、稳妥，适合快速开发。 缺点：用户无法明确控制模型版本，有时生成结果不一致。 推荐场景：日常开发、轻量级脚本、随手修改逻辑。 📘 参考链接：Cursor Models   ⚡️ 2. MAX Mode 类型：增强上下文模式 描述：启用模型的最大上下文窗口（最长可达 200k...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/10/27/2025-10-27-langchain-framework/" title="🧠 LangChain：让大语言模型真正“动起来”的框架"><img class="post-bg" src="/img/langchain.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 LangChain：让大语言模型真正“动起来”的框架" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/27/2025-10-27-langchain-framework/" title="🧠 LangChain：让大语言模型真正“动起来”的框架">🧠 LangChain：让大语言模型真正“动起来”的框架</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-27T11:00:00.000Z" title="发表于 2025-10-27 19:00:00">2025-10-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">技术学习与行业趋势</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/AI%E4%B8%8E%E7%A0%94%E7%A9%B6/">AI与研究</a></span></div><div class="content">🧠 LangChain：让大语言模型真正“动起来”的框架 从Prompt到Agent，从单轮问答到任务编排——这篇文章帮你彻底理解LangChain的核心思想与实践路径。    一、为什么需要LangChain？🌍 语言模型的局限大语言模型（LLM）很擅长生成文本、总结内容或推理，但它不会记忆上下文、无法访问外部数据、也不会执行真实操作。举个例子：   “帮我根据数据库里上周的测试结果生成一份风险分析报告。”   仅靠 GPT 或 Claude，模型根本无法：   连接数据库  读取测试结果  调用外部计算逻辑  于是开发者开始手动拼接 prompt、加 API 调用、做状态管理……直到——  🚀 LangChain 出现LangChain 由 Harrison Chase 于 2022 年发布，它的目标是让 LLM 不只是“聊天工具”，而是能理解上下文、调用外部工具、执行逻辑、形成完整工作流的“可编程智能体”。  一句话概括：   LangChain 是连接大语言模型与真实世界的中间层。    二、LangChain 的设计理念：模块化、可组合、可观测LangChain...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/10/24/2025-10-24-mind-your-tone/" title="🧩 Mind Your Tone：为什么我们不必再对 AI 太客气"><img class="post-bg" src="/img/Mind-Your-Tone.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧩 Mind Your Tone：为什么我们不必再对 AI 太客气" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/24/2025-10-24-mind-your-tone/" title="🧩 Mind Your Tone：为什么我们不必再对 AI 太客气">🧩 Mind Your Tone：为什么我们不必再对 AI 太客气</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-24T11:00:00.000Z" title="发表于 2025-10-24 19:00:00">2025-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">技术学习与行业趋势</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/AI%E4%B8%8E%E7%A0%94%E7%A9%B6/">AI与研究</a></span></div><div class="content">🧩 Mind Your Tone：为什么我们不必再对 AI 太客气 一、引言：AI 不只是看内容，也在“听语气”过去几年里，随着 ChatGPT、Claude、Gemini 等大语言模型的普及，“提示工程（Prompt Engineering）”成了很多人提升效率的关键能力。许多早期教程都会提醒你：  “和 AI 说话要有礼貌，比如多加 please、thank you，它会更愿意帮你。”  然而，最新一篇研究《Mind Your Tone: Investigating How Prompt Politeness Affects LLM Accuracy》却发现——  越客气，AI 答得越不准。  这篇博文，我们来看看：  研究到底发现了什么？ 为什么“要客气”变成了“别太客气”？ 作为中文用户，我们又该如何写出更高效的提示？   二、研究介绍：粗鲁的语气，反而让模型更聪明？研究来源：  论文标题： Mind Your Tone: Investigating How Prompt Politeness Affects LLM...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/10/21/2025-10-21-llm-agent-guide/" title="🧠 LLM 与智能体（Agent）知识记录"><img class="post-bg" src="/img/LLM-Agent.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 LLM 与智能体（Agent）知识记录" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/21/2025-10-21-llm-agent-guide/" title="🧠 LLM 与智能体（Agent）知识记录">🧠 LLM 与智能体（Agent）知识记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-21T13:00:00.000Z" title="发表于 2025-10-21 21:00:00">2025-10-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">技术学习与行业趋势</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/AI%E4%B8%8E%E7%A0%94%E7%A9%B6/">AI与研究</a></span></div><div class="content"> 📘 本文旨在系统记录 LLM 与 Agent 的概念、组成、原理、应用与实践要点，形成长期可复用的知识材料。你可以将它作为“学习路线 + 实践清单”的参考。✅   基础认知一、LLM（Large Language Model，大语言模型） 🤖1.1 定义LLM 是基于深度学习与海量文本训练的模型，能够理解、生成、推理自然语言，是现代智能体的“核心大脑”。 1.2 核心特性   特性 描述    理解能力 能理解问题、文档、上下文与意图   生成能力 能生成文章、代码、摘要、对话等   推理能力 能做基础逻辑判断与归纳总结   可扩展性 可与知识库、工具、API 联动   局限性 幻觉（hallucination）、知识截至训练时间、上下文窗口有限   1.3 关键概念 Prompt：向模型输入的指令或问题，告诉模型“要做什么”。 Token：模型处理文本的最小单位；长文本消耗更多资源。 Spec（规范&#x2F;说明书）：约束输入输出格式，定义任务规则。 RAG（Retrieval-Augmented...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/10/15/2025-10-15-coze-testcase-assistant/" title="🤖 手把手教你用Coze打造专属测试用例编写助手"><img class="post-bg" src="/img/coze-testcase-assistant.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🤖 手把手教你用Coze打造专属测试用例编写助手" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/15/2025-10-15-coze-testcase-assistant/" title="🤖 手把手教你用Coze打造专属测试用例编写助手">🤖 手把手教你用Coze打造专属测试用例编写助手</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-15T15:00:00.000Z" title="发表于 2025-10-15 23:00:00">2025-10-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">自动化测试与工具开发</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/">工具与平台开发</a></span></div><div class="content">🤖 手把手教你用Coze打造专属测试用例编写助手你是否曾为重复编写测试用例而头痛不已？纠结措辞、排列顺序，还要保证覆盖全面符合规范，效率始终提不上去？💢 最近发现Coze平台支持零代码搭建智能体，我便萌生了打造专属测试用例助手的想法！经过一番摸索，真的成功搭建出来了！今天就把整个搭建过程分享给大家，希望能帮到有同样需求的测试同行～✨ 📋 一、前期准备：明确需求与工具基础正式搭建前，需先明确两个关键前提，确保智能体方向精准：  明确智能体定位：结合我个人需求，我把目标锁定为”轻量高效的测试用例生成助手”——不需要复杂功能，核心是能根据输入的需求描述，自动输出含”编号、名称、步骤、预期结果、优先级”的规范表格，还要支持等价类划分、边界值分析这些我们常用的测试方法。  Coze平台基础：访问Coze官网注册Coze账号后，我先花半小时熟悉了控制台界面，发现”智能体管理””知识库””插件市场”是核心模块，后续搭建基本围绕这三块展开，操作逻辑比想象中简单。😊   🚀...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/10/14/2025-10-14-serialization-deep-dive/" title="深入理解「可序列化」：开发与测试都绕不开的隐形规则"><img class="post-bg" src="/img/serialization-deep-dive.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入理解「可序列化」：开发与测试都绕不开的隐形规则" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/14/2025-10-14-serialization-deep-dive/" title="深入理解「可序列化」：开发与测试都绕不开的隐形规则">深入理解「可序列化」：开发与测试都绕不开的隐形规则</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-13T17:00:00.000Z" title="发表于 2025-10-14 01:00:00">2025-10-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">技术学习与行业趋势</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/%E5%BC%80%E5%8F%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%A0%88/">开发与技术栈</a></span></div><div class="content">💡深入理解「可序列化」：开发与测试都绕不开的隐形规则你可能在接口请求、缓存、日志、报告里见过” Object of type X is not JSON serializable “这样的报错。这时候，系统并不是在”挑刺”，而是在提醒你一个几乎所有开发与测试都会遇到的基本问题—— 可序列化（Serializable） 。 🧠 一、什么是可序列化？可序列化（Serializable） ，简单来说，就是：一个对象可以被转换成 可存储或可传输的格式 （如字节流、JSON 字符串），之后还能再恢复为原始对象。 换句话说：  序列化（Serialization） ：对象 → 字节或文本 反序列化（Deserialization） ：字节或文本 → 对象  🌰 举个简单的例子（以 Python 为例）import jsonuser = &#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25&#125;# 序列化json_str = json.dumps(user)  print(json_str)  #...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/10/02/2025-10-02-pytest-courses-comparison/" title="📚 pytest学习指南：白月黑羽vs码尚教育课程对比与学习策略"><img class="post-bg" src="/img/pytest.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📚 pytest学习指南：白月黑羽vs码尚教育课程对比与学习策略" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/02/2025-10-02-pytest-courses-comparison/" title="📚 pytest学习指南：白月黑羽vs码尚教育课程对比与学习策略">📚 pytest学习指南：白月黑羽vs码尚教育课程对比与学习策略</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-02T12:00:00.000Z" title="发表于 2025-10-02 20:00:00">2025-10-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">自动化测试与工具开发</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%BD%93%E7%B3%BB/">自动化测试体系</a></span></div><div class="content">📚 pytest学习指南：白月黑羽vs码尚教育课程对比与学习策略👋 大家好！最近我连续学习了两门关于pytest自动化测试框架的课程：白月黑羽的pytest系列教程和码尚教育的pytest自动化测试框架课程。通过对比学习，我发现这两门课程各有特色和优势，如果能够结合学习，可以更全面、更深入地掌握pytest。今天我就来详细对比这两门课程，并分享如何高效结合学习的策略！ 📊 一、课程概览与对比🔍 课程基本信息   对比项 白月黑羽pytest课程 码尚教育pytest课程    课程类型 视频+图文教程 视频教程   内容时长 相对较长，内容全面 中等长度，侧重实战   课程链接 哔哩哔哩 哔哩哔哩   官网支持 提供配套练习环境和代码下载 主要通过B站视频学习   更新频率 定期更新，保持内容新鲜 根据Python版本更新   🎯 课程侧重点对比白月黑羽课程特点✅ 循序渐进：从最基础的概念开始，一步步引导学习者入门✅ 系统全面：涵盖从安装配置到高级功能的所有知识点✅ 实例丰富：提供大量贴近实际项目的案例✅ 配套资源：有详细的图文教程和配套练习题✅...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/10/02/2025-10-02-pytest-advanced-features-guide/" title="🔍 Pytest高级特性实战：从码尚教育课程中学到的进阶技巧"><img class="post-bg" src="/img/pytest.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🔍 Pytest高级特性实战：从码尚教育课程中学到的进阶技巧" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/02/2025-10-02-pytest-advanced-features-guide/" title="🔍 Pytest高级特性实战：从码尚教育课程中学到的进阶技巧">🔍 Pytest高级特性实战：从码尚教育课程中学到的进阶技巧</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-02T11:00:00.000Z" title="发表于 2025-10-02 19:00:00">2025-10-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">自动化测试与工具开发</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%BD%93%E7%B3%BB/">自动化测试体系</a></span></div><div class="content">🔍 Pytest高级特性实战：从码尚教育课程中学到的进阶技巧👋 大家好！继上次分享pytest入门到实战的学习笔记后，我又学习了码尚教育的pytest课程，收获了很多高级特性和实战技巧！今天就把这些进阶内容整理出来，作为上一篇文章的补充，希望能帮助大家更深入地理解和应用pytest。 🎬 本文基于码尚教育的pytest自动化测试框架课程，课程链接分享给大家：  视频课程：pytest自动化测试框架 - 哔哩哔哩  🧠 一、单元测试框架基础在深入学习pytest之前，我觉得有必要先理清一个重要概念：单元测试框架和自动化测试框架的区别与联系。 🔍 核心概念对比   特性 单元测试框架 自动化测试框架    核心功能 测试发现、执行、断言、报告 完整测试流程管理   典型代表 pytest、unittest、JUnit 基于单元测试框架构建的完整体系   应用范围 单个函数&#x2F;方法的验证 端到端测试流程   复杂度 相对简单 包含多个组件的复杂系统   🔄...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/10/01/2025-10-01-pytest-automation-testing-guide/" title="🚀 Pytest自动化测试框架入门到实战：我的学习笔记与实战经验"><img class="post-bg" src="/img/pytest.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🚀 Pytest自动化测试框架入门到实战：我的学习笔记与实战经验" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/10/01/2025-10-01-pytest-automation-testing-guide/" title="🚀 Pytest自动化测试框架入门到实战：我的学习笔记与实战经验">🚀 Pytest自动化测试框架入门到实战：我的学习笔记与实战经验</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-10-01T10:00:00.000Z" title="发表于 2025-10-01 18:00:00">2025-10-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">自动化测试与工具开发</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%BD%93%E7%B3%BB/">自动化测试体系</a></span></div><div class="content">🚀 Pytest自动化测试框架入门到实战：我的学习笔记与实战经验😊 大家好！最近我系统学习了pytest自动化测试框架！作为一名测试工程师，掌握一个高效的测试框架对提高工作效率至关重要。今天我就把这段时间的学习笔记和实战经验整理出来，希望能帮助到正在学习或准备学习自动化测试的朋友们！ 📚 本文基于白月黑羽编程的pytest自动化测试框架系列课程，强烈推荐给想系统学习的同学：  视频课程：pytest自动化测试框架 - 哔哩哔哩 图文教程：pytest框架 - 白月黑羽官网  🌟 一、为什么选择Pytest？在开始学习之前，我也对比了市面上几种主流的Python测试框架，最终选择pytest是因为它真的太香了！ ✅...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#content-inner">9</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">yuxiaoling</div><div class="author-info-description">分享软件测试学习、实战经验和踩坑历程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Linn0813"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Linn0813" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yuxiaoling.yxl@qq.com" target="_blank" title="Email"><i class="fa fa-envelope-open-text"></i></a><a class="social-icon" href="javascript:alert('微信公众号：Linn的技术笔记')" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://weibo.com/Linn0813" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">下雨就不想上班 / 出太阳也不想上班</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的"><img src="/img/performance-monitoring-dashboard-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📊 压测时，我是如何一步步「读懂」性能监控面板的"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的">📊 压测时，我是如何一步步「读懂」性能监控面板的</a><time datetime="2026-01-07T12:00:00.000Z" title="发表于 2026-01-07 20:00:00">2026-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"><img src="/img/server-performance-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会">🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会</a><time datetime="2026-01-06T12:00:00.000Z" title="发表于 2026-01-06 20:00:00">2026-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"><img src="/img/llm-agent-future-summary.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结">🌐 主题19｜Agent 工程未来：趋势、机会与系列总结</a><time datetime="2026-01-05T10:00:00.000Z" title="发表于 2026-01-05 18:00:00">2026-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"><img src="/img/llm-agent-ethical-boundaries.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI">⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI</a><time datetime="2026-01-04T10:00:00.000Z" title="发表于 2026-01-04 18:00:00">2026-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"><img src="/img/llm-agent-enterprise-applications.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地">🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地</a><time datetime="2026-01-03T10:00:00.000Z" title="发表于 2026-01-03 18:00:00">2026-01-03</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E3%80%81%E5%AE%89%E5%85%A8%E4%B8%8E%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95/"><span class="card-category-list-name">性能、安全与专项测试</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E3%80%81%E5%AE%89%E5%85%A8%E4%B8%8E%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95/%E6%80%A7%E8%83%BD%E7%B1%BB%E6%B5%8B%E8%AF%95/"><span class="card-category-list-name">性能类测试</span><span class="card-category-list-count">3</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"><span class="card-category-list-name">技术学习与行业趋势</span><span class="card-category-list-count">49</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/AI%E4%B8%8E%E7%A0%94%E7%A9%B6/"><span class="card-category-list-name">AI与研究</span><span class="card-category-list-count">25</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">学习与工具</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/%E5%BC%80%E5%8F%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%A0%88/"><span class="card-category-list-name">开发与技术栈</span><span class="card-category-list-count">17</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E4%B8%8E%E7%90%86%E8%AE%BA/"><span class="card-category-list-name">测试基础与理论</span><span class="card-category-list-count">11</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E4%B8%8E%E7%90%86%E8%AE%BA/%E6%B5%8B%E8%AF%95%E7%90%86%E5%BF%B5%E4%B8%8E%E6%96%B9%E6%B3%95/"><span class="card-category-list-name">测试理念与方法</span><span class="card-category-list-count">3</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/LLM/" style="font-size: 1.5em; color: #99a9bf">LLM</a> <a href="/tags/Agent/" style="font-size: 1.43em; color: #99a6b9">Agent</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 1.37em; color: #99a4b2">自动化测试</a> <a href="/tags/Python/" style="font-size: 1.37em; color: #99a4b2">Python</a> <a href="/tags/MySQL/" style="font-size: 1.3em; color: #99a1ac">MySQL</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 1.3em; color: #99a1ac">数据分析</a> <a href="/tags/SACA%E8%AF%BE%E7%A8%8B/" style="font-size: 1.3em; color: #99a1ac">SACA课程</a> <a href="/tags/%E7%A5%9E%E7%AD%96%E5%88%86%E6%9E%90%E5%B8%88%E8%AE%A4%E8%AF%81/" style="font-size: 1.3em; color: #99a1ac">神策分析师认证</a> <a href="/tags/Fiddler/" style="font-size: 1.3em; color: #99a1ac">Fiddler</a> <a href="/tags/%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/" style="font-size: 1.3em; color: #99a1ac">抓包工具</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/" style="font-size: 1.23em; color: #999ea6">测试开发</a> <a href="/tags/pytest/" style="font-size: 1.23em; color: #999ea6">pytest</a> <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/" style="font-size: 1.23em; color: #999ea6">接口测试</a> <a href="/tags/RAG/" style="font-size: 1.23em; color: #999ea6">RAG</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.17em; color: #999c9f">前端开发</a> <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.17em; color: #999c9f">后端开发</a> <a href="/tags/Postman/" style="font-size: 1.17em; color: #999c9f">Postman</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" style="font-size: 1.17em; color: #999c9f">软件测试</a> <a href="/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" style="font-size: 1.17em; color: #999c9f">错误处理</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" style="font-size: 1.17em; color: #999c9f">测试框架</a> <a href="/tags/%E5%8E%8B%E6%B5%8B/" style="font-size: 1.17em; color: #999c9f">压测</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8A%93%E5%8C%85/" style="font-size: 1.17em; color: #999c9f">移动端抓包</a> <a href="/tags/%E6%99%BA%E8%83%BD%E4%BD%93/" style="font-size: 1.17em; color: #999c9f">智能体</a> <a href="/tags/Memory/" style="font-size: 1.17em; color: #999c9f">Memory</a> <a href="/tags/Prompt/" style="font-size: 1.17em; color: #999c9f">Prompt</a> <a href="/tags/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" style="font-size: 1.17em; color: #999c9f">大语言模型</a> <a href="/tags/Prompt%E5%B7%A5%E7%A8%8B/" style="font-size: 1.17em; color: #999c9f">Prompt工程</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/" style="font-size: 1.1em; color: #999">技术选型</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E5%B9%B3%E5%8F%B0/" style="font-size: 1.1em; color: #999">测试工具平台</a> <a href="/tags/API%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">API测试</a> <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/" style="font-size: 1.1em; color: #999">接口文档</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0/" style="font-size: 1.1em; color: #999">自动化测试平台</a> <a href="/tags/Vue3/" style="font-size: 1.1em; color: #999">Vue3</a> <a href="/tags/Markdown/" style="font-size: 1.1em; color: #999">Markdown</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/AI/" style="font-size: 1.1em; color: #999">AI</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 1.1em; color: #999">测试方法</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" style="font-size: 1.1em; color: #999">数据分析方法</a> <a href="/tags/JMeter/" style="font-size: 1.1em; color: #999">JMeter</a> <a href="/tags/%E6%8E%A5%E5%8F%A3%E5%8E%8B%E6%B5%8B/" style="font-size: 1.1em; color: #999">接口压测</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">22</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">9</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">23</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">14</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">94</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">258.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-19T09:33:40.785Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By yuxiaoling</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["🚀 从测试小白到平台开发，记录每一步成长","💡 用 AI 赋能测试，探索智能化的质量保障之路","🔧 实战踩坑经验分享，让测试更高效更专业","📚 系统学习 LLM/Agent，告别浅尝辄止","⚡ 自动化测试体系建设，提升测试效率与质量","🌟 测试平台全栈开发，从零到一的完整实践"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["🚀 从测试小白到平台开发，记录每一步成长","💡 用 AI 赋能测试，探索智能化的质量保障之路","🔧 实战踩坑经验分享，让测试更高效更专业","📚 系统学习 LLM/Agent，告别浅尝辄止","⚡ 自动化测试体系建设，提升测试效率与质量","🌟 测试平台全栈开发，从零到一的完整实践"])
+}
+typedJSFn.run(subtitleType)</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\ loading='lazy'>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          const lazyloadNative = 'loading="lazy"'
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative} loading='lazy'></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'github-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const findTrueUrl = (array, ele) => {
+    Promise.all(array.map(item =>
+      fetch(item.url).then(resp => resp.json()).then(data => {
+        let urlArray = data.body ? data.body.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/ig) : []
+        if (!Array.isArray(urlArray) || urlArray.length === 0) {
+          urlArray = [`${data.html_url}`]
+        }
+        if (data.user.login === 'utterances-bot') {
+          return urlArray.pop()
+        } else {
+          return urlArray.shift()
+        }
+      })
+    )).then(res => {
+        array = array.map((i,index)=> {
+          return {
+            ...i,
+            url: res[index]
+          }
+        })
+
+        btf.saveToLocal.set(keyName, JSON.stringify(array), 1/(60*24))
+        generateHtml(array, ele)
+    });
+  }
+
+  const getComment = ele => {
+    fetch('https://api.github.com/repos/Linn0813/Linn0813.github.io/issues/comments?sort=updated&direction=desc&per_page=6&page=1',{
+      "headers": {
+        Accept: 'application/vnd.github.v3.html+json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const githubArray = data.map(item => {
+          return {
+            'avatar': item.user.avatar_url,
+            'content': changeContent(item.body_html || item.body),
+            'nick': item.user.login,
+            'url': item.issue_url,
+            'date': item.updated_at
+          }
+        })
+        findTrueUrl(githubArray, ele)
+      }).catch(e => {
+        console.error(e)
+        ele.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+  }
+  run(keyName, getComment)
+})</script><script src="/js/blog-enhancements.js"></script><script src="/js/category-enhancements.js"></script><script src="/js/series-enhancements.js"></script><script src="/js/post-series-meta.js"></script><script src="/js/archive-enhancements.js"></script><script src="/js/tag-enhancements.js"></script><script src="/js/index-enhancements.js"></script><script src="/js/sidebar-series-card.js"></script><script src="/js/theme-switcher-ui.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章、分类、标签..." type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

@@ -1476,8 +1476,8 @@ queue = deque()  # 线程安全的操作
 
 ### 相关文章
 
-- [流式接口压测实践](/项目实战与案例经验/测试经验与落地/2025-06-30-streaming-api-performance-test/)
-- [数据库连接泄漏排查](/项目实战与案例经验/问题与解决/2025-06-30-mysql-connection-leak-fix/)
-- [QPS vs RPS 的区别](/项目实战与案例经验/问题与解决/2025-08-06-qps-vs-rps/)
+- [流式接口压测实践](/2025/06/30/2025-06-30-streaming-api-performance-test/)
+- [数据库连接泄漏排查](/2025/06/30/2025-06-30-mysql-connection-leak-fix/)
+- [QPS vs RPS 的区别](/2025/08/06/2025-08-06-qps-vs-rps/)
 
 

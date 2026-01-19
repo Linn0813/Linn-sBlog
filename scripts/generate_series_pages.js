@@ -89,49 +89,18 @@ function main() {
     const description = getField(parsed.fm, 'description') || '';
     const cover = getField(parsed.fm, 'cover') || getField(parsed.fm, 'top_img') || '';
     
-    // 获取分类信息（根据 permalink 规则 :category/:title/）
-    const categories = [];
-    const lines = parsed.fm.split('\n');
-    let inCategories = false;
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      if (line.match(/^categories:\s*$/)) {
-        inCategories = true;
-        continue;
-      }
-      if (inCategories) {
-        // 检查是否是分类项
-        const catMatch = line.match(/^\s*-\s*(.+)$/);
-        if (catMatch) {
-          let cat = catMatch[1].trim();
-          // 移除引号
-          if ((cat.startsWith('"') && cat.endsWith('"')) || 
-              (cat.startsWith("'") && cat.endsWith("'"))) {
-            cat = cat.slice(1, -1);
-          }
-          categories.push(cat);
-        } else if (line.match(/^\s*$/) && categories.length > 0) {
-          // 空行且已有分类，可能结束
-          break;
-        } else if (line.match(/^[a-zA-Z]/) && !line.match(/^\s/)) {
-          // 遇到新的顶级字段，退出
-          break;
-        }
-      }
-    }
-    
-    // 生成文章 URL（根据 permalink 规则 :category/:title/）
+    // 生成文章 URL（根据 permalink 规则 :year/:month/:day/:title/）
     // 注意：Hexo 的 :title 实际上使用的是文件名（去掉 .md 扩展名），而不是从 title 生成的 slug
     const fileName = file.replace('.md', '');
     let url = '';
-    if (categories.length >= 2) {
-      // 二级分类：/一级分类/二级分类/文件名/
-      url = `/${categories[0]}/${categories[1]}/${fileName}/`;
-    } else if (categories.length === 1) {
-      // 一级分类：/分类/文件名/
-      url = `/${categories[0]}/${fileName}/`;
+    
+    // 从文件名提取日期：YYYY-MM-DD-title.md
+    const dateMatch = fileName.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)$/);
+    if (dateMatch) {
+      const [, year, month, day, title] = dateMatch;
+      url = `/${year}/${month}/${day}/${fileName}/`;
     } else {
-      // 无分类：/文件名/
+      // 如果没有日期前缀，使用文件名
       url = `/${fileName}/`;
     }
     
@@ -141,8 +110,7 @@ function main() {
       description,
       url,
       file: fileName,
-      cover: cover,
-      categories: categories
+      cover: cover
     });
   }
   

@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SA分析师认证课程 - 第四章 数据分析方法全解析 | Linn's Blog</title><meta name="author" content="yuxiaoling"><meta name="copyright" content="yuxiaoling"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录SACA（神策分析师认证）课程第四章的学习内容，详细介绍多种数据分析方法，包括事件分析、漏斗分析、留存分析等，帮助理解用户行为、评估业务效果和优化产品体验。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SA分析师认证课程 - 第四章 数据分析方法全解析">
+<meta property="og:url" content="https://linn0813.github.io/2025/06/04/2025-06-04-SACA-chapter4/index.html">
+<meta property="og:site_name" content="Linn&#39;s Blog">
+<meta property="og:description" content="记录SACA（神策分析师认证）课程第四章的学习内容，详细介绍多种数据分析方法，包括事件分析、漏斗分析、留存分析等，帮助理解用户行为、评估业务效果和优化产品体验。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linn0813.github.io/img/SACA-chapter4.png">
+<meta property="article:published_time" content="2025-06-04T14:54:07.000Z">
+<meta property="article:modified_time" content="2025-12-03T15:38:43.775Z">
+<meta property="article:author" content="yuxiaoling">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="SACA课程">
+<meta property="article:tag" content="神策分析师认证">
+<meta property="article:tag" content="数据分析方法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linn0813.github.io/img/SACA-chapter4.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SA分析师认证课程 - 第四章 数据分析方法全解析",
+  "url": "https://linn0813.github.io/2025/06/04/2025-06-04-SACA-chapter4/",
+  "image": "https://linn0813.github.io/img/SACA-chapter4.png",
+  "datePublished": "2025-06-04T14:54:07.000Z",
+  "dateModified": "2025-12-03T15:38:43.775Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yuxiaoling",
+      "url": "https://linn0813.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://linn0813.github.io/2025/06/04/2025-06-04-SACA-chapter4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="Xj7zV_DKnHFmJ7sXNRvdl5-UTfG4NLy-s7hDk1DZt4A"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":true,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SA分析师认证课程 - 第四章 数据分析方法全解析',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/blog-enhancements.css"><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/SACA-chapter4.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.jpg" alt="Logo" loading='lazy'><span class="site-name">Linn's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">SA分析师认证课程 - 第四章 数据分析方法全解析</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">SA分析师认证课程 - 第四章 数据分析方法全解析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-04T14:54:07.000Z" title="发表于 2025-06-04 22:54:07">2025-06-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-03T15:38:43.775Z" title="更新于 2025-12-03 23:38:43">2025-12-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E4%B8%8E%E7%90%86%E8%AE%BA/">测试基础与理论</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E4%B8%8E%E7%90%86%E8%AE%BA/%E6%B5%8B%E8%AF%95%E7%9F%A5%E8%AF%86%E6%B2%89%E6%B7%80/">测试知识沉淀</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="SA分析师认证课程-第四章-数据分析方法全解析"><a href="#SA分析师认证课程-第四章-数据分析方法全解析" class="headerlink" title="SA分析师认证课程 - 第四章 数据分析方法全解析"></a>SA分析师认证课程 - 第四章 数据分析方法全解析</h1><p>在当今数字化的时代，数据分析对于企业的决策和发展起着至关重要的作用。第四章课堂笔记详细介绍了多种数据分析方法，包括事件分析、漏斗分析、留存分析等，这些方法能够帮助我们更好地理解用户行为、评估业务效果以及优化产品体验。下面，我们一起深入学习这些数据分析方法。</p>
+<h2 id="一、事件分析"><a href="#一、事件分析" class="headerlink" title="一、事件分析"></a>一、事件分析</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>事件分析是基于事件的指标统计、属性分组、条件筛选等功能开展的查询分析。事件可以是用户注册、加入购物车、付费等操作，用于追踪和记录用户行为或业务的过程。其价值在于能够快速了解业务现状、发现异常情况，是日常监控的常用手段。</p>
+<h3 id="2-记录方式-Event-User-模型"><a href="#2-记录方式-Event-User-模型" class="headerlink" title="2. 记录方式 - Event - User 模型"></a>2. 记录方式 - Event - User 模型</h3><p>该模型包含用户（Users）和事件（Events）两部分。用户部分记录用户的相关属性，如用户 ID、性别、城市等；事件部分记录用户的具体行为事件，涵盖用户 ID、事件名称、商品价格等信息。</p>
+<h3 id="3-指标与事件、维度的关系"><a href="#3-指标与事件、维度的关系" class="headerlink" title="3. 指标与事件、维度的关系"></a>3. 指标与事件、维度的关系</h3><p>指标基于事件数据计算得出，例如日活是通过统计特定时间段内触发相关事件的用户数量得到的。指标反映业务现象或场景的量化特征，维度是将指标按特定角度拆分的字段，如不同商品类型的 GMV，产品类型就是维度。</p>
+<h3 id="4-主要应用场景"><a href="#4-主要应用场景" class="headerlink" title="4. 主要应用场景"></a>4. 主要应用场景</h3><ul>
+<li><strong>看量级</strong>：关注结果类指标的量级，采用数值卡片呈现，如全站流量、全站日活等。</li>
+<li><strong>看趋势</strong>：观测指标随时间的变化趋势，线形图是较为合适的展示方式。</li>
+<li><strong>看结构</strong>：了解整体和部分的构成情况，用环形图展示部分占总体的比例；若关注整体和部分构成随时间的变化趋势，可采用堆叠柱形图。</li>
+<li><strong>看细分</strong>：可进行不同维度的细分，更易发现规律。若关注具体数据明细，可采用表格展示形式；若关注某个单一维度的数据对比，柱形图是较好的呈现形式。</li>
+<li><strong>多指标分析</strong>：在评估活动效果时，同时观察多个相关指标在相同时间点的表现，如活动页浏览人数、点击参与活动人数等。</li>
+<li><strong>小技巧</strong>：在概览中查看 TopN，将概览组件配置成表格，通过在表头点击升序或降序查看；使用双坐标轴，用于同时展示多个指标，且不同指标的量级差异较大的情况。</li>
+</ul>
+<h2 id="二、漏斗分析"><a href="#二、漏斗分析" class="headerlink" title="二、漏斗分析"></a>二、漏斗分析</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>漏斗分析用于描述随着步骤推进而发生流逝的过程，通过统计具有严格顺序的流程中前后步骤的人数及转化率，评估该流程各步骤的流失情况。</p>
+<h3 id="2-指标算法"><a href="#2-指标算法" class="headerlink" title="2. 指标算法"></a>2. 指标算法</h3><p>步骤转化率 &#x3D; 下一步骤行为人数 &#x2F; 当前步骤行为人数。</p>
+<h3 id="3-主要应用场景"><a href="#3-主要应用场景" class="headerlink" title="3. 主要应用场景"></a>3. 主要应用场景</h3><ul>
+<li><strong>两步骤漏斗</strong>：关注转化结果，信息来源于时间维度和分类维度。分析思路包括看趋势，查看近期转化率变化趋势；看细分，按常见细分维度对比查看；看占比，在细分维度下查看部分分类的转化率占整体的比重。</li>
+<li><strong>多步骤漏斗</strong>：关注步骤表现，采用诊断思路，发现冲突并定位问题。</li>
+</ul>
+<h3 id="4-实际操作"><a href="#4-实际操作" class="headerlink" title="4. 实际操作"></a>4. 实际操作</h3><p>窗口期是漏斗分析中必须设置的参数，不设置窗口期无法准确查询出数据。</p>
+<h2 id="三、留存分析"><a href="#三、留存分析" class="headerlink" title="三、留存分析"></a>三、留存分析</h2><h3 id="1-基本概念-2"><a href="#1-基本概念-2" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>留存分析指用户发生某行为之后，在一段时间后再次发生该行为的情形，用于统计用户发生某初始行为后，间隔一段时间再次发生某后续行为的比例，衡量用户行为在时间维度上的持续性。</p>
+<h3 id="2-指标算法-1"><a href="#2-指标算法-1" class="headerlink" title="2. 指标算法"></a>2. 指标算法</h3><p>留存率 &#x3D; 后续行为日期的人数 &#x2F; 初始行为日期的人数。</p>
+<h3 id="3-主要应用场景-1"><a href="#3-主要应用场景-1" class="headerlink" title="3. 主要应用场景"></a>3. 主要应用场景</h3><ul>
+<li><strong>平台留存</strong>：基于某个关键行为，选定恰当的留存指标，观察用户在平台整体的留存情况。</li>
+<li><strong>新老留存</strong>：区分新老用户观察留存情况，评估新用户和老用户留存引导工作的成效。</li>
+<li><strong>功能留存</strong>：观察功能的留存情况，结合其他指标综合评估功能对平台的整体贡献。还可使用功能留存矩阵评估功能对流程的影响，确定功能改善的工作方向。同时，涉及功能渗透率、功能使用频率、功能留存率（长期）等指标。</li>
+</ul>
+<h3 id="4-留存与流失的计算差异"><a href="#4-留存与流失的计算差异" class="headerlink" title="4. 留存与流失的计算差异"></a>4. 留存与流失的计算差异</h3><p>留存是第 N 日的留存，流失是连续 N 日的流失。</p>
+<h2 id="四、分布分析"><a href="#四、分布分析" class="headerlink" title="四、分布分析"></a>四、分布分析</h2><h3 id="1-基本概念-3"><a href="#1-基本概念-3" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>分布分析指某事物按某种规则分布在不同区域，用于统计在某种划分维度下各个不同区域的人群数量，横向对比不同区域的人群集中程度。</p>
+<h3 id="2-指标算法-2"><a href="#2-指标算法-2" class="headerlink" title="2. 指标算法"></a>2. 指标算法</h3><p>分布人数 &#x3D; 该区域分布人数，分布百分比 &#x3D; 该区域分布人数 &#x2F; 所有区域总人数。</p>
+<h3 id="3-主要应用场景-2"><a href="#3-主要应用场景-2" class="headerlink" title="3. 主要应用场景"></a>3. 主要应用场景</h3><ul>
+<li>运营思考从事与人两方面出发，关注运营工作表现以及运营对象的表现。</li>
+<li>观察不同时期的分布差异，印证运营措施的效果，定位不达预期或超预期的用户。</li>
+<li>观察不同人群的分布差异，帮助决策是否针对用户分群制定差异化的运营策略。</li>
+</ul>
+<h3 id="4-实际操作-1"><a href="#4-实际操作-1" class="headerlink" title="4. 实际操作"></a>4. 实际操作</h3><p>间隔分析的聚合时间单位包括按天、按月、按周，不包括按小时。</p>
+<h2 id="五、间隔分析"><a href="#五、间隔分析" class="headerlink" title="五、间隔分析"></a>五、间隔分析</h2><h3 id="1-基本概念-4"><a href="#1-基本概念-4" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>间隔分析指两个关联事件之间的时间距离，通过统计两个关联事件之间的时间长短，评价事件发生过程所耗费的时间是否合理。</p>
+<h3 id="2-指标算法-3"><a href="#2-指标算法-3" class="headerlink" title="2. 指标算法"></a>2. 指标算法</h3><p>在选定的时间范围内找到首个行为 A，从该行为 A 开始往后找到最近的行为 B，计算这对行为 AB 的时间间隔。</p>
+<h3 id="3-主要应用场景-3"><a href="#3-主要应用场景-3" class="headerlink" title="3. 主要应用场景"></a>3. 主要应用场景</h3><ul>
+<li>主要观察指标为中位值和均值，用于评估绝大部分人的耗时情况。</li>
+<li>次要观察指标为最大值和最小值，用于捕捉潜在的异常问题。</li>
+<li>观察上下四分位的宽度，评估过程的差异性和稳定性。宽度较宽表明大多数人的差异明显，有进一步优化的空间；宽度较窄说明大多数人的体验稳定，提升空间较小。</li>
+<li>业务目标通常是缩短关联事件的时间间隔，缩短相同行为的间隔通常可提升用户粘性，缩短不同行为的间隔通常可提升用户在转化流程中的效率和体验。</li>
+</ul>
+<h3 id="4-实际操作-2"><a href="#4-实际操作-2" class="headerlink" title="4. 实际操作"></a>4. 实际操作</h3><p>在统计间隔时长时，总体的最大值可能会受到各种因素影响，存在比每天的最大值都大的情况；上四分位的计算方法是将数据按从大到小排列后，取 1&#x2F;4 处的值；假设注册流程包括手机号注册，填写基本信息，实名认证 3 个事件，填写基本信息与实名认证的时间间隔并不是用户在基本信息页的停留时长；通过显示设置，只能不显示最大值和最小值。</p>
+<h2 id="六、归因分析"><a href="#六、归因分析" class="headerlink" title="六、归因分析"></a>六、归因分析</h2><h3 id="1-基本概念-5"><a href="#1-基本概念-5" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>归因分析是将某个事件的发生原因归功或归咎于前向事件，通过某些归因算法，赋予导致目标事件发生的待归因事件一个贡献权重，公平评估各项业务措施的贡献度和有效度。</p>
+<h3 id="2-主要应用场景"><a href="#2-主要应用场景" class="headerlink" title="2. 主要应用场景"></a>2. 主要应用场景</h3><p>业务目标通常是找出效果好和效果不好的手段，对好的手段进行发扬放大，对坏的手段进行改进提升。包括独立应用和综合应用。目标事件分为线索导向型和决策导向型，待归因事件通常是某个转化入口或引导手段，手段之间可能存在协作关系。贡献度计算根据目标事件类型不同而不同，线索导向型按线索条数计算，决策导向型按目标事件达成次数或目标事件达成金额计算。</p>
+<h3 id="3-需要归因的业态"><a href="#3-需要归因的业态" class="headerlink" title="3. 需要归因的业态"></a>3. 需要归因的业态</h3><ul>
+<li>线索导向型：用户决策周期长，需要获取线索在线下进一步沟通，线上转化仅起承接作用。</li>
+<li>决策导向型：用户决策周期短，经冲动刺激可成功引导用户，通常线上直接达成商业目标。</li>
+</ul>
+<h3 id="4-贡献度算法"><a href="#4-贡献度算法" class="headerlink" title="4. 贡献度算法"></a>4. 贡献度算法</h3><ul>
+<li><strong>首次触点归因</strong>：强调第一个归因事件的功劳，适用于线索导向型产品，手法层级少，手段间关联性低。</li>
+<li><strong>末次触点归因</strong>：认为最后一个归因事件功劳为 100%，适用于决策导向型产品，手段间关联性低，技术实现难度低，最为常用。</li>
+<li><strong>位置归因</strong>：根据归因事件的位置分配功劳，适用于重视线索与决策，有一定手段层级复杂性的产品，极少使用。</li>
+<li><strong>线性归因</strong>：平均分配各归因事件的功劳，适用于决策导向型产品，引导手段分工细致、较平均，较为常用。</li>
+<li><strong>时间衰减归因</strong>：更注重近期事件的影响，适用于决策导向型产品，手段与时效关系密切。</li>
+</ul>
+<h2 id="七、Session-分析"><a href="#七、Session-分析" class="headerlink" title="七、Session 分析"></a>七、Session 分析</h2><h3 id="1-基本概念-6"><a href="#1-基本概念-6" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>Session 也称会话，类似于一段完整的对话过程，将一段时间内的所有行为封装为一个单元。通过 Session 分析，可将一连串行为按规则组成更大的单元，并以此单元为角度进行分析。</p>
+<h3 id="2-主要应用场景-1"><a href="#2-主要应用场景-1" class="headerlink" title="2. 主要应用场景"></a>2. 主要应用场景</h3><ul>
+<li><strong>以 Session 作为分析单元</strong>：评估指标包括 Session 个数、Session 时长、Session 深度、Session 跳出率。</li>
+<li><strong>以 Session 内的事件作为分析单元</strong>：评估指标包括 Session 内某事件的 Session 次数、Session 内某事件的 Session 次数 &#x2F; 总 Session 次数、Session 内某事件的事件时长、Session 内某事件的事件时长 &#x2F; 总 Session 时长。</li>
+</ul>
+<h2 id="八、路径分析"><a href="#八、路径分析" class="headerlink" title="八、路径分析"></a>八、路径分析</h2><h3 id="1-基本概念-7"><a href="#1-基本概念-7" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>路径分析指某一时间段内，按时间先后顺序记录用户群体从前到后每一步行为的走向，在一定程度上还原用户群体的决策过程，研究用户在行为过程中的各种可能性，了解用户群体在决策过程中的差异。</p>
+<h3 id="2-主要应用场景-2"><a href="#2-主要应用场景-2" class="headerlink" title="2. 主要应用场景"></a>2. 主要应用场景</h3><ul>
+<li>明确起点探究后续：以某事件为起点探究后续路径，分析用户在发生某个里程碑事件后，是否顺利走向设想中的下一步动作。</li>
+<li>明确终点探究来源：以某事件为终点探究前向路径，分析用户在到达某个关键业务节点前的行为，以便了解用户到达该节点的因素。</li>
+<li>核心要义：心中对用户的理想路径有明确设想，才能感知真实路径中用户不符预期的行为走向，实施纠正措施。</li>
+</ul>
+<h3 id="3-实际操作"><a href="#3-实际操作" class="headerlink" title="3. 实际操作"></a>3. 实际操作</h3><p>用户路径分析中单节点显示的数字值指的是 session 数，而不是用户数；需要先配置好待分析事件。</p>
+<h2 id="九、网页热力分析"><a href="#九、网页热力分析" class="headerlink" title="九、网页热力分析"></a>九、网页热力分析</h2><h3 id="1-基本概念-8"><a href="#1-基本概念-8" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>网页热力分析应用特殊高亮的颜色、数据标注等，显示页面或页面组区域中不同元素的点击密度、触达率、停留分布等特征，以可视化方式展示用户对网页不同位置的热衷程度，帮助了解用户习惯，优化产品体验。</p>
+<h3 id="2-指标算法-4"><a href="#2-指标算法-4" class="headerlink" title="2. 指标算法"></a>2. 指标算法</h3><ul>
+<li>元素点击率 &#x3D; 元素点击次数 &#x2F; 当前页面浏览次数。</li>
+<li>元素点击占比 &#x3D; 元素点击次数 &#x2F; 当前页面所有元素点击次数。</li>
+</ul>
+<h3 id="3-主要应用场景-4"><a href="#3-主要应用场景-4" class="headerlink" title="3. 主要应用场景"></a>3. 主要应用场景</h3><ul>
+<li>单页面热力分析：适用于推广落地页、活动页、网站首页等单独承载特殊功能的页面。</li>
+<li>页面组热力分析：适用于商品详情页等界面结构相似的网页。</li>
+<li>用户浏览深度分析：触达率指在当前筛选条件下，最终到达网页中某个位置的用户的比例，通过统计用户退出页面前最终到达的位置，计算页面的触达深度，分析用户浏览深度，帮助优化页面的内容和结构设计。</li>
+</ul>
+<h3 id="4-实际操作-3"><a href="#4-实际操作-3" class="headerlink" title="4. 实际操作"></a>4. 实际操作</h3><p>网页热力分析通过特殊高亮的颜色等显示页面元素的点击密度等特征，颜色越深通常表示该页面元素被点击的次数越多。</p>
+<h2 id="十、用户分群"><a href="#十、用户分群" class="headerlink" title="十、用户分群"></a>十、用户分群</h2><h3 id="1-基本概念-9"><a href="#1-基本概念-9" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><p>用户分群是依据用户的属性特征和行为特征将用户群体进行分类，并对其进行观察和分析。</p>
+<h3 id="2-价值"><a href="#2-价值" class="headerlink" title="2. 价值"></a>2. 价值</h3><p>帮助营销人员实现客户细分，针对不同用户制定不同的运营策略，实现精细化运营；帮助企业更好地了解用户。</p>
+<h3 id="3-划分方式"><a href="#3-划分方式" class="headerlink" title="3. 划分方式"></a>3. 划分方式</h3><p>包括用户属性划分、用户行为划分、用户属性 + 用户行为划分。</p>
+<h3 id="4-主要应用场景-1"><a href="#4-主要应用场景-1" class="headerlink" title="4. 主要应用场景"></a>4. 主要应用场景</h3><ul>
+<li>实现用户切分，辅助精细化运营：结合短信、push、邮件等推送系统，向指定用户群推送消息，根据用户特征提供偏好信息，促进用户活跃和转化。</li>
+<li>人群洞察：分析指定用户群的用户画像，更聚焦地了解用户基础信息和行为偏好，便于运营人员进行精准运营和制定营销策略。</li>
+</ul>
+<h3 id="5-实际操作"><a href="#5-实际操作" class="headerlink" title="5. 实际操作"></a>5. 实际操作</h3><p>创建用户分群可以从多个角度进行，通过用户属性、用户行为、行为序列筛选目标人群，也可上传用户 ID 直接指定特定的用户群体作为目标人群。</p>
+<h2 id="十一、自定义查询"><a href="#十一、自定义查询" class="headerlink" title="十一、自定义查询"></a>十一、自定义查询</h2><h3 id="1-价值"><a href="#1-价值" class="headerlink" title="1. 价值"></a>1. 价值</h3><p>支持使用标准 SQL 对神策分析的所有数据进行查询，并对查询结果进行简单可视化。</p>
+<h3 id="2-分群计算的基准时间（base-time）"><a href="#2-分群计算的基准时间（base-time）" class="headerlink" title="2. 分群计算的基准时间（base_time）"></a>2. 分群计算的基准时间（base_time）</h3><p>创建例行分群时，数据范围动态变化，需使用动态时间表示数据的时间范围；手动分群只能计算一次，投入计算后 base_time 不可修改。</p>
+<h3 id="3-应用场景实例"><a href="#3-应用场景实例" class="headerlink" title="3. 应用场景实例"></a>3. 应用场景实例</h3><p>包括连续 N 天做某事、做某事前后发生其他行为的次数等。</p>
+<hr>
+<p>总之，通过学习这些数据分析方法，我们能够更加深入地了解用户行为和业务效果，为企业的决策和发展提供有力支持。希望大家在实际应用中能够灵活运用这些方法，不断提升数据分析能力。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linn0813.github.io">yuxiaoling</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linn0813.github.io/2025/06/04/2025-06-04-SACA-chapter4/">https://linn0813.github.io/2025/06/04/2025-06-04-SACA-chapter4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">版权所有，转载请注明出处。</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><a class="post-meta__tags" href="/tags/SACA%E8%AF%BE%E7%A8%8B/">SACA课程</a><a class="post-meta__tags" href="/tags/%E7%A5%9E%E7%AD%96%E5%88%86%E6%9E%90%E5%B8%88%E8%AE%A4%E8%AF%81/">神策分析师认证</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/">数据分析方法</a></div><div class="post-share"><div class="social-share" data-image="/img/SACA-chapter4.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/03/2025-06-03-pinia/" title="前端Pinia状态管理实践"><img class="cover" src="/img/Pinia.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">前端Pinia状态管理实践</div></div><div class="info-2"><div class="info-item-1">前端Pinia状态管理实践一、引言在前端开发的世界里，随着项目规模的不断扩大和功能的日益复杂，状态管理成为了一个至关重要的问题😵。想象一下，在一个大型的管理平台中，有多个组件需要共享和管理用户的登录状态、个人信息等数据，如果没有一个有效的状态管理方案，那么代码将会变得混乱不堪，维护起来也会异常困难😫。 Pinia 作为一个轻量级的状态管理库，就像是一位贴心的管家🧑‍管家，为 Vue 应用提供了一种简单、高效的状态管理解决方案。它可以帮助我们更好地组织和管理应用的状态，让代码更加清晰、可维护和易于扩展👏。本文将结合管理平台项目，以保姆级的教程详细介绍 Pinia 在前端状态管理中的实践应用，即使是新手小白也能轻松理解哦😎。 二、前置知识准备2.1 Vue 基础在学习 Pinia 之前，我们需要对 Vue 有一定的了解。Vue 是一个用于构建用户界面的渐进式 JavaScript 框架，它采用了组件化的开发思想，让我们可以将页面拆分成多个小的、可复用的组件。如果你还不熟悉 Vue，建议先学习一下 Vue 的基础知识，包括组件、指令、响应式原理等。 2.2...</div></div></div></a><a class="pagination-related" href="/2025/06/05/2025-06-05-AI-heima/" title="🧠 探秘 AI + 软件测试：黑马程序员课程的奇妙之旅"><img class="cover" src="/img/AI-heima.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" loading='lazy'><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">🧠 探秘 AI + 软件测试：黑马程序员课程的奇妙之旅</div></div><div class="info-2"><div class="info-item-1">🧠 探秘 AI + 软件测试：黑马程序员课程的奇妙之旅😎最近我在跟着黑马程序员的课程学习AI+软件测试，今天就先来和大家分享一下我在课程里学到的一些基础内容。 🔗 课程链接：AI+软件测试【黑马程序员】  🌟 一、AI 快速入门 推荐网站：黑马星云 AI 助理 推荐模型：百度文心大模型  🎯 AI 在软件测试中的作用：  提升测试速度与效率 支持缺陷预测与分析  🧩 指令 Prompt 组成：  角色（Role） 指示（Instruction） 可选：上下文、示例、输入、输出   🧪 二、测试基础（分类）📌 按生产阶段划分   测试类型 说明 类比    单元测试 对代码最小单元进行测试 检查每块砖 🧱   集成测试 测试模块间交互功能 组装房屋部件 🔗   系统测试 测试整个系统 整体房屋检查 🏠   验收测试 验证是否满足用户需求 业主验收 👀   📌 按代码可见度划分   测试类型 特点 类比    黑盒测试 代码不可见，仅测试输入输出 看房外观 🏡   灰盒测试 部分代码可见 知道部分结构 🧐   白盒测试 全部代码可见 清楚内部细节...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/06/11/2025-06-11-SACA-chapter5/" title="SA分析师认证课程 - 第五章 应用数据驱动增长"><img class="cover" src="/img/SACA-chapter5.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-11</div><div class="info-item-2">SA分析师认证课程 - 第五章 应用数据驱动增长</div></div><div class="info-2"><div class="info-item-1">SA分析师认证课程 - 第五章 应用数据驱动增长在当今数字化的时代，数据是企业决策的重要依据。产品效能分析与活动效果分析作为数据分析的重要组成部分，对于企业了解产品和活动的表现、优化策略具有至关重要的意义。以下是对相关内容的详细解读。 一、产品效能分析与应用1. 产品效能定义产品效能是一种评价标准，用于评价产品提供价值的能力大小。它涵盖了产品在不同层面的表现，通过多个维度的指标进行衡量。  用户是否用、用得多、用得深、用得好？  2....</div></div></div></a><a class="pagination-related" href="/2025/05/20/2025-05-20-SACA-chapter1/" title="SA分析师认证课程 - 第一章 走进数据分析📊"><img class="cover" src="/img/SACA-chapter1.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-20</div><div class="info-item-2">SA分析师认证课程 - 第一章 走进数据分析📊</div></div><div class="info-2"><div class="info-item-1">SA分析师认证课程 - 第一章 走进数据分析📊最近我正在参加SACA（Sensors Analytics Certification-Analyst，神策分析师认证）课程考试，为了记录自己的学习过程，同时也希望能和更多的数据分析爱好者分享学习心得，我决定用博客的形式把每一次的学习内容都记录下来🤓。 SACA课程是神策学堂推出的专业认证课程，集工具实操、方法实战、官方认证于一体，由神策专家们联袂打造，适合0 -...</div></div></div></a><a class="pagination-related" href="/2025/05/22/2025-05-22-SACA-chapter2/" title="SA分析师认证课程 - 第二章 了解数据采集基础📚"><img class="cover" src="/img/SACA-chapter2.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-22</div><div class="info-item-2">SA分析师认证课程 - 第二章 了解数据采集基础📚</div></div><div class="info-2"><div class="info-item-1">SA分析师认证课程 - 第二章 了解数据采集基础📚在第一章的学习中，我们踏入了数据分析的大门，了解了数据分析的基本概念、流程和方法。如今，我们来到了第二章——了解数据采集基础。数据采集是数据分析的源头，它的准确性和完整性直接影响着后续分析的质量。就像建造高楼大厦，稳固的地基是关键，而数据采集就是数据分析这座大厦的坚实根基💪。在SACA（Sensors Analytics Certification - Analyst，神策分析师认证）课程的这个章节里，我们将深入学习数据采集的相关知识，为成为优秀的分析师继续努力前行🚀！如果你对SACA课程还不太了解，可以点击神策学堂查看更多详情，这里有专业的课程体系和丰富的学习资源，能帮助你在数据分析的道路上越走越远。 第二章课堂笔记一、课程核心内容回顾（一）数据基础结构1....</div></div></div></a><a class="pagination-related" href="/2025/05/25/2025-05-25-SACA-chapter3/" title="SA分析师认证课程 - 第三章 建立数据分析思维💡"><img class="cover" src="/img/SACA-chapter3.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-25</div><div class="info-item-2">SA分析师认证课程 - 第三章 建立数据分析思维💡</div></div><div class="info-2"><div class="info-item-1">SA分析师认证课程 - 第三章 建立数据分析思维💡在前面两章的学习中，我们了解了数据采集基础等重要内容，就像为数据分析这座大厦打下了坚实的地基。而在这第三章里，我们将开启建立数据分析思维的学习之旅，这就好比是为大厦搭建起稳固的框架，让我们能够更系统、更深入地进行数据分析。拥有良好的数据分析思维，能帮助我们在面对复杂的数据和问题时，迅速找到解决的方向，做出更明智的决策。接下来，就让我们一起深入探索第三章的精彩内容吧🚀！ 第三章课堂笔记一、问题思维1. 基本概念问题思维是去认识事物及其背后存在的「冲突」。它促使我们不仅仅停留在问题的表面，而是深入挖掘其内在的矛盾和不一致性。 2. 实际作用驱动我们去「认识事物」，解决推动事物过程中的障碍。通过识别冲突，我们能够更有针对性地采取措施，推动事物朝着预期的方向发展。 3. 应用框架 - SCQA 背景（S - Situation）：描述事情的背景、当前的状态，进行事实性的描述，明确目标和现状。这是问题分析的起点，只有清晰了解当前的情况，才能更好地发现问题。 冲突（C -...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">yuxiaoling</div><div class="author-info-description">分享软件测试学习、实战经验和踩坑历程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Linn0813"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Linn0813" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yuxiaoling.yxl@qq.com" target="_blank" title="Email"><i class="fa fa-envelope-open-text"></i></a><a class="social-icon" href="javascript:alert('微信公众号：Linn的技术笔记')" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://weibo.com/Linn0813" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">下雨就不想上班 / 出太阳也不想上班</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SA%E5%88%86%E6%9E%90%E5%B8%88%E8%AE%A4%E8%AF%81%E8%AF%BE%E7%A8%8B-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%85%A8%E8%A7%A3%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">SA分析师认证课程 - 第四章 数据分析方法全解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E4%BB%B6%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">一、事件分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%B0%E5%BD%95%E6%96%B9%E5%BC%8F-Event-User-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 记录方式 - Event - User 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8C%87%E6%A0%87%E4%B8%8E%E4%BA%8B%E4%BB%B6%E3%80%81%E7%BB%B4%E5%BA%A6%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 指标与事件、维度的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. 主要应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%BC%8F%E6%96%97%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">二、漏斗分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8C%87%E6%A0%87%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 指标算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 主要应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 实际操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%95%99%E5%AD%98%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">三、留存分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8C%87%E6%A0%87%E7%AE%97%E6%B3%95-1"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 指标算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 主要应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%95%99%E5%AD%98%E4%B8%8E%E6%B5%81%E5%A4%B1%E7%9A%84%E8%AE%A1%E7%AE%97%E5%B7%AE%E5%BC%82"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. 留存与流失的计算差异</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%86%E5%B8%83%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">四、分布分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8C%87%E6%A0%87%E7%AE%97%E6%B3%95-2"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 指标算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 主要应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C-1"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 实际操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%97%B4%E9%9A%94%E5%88%86%E6%9E%90"><span class="toc-number">1.5.</span> <span class="toc-text">五、间隔分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-4"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8C%87%E6%A0%87%E7%AE%97%E6%B3%95-3"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 指标算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 主要应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C-2"><span class="toc-number">1.5.4.</span> <span class="toc-text">4. 实际操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%BD%92%E5%9B%A0%E5%88%86%E6%9E%90"><span class="toc-number">1.6.</span> <span class="toc-text">六、归因分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-5"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 主要应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%9C%80%E8%A6%81%E5%BD%92%E5%9B%A0%E7%9A%84%E4%B8%9A%E6%80%81"><span class="toc-number">1.6.3.</span> <span class="toc-text">3. 需要归因的业态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%B4%A1%E7%8C%AE%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-number">1.6.4.</span> <span class="toc-text">4. 贡献度算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81Session-%E5%88%86%E6%9E%90"><span class="toc-number">1.7.</span> <span class="toc-text">七、Session 分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-6"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-number">1.7.2.</span> <span class="toc-text">2. 主要应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%B7%AF%E5%BE%84%E5%88%86%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text">八、路径分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-7"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-number">1.8.2.</span> <span class="toc-text">2. 主要应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C"><span class="toc-number">1.8.3.</span> <span class="toc-text">3. 实际操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E7%BD%91%E9%A1%B5%E7%83%AD%E5%8A%9B%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text">九、网页热力分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-8"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8C%87%E6%A0%87%E7%AE%97%E6%B3%95-4"><span class="toc-number">1.9.2.</span> <span class="toc-text">2. 指标算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="toc-number">1.9.3.</span> <span class="toc-text">3. 主要应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C-3"><span class="toc-number">1.9.4.</span> <span class="toc-text">4. 实际操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E7%94%A8%E6%88%B7%E5%88%86%E7%BE%A4"><span class="toc-number">1.10.</span> <span class="toc-text">十、用户分群</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-9"><span class="toc-number">1.10.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%B7%E5%80%BC"><span class="toc-number">1.10.2.</span> <span class="toc-text">2. 价值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%92%E5%88%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.10.3.</span> <span class="toc-text">3. 划分方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%BB%E8%A6%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-number">1.10.4.</span> <span class="toc-text">4. 主要应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C"><span class="toc-number">1.10.5.</span> <span class="toc-text">5. 实际操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.11.</span> <span class="toc-text">十一、自定义查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%B7%E5%80%BC"><span class="toc-number">1.11.1.</span> <span class="toc-text">1. 价值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%86%E7%BE%A4%E8%AE%A1%E7%AE%97%E7%9A%84%E5%9F%BA%E5%87%86%E6%97%B6%E9%97%B4%EF%BC%88base-time%EF%BC%89"><span class="toc-number">1.11.2.</span> <span class="toc-text">2. 分群计算的基准时间（base_time）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.11.3.</span> <span class="toc-text">3. 应用场景实例</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-post-series"><div class="item-headline"><i class="fa-solid fa-layer-group"></i><span>系列文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/06/11/2025-06-11-SACA-chapter5/" title="SA分析师认证课程 - 第五章 应用数据驱动增长"><img src="/img/SACA-chapter5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SA分析师认证课程 - 第五章 应用数据驱动增长" loading='lazy'></a><div class="content"><a class="title" href="/2025/06/11/2025-06-11-SACA-chapter5/" title="SA分析师认证课程 - 第五章 应用数据驱动增长">SA分析师认证课程 - 第五章 应用数据驱动增长</a><time datetime="2025-06-11T12:50:36.000Z" title="发表于 2025-06-11 20:50:36">2025-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/2025-06-04-SACA-chapter4/" title="SA分析师认证课程 - 第四章 数据分析方法全解析"><img src="/img/SACA-chapter4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SA分析师认证课程 - 第四章 数据分析方法全解析" loading='lazy'></a><div class="content"><a class="title" href="/2025/06/04/2025-06-04-SACA-chapter4/" title="SA分析师认证课程 - 第四章 数据分析方法全解析">SA分析师认证课程 - 第四章 数据分析方法全解析</a><time datetime="2025-06-04T14:54:07.000Z" title="发表于 2025-06-04 22:54:07">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/25/2025-05-25-SACA-chapter3/" title="SA分析师认证课程 - 第三章 建立数据分析思维💡"><img src="/img/SACA-chapter3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SA分析师认证课程 - 第三章 建立数据分析思维💡" loading='lazy'></a><div class="content"><a class="title" href="/2025/05/25/2025-05-25-SACA-chapter3/" title="SA分析师认证课程 - 第三章 建立数据分析思维💡">SA分析师认证课程 - 第三章 建立数据分析思维💡</a><time datetime="2025-05-25T09:00:00.000Z" title="发表于 2025-05-25 17:00:00">2025-05-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/22/2025-05-22-SACA-chapter2/" title="SA分析师认证课程 - 第二章 了解数据采集基础📚"><img src="/img/SACA-chapter2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SA分析师认证课程 - 第二章 了解数据采集基础📚" loading='lazy'></a><div class="content"><a class="title" href="/2025/05/22/2025-05-22-SACA-chapter2/" title="SA分析师认证课程 - 第二章 了解数据采集基础📚">SA分析师认证课程 - 第二章 了解数据采集基础📚</a><time datetime="2025-05-22T09:49:57.000Z" title="发表于 2025-05-22 17:49:57">2025-05-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/20/2025-05-20-SACA-chapter1/" title="SA分析师认证课程 - 第一章 走进数据分析📊"><img src="/img/SACA-chapter1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SA分析师认证课程 - 第一章 走进数据分析📊" loading='lazy'></a><div class="content"><a class="title" href="/2025/05/20/2025-05-20-SACA-chapter1/" title="SA分析师认证课程 - 第一章 走进数据分析📊">SA分析师认证课程 - 第一章 走进数据分析📊</a><time datetime="2025-05-20T09:26:12.000Z" title="发表于 2025-05-20 17:26:12">2025-05-20</time></div></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的"><img src="/img/performance-monitoring-dashboard-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📊 压测时，我是如何一步步「读懂」性能监控面板的"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的">📊 压测时，我是如何一步步「读懂」性能监控面板的</a><time datetime="2026-01-07T12:00:00.000Z" title="发表于 2026-01-07 20:00:00">2026-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"><img src="/img/server-performance-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会">🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会</a><time datetime="2026-01-06T12:00:00.000Z" title="发表于 2026-01-06 20:00:00">2026-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"><img src="/img/llm-agent-future-summary.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结">🌐 主题19｜Agent 工程未来：趋势、机会与系列总结</a><time datetime="2026-01-05T10:00:00.000Z" title="发表于 2026-01-05 18:00:00">2026-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"><img src="/img/llm-agent-ethical-boundaries.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI">⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI</a><time datetime="2026-01-04T10:00:00.000Z" title="发表于 2026-01-04 18:00:00">2026-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"><img src="/img/llm-agent-enterprise-applications.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地">🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地</a><time datetime="2026-01-03T10:00:00.000Z" title="发表于 2026-01-03 18:00:00">2026-01-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By yuxiaoling</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'Linn0813/Linn0813.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script src="/js/blog-enhancements.js"></script><script src="/js/category-enhancements.js"></script><script src="/js/series-enhancements.js"></script><script src="/js/post-series-meta.js"></script><script src="/js/archive-enhancements.js"></script><script src="/js/tag-enhancements.js"></script><script src="/js/index-enhancements.js"></script><script src="/js/sidebar-series-card.js"></script><script src="/js/theme-switcher-ui.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章、分类、标签..." type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

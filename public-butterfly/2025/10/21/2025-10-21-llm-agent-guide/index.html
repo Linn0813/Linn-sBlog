@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>🧠 LLM 与智能体（Agent）知识记录 | Linn's Blog</title><meta name="author" content="yuxiaoling"><meta name="copyright" content="yuxiaoling"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="系统梳理 LLM 与 Agent 的概念、组成、原理与实践要点，配套学习路线与清单，助你快速上手智能体开发与应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🧠 LLM 与智能体（Agent）知识记录">
+<meta property="og:url" content="https://linn0813.github.io/2025/10/21/2025-10-21-llm-agent-guide/index.html">
+<meta property="og:site_name" content="Linn&#39;s Blog">
+<meta property="og:description" content="系统梳理 LLM 与 Agent 的概念、组成、原理与实践要点，配套学习路线与清单，助你快速上手智能体开发与应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linn0813.github.io/img/LLM-Agent.png">
+<meta property="article:published_time" content="2025-10-21T13:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-29T15:36:02.636Z">
+<meta property="article:author" content="yuxiaoling">
+<meta property="article:tag" content="AI助手">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="Prompt">
+<meta property="article:tag" content="知识整理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linn0813.github.io/img/LLM-Agent.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "🧠 LLM 与智能体（Agent）知识记录",
+  "url": "https://linn0813.github.io/2025/10/21/2025-10-21-llm-agent-guide/",
+  "image": "https://linn0813.github.io/img/LLM-Agent.png",
+  "datePublished": "2025-10-21T13:00:00.000Z",
+  "dateModified": "2025-11-29T15:36:02.636Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yuxiaoling",
+      "url": "https://linn0813.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://linn0813.github.io/2025/10/21/2025-10-21-llm-agent-guide/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="Xj7zV_DKnHFmJ7sXNRvdl5-UTfG4NLy-s7hDk1DZt4A"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":true,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '🧠 LLM 与智能体（Agent）知识记录',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/blog-enhancements.css"><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/LLM-Agent.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.jpg" alt="Logo" loading='lazy'><span class="site-name">Linn's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">🧠 LLM 与智能体（Agent）知识记录</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">🧠 LLM 与智能体（Agent）知识记录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-21T13:00:00.000Z" title="发表于 2025-10-21 21:00:00">2025-10-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-29T15:36:02.636Z" title="更新于 2025-11-29 23:36:02">2025-11-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">技术学习与行业趋势</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/AI%E4%B8%8E%E7%A0%94%E7%A9%B6/">AI与研究</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<p>📘 本文旨在系统记录 LLM 与 Agent 的概念、组成、原理、应用与实践要点，形成长期可复用的知识材料。你可以将它作为“学习路线 + 实践清单”的参考。✅</p>
+</blockquote>
+<hr>
+<h2 id="基础认知"><a href="#基础认知" class="headerlink" title="基础认知"></a>基础认知</h2><h3 id="一、LLM（Large-Language-Model，大语言模型）-🤖"><a href="#一、LLM（Large-Language-Model，大语言模型）-🤖" class="headerlink" title="一、LLM（Large Language Model，大语言模型） 🤖"></a>一、LLM（Large Language Model，大语言模型） 🤖</h3><h3 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h3><p>LLM 是基于深度学习与海量文本训练的模型，能够理解、生成、推理自然语言，是现代智能体的“核心大脑”。</p>
+<h3 id="1-2-核心特性"><a href="#1-2-核心特性" class="headerlink" title="1.2 核心特性"></a>1.2 核心特性</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>理解能力</td>
+<td>能理解问题、文档、上下文与意图</td>
+</tr>
+<tr>
+<td>生成能力</td>
+<td>能生成文章、代码、摘要、对话等</td>
+</tr>
+<tr>
+<td>推理能力</td>
+<td>能做基础逻辑判断与归纳总结</td>
+</tr>
+<tr>
+<td>可扩展性</td>
+<td>可与知识库、工具、API 联动</td>
+</tr>
+<tr>
+<td>局限性</td>
+<td>幻觉（hallucination）、知识截至训练时间、上下文窗口有限</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-关键概念"><a href="#1-3-关键概念" class="headerlink" title="1.3 关键概念"></a>1.3 关键概念</h3><ul>
+<li><code>Prompt</code>：向模型输入的指令或问题，告诉模型“要做什么”。</li>
+<li><code>Token</code>：模型处理文本的最小单位；长文本消耗更多资源。</li>
+<li><code>Spec</code>（规范&#x2F;说明书）：约束输入输出格式，定义任务规则。</li>
+<li><code>RAG</code>（Retrieval-Augmented Generation）：结合外部知识库提升生成精确度。</li>
+<li><code>上下文（Context）</code>：模型参考的历史对话或文本，用于生成连贯结果。</li>
+</ul>
+<h3 id="1-4-工作原理（简化）"><a href="#1-4-工作原理（简化）" class="headerlink" title="1.4 工作原理（简化）"></a>1.4 工作原理（简化）</h3><ol>
+<li>文本编码：将输入拆分为 Token 并转化为向量；</li>
+<li>模型推理：通过神经网络计算每个 Token 的概率；</li>
+<li>生成输出：根据概率生成下一个 Token；</li>
+<li>拼接文本：输出最终生成的文本结果。</li>
+</ol>
+<hr>
+<h3 id="二、Agent（智能体）-🛠️"><a href="#二、Agent（智能体）-🛠️" class="headerlink" title="二、Agent（智能体） 🛠️"></a>二、Agent（智能体） 🛠️</h3><h3 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1 定义"></a>2.1 定义</h3><p>Agent 是在 LLM 基础上结合工具调用、流程编排与环境感知的系统，能够自主完成多步任务。</p>
+<h3 id="2-2-核心能力"><a href="#2-2-核心能力" class="headerlink" title="2.2 核心能力"></a>2.2 核心能力</h3><table>
+<thead>
+<tr>
+<th>能力</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>观察环境</td>
+<td>接收用户输入、文档、系统信息、API 输出</td>
+</tr>
+<tr>
+<td>规划任务</td>
+<td>拆解目标，制定执行步骤与顺序</td>
+</tr>
+<tr>
+<td>执行操作</td>
+<td>调用工具、接口、脚本、文件系统完成任务</td>
+</tr>
+<tr>
+<td>反馈调整</td>
+<td>根据执行结果优化下一步操作，形成闭环</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-组成模块"><a href="#2-3-组成模块" class="headerlink" title="2.3 组成模块"></a>2.3 组成模块</h3><ul>
+<li>LLM（大脑）：理解任务、生成计划与文本；</li>
+<li>Prompt + Spec（说明书）：定义角色、任务与输出格式；</li>
+<li>工具调用模块（手脚）：API、脚本、数据库操作、文件操作；</li>
+<li>记忆&#x2F;上下文管理：保存历史信息，支持跨任务参考；</li>
+<li>反馈机制：监控执行结果并调整策略。</li>
+</ul>
+<h3 id="2-4-工作流程（示意）"><a href="#2-4-工作流程（示意）" class="headerlink" title="2.4 工作流程（示意）"></a>2.4 工作流程（示意）</h3><p>用户输入 → LLM理解 → 任务规划 → 调用工具 → 执行操作 → 结果反馈 → 上下文更新 → 输出 ✅</p>
+<hr>
+<h3 id="三、LLM-与-Agent-的关系-🔗"><a href="#三、LLM-与-Agent-的关系-🔗" class="headerlink" title="三、LLM 与 Agent 的关系 🔗"></a>三、LLM 与 Agent 的关系 🔗</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>LLM</th>
+<th>Agent</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能</td>
+<td>理解和生成语言</td>
+<td>理解语言 + 执行任务</td>
+</tr>
+<tr>
+<td>主动性</td>
+<td>被动回答</td>
+<td>主动规划与执行</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>Prompt</td>
+<td>Prompt + 任务目标 + 可用工具</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>文本</td>
+<td>文本 + 执行结果</td>
+</tr>
+<tr>
+<td>场景</td>
+<td>问答、写作、摘要</td>
+<td>自动化流程、智能助手、系统执行</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>总结：Agent 是 LLM 的进化，将语言理解与实际执行结合，实现“理解 → 决策 → 行动”的闭环。🧭</p>
+</blockquote>
+<hr>
+<h2 id="轻量实践：自动生成测试用例-📋"><a href="#轻量实践：自动生成测试用例-📋" class="headerlink" title="轻量实践：自动生成测试用例 📋"></a>轻量实践：自动生成测试用例 📋</h2><p>以“从需求文档生成测试用例 Excel”为例：</p>
+<ul>
+<li>用户上传需求文档；</li>
+<li>LLM 理解文档内容与目标；</li>
+<li>Agent 规划字段（模块、用例名、步骤、预期结果）；</li>
+<li>LLM 生成测试用例文本；</li>
+<li>Agent 调脚本生成 Excel 文件；</li>
+<li>返回文件并记录执行日志；</li>
+<li>根据反馈调整生成策略。</li>
+</ul>
+<p>Python 伪代码示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">requirements = load_doc(<span class="string">&quot;需求文档.docx&quot;</span>)</span><br><span class="line">plan = llm.generate_plan(requirements, task=<span class="string">&quot;生成测试用例&quot;</span>)</span><br><span class="line">test_cases = llm.generate_test_cases(plan)</span><br><span class="line">excel_file = create_excel(test_cases)</span><br><span class="line">send_to_user(excel_file)</span><br></pre></td></tr></table></figure>
+
+<p>Spec（规范）片段示例（YAML）：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">role:</span> <span class="string">&quot;测试用例生成器&quot;</span></span><br><span class="line"><span class="attr">rules:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">输出必须包含:</span> <span class="string">模块,</span> <span class="string">用例名称,</span> <span class="string">前置条件,</span> <span class="string">步骤,</span> <span class="string">预期结果</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">步骤为编号列表,</span> <span class="string">预期结果为可验证陈述</span></span><br><span class="line"><span class="attr">format:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">table</span></span><br><span class="line">  <span class="attr">columns:</span> [<span class="string">module</span>, <span class="string">name</span>, <span class="string">precondition</span>, <span class="string">steps</span>, <span class="string">expected</span>]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="应用与工具"><a href="#应用与工具" class="headerlink" title="应用与工具"></a>应用与工具</h2><h3 id="一、常见应用场景-🧩"><a href="#一、常见应用场景-🧩" class="headerlink" title="一、常见应用场景 🧩"></a>一、常见应用场景 🧩</h3><ul>
+<li>办公自动化：整理报告、生成计划、发送邮件；</li>
+<li>测试自动化：需求分析 → 用例生成 → 执行 → 报告；</li>
+<li>客服系统：理解问题 → 调接口 → 自动回复；</li>
+<li>内容创作：文章、代码、文案生成；</li>
+<li>系统集成：多平台任务调度、状态监控、数据处理。</li>
+</ul>
+<h3 id="二、工具与框架-🧰"><a href="#二、工具与框架-🧰" class="headerlink" title="二、工具与框架 🧰"></a>二、工具与框架 🧰</h3><ul>
+<li>LangChain：管理 LLM + 工具调用 + Agent 流程；</li>
+<li>AutoGPT &#x2F; BabyAGI：多步任务 Agent 示例；</li>
+<li>RAG 方案：向量库 + 检索 + 重排 + 生成；</li>
+<li>记忆管理：对话记忆、长期记忆（文件&#x2F;数据库）。</li>
+</ul>
+<p>选型建议：先从“轻量 + 可控”开始，逐步扩展工具数量与任务复杂度。✅</p>
+<hr>
+<h2 id="能力与局限-⚖️"><a href="#能力与局限-⚖️" class="headerlink" title="能力与局限 ⚖️"></a>能力与局限 ⚖️</h2><ul>
+<li>优势：多步任务自动化、效率提升、语言能力可落地；</li>
+<li>局限：自主性越高风险越大（误操作&#x2F;数据泄露）、Prompt&#x2F;Spec 设计不当导致输出不准确、长任务规划与上下文管理仍是难点。</li>
+</ul>
+<hr>
+<h2 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h2><ul>
+<li>先理解 LLM：掌握 Prompt、Token、上下文；</li>
+<li>再尝试 Agent：从小任务练手（生成表格&#x2F;整理报告）；</li>
+<li>逐步扩展：多步任务、工具调用、记忆管理；</li>
+<li>安全与可控：控制关键操作、记录日志、设置监控机制。</li>
+</ul>
+<p>Checklist（自检清单）：</p>
+<ul>
+<li>明确任务目标与边界；</li>
+<li>定义 Spec 与输出格式；</li>
+<li>选择必要工具（API&#x2F;脚本&#x2F;文件操作）；</li>
+<li>配置日志与错误告警；</li>
+<li>评估隐私与权限控制；</li>
+<li>预留回滚与手动接管路径。</li>
+</ul>
+<hr>
+<h2 id="安全与治理🔒"><a href="#安全与治理🔒" class="headerlink" title="安全与治理🔒"></a>安全与治理🔒</h2><ul>
+<li>权限分级：只授予必要权限（最小化原则）；</li>
+<li>风险隔离：关键操作需二次确认或人工审批；</li>
+<li>日志审计：记录请求、响应与工具调用明细；</li>
+<li>数据脱敏：对敏感字段做掩码或匿名处理；</li>
+<li>速率限制：防止资源滥用与雪崩；</li>
+<li>可观测性：埋点与指标，便于定位与回溯。</li>
+</ul>
+<hr>
+<h2 id="常见坑位与规避-🪤"><a href="#常见坑位与规避-🪤" class="headerlink" title="常见坑位与规避 🪤"></a>常见坑位与规避 🪤</h2><ul>
+<li>幻觉输出：引入 RAG 与校验规则（Spec）；</li>
+<li>过度自主演化：限定工具范围与操作边界；</li>
+<li>上下文丢失：持久化关键状态（记忆模块）；</li>
+<li>无法复现：固定版本、固定 Prompt、固定数据样本；</li>
+<li>任务中断：设置重试策略与补偿机制。</li>
+</ul>
+<hr>
+<h2 id="Prompt-模板（可直接复用）-🧾"><a href="#Prompt-模板（可直接复用）-🧾" class="headerlink" title="Prompt 模板（可直接复用） 🧾"></a>Prompt 模板（可直接复用） 🧾</h2><p>任务型模板：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">你的角色：测试用例编写助手</span><br><span class="line">目标：根据输入需求生成覆盖率高、可执行的测试用例</span><br><span class="line">输出格式：表格（模块、用例名、前置条件、步骤、预期结果）</span><br><span class="line">约束：</span><br><span class="line">- 步骤使用编号列表（1. 2. 3. ...）</span><br><span class="line">- 预期结果为可验证陈述</span><br><span class="line">- 覆盖主流程和异常场景</span><br></pre></td></tr></table></figure>
+
+<p>规范型模板（Spec）：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">角色：智能体编排器</span><br><span class="line">规则：</span><br><span class="line">- 任何关键文件写入前需用户确认</span><br><span class="line">- 工具调用失败需重试 2 次并记录日志</span><br><span class="line">- 超过 60 秒未响应需中断并提示人工介入</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="评估指标与基准-📏"><a href="#评估指标与基准-📏" class="headerlink" title="评估指标与基准 📏"></a>评估指标与基准 📏</h2><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>说明</th>
+<th>目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>准确率</td>
+<td>输出与任务规范一致的比例</td>
+<td>≥ 95%</td>
+</tr>
+<tr>
+<td>覆盖率</td>
+<td>需求点&#x2F;场景覆盖情况</td>
+<td>≥ 90%</td>
+</tr>
+<tr>
+<td>执行成功率</td>
+<td>工具调用与脚本执行成功占比</td>
+<td>≥ 98%</td>
+</tr>
+<tr>
+<td>回滚率</td>
+<td>出错或异常导致的回滚比例</td>
+<td>≤ 2%</td>
+</tr>
+<tr>
+<td>人工介入率</td>
+<td>需人工处理的任务占比</td>
+<td>≤ 5%</td>
+</tr>
+<tr>
+<td>响应时间</td>
+<td>端到端时延</td>
+<td>≤ 5s（视场景）</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>Token&#x2F;调用次数&#x2F;资源占用</td>
+<td>可控上限</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="错误处理与重试策略-🛡️"><a href="#错误处理与重试策略-🛡️" class="headerlink" title="错误处理与重试策略 🛡️"></a>错误处理与重试策略 🛡️</h2><ul>
+<li>错误分层：输入错误（格式&#x2F;缺字段）、检索错误（为空&#x2F;质量低）、执行错误（网络&#x2F;权限）、生成错误（超时&#x2F;幻觉）。</li>
+<li>策略：指数退避重试、熔断（停止级联失败）、降级（提供简化结果）、兜底提示（引导人工介入）。</li>
+</ul>
+<p>错误与重试（概念介绍）：</p>
+<ul>
+<li>重试策略：建议指数退避，限制最大重试次数，避免雪崩；</li>
+<li>熔断与降级：连续失败触发熔断，输出简化结果并提示人工介入；</li>
+<li>记录与告警：持久化日志，标注错误类型与日志ID，便于定位与审计。</li>
+</ul>
+<hr>
+<p>📝 <strong>文章至此结束</strong> 感谢阅读！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linn0813.github.io">yuxiaoling</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linn0813.github.io/2025/10/21/2025-10-21-llm-agent-guide/">https://linn0813.github.io/2025/10/21/2025-10-21-llm-agent-guide/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">版权所有，转载请注明出处。</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI%E5%8A%A9%E6%89%8B/">AI助手</a><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/RAG/">RAG</a><a class="post-meta__tags" href="/tags/Prompt/">Prompt</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">知识整理</a></div><div class="post-share"><div class="social-share" data-image="/img/LLM-Agent.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/10/15/2025-10-15-coze-testcase-assistant/" title="🤖 手把手教你用Coze打造专属测试用例编写助手"><img class="cover" src="/img/coze-testcase-assistant.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">🤖 手把手教你用Coze打造专属测试用例编写助手</div></div><div class="info-2"><div class="info-item-1">🤖 手把手教你用Coze打造专属测试用例编写助手你是否曾为重复编写测试用例而头痛不已？纠结措辞、排列顺序，还要保证覆盖全面符合规范，效率始终提不上去？💢 最近发现Coze平台支持零代码搭建智能体，我便萌生了打造专属测试用例助手的想法！经过一番摸索，真的成功搭建出来了！今天就把整个搭建过程分享给大家，希望能帮到有同样需求的测试同行～✨ 📋 一、前期准备：明确需求与工具基础正式搭建前，需先明确两个关键前提，确保智能体方向精准：  明确智能体定位：结合我个人需求，我把目标锁定为”轻量高效的测试用例生成助手”——不需要复杂功能，核心是能根据输入的需求描述，自动输出含”编号、名称、步骤、预期结果、优先级”的规范表格，还要支持等价类划分、边界值分析这些我们常用的测试方法。  Coze平台基础：访问Coze官网注册Coze账号后，我先花半小时熟悉了控制台界面，发现”智能体管理””知识库””插件市场”是核心模块，后续搭建基本围绕这三块展开，操作逻辑比想象中简单。😊   🚀...</div></div></div></a><a class="pagination-related" href="/2025/10/24/2025-10-24-mind-your-tone/" title="🧩 Mind Your Tone：为什么我们不必再对 AI 太客气"><img class="cover" src="/img/Mind-Your-Tone.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" loading='lazy'><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">🧩 Mind Your Tone：为什么我们不必再对 AI 太客气</div></div><div class="info-2"><div class="info-item-1">🧩 Mind Your Tone：为什么我们不必再对 AI 太客气 一、引言：AI 不只是看内容，也在“听语气”过去几年里，随着 ChatGPT、Claude、Gemini 等大语言模型的普及，“提示工程（Prompt Engineering）”成了很多人提升效率的关键能力。许多早期教程都会提醒你：  “和 AI 说话要有礼貌，比如多加 please、thank you，它会更愿意帮你。”  然而，最新一篇研究《Mind Your Tone: Investigating How Prompt Politeness Affects LLM Accuracy》却发现——  越客气，AI 答得越不准。  这篇博文，我们来看看：  研究到底发现了什么？ 为什么“要客气”变成了“别太客气”？ 作为中文用户，我们又该如何写出更高效的提示？   二、研究介绍：粗鲁的语气，反而让模型更聪明？研究来源：  论文标题： Mind Your Tone: Investigating How Prompt Politeness Affects LLM...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/11/29/2025-11-29-llm-agent-core-concepts-guide/" title="🚀 告别浅尝辄止：《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列开篇"><img class="cover" src="/img/llm-agent-core-concepts-guide.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-29</div><div class="info-item-2">🚀 告别浅尝辄止：《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列开篇</div></div><div class="info-2"><div class="info-item-1">💡 为什么要启动这个系列？过去一年，LLM（大语言模型）和 Agent（智能体）几乎占据了整个技术圈的”热搜榜”。从写代码、自动化测试，到智能客服、知识问答、流程自动化，各种 Demo 和产品层出不穷。 然而，许多学习者都面临这样的困惑：  “我知道它能用，但我真的不理解它为什么能做到。”  学习了大量术语 —— Prompt、Token、Embedding、RAG、ReAct、Agentic Loop —— 却始终感觉知识散落成碎片。做项目时更是容易陷入”一知半解”的尴尬处境。 我以前写过一篇《LLM 与智能体（Agent）知识记录》，虽然系统梳理了概念，但更多像是一份”词汇表”，缺少对底层机制的深入拆解，也没有给出能真正指导实践的”心法”。 为了解决这一痛点，我决定启动这个全新的、面向新手到进阶开发者的系列：  《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》—— 比传统教程更清晰，比纯概念科普更务实。  这个系列将聚焦两大核心问题：  Why？ —— 这些机制为什么重要？它们解决了什么问题？ How？ ——...</div></div></div></a><a class="pagination-related" href="/2025/12/08/2025-12-08-llm-rag-deep-integration/" title="🧠 主题4｜解决&quot;幻觉&quot;：RAG机制与外部知识融合"><img class="cover" src="/img/llm-rag-deep-integration.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-08</div><div class="info-item-2">🧠 主题4｜解决&quot;幻觉&quot;：RAG机制与外部知识融合</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 4 篇   上一篇我们掌握了 Prompt 工程的三大核心技巧，实现了稳定、可解析的结构化输出。   本篇，我们将深入解析 RAG（检索增强生成）机制，构建抗幻觉的知识增强系统，突破 LLM 的知识时效性和准确性限制。   🚀 导言 — 突破 LLM 知识的”围墙”在前三篇中，我们掌握了 LLM 的工作原理、Prompt 工程技巧和结构化输出方法。 但当你真正用 LLM 做项目时，会发现三个令人头疼的问题：  模型的知识截止到训练时间，无法获取最新信息；模型可能产生”幻觉”，编造不存在的信息；模型无法访问私有知识库或专业文档。  这不是模型能力的问题，而是 知识来源的问题。 RAG（Retrieval-Augmented Generation，检索增强生成）机制应运而生，它将 LLM 从被动的”百科全书”升级为“有据可查的专家”。 本篇将深入解析 RAG 的三阶段工作流、核心组件及进阶优化策略，帮助你构建高精度、可追溯的知识增强系统。  📋 一、RAG 核心机制：三阶段工作流RAG...</div></div></div></a><a class="pagination-related" href="/2025/10/27/2025-10-27-langchain-framework/" title="🧠 LangChain：让大语言模型真正“动起来”的框架"><img class="cover" src="/img/langchain.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-27</div><div class="info-item-2">🧠 LangChain：让大语言模型真正“动起来”的框架</div></div><div class="info-2"><div class="info-item-1">🧠 LangChain：让大语言模型真正“动起来”的框架 从Prompt到Agent，从单轮问答到任务编排——这篇文章帮你彻底理解LangChain的核心思想与实践路径。    一、为什么需要LangChain？🌍 语言模型的局限大语言模型（LLM）很擅长生成文本、总结内容或推理，但它不会记忆上下文、无法访问外部数据、也不会执行真实操作。举个例子：   “帮我根据数据库里上周的测试结果生成一份风险分析报告。”   仅靠 GPT 或 Claude，模型根本无法：   连接数据库  读取测试结果  调用外部计算逻辑  于是开发者开始手动拼接 prompt、加 API 调用、做状态管理……直到——  🚀 LangChain 出现LangChain 由 Harrison Chase 于 2022 年发布，它的目标是让 LLM 不只是“聊天工具”，而是能理解上下文、调用外部工具、执行逻辑、形成完整工作流的“可编程智能体”。  一句话概括：   LangChain 是连接大语言模型与真实世界的中间层。    二、LangChain 的设计理念：模块化、可组合、可观测LangChain...</div></div></div></a><a class="pagination-related" href="/2025/12/03/2025-12-03-llm-prompt-context-in-context-learning/" title="🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning"><img class="cover" src="/img/llm-prompt-context-in-context-learning.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-03</div><div class="info-item-2">🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 2 篇   上一篇我们讲了 LLM 的”物理基础”：Token、Embedding、Transformer。   本篇，我们从”人机对话”的角度，理解如何让 LLM 从”会说话”变成”按指令办事”。   🚀 导言 — 与 LLM 沟通的艺术当你对 ChatGPT 说”帮我写一份测试计划”，它几秒内就能生成结构化的文档。 这不是魔法，本质上，它只是在执行一件事：  根据输入，预测下一个最可能出现的 Token。   但问题是：预测本身 ≠ 执行任务  核心挑战：LLM 不会”理解”文本，它会”对齐你给的上下文模式”。你给它怎样的上下文，它就呈现怎样的能力。   大多数人使用大模型时，只把它当作”聪明的聊天工具”。但真正要发挥 LLM 的能力，你必须理解：LLM 有一套独特的”语言体系”。 它并不是以”人类语言”来思考，而是依靠：  Prompt（提示词） — 给 LLM 的”指令语言” Context Window（上下文窗口） — 模型的”思维环境” In-Context...</div></div></div></a><a class="pagination-related" href="/2025/12/10/2025-12-10-llm-agent-concept-overview/" title="🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？"><img class="cover" src="/img/llm-agent-concept-overview.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-10</div><div class="info-item-2">🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 6 篇   上一篇我们全面对比了主流 LLM 模型，掌握了如何根据需求选择合适的模型。   本篇，我们将进入 Part II: Agent 核心架构与决策机制，系统理解 Agent 的本质，揭秘 LLM 如何进化为具有”行动能力”的智能体。   🚀 导言 — 从”大模型”到”智能体”在 Part I 中，我们已经掌握了：  LLM 的工作原理（Token、Transformer） Prompt 工程技巧（角色、ReAct、Schema） RAG 机制（检索、增强、生成） 模型评估与选型  但纯粹的 LLM 是 被动的 —— 它只能在你问它时才回应，只能生成文本，无法执行实际任务。 当你想要：  让 LLM 自动查询数据库、调用 API、生成报告、发送邮件…让 LLM 能够自主分解复杂任务，一步步完成…让 LLM 能够根据执行结果调整策略，直到完成任务…  这时，你需要 Agent（智能体）。 Agent 将 LLM 从”会说话的模型”升级为”能做事、会思考、能修正”的智能系统。 本篇将系统解析...</div></div></div></a><a class="pagination-related" href="/2025/12/16/2025-12-16-llm-agent-decision-engine/" title="🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用"><img class="cover" src="/img/llm-agent-decision-engine.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-16</div><div class="info-item-2">🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 7 篇   上一篇我们系统理解了 Agent 的本质，揭秘了 LLM 如何进化为具有”行动能力”的智能体。   本篇，我们将深入 Agent 的”决策引擎”，代码级拆解 ReAct 范式，掌握如何设计 Prompt 模板、实现工具调用和错误处理。   🚀 导言 — 从”思考”到”行动”的飞跃在第6篇中，我们了解了 Agent 通过 Thought（思考）、Action（行动） 和 Observation（观察） 的循环实现自主性。 但关键问题是：  高质量的思考是如何生成的？如何让 Agent 做出正确的决策？如何设计 Prompt 让 Agent 稳定地输出 Thought 和 Action？  🤔 先理解几个基础概念在深入 ReAct 之前，我们先理解几个关键概念： 1. 思维链（CoT - Chain of Thought）  简单理解：让 AI 像人一样，一步步思考问题，而不是直接给出答案。 例如：  ❌ 直接回答：答案是 42 ✅ 思维链：首先，我需要计算...</div></div></div></a><a class="pagination-related" href="/2025/12/18/2025-12-18-llm-agent-tool-system/" title="🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接"><img class="cover" src="/img/llm-agent-tool-system.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-18</div><div class="info-item-2">🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 9 篇   上一篇我们深入解析了 Agent 的记忆管理，探讨了如何突破 Context Window 限制，实现长期且连贯的记忆系统。   本篇，我们将聚焦 Agent 的工具系统，解析 Function Calling 机制与工具标准化设计，让 Agent 拥有连接外部世界的能力。   🚀 导言 — 让 Agent 拥有”手脚”在第8篇中，我们掌握了 Agent 如何记住历史信息。在第7篇中，我们了解了 Agent 如何思考和决策。 但 Agent 还有一个关键问题：  Agent 如何执行实际操作？如何让 Agent 调用外部工具？如何安全地让 Agent 连接外部世界？  Agent 的核心是 ReAct 循环，其中 **Action（行动）**环节必须依赖外部工具才能执行。工具是 Agent 与现实世界的唯一通道，赋予它搜索、计算、操作数据库、发送邮件等实际能力。 🤔 先理解几个基础概念1. Function Calling（函数调用）  简单理解：让 LLM...</div></div></div></a><a class="pagination-related" href="/2025/10/24/2025-10-24-mind-your-tone/" title="🧩 Mind Your Tone：为什么我们不必再对 AI 太客气"><img class="cover" src="/img/Mind-Your-Tone.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-24</div><div class="info-item-2">🧩 Mind Your Tone：为什么我们不必再对 AI 太客气</div></div><div class="info-2"><div class="info-item-1">🧩 Mind Your Tone：为什么我们不必再对 AI 太客气 一、引言：AI 不只是看内容，也在“听语气”过去几年里，随着 ChatGPT、Claude、Gemini 等大语言模型的普及，“提示工程（Prompt Engineering）”成了很多人提升效率的关键能力。许多早期教程都会提醒你：  “和 AI 说话要有礼貌，比如多加 please、thank you，它会更愿意帮你。”  然而，最新一篇研究《Mind Your Tone: Investigating How Prompt Politeness Affects LLM Accuracy》却发现——  越客气，AI 答得越不准。  这篇博文，我们来看看：  研究到底发现了什么？ 为什么“要客气”变成了“别太客气”？ 作为中文用户，我们又该如何写出更高效的提示？   二、研究介绍：粗鲁的语气，反而让模型更聪明？研究来源：  论文标题： Mind Your Tone: Investigating How Prompt Politeness Affects LLM...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">yuxiaoling</div><div class="author-info-description">分享软件测试学习、实战经验和踩坑历程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Linn0813"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Linn0813" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yuxiaoling.yxl@qq.com" target="_blank" title="Email"><i class="fa fa-envelope-open-text"></i></a><a class="social-icon" href="javascript:alert('微信公众号：Linn的技术笔记')" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://weibo.com/Linn0813" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">下雨就不想上班 / 出太阳也不想上班</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AE%A4%E7%9F%A5"><span class="toc-number">1.</span> <span class="toc-text">基础认知</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81LLM%EF%BC%88Large-Language-Model%EF%BC%8C%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%EF%BC%89-%F0%9F%A4%96"><span class="toc-number">1.1.</span> <span class="toc-text">一、LLM（Large Language Model，大语言模型） 🤖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.</span> <span class="toc-text">1.1 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">1.2 核心特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.</span> <span class="toc-text">1.3 关键概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E7%AE%80%E5%8C%96%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">1.4 工作原理（简化）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Agent%EF%BC%88%E6%99%BA%E8%83%BD%E4%BD%93%EF%BC%89-%F0%9F%9B%A0%EF%B8%8F"><span class="toc-number">1.6.</span> <span class="toc-text">二、Agent（智能体） 🛠️</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AE%9A%E4%B9%89"><span class="toc-number">1.7.</span> <span class="toc-text">2.1 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%A0%B8%E5%BF%83%E8%83%BD%E5%8A%9B"><span class="toc-number">1.8.</span> <span class="toc-text">2.2 核心能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%BB%84%E6%88%90%E6%A8%A1%E5%9D%97"><span class="toc-number">1.9.</span> <span class="toc-text">2.3 组成模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%88%E7%A4%BA%E6%84%8F%EF%BC%89"><span class="toc-number">1.10.</span> <span class="toc-text">2.4 工作流程（示意）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81LLM-%E4%B8%8E-Agent-%E7%9A%84%E5%85%B3%E7%B3%BB-%F0%9F%94%97"><span class="toc-number">1.11.</span> <span class="toc-text">三、LLM 与 Agent 的关系 🔗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%BB%E9%87%8F%E5%AE%9E%E8%B7%B5%EF%BC%9A%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B-%F0%9F%93%8B"><span class="toc-number">2.</span> <span class="toc-text">轻量实践：自动生成测试用例 📋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%B8%8E%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">应用与工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-%F0%9F%A7%A9"><span class="toc-number">3.1.</span> <span class="toc-text">一、常见应用场景 🧩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%A1%86%E6%9E%B6-%F0%9F%A7%B0"><span class="toc-number">3.2.</span> <span class="toc-text">二、工具与框架 🧰</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%BD%E5%8A%9B%E4%B8%8E%E5%B1%80%E9%99%90-%E2%9A%96%EF%B8%8F"><span class="toc-number">4.</span> <span class="toc-text">能力与局限 ⚖️</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF"><span class="toc-number">5.</span> <span class="toc-text">学习路线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E4%B8%8E%E6%B2%BB%E7%90%86%F0%9F%94%92"><span class="toc-number">6.</span> <span class="toc-text">安全与治理🔒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%9D%91%E4%BD%8D%E4%B8%8E%E8%A7%84%E9%81%BF-%F0%9F%AA%A4"><span class="toc-number">7.</span> <span class="toc-text">常见坑位与规避 🪤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prompt-%E6%A8%A1%E6%9D%BF%EF%BC%88%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%A4%8D%E7%94%A8%EF%BC%89-%F0%9F%A7%BE"><span class="toc-number">8.</span> <span class="toc-text">Prompt 模板（可直接复用） 🧾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87%E4%B8%8E%E5%9F%BA%E5%87%86-%F0%9F%93%8F"><span class="toc-number">9.</span> <span class="toc-text">评估指标与基准 📏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%8E%E9%87%8D%E8%AF%95%E7%AD%96%E7%95%A5-%F0%9F%9B%A1%EF%B8%8F"><span class="toc-number">10.</span> <span class="toc-text">错误处理与重试策略 🛡️</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的"><img src="/img/performance-monitoring-dashboard-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📊 压测时，我是如何一步步「读懂」性能监控面板的"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的">📊 压测时，我是如何一步步「读懂」性能监控面板的</a><time datetime="2026-01-07T12:00:00.000Z" title="发表于 2026-01-07 20:00:00">2026-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"><img src="/img/server-performance-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会">🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会</a><time datetime="2026-01-06T12:00:00.000Z" title="发表于 2026-01-06 20:00:00">2026-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"><img src="/img/llm-agent-future-summary.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结">🌐 主题19｜Agent 工程未来：趋势、机会与系列总结</a><time datetime="2026-01-05T10:00:00.000Z" title="发表于 2026-01-05 18:00:00">2026-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"><img src="/img/llm-agent-ethical-boundaries.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI">⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI</a><time datetime="2026-01-04T10:00:00.000Z" title="发表于 2026-01-04 18:00:00">2026-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"><img src="/img/llm-agent-enterprise-applications.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地">🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地</a><time datetime="2026-01-03T10:00:00.000Z" title="发表于 2026-01-03 18:00:00">2026-01-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By yuxiaoling</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'Linn0813/Linn0813.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script src="/js/blog-enhancements.js"></script><script src="/js/category-enhancements.js"></script><script src="/js/series-enhancements.js"></script><script src="/js/post-series-meta.js"></script><script src="/js/archive-enhancements.js"></script><script src="/js/tag-enhancements.js"></script><script src="/js/index-enhancements.js"></script><script src="/js/sidebar-series-card.js"></script><script src="/js/theme-switcher-ui.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章、分类、标签..." type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

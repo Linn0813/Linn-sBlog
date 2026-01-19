@@ -1,0 +1,402 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linn's Blog - 记录软件测试成长与技术探索的个人博客</title><meta name="author" content="yuxiaoling"><meta name="copyright" content="yuxiaoling"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="分享软件测试学习、实战经验和踩坑历程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Linn&#39;s Blog">
+<meta property="og:url" content="https://linn0813.github.io/page/9/index.html">
+<meta property="og:site_name" content="Linn&#39;s Blog">
+<meta property="og:description" content="分享软件测试学习、实战经验和踩坑历程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="yuxiaoling">
+<meta property="article:tag" content="软件测试,测试博客,自动化测试,测试开发,测试经验">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://linn0813.github.io/page/9/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="Xj7zV_DKnHFmJ7sXNRvdl5-UTfG4NLy-s7hDk1DZt4A"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":true,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linn\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/blog-enhancements.css"><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url(/img/background.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.jpg" alt="Logo" loading='lazy'><span class="site-name">Linn's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Linn's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Linn0813" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yuxiaoling.yxl@qq.com" target="_blank" title="Email"><i class="fa fa-envelope-open-text"></i></a><a class="social-icon" href="javascript:alert('微信公众号：Linn的技术笔记')" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://weibo.com/Linn0813" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover"><a href="/2025/05/16/2025-05-16-testplatform-login-and-registration/" title="自动化测试平台添加登录注册功能 🚀"><img class="post-bg" src="/img/testplatform-login-and-registration.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动化测试平台添加登录注册功能 🚀" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/05/16/2025-05-16-testplatform-login-and-registration/" title="自动化测试平台添加登录注册功能 🚀">自动化测试平台添加登录注册功能 🚀</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-05-16T07:16:55.000Z" title="发表于 2025-05-16 15:16:55">2025-05-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">自动化测试与工具开发</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/">工具与平台开发</a></span></div><div class="content">自动化测试平台添加登录注册功能 🚀在上一篇博客中，我们详细介绍了如何使用 MySQL 搭建一个用于登录注册模块的数据库🛢️。有了这个坚实的基础，接下来我们就可以为自动化测试平台添加登录注册功能啦👏。下面，我们将从数据库表结构设计、后端代码实现和前端代码实现三个方面来详细介绍。 一、数据库表结构 📋我们已经在 MySQL 中创建了 users 表用于存储用户信息，这个表包含了用户 ID、用户名、密码和用户角色等字段。它就像是一个“信息仓库”，为我们存储和管理用户数据提供了便利。回顾一下创建 users 表的 SQL 语句： -- 创建 users 表CREATE TABLE users (    id INT AUTO_INCREMENT PRIMARY KEY,    username VARCHAR(255) NOT NULL UNIQUE,    password VARCHAR(255) NOT NULL,    role VARCHAR(20)); 这个表结构是登录注册功能的基础，后续的操作都将围绕它展开。 二、后端代码实现（Flask） 💻1. 新增...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/05/15/2025-05-15-user-module-database/" title="使用 MySQL 搭建登录注册模块数据库 🛢️"><img class="post-bg" src="/img/user-module-database.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用 MySQL 搭建登录注册模块数据库 🛢️" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/05/15/2025-05-15-user-module-database/" title="使用 MySQL 搭建登录注册模块数据库 🛢️">使用 MySQL 搭建登录注册模块数据库 🛢️</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-05-15T08:33:18.000Z" title="发表于 2025-05-15 16:33:18">2025-05-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">自动化测试与工具开发</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/">工具与平台开发</a></span></div><div class="content">使用 MySQL 搭建登录注册模块数据库 🛢️在当今数字化的时代，登录注册功能是各类应用程序不可或缺的一部分。而数据库作为存储用户信息的核心，其搭建的重要性不言而喻。今天，我们就来详细探讨如何使用 MySQL 搭建一个用于登录注册模块的数据库🚀。 一、环境准备 🛠️在开始搭建数据库之前，我们首先要确保已经安装了 MySQL 数据库，并且它能够正常启动和访问。这就好比我们要盖房子，得先准备好建筑材料一样🧱。如果你还没有安装 MySQL，可以从官方网站下载适合你操作系统的版本进行安装。安装完成后，通过以下命令检查 MySQL 是否正常运行： mysql -u root -p 输入你的密码，如果能成功登录到 MySQL 命令行界面，说明环境准备就绪👍。 二、创建数据库 📦接下来，我们需要创建一个专门用于存储登录注册相关数据的数据库。可以使用以下 SQL 语句在 MySQL 中创建数据库： -- 创建名为 test_platform 的数据库CREATE DATABASE test_platform; 执行上述语句后，MySQL 会创建一个名为 test_platform...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/05/15/2025-05-15-apifox/" title="🚀 Apifox 使用指南 —— 开发 &amp; 测试的效率神器"><img class="post-bg" src="/img/apifox.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🚀 Apifox 使用指南 —— 开发 &amp; 测试的效率神器" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/05/15/2025-05-15-apifox/" title="🚀 Apifox 使用指南 —— 开发 &amp; 测试的效率神器">🚀 Apifox 使用指南 —— 开发 &amp; 测试的效率神器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-05-15T08:00:00.000Z" title="发表于 2025-05-15 16:00:00">2025-05-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A1%88%E4%BE%8B%E7%BB%8F%E9%AA%8C/">项目实战与案例经验</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A1%88%E4%BE%8B%E7%BB%8F%E9%AA%8C/%E6%B5%8B%E8%AF%95%E7%BB%8F%E9%AA%8C%E4%B8%8E%E8%90%BD%E5%9C%B0/">测试经验与落地</a></span></div><div class="content">🚀 Apifox 使用指南 —— 开发 &amp; 测试的效率神器🎉 前言作为测试工程师，我们每天和 API 打交道，而 Apifox 绝对是接口测试界的“全能战士”！ 它不仅可以 发送 API 请求、管理接口文档、生成 Mock 数据、进行自动化测试，还能一键同步接口数据，让开发和测试效率翻倍！ 在上一期《📨 Postman 使用指南 —— 测试工程师的快乐源泉》中，我们介绍了 Postman 作为 API 测试工具的强大功能。今天，我们来看看 Apifox 如何进一步提升效率，并对比它们的不同之处！  🤔 什么是 Apifox？Apifox &#x3D; Postman（接口测试） + Swagger（接口文档） + Mock（模拟数据） + JMeter（接口自动化测试） 是不是听着就很酷？它把接口相关的工作全都集成到了一起，避免了 Postman 只能测，Swagger 只能写文档的尴尬局面。 🔥 Apifox vs. Postman   特性 Apifox Postman    接口测试 ✅ ✅   接口文档 ✅ ❌   Mock...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/05/14/2025-05-14-testplatform-implementation/" title="测试工具平台搭建实现 🚧"><img class="post-bg" src="/img/testplatform-implementation.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="测试工具平台搭建实现 🚧" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/05/14/2025-05-14-testplatform-implementation/" title="测试工具平台搭建实现 🚧">测试工具平台搭建实现 🚧</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-05-14T06:18:19.000Z" title="发表于 2025-05-14 14:18:19">2025-05-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">自动化测试与工具开发</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/">工具与平台开发</a></span></div><div class="content">测试工具平台搭建实现 🚧承接选型，开启搭建之旅在上一篇博客中，我们像一群精明的“技术探险家”🧐，经过一番深入的调研和分析，为测试工具平台选好了前端的 Vue 3、Element Plus 和 Vue Router，以及后端的 Flask 和 MySQL 这些“得力助手”🤝。现在，我们就像拿到了“宝藏地图”，要开始按照地图上的指引，一步一步搭建这个测试工具平台啦🚀！ 项目初始化前端项目初始化首先，我们要使用 Vite 这个“超级魔法师”🧙‍♂️，快速创建一个 Vue 3 项目。Vite 就像一辆“超级快车”🚄，基于 ES Modules 的前端构建工具，有着快速冷启动、即时热更新等神奇技能，能大大提高我们的开发效率。具体的“魔法咒语”（初始化命令）如下： npm init vite@latest test - platform - frontend -- --template vuecd test - platform - frontendnpm install 接着，我们要给这个项目配上 Element Plus 和 Vue Router...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/05/13/2025-05-13-testplatform-technology-selection/" title="测试工具平台技术选型调研 🕵️‍♂️"><img class="post-bg" src="/img/testplatform-technology-selection.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="测试工具平台技术选型调研 🕵️‍♂️" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/05/13/2025-05-13-testplatform-technology-selection/" title="测试工具平台技术选型调研 🕵️‍♂️">测试工具平台技术选型调研 🕵️‍♂️</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-05-13T09:13:58.000Z" title="发表于 2025-05-13 17:13:58">2025-05-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">自动化测试与工具开发</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%B8%8E%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91/">工具与平台开发</a></span></div><div class="content">测试工具平台技术选型调研 🕵️‍♂️引言在软件开发这个大舞台上，测试就像是一位严谨的“质检员”，确保项目质量万无一失。 而一个功能完备的测试工具平台，就如同质检员手中的“神器”，能大大提升测试效率，让开发者们可以更专注地在核心业务逻辑的海洋里“遨游”🚀。 今天，咱就以实际项目为例，唠唠在搭建前后端分离测试工具平台时，前端和后端技术选型的那些事儿🤔。 前端技术选型候选技术分析在选择前端技术时，就像在众多“武林高手”中挑选合适的伙伴一起闯荡江湖。我们考虑了 Vue 3、React 和 Angular 这三位“高手”，下面是它们的“武功秘籍”对比👇：    框架 特点 优势 劣势 社区资源 学习曲线    Vue 3 渐进式 JavaScript 框架，自带响应式数据绑定和组件化开发“绝技” 容易上手，语法简洁，社区资源丰富，适合快速“出招” 相比 React 和 Angular，“江湖势力”稍小 丰富 较平缓   React 由 Facebook 这位“大佬”打造的 JavaScript...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2025/05/12/2025-05-12-hello-world/" title="✨Hello, 世界！我的测试成长之旅开启啦！🚀"><img class="post-bg" src="/img/hello-world.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="✨Hello, 世界！我的测试成长之旅开启啦！🚀" loading='lazy'></a></div><div class="recent-post-info"><a class="article-title" href="/2025/05/12/2025-05-12-hello-world/" title="✨Hello, 世界！我的测试成长之旅开启啦！🚀">✨Hello, 世界！我的测试成长之旅开启啦！🚀</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-05-12T08:49:16.000Z" title="发表于 2025-05-12 16:49:16">2025-05-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF%E4%B8%8E%E6%80%9D%E8%80%83/">职业成长与思考</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF%E4%B8%8E%E6%80%9D%E8%80%83/%E7%94%9F%E6%B4%BB%E4%B8%8E%E6%80%9D%E8%80%83/">生活与思考</a></span></div><div class="content">✨Hello, 世界！我的测试成长之旅开启啦！🚀嘿嘿，大家好！🙋‍♂️ 这里是我的小天地，今天正式开张！🎉一名刚入行的软件测试工程师，我决定开个博客，记录测试成长之路，与大家一同探索、避坑！😆   这里是我的测试宇宙，未来会分享学习成长、踩坑记录和技术探索！👩‍💻✨  💡 为什么要写博客？初入职场时，我和很多人一样满是疑惑❓：  如何提交 Bug 报告，让开发更易接受？🤨   自动化测试能否摆脱重复手工测试？🤖   为何同样是测试，薪资差距如此之大？😢  近期我深刻体会到：   学后记录远比学后遗忘更有效！😆   记录成长不仅助己回顾，还能帮他人少踩坑 🕳️💥   输出倒逼输入，分享是最佳学习方式！💡   结识志同道合的朋友更是美事一桩！👯‍♀️  因此，我决定通过博客记录学习、总结经验、分享历程，助力自己和小伙伴成长！✨    📌 以后都会写点啥？我的博客大致会包含以下几大方向（但不局限于！毕竟谁不想探索新大陆呢？🤠）：   🔹 1. 基础知识 &amp; 测试方法（Testing Fundamentals &amp;...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/8/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#content-inner">8</a><span class="page-number current">9</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">yuxiaoling</div><div class="author-info-description">分享软件测试学习、实战经验和踩坑历程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Linn0813"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Linn0813" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yuxiaoling.yxl@qq.com" target="_blank" title="Email"><i class="fa fa-envelope-open-text"></i></a><a class="social-icon" href="javascript:alert('微信公众号：Linn的技术笔记')" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://weibo.com/Linn0813" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">下雨就不想上班 / 出太阳也不想上班</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的"><img src="/img/performance-monitoring-dashboard-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📊 压测时，我是如何一步步「读懂」性能监控面板的"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的">📊 压测时，我是如何一步步「读懂」性能监控面板的</a><time datetime="2026-01-07T12:00:00.000Z" title="发表于 2026-01-07 20:00:00">2026-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"><img src="/img/server-performance-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会">🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会</a><time datetime="2026-01-06T12:00:00.000Z" title="发表于 2026-01-06 20:00:00">2026-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"><img src="/img/llm-agent-future-summary.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结">🌐 主题19｜Agent 工程未来：趋势、机会与系列总结</a><time datetime="2026-01-05T10:00:00.000Z" title="发表于 2026-01-05 18:00:00">2026-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"><img src="/img/llm-agent-ethical-boundaries.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI">⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI</a><time datetime="2026-01-04T10:00:00.000Z" title="发表于 2026-01-04 18:00:00">2026-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"><img src="/img/llm-agent-enterprise-applications.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地">🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地</a><time datetime="2026-01-03T10:00:00.000Z" title="发表于 2026-01-03 18:00:00">2026-01-03</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E3%80%81%E5%AE%89%E5%85%A8%E4%B8%8E%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95/"><span class="card-category-list-name">性能、安全与专项测试</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E3%80%81%E5%AE%89%E5%85%A8%E4%B8%8E%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95/%E6%80%A7%E8%83%BD%E7%B1%BB%E6%B5%8B%E8%AF%95/"><span class="card-category-list-name">性能类测试</span><span class="card-category-list-count">3</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"><span class="card-category-list-name">技术学习与行业趋势</span><span class="card-category-list-count">49</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/AI%E4%B8%8E%E7%A0%94%E7%A9%B6/"><span class="card-category-list-name">AI与研究</span><span class="card-category-list-count">25</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%B7%A5%E5%85%B7/"><span class="card-category-list-name">学习与工具</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/%E5%BC%80%E5%8F%91%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%A0%88/"><span class="card-category-list-name">开发与技术栈</span><span class="card-category-list-count">17</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E4%B8%8E%E7%90%86%E8%AE%BA/"><span class="card-category-list-name">测试基础与理论</span><span class="card-category-list-count">11</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E4%B8%8E%E7%90%86%E8%AE%BA/%E6%B5%8B%E8%AF%95%E7%90%86%E5%BF%B5%E4%B8%8E%E6%96%B9%E6%B3%95/"><span class="card-category-list-name">测试理念与方法</span><span class="card-category-list-count">3</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/LLM/" style="font-size: 1.5em; color: #99a9bf">LLM</a> <a href="/tags/Agent/" style="font-size: 1.43em; color: #99a6b9">Agent</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 1.37em; color: #99a4b2">自动化测试</a> <a href="/tags/Python/" style="font-size: 1.37em; color: #99a4b2">Python</a> <a href="/tags/MySQL/" style="font-size: 1.3em; color: #99a1ac">MySQL</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 1.3em; color: #99a1ac">数据分析</a> <a href="/tags/SACA%E8%AF%BE%E7%A8%8B/" style="font-size: 1.3em; color: #99a1ac">SACA课程</a> <a href="/tags/%E7%A5%9E%E7%AD%96%E5%88%86%E6%9E%90%E5%B8%88%E8%AE%A4%E8%AF%81/" style="font-size: 1.3em; color: #99a1ac">神策分析师认证</a> <a href="/tags/Fiddler/" style="font-size: 1.3em; color: #99a1ac">Fiddler</a> <a href="/tags/%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7/" style="font-size: 1.3em; color: #99a1ac">抓包工具</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/" style="font-size: 1.23em; color: #999ea6">测试开发</a> <a href="/tags/pytest/" style="font-size: 1.23em; color: #999ea6">pytest</a> <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/" style="font-size: 1.23em; color: #999ea6">接口测试</a> <a href="/tags/RAG/" style="font-size: 1.23em; color: #999ea6">RAG</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.17em; color: #999c9f">前端开发</a> <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.17em; color: #999c9f">后端开发</a> <a href="/tags/Postman/" style="font-size: 1.17em; color: #999c9f">Postman</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" style="font-size: 1.17em; color: #999c9f">软件测试</a> <a href="/tags/%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/" style="font-size: 1.17em; color: #999c9f">错误处理</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/" style="font-size: 1.17em; color: #999c9f">测试框架</a> <a href="/tags/%E5%8E%8B%E6%B5%8B/" style="font-size: 1.17em; color: #999c9f">压测</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8A%93%E5%8C%85/" style="font-size: 1.17em; color: #999c9f">移动端抓包</a> <a href="/tags/%E6%99%BA%E8%83%BD%E4%BD%93/" style="font-size: 1.17em; color: #999c9f">智能体</a> <a href="/tags/Memory/" style="font-size: 1.17em; color: #999c9f">Memory</a> <a href="/tags/Prompt/" style="font-size: 1.17em; color: #999c9f">Prompt</a> <a href="/tags/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" style="font-size: 1.17em; color: #999c9f">大语言模型</a> <a href="/tags/Prompt%E5%B7%A5%E7%A8%8B/" style="font-size: 1.17em; color: #999c9f">Prompt工程</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/" style="font-size: 1.1em; color: #999">技术选型</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E5%B9%B3%E5%8F%B0/" style="font-size: 1.1em; color: #999">测试工具平台</a> <a href="/tags/API%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">API测试</a> <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/" style="font-size: 1.1em; color: #999">接口文档</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0/" style="font-size: 1.1em; color: #999">自动化测试平台</a> <a href="/tags/Vue3/" style="font-size: 1.1em; color: #999">Vue3</a> <a href="/tags/Markdown/" style="font-size: 1.1em; color: #999">Markdown</a> <a href="/tags/Vue/" style="font-size: 1.1em; color: #999">Vue</a> <a href="/tags/AI/" style="font-size: 1.1em; color: #999">AI</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" style="font-size: 1.1em; color: #999">测试方法</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" style="font-size: 1.1em; color: #999">数据分析方法</a> <a href="/tags/JMeter/" style="font-size: 1.1em; color: #999">JMeter</a> <a href="/tags/%E6%8E%A5%E5%8F%A3%E5%8E%8B%E6%B5%8B/" style="font-size: 1.1em; color: #999">接口压测</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">22</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">9</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">23</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">14</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">94</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">258.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-19T09:33:40.785Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By yuxiaoling</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["🚀 从测试小白到平台开发，记录每一步成长","💡 用 AI 赋能测试，探索智能化的质量保障之路","🔧 实战踩坑经验分享，让测试更高效更专业","📚 系统学习 LLM/Agent，告别浅尝辄止","⚡ 自动化测试体系建设，提升测试效率与质量","🌟 测试平台全栈开发，从零到一的完整实践"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["🚀 从测试小白到平台开发，记录每一步成长","💡 用 AI 赋能测试，探索智能化的质量保障之路","🔧 实战踩坑经验分享，让测试更高效更专业","📚 系统学习 LLM/Agent，告别浅尝辄止","⚡ 自动化测试体系建设，提升测试效率与质量","🌟 测试平台全栈开发，从零到一的完整实践"])
+}
+typedJSFn.run(subtitleType)</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\ loading='lazy'>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          const lazyloadNative = 'loading="lazy"'
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative} loading='lazy'></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'github-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const findTrueUrl = (array, ele) => {
+    Promise.all(array.map(item =>
+      fetch(item.url).then(resp => resp.json()).then(data => {
+        let urlArray = data.body ? data.body.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/ig) : []
+        if (!Array.isArray(urlArray) || urlArray.length === 0) {
+          urlArray = [`${data.html_url}`]
+        }
+        if (data.user.login === 'utterances-bot') {
+          return urlArray.pop()
+        } else {
+          return urlArray.shift()
+        }
+      })
+    )).then(res => {
+        array = array.map((i,index)=> {
+          return {
+            ...i,
+            url: res[index]
+          }
+        })
+
+        btf.saveToLocal.set(keyName, JSON.stringify(array), 1/(60*24))
+        generateHtml(array, ele)
+    });
+  }
+
+  const getComment = ele => {
+    fetch('https://api.github.com/repos/Linn0813/Linn0813.github.io/issues/comments?sort=updated&direction=desc&per_page=6&page=1',{
+      "headers": {
+        Accept: 'application/vnd.github.v3.html+json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const githubArray = data.map(item => {
+          return {
+            'avatar': item.user.avatar_url,
+            'content': changeContent(item.body_html || item.body),
+            'nick': item.user.login,
+            'url': item.issue_url,
+            'date': item.updated_at
+          }
+        })
+        findTrueUrl(githubArray, ele)
+      }).catch(e => {
+        console.error(e)
+        ele.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+  }
+  run(keyName, getComment)
+})</script><script src="/js/blog-enhancements.js"></script><script src="/js/category-enhancements.js"></script><script src="/js/series-enhancements.js"></script><script src="/js/post-series-meta.js"></script><script src="/js/archive-enhancements.js"></script><script src="/js/tag-enhancements.js"></script><script src="/js/index-enhancements.js"></script><script src="/js/sidebar-series-card.js"></script><script src="/js/theme-switcher-ui.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章、分类、标签..." type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

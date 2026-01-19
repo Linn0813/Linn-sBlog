@@ -1,0 +1,814 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比 | Linn's Blog</title><meta name="author" content="yuxiaoling"><meta name="copyright" content="yuxiaoling"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="全面对比主流 LLM 模型：从参数量、推理速度、成本到适用场景，帮你根据实际需求选择最合适的模型，平衡性能、成本和可控性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🧠 主题5｜评估与选型：参数量、推理速度、开源&#x2F;闭源模型对比">
+<meta property="og:url" content="https://linn0813.github.io/2025/12/09/2025-12-09-llm-model-evaluation-selection/index.html">
+<meta property="og:site_name" content="Linn&#39;s Blog">
+<meta property="og:description" content="全面对比主流 LLM 模型：从参数量、推理速度、成本到适用场景，帮你根据实际需求选择最合适的模型，平衡性能、成本和可控性">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linn0813.github.io/img/llm-model-evaluation-selection.png">
+<meta property="article:published_time" content="2025-12-09T08:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-09T08:11:30.092Z">
+<meta property="article:author" content="yuxiaoling">
+<meta property="article:tag" content="Claude">
+<meta property="article:tag" content="GPT-4">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="模型评估">
+<meta property="article:tag" content="模型选型">
+<meta property="article:tag" content="Llama">
+<meta property="article:tag" content="开源模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linn0813.github.io/img/llm-model-evaluation-selection.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比",
+  "url": "https://linn0813.github.io/2025/12/09/2025-12-09-llm-model-evaluation-selection/",
+  "image": "https://linn0813.github.io/img/llm-model-evaluation-selection.png",
+  "datePublished": "2025-12-09T08:00:00.000Z",
+  "dateModified": "2025-12-09T08:11:30.092Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yuxiaoling",
+      "url": "https://linn0813.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://linn0813.github.io/2025/12/09/2025-12-09-llm-model-evaluation-selection/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="Xj7zV_DKnHFmJ7sXNRvdl5-UTfG4NLy-s7hDk1DZt4A"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":true,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/blog-enhancements.css"><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/llm-model-evaluation-selection.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.jpg" alt="Logo" loading='lazy'><span class="site-name">Linn's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/series/"><i class="fa-fw fa fa-book"></i><span> 系列</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-09T08:00:00.000Z" title="发表于 2025-12-09 16:00:00">2025-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-09T08:11:30.092Z" title="更新于 2025-12-09 16:11:30">2025-12-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">技术学习与行业趋势</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/AI%E4%B8%8E%E7%A0%94%E7%A9%B6/">AI与研究</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<p><strong>这是<a href="/series/%F0%9F%A7%A0-LLM-Agent-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A%EF%BC%9A%E5%91%8A%E5%88%AB%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2/">《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》</a>系列第 5 篇</strong></p>
+</blockquote>
+<blockquote>
+<p>上一篇我们深入解析了 RAG 机制，构建了抗幻觉的知识增强系统。</p>
+</blockquote>
+<blockquote>
+<p>本篇，我们将全面对比主流 LLM 模型，从参数量、推理速度、成本到适用场景，帮你根据实际需求选择最合适的模型。</p>
+</blockquote>
+<hr>
+<h2 id="🚀-导言-—-选择合适的模型，事半功倍"><a href="#🚀-导言-—-选择合适的模型，事半功倍" class="headerlink" title="🚀 导言 — 选择合适的模型，事半功倍"></a>🚀 导言 — 选择合适的模型，事半功倍</h2><p>在前四篇中，我们掌握了 LLM 的工作原理、Prompt 工程技巧和 RAG 机制。</p>
+<p>但当你真正要做一个项目时，会发现一个关键问题：</p>
+<blockquote>
+<p><strong>市面上有这么多模型，GPT-4、Claude、Llama、Gemini… 我该选哪个？</strong><br><strong>参数量越大越好吗？</strong><br><strong>开源和闭源模型有什么区别？</strong><br><strong>如何平衡性能、成本和可控性？</strong></p>
+</blockquote>
+<p>选择合适的模型，能让你的项目事半功倍；选错了，可能既浪费成本又达不到效果。</p>
+<p>本篇将从<strong>参数量、推理速度、成本、能力、适用场景</strong>等多个维度，全面对比主流 LLM 模型，帮你做出明智的选择。</p>
+<hr>
+<h2 id="📊-一、评估模型的五大核心维度"><a href="#📊-一、评估模型的五大核心维度" class="headerlink" title="📊 一、评估模型的五大核心维度"></a>📊 一、评估模型的五大核心维度</h2><p>在选择模型之前，我们需要理解评估模型的五大核心维度：</p>
+<h3 id="1-1-参数量（Parameters）"><a href="#1-1-参数量（Parameters）" class="headerlink" title="1.1 参数量（Parameters）"></a>1.1 参数量（Parameters）</h3><p><strong>定义</strong>：模型中的可训练参数数量，通常以 B（Billion，十亿）为单位。</p>
+<p><strong>理解</strong>：</p>
+<ul>
+<li><strong>参数量 ≈ 模型容量</strong>：参数量越大，模型能”记住”和”理解”的信息越多</li>
+<li><strong>但并非越大越好</strong>：参数量越大，训练和推理成本越高</li>
+</ul>
+<p><strong>常见参数量级</strong>：</p>
+<ul>
+<li><strong>小型模型</strong>：1B-7B（如 Llama-2-7B）</li>
+<li><strong>中型模型</strong>：7B-70B（如 Llama-2-70B、GPT-3.5）</li>
+<li><strong>大型模型</strong>：70B+（如 GPT-4、Claude-3）</li>
+</ul>
+<blockquote>
+<p>💡 <strong>关键理解</strong>：参数量是模型能力的<strong>上限</strong>，但不等于实际能力。训练数据质量、训练方法同样重要。</p>
+</blockquote>
+<h3 id="1-2-推理速度（Inference-Speed）"><a href="#1-2-推理速度（Inference-Speed）" class="headerlink" title="1.2 推理速度（Inference Speed）"></a>1.2 推理速度（Inference Speed）</h3><p><strong>定义</strong>：模型生成 Token 的速度，通常以 <strong>Tokens&#x2F;秒</strong> 或 <strong>Tokens&#x2F;秒&#x2F;用户</strong> 衡量。</p>
+<p><strong>影响因素</strong>：</p>
+<ul>
+<li><strong>模型大小</strong>：参数量越大，推理越慢</li>
+<li><strong>硬件</strong>：GPU 性能、显存大小</li>
+<li><strong>优化技术</strong>：量化、剪枝、KV Cache 等</li>
+</ul>
+<p><strong>实际体验</strong>：</p>
+<ul>
+<li><strong>实时对话</strong>：需要 &gt; 20 Tokens&#x2F;秒</li>
+<li><strong>批量处理</strong>：可以接受较慢速度，但需要可预测的延迟</li>
+</ul>
+<h3 id="1-3-成本（Cost）"><a href="#1-3-成本（Cost）" class="headerlink" title="1.3 成本（Cost）"></a>1.3 成本（Cost）</h3><p><strong>成本构成</strong>：</p>
+<ul>
+<li><strong>API 调用成本</strong>：按 Token 计费（输入 + 输出）</li>
+<li><strong>自部署成本</strong>：GPU 硬件、电费、运维成本</li>
+<li><strong>开发成本</strong>：集成难度、调试时间</li>
+</ul>
+<p><strong>成本对比</strong>（大致估算，实际价格可能变化）：</p>
+<ul>
+<li><strong>GPT-4</strong>：$0.03&#x2F;1K 输入 Token，$0.06&#x2F;1K 输出 Token（高）</li>
+<li><strong>GPT-3.5 Turbo</strong>：$0.0015&#x2F;1K 输入 Token，$0.002&#x2F;1K 输出 Token（低）</li>
+<li><strong>Claude 3.5 Sonnet</strong>：$0.003&#x2F;1K 输入 Token，$0.015&#x2F;1K 输出 Token（中）</li>
+<li><strong>开源模型（自部署）</strong>：硬件成本 + 电费，无 API 费用（但需要技术投入）</li>
+</ul>
+<h3 id="1-4-能力（Capabilities）"><a href="#1-4-能力（Capabilities）" class="headerlink" title="1.4 能力（Capabilities）"></a>1.4 能力（Capabilities）</h3><p><strong>核心能力维度</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>说明</th>
+<th>评估方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>语言理解</strong></td>
+<td>理解复杂指令、上下文、多轮对话</td>
+<td>复杂 Prompt 测试</td>
+</tr>
+<tr>
+<td><strong>代码能力</strong></td>
+<td>代码生成、调试、解释</td>
+<td>编程任务测试</td>
+</tr>
+<tr>
+<td><strong>推理能力</strong></td>
+<td>逻辑推理、数学计算、多步推理</td>
+<td>推理题测试</td>
+</tr>
+<tr>
+<td><strong>知识广度</strong></td>
+<td>通用知识、专业知识覆盖</td>
+<td>知识问答测试</td>
+</tr>
+<tr>
+<td><strong>多语言能力</strong></td>
+<td>中文、英文等多语言支持</td>
+<td>多语言任务测试</td>
+</tr>
+<tr>
+<td><strong>长上下文</strong></td>
+<td>处理长文档、长对话</td>
+<td>长文本理解测试</td>
+</tr>
+</tbody></table>
+<h3 id="1-5-可控性（Control）"><a href="#1-5-可控性（Control）" class="headerlink" title="1.5 可控性（Control）"></a>1.5 可控性（Control）</h3><p><strong>可控性维度</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>闭源模型</th>
+<th>开源模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据隐私</strong></td>
+<td>数据发送到云端</td>
+<td>可以本地部署，数据不出本地</td>
+</tr>
+<tr>
+<td><strong>定制能力</strong></td>
+<td>无法修改模型</td>
+<td>可以 Fine-Tuning、修改模型</td>
+</tr>
+<tr>
+<td><strong>成本控制</strong></td>
+<td>按使用量付费</td>
+<td>一次性硬件投入</td>
+</tr>
+<tr>
+<td><strong>依赖风险</strong></td>
+<td>依赖服务商</td>
+<td>完全自主可控</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🔍-二、主流模型全面对比"><a href="#🔍-二、主流模型全面对比" class="headerlink" title="🔍 二、主流模型全面对比"></a>🔍 二、主流模型全面对比</h2><h3 id="2-1-闭源模型（API-服务）"><a href="#2-1-闭源模型（API-服务）" class="headerlink" title="2.1 闭源模型（API 服务）"></a>2.1 闭源模型（API 服务）</h3><hr>
+<h3 id="🤖-GPT-4-GPT-4-Turbo"><a href="#🤖-GPT-4-GPT-4-Turbo" class="headerlink" title="🤖 GPT-4 &#x2F; GPT-4 Turbo"></a>🤖 GPT-4 &#x2F; GPT-4 Turbo</h3><p><strong>提供商</strong>：OpenAI | <strong>类型</strong>：闭源 API</p>
+<p><strong>基本信息</strong>：</p>
+<ul>
+<li><strong>参数量</strong>：未公开（估计 1T+）</li>
+<li><strong>上下文窗口</strong>：128k Token（GPT-4 Turbo）</li>
+<li><strong>成本</strong>：$0.03&#x2F;1K 输入 Token，$0.06&#x2F;1K 输出 Token（高）</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>✅ <strong>能力最强</strong>：在大多数任务上表现最佳</li>
+<li>✅ <strong>生态完善</strong>：API 稳定、文档完善、社区支持好</li>
+<li>✅ <strong>Function Calling</strong>：原生支持工具调用</li>
+<li>✅ <strong>长上下文</strong>：128k Token 支持处理长文档</li>
+</ul>
+<p><strong>劣势</strong>：</p>
+<ul>
+<li>❌ <strong>成本高</strong>：API 调用费用较高</li>
+<li>❌ <strong>速度中等</strong>：推理速度不如 GPT-3.5</li>
+<li>❌ <strong>数据隐私</strong>：数据需要发送到 OpenAI 服务器</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>对能力要求高的复杂任务</li>
+<li>需要长上下文处理</li>
+<li>需要 Function Calling 的 Agent 应用</li>
+<li>预算充足的项目</li>
+</ul>
+<hr>
+<h3 id="⚡-GPT-3-5-Turbo"><a href="#⚡-GPT-3-5-Turbo" class="headerlink" title="⚡ GPT-3.5 Turbo"></a>⚡ GPT-3.5 Turbo</h3><p><strong>提供商</strong>：OpenAI | <strong>类型</strong>：闭源 API</p>
+<p><strong>基本信息</strong>：</p>
+<ul>
+<li><strong>参数量</strong>：未公开（估计 175B）</li>
+<li><strong>上下文窗口</strong>：16k Token</li>
+<li><strong>成本</strong>：$0.0015&#x2F;1K 输入 Token，$0.002&#x2F;1K 输出 Token（低）</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>✅ <strong>成本低</strong>：API 费用是 GPT-4 的 1&#x2F;20</li>
+<li>✅ <strong>速度快</strong>：推理速度比 GPT-4 快</li>
+<li>✅ <strong>能力够用</strong>：对于大多数常见任务足够</li>
+</ul>
+<p><strong>劣势</strong>：</p>
+<ul>
+<li>❌ <strong>能力有限</strong>：复杂推理、代码生成能力不如 GPT-4</li>
+<li>❌ <strong>上下文短</strong>：16k Token 限制</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>对成本敏感的项目</li>
+<li>简单对话、文本生成任务</li>
+<li>需要快速响应的场景</li>
+<li>大规模批量处理</li>
+</ul>
+<hr>
+<h3 id="🛡️-Claude-3-Claude-3-5-Sonnet"><a href="#🛡️-Claude-3-Claude-3-5-Sonnet" class="headerlink" title="🛡️ Claude 3 &#x2F; Claude 3.5 Sonnet"></a>🛡️ Claude 3 &#x2F; Claude 3.5 Sonnet</h3><p><strong>提供商</strong>：Anthropic | <strong>类型</strong>：闭源 API</p>
+<p><strong>基本信息</strong>：</p>
+<ul>
+<li><strong>参数量</strong>：未公开</li>
+<li><strong>上下文窗口</strong>：200k Token（Claude 3.5）</li>
+<li><strong>成本</strong>：$0.003&#x2F;1K 输入 Token，$0.015&#x2F;1K 输出 Token（中）</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>✅ <strong>长上下文</strong>：200k Token，适合处理超长文档</li>
+<li>✅ <strong>安全性好</strong>：Anthropic 注重 AI 安全</li>
+<li>✅ <strong>能力接近 GPT-4</strong>：在部分任务上甚至更好</li>
+<li>✅ <strong>工具使用</strong>：支持工具调用</li>
+</ul>
+<p><strong>劣势</strong>：</p>
+<ul>
+<li>❌ <strong>成本较高</strong>：比 GPT-3.5 贵，接近 GPT-4</li>
+<li>❌ <strong>生态相对较小</strong>：社区和工具支持不如 OpenAI</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>需要处理超长文档（如整本书、大量代码）</li>
+<li>对安全性要求高的场景</li>
+<li>需要高质量输出的任务</li>
+</ul>
+<hr>
+<h3 id="🌟-Gemini-Pro-Gemini-Ultra"><a href="#🌟-Gemini-Pro-Gemini-Ultra" class="headerlink" title="🌟 Gemini Pro &#x2F; Gemini Ultra"></a>🌟 Gemini Pro &#x2F; Gemini Ultra</h3><p><strong>提供商</strong>：Google | <strong>类型</strong>：闭源 API</p>
+<p><strong>基本信息</strong>：</p>
+<ul>
+<li><strong>参数量</strong>：未公开</li>
+<li><strong>上下文窗口</strong>：1M Token（Gemini 1.5 Pro）</li>
+<li><strong>成本</strong>：比 GPT-4 便宜（具体价格请查看 Google 官方）</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>✅ <strong>超长上下文</strong>：1M Token，可以处理整本书</li>
+<li>✅ <strong>多模态</strong>：原生支持图像、视频理解</li>
+<li>✅ <strong>成本相对较低</strong>：比 GPT-4 便宜</li>
+</ul>
+<p><strong>劣势</strong>：</p>
+<ul>
+<li>❌ <strong>能力不稳定</strong>：在某些任务上表现不如 GPT-4</li>
+<li>❌ <strong>生态较新</strong>：工具和社区支持不如 OpenAI</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>需要处理超长文档</li>
+<li>多模态任务（图像、视频理解）</li>
+<li>对成本敏感但需要长上下文的场景</li>
+</ul>
+<hr>
+<h2 id="2-2-开源模型（可自部署）"><a href="#2-2-开源模型（可自部署）" class="headerlink" title="2.2 开源模型（可自部署）"></a>2.2 开源模型（可自部署）</h2><hr>
+<h3 id="🦙-Llama-2-Llama-3"><a href="#🦙-Llama-2-Llama-3" class="headerlink" title="🦙 Llama 2 &#x2F; Llama 3"></a>🦙 Llama 2 &#x2F; Llama 3</h3><p><strong>提供商</strong>：Meta | <strong>类型</strong>：开源模型（需自部署）</p>
+<p><strong>基本信息</strong>：</p>
+<ul>
+<li><strong>参数量</strong>：7B、13B、70B（Llama 2）；8B、70B（Llama 3）</li>
+<li><strong>上下文窗口</strong>：4k Token（Llama 2）、8k Token（Llama 3）</li>
+<li><strong>成本</strong>：硬件成本 + 电费，无 API 费用</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>✅ <strong>完全开源</strong>：可以本地部署，数据不出本地</li>
+<li>✅ <strong>可定制</strong>：可以 Fine-Tuning、修改模型</li>
+<li>✅ <strong>成本可控</strong>：一次性硬件投入，无 API 费用</li>
+<li>✅ <strong>社区活跃</strong>：大量优化和工具支持</li>
+</ul>
+<p><strong>劣势</strong>：</p>
+<ul>
+<li>❌ <strong>能力有限</strong>：不如 GPT-4、Claude</li>
+<li>❌ <strong>部署复杂</strong>：需要 GPU 硬件和技术支持</li>
+<li>❌ <strong>上下文短</strong>：4k-8k Token 限制</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>对数据隐私要求高</li>
+<li>需要定制模型</li>
+<li>大规模部署，API 成本过高</li>
+<li>有 GPU 资源和技术团队</li>
+</ul>
+<hr>
+<h3 id="🚀-Mistral-7B-Mixtral-8x7B"><a href="#🚀-Mistral-7B-Mixtral-8x7B" class="headerlink" title="🚀 Mistral 7B &#x2F; Mixtral 8x7B"></a>🚀 Mistral 7B &#x2F; Mixtral 8x7B</h3><p><strong>提供商</strong>：Mistral AI | <strong>类型</strong>：开源模型（需自部署）</p>
+<p><strong>基本信息</strong>：</p>
+<ul>
+<li><strong>参数量</strong>：7B（Mistral）、8x7B（Mixtral，MoE 架构）</li>
+<li><strong>上下文窗口</strong>：32k Token（Mistral）、32k Token（Mixtral）</li>
+<li><strong>成本</strong>：硬件成本 + 电费，无 API 费用</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>✅ <strong>性能好</strong>：7B 模型性能接近 13B 模型</li>
+<li>✅ <strong>长上下文</strong>：32k Token，比 Llama 长</li>
+<li>✅ <strong>MoE 架构</strong>：Mixtral 使用混合专家模型，效率高</li>
+</ul>
+<p><strong>劣势</strong>：</p>
+<ul>
+<li>❌ <strong>能力仍有限</strong>：不如大型闭源模型</li>
+<li>❌ <strong>需要部署</strong>：需要 GPU 资源</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>需要长上下文的开源方案</li>
+<li>对性能要求较高的开源场景</li>
+<li>有 GPU 资源</li>
+</ul>
+<hr>
+<h3 id="🇨🇳-Qwen-2-Qwen-2-5"><a href="#🇨🇳-Qwen-2-Qwen-2-5" class="headerlink" title="🇨🇳 Qwen 2 &#x2F; Qwen 2.5"></a>🇨🇳 Qwen 2 &#x2F; Qwen 2.5</h3><p><strong>提供商</strong>：阿里巴巴 | <strong>类型</strong>：开源模型（需自部署）</p>
+<p><strong>基本信息</strong>：</p>
+<ul>
+<li><strong>参数量</strong>：0.5B、1.5B、7B、14B、72B</li>
+<li><strong>上下文窗口</strong>：32k Token</li>
+<li><strong>成本</strong>：硬件成本 + 电费，无 API 费用</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>✅ <strong>中文能力强</strong>：针对中文优化，中文表现好</li>
+<li>✅ <strong>多尺寸</strong>：从 0.5B 到 72B，选择灵活</li>
+<li>✅ <strong>长上下文</strong>：32k Token</li>
+</ul>
+<p><strong>劣势</strong>：</p>
+<ul>
+<li>❌ <strong>英文能力相对较弱</strong>：主要针对中文优化</li>
+<li>❌ <strong>需要部署</strong>：需要 GPU 资源</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>中文为主的应用</li>
+<li>需要中文优化的场景</li>
+<li>有 GPU 资源</li>
+</ul>
+<hr>
+<h2 id="🎯-三、选型决策指南"><a href="#🎯-三、选型决策指南" class="headerlink" title="🎯 三、选型决策指南"></a>🎯 三、选型决策指南</h2><h3 id="3-1-根据任务复杂度选择"><a href="#3-1-根据任务复杂度选择" class="headerlink" title="3.1 根据任务复杂度选择"></a>3.1 根据任务复杂度选择</h3><table>
+<thead>
+<tr>
+<th>任务复杂度</th>
+<th>推荐模型</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>简单任务</strong>（文本生成、简单问答）</td>
+<td>GPT-3.5 Turbo</td>
+<td>成本低、速度快、能力够用</td>
+</tr>
+<tr>
+<td><strong>中等任务</strong>（代码生成、复杂推理）</td>
+<td>GPT-4 &#x2F; Claude 3.5</td>
+<td>能力更强，能处理复杂任务</td>
+</tr>
+<tr>
+<td><strong>复杂任务</strong>（多步推理、Agent 应用）</td>
+<td>GPT-4 Turbo</td>
+<td>能力最强，支持 Function Calling</td>
+</tr>
+<tr>
+<td><strong>超长文档</strong>（整本书、大量代码）</td>
+<td>Claude 3.5 &#x2F; Gemini 1.5</td>
+<td>长上下文支持</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-根据成本预算选择"><a href="#3-2-根据成本预算选择" class="headerlink" title="3.2 根据成本预算选择"></a>3.2 根据成本预算选择</h3><table>
+<thead>
+<tr>
+<th>预算水平</th>
+<th>推荐方案</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>预算充足</strong></td>
+<td>GPT-4 &#x2F; Claude 3.5</td>
+<td>能力最强，成本可接受</td>
+</tr>
+<tr>
+<td><strong>预算中等</strong></td>
+<td>GPT-3.5 Turbo &#x2F; Gemini Pro</td>
+<td>平衡成本和能力</td>
+</tr>
+<tr>
+<td><strong>预算有限</strong></td>
+<td>开源模型（自部署）</td>
+<td>一次性投入，长期成本低</td>
+</tr>
+<tr>
+<td><strong>大规模部署</strong></td>
+<td>开源模型（自部署）</td>
+<td>API 成本过高，自部署更经济</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-根据数据隐私要求选择"><a href="#3-3-根据数据隐私要求选择" class="headerlink" title="3.3 根据数据隐私要求选择"></a>3.3 根据数据隐私要求选择</h3><table>
+<thead>
+<tr>
+<th>隐私要求</th>
+<th>推荐方案</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据可上云</strong></td>
+<td>闭源模型 API</td>
+<td>使用方便，能力强</td>
+</tr>
+<tr>
+<td><strong>数据需本地</strong></td>
+<td>开源模型（自部署）</td>
+<td>数据不出本地，完全可控</td>
+</tr>
+<tr>
+<td><strong>混合方案</strong></td>
+<td>敏感数据用开源，非敏感用 API</td>
+<td>平衡隐私和成本</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-根据技术能力选择"><a href="#3-4-根据技术能力选择" class="headerlink" title="3.4 根据技术能力选择"></a>3.4 根据技术能力选择</h3><table>
+<thead>
+<tr>
+<th>技术能力</th>
+<th>推荐方案</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>技术团队强</strong></td>
+<td>开源模型（自部署）</td>
+<td>可以优化、定制模型</td>
+</tr>
+<tr>
+<td><strong>技术团队弱</strong></td>
+<td>闭源模型 API</td>
+<td>使用简单，无需维护</td>
+</tr>
+<tr>
+<td><strong>快速原型</strong></td>
+<td>GPT-3.5 Turbo</td>
+<td>快速验证想法</td>
+</tr>
+<tr>
+<td><strong>生产环境</strong></td>
+<td>根据需求选择</td>
+<td>考虑稳定性、成本、能力</td>
+</tr>
+</tbody></table>
+<h3 id="3-5-综合决策矩阵"><a href="#3-5-综合决策矩阵" class="headerlink" title="3.5 综合决策矩阵"></a>3.5 综合决策矩阵</h3><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐模型</th>
+<th>关键因素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>快速原型开发</strong></td>
+<td>GPT-3.5 Turbo</td>
+<td>成本低、速度快</td>
+</tr>
+<tr>
+<td><strong>生产环境（高要求）</strong></td>
+<td>GPT-4 Turbo</td>
+<td>能力最强、稳定性好</td>
+</tr>
+<tr>
+<td><strong>处理超长文档</strong></td>
+<td>Claude 3.5 &#x2F; Gemini 1.5</td>
+<td>长上下文支持</td>
+</tr>
+<tr>
+<td><strong>数据隐私敏感</strong></td>
+<td>Llama 3 &#x2F; Qwen 2</td>
+<td>可本地部署</td>
+</tr>
+<tr>
+<td><strong>中文为主</strong></td>
+<td>Qwen 2 &#x2F; GPT-4</td>
+<td>中文优化</td>
+</tr>
+<tr>
+<td><strong>大规模部署</strong></td>
+<td>开源模型（自部署）</td>
+<td>成本可控</td>
+</tr>
+<tr>
+<td><strong>Agent 应用</strong></td>
+<td>GPT-4 Turbo</td>
+<td>Function Calling 支持好</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="💡-四、实战建议"><a href="#💡-四、实战建议" class="headerlink" title="💡 四、实战建议"></a>💡 四、实战建议</h2><h3 id="4-1-混合使用策略"><a href="#4-1-混合使用策略" class="headerlink" title="4.1 混合使用策略"></a>4.1 混合使用策略</h3><p><strong>不要只用一个模型</strong>，根据任务特点选择：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 混合使用策略示例（伪代码）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">select_model</span>(<span class="params">task_type, data_sensitive=<span class="literal">False</span></span>):</span><br><span class="line">    <span class="keyword">if</span> data_sensitive:</span><br><span class="line">        <span class="comment"># 敏感数据用本地模型</span></span><br><span class="line">        <span class="keyword">return</span> local_model  <span class="comment"># 如 Llama 3</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> task_type == <span class="string">&quot;simple&quot;</span>:</span><br><span class="line">        <span class="comment"># 简单任务用便宜模型</span></span><br><span class="line">        <span class="keyword">return</span> gpt35_turbo</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">elif</span> task_type == <span class="string">&quot;complex&quot;</span>:</span><br><span class="line">        <span class="comment"># 复杂任务用强模型</span></span><br><span class="line">        <span class="keyword">return</span> gpt4_turbo</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">elif</span> task_type == <span class="string">&quot;long_context&quot;</span>:</span><br><span class="line">        <span class="comment"># 长文档用长上下文模型</span></span><br><span class="line">        <span class="keyword">return</span> claude_35</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> gpt4_turbo  <span class="comment"># 默认</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-成本优化技巧"><a href="#4-2-成本优化技巧" class="headerlink" title="4.2 成本优化技巧"></a>4.2 成本优化技巧</h3><ol>
+<li><strong>使用缓存</strong>：相同查询缓存结果，避免重复调用</li>
+<li><strong>批量处理</strong>：批量请求比单个请求更高效</li>
+<li><strong>选择合适的模型</strong>：简单任务不用强模型</li>
+<li><strong>优化 Prompt</strong>：减少 Token 消耗（见<a href="/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/AI%E4%B8%8E%E7%A0%94%E7%A9%B6/2025-12-04-llm-prompt-engineering-practices/#2-token-%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96%E5%9C%A8%E4%BF%9D%E8%AF%81%E6%95%88%E6%9E%9C%E7%9A%84%E5%90%8C%E6%97%B6%E5%87%8F%E5%B0%91%E6%B6%88%E8%80%97">第3篇</a>）</li>
+<li><strong>使用流式输出</strong>：对于长文本生成，使用流式输出提升用户体验</li>
+</ol>
+<h3 id="4-3-性能测试"><a href="#4-3-性能测试" class="headerlink" title="4.3 性能测试"></a>4.3 性能测试</h3><p><strong>选择模型前，先做性能测试</strong>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 性能测试示例（伪代码）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">benchmark_models</span>(<span class="params">task, models</span>):</span><br><span class="line">    results = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> model <span class="keyword">in</span> models:</span><br><span class="line">        <span class="comment"># 测试能力</span></span><br><span class="line">        accuracy = test_accuracy(model, task)</span><br><span class="line">        <span class="comment"># 测试速度</span></span><br><span class="line">        speed = test_speed(model, task)</span><br><span class="line">        <span class="comment"># 测试成本</span></span><br><span class="line">        cost = estimate_cost(model, task)</span><br><span class="line">        </span><br><span class="line">        results[model] = &#123;</span><br><span class="line">            <span class="string">&quot;accuracy&quot;</span>: accuracy,</span><br><span class="line">            <span class="string">&quot;speed&quot;</span>: speed,</span><br><span class="line">            <span class="string">&quot;cost&quot;</span>: cost,</span><br><span class="line">            <span class="string">&quot;score&quot;</span>: calculate_score(accuracy, speed, cost)</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 选择综合得分最高的模型</span></span><br><span class="line">    best_model = <span class="built_in">max</span>(results, key=<span class="keyword">lambda</span> x: results[x][<span class="string">&quot;score&quot;</span>])</span><br><span class="line">    <span class="keyword">return</span> best_model, results</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔍-总结：模型选型的核心原则"><a href="#🔍-总结：模型选型的核心原则" class="headerlink" title="🔍 总结：模型选型的核心原则"></a>🔍 总结：模型选型的核心原则</h2><p>选择合适的模型，需要平衡多个因素：</p>
+<table>
+<thead>
+<tr>
+<th>因素</th>
+<th>权重</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>任务需求</strong></td>
+<td>高</td>
+<td>根据任务复杂度选择合适能力的模型</td>
+</tr>
+<tr>
+<td><strong>成本预算</strong></td>
+<td>高</td>
+<td>在预算范围内选择最佳模型</td>
+</tr>
+<tr>
+<td><strong>数据隐私</strong></td>
+<td>中</td>
+<td>敏感数据优先考虑开源模型</td>
+</tr>
+<tr>
+<td><strong>技术能力</strong></td>
+<td>中</td>
+<td>根据团队技术能力选择部署方案</td>
+</tr>
+<tr>
+<td><strong>长期维护</strong></td>
+<td>低</td>
+<td>考虑长期维护成本</td>
+</tr>
+</tbody></table>
+<p><strong>核心原则</strong>：</p>
+<ol>
+<li><strong>没有最好的模型，只有最合适的模型</strong></li>
+<li><strong>先做性能测试，再决定</strong></li>
+<li><strong>可以混合使用，不同任务用不同模型</strong></li>
+<li><strong>成本优化很重要，但不要牺牲关键能力</strong></li>
+</ol>
+<blockquote>
+<p>💡 <strong>关键理解</strong>：模型选型是一个<strong>权衡过程</strong>，需要在能力、成本、可控性之间找到平衡点。理解每个模型的特点，根据实际需求选择，才能让项目事半功倍。</p>
+</blockquote>
+<hr>
+<h2 id="📚-延伸阅读（含可直接访问链接）"><a href="#📚-延伸阅读（含可直接访问链接）" class="headerlink" title="📚 延伸阅读（含可直接访问链接）"></a>📚 延伸阅读（含可直接访问链接）</h2><p>以下资源按主题分类，每个资源都附有简要说明，帮助你选择合适的学习材料。</p>
+<h3 id="📊-模型评估与基准测试"><a href="#📊-模型评估与基准测试" class="headerlink" title="📊 模型评估与基准测试"></a>📊 模型评估与基准测试</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/openai/evals"><strong>OpenAI Evals（评估框架）</strong></a>：OpenAI 开源的模型评估框架。<strong>强烈推荐</strong>，适合需要系统评估模型的开发者。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard"><strong>Hugging Face Open LLM Leaderboard（模型排行榜）</strong></a>：开源模型的性能排行榜。适合需要选择开源模型的开发者。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://chat.lmsys.org/"><strong>LMSYS Chatbot Arena（模型对比平台）</strong></a>：通过用户投票对比不同模型的能力。适合想直观了解模型差异的读者。</p>
+</li>
+</ul>
+<h3 id="🔍-模型对比与分析"><a href="#🔍-模型对比与分析" class="headerlink" title="🔍 模型对比与分析"></a>🔍 模型对比与分析</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.08774"><strong>GPT-4 Technical Report（GPT-4 技术报告）</strong></a>：GPT-4 的官方技术报告。<strong>必读</strong>，适合想了解 GPT-4 能力的读者。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.anthropic.com/claude"><strong>Claude 3 Model Card（Claude 3 模型卡片）</strong></a>：Claude 3 的官方模型卡片。适合想了解 Claude 3 的读者。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2307.09288"><strong>Llama 2 Paper（Llama 2 论文）</strong></a>：Llama 2 的原始论文。适合想了解开源模型的读者。</p>
+</li>
+</ul>
+<h3 id="💰-成本对比与分析"><a href="#💰-成本对比与分析" class="headerlink" title="💰 成本对比与分析"></a>💰 成本对比与分析</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://openai.com/pricing"><strong>OpenAI Pricing（OpenAI 定价）</strong></a>：OpenAI 的官方定价页面。适合需要了解 API 成本的开发者。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.anthropic.com/pricing"><strong>Anthropic Pricing（Anthropic 定价）</strong></a>：Anthropic 的官方定价页面。适合需要了解 Claude API 成本的开发者。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://platform.openai.com/usage"><strong>模型成本计算器</strong></a>：OpenAI 的成本计算器。适合需要估算成本的开发者。</p>
+</li>
+</ul>
+<h3 id="🛠️-开源模型部署"><a href="#🛠️-开源模型部署" class="headerlink" title="🛠️ 开源模型部署"></a>🛠️ 开源模型部署</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ggerganov/llama.cpp"><strong>Llama.cpp（Llama 量化部署）</strong></a>：Llama 模型的量化部署工具。适合需要在 CPU 或边缘设备上部署的开发者。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/vllm-project/vllm"><strong>vLLM（高性能推理）</strong></a>：高性能 LLM 推理框架。适合需要高性能推理的开发者。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://ollama.ai/"><strong>Ollama（本地模型运行）</strong></a>：简单的本地模型运行工具。适合想快速体验开源模型的开发者。</p>
+</li>
+</ul>
+<h3 id="🇨🇳-中文模型资源"><a href="#🇨🇳-中文模型资源" class="headerlink" title="🇨🇳 中文模型资源"></a>🇨🇳 中文模型资源</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://qwenlm.github.io/"><strong>Qwen 官方文档</strong></a>：Qwen 模型的官方文档。适合需要中文模型的开发者。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/THUDM/ChatGLM3"><strong>ChatGLM 官方文档</strong></a>：ChatGLM 模型的官方文档。适合需要中文对话模型的开发者。</p>
+</li>
+</ul>
+<hr>
+<h2 id="🔔-下一篇预告"><a href="#🔔-下一篇预告" class="headerlink" title="🔔 下一篇预告"></a>🔔 下一篇预告</h2><p>完成了 <strong>Part I: LLM 基础认知与 Prompt 工程</strong> 的学习，我们已经掌握了”模型是大脑”的核心知识。</p>
+<p>接下来，我们将进入 <strong>Part II: Agent 核心架构与决策机制</strong>，揭秘 LLM 如何进化为自主决策工具。</p>
+<p><strong>第 6 篇将深入 Agent 架构</strong>：</p>
+<blockquote>
+<p><strong>《主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？》</strong></p>
+</blockquote>
+<ul>
+<li>Agent 是如何从 LLM 进化而来的？</li>
+<li>感知、规划、行动 → Agentic Loop 的全流程是什么？</li>
+<li>如何构建一个完整的 Agent 系统？</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linn0813.github.io">yuxiaoling</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linn0813.github.io/2025/12/09/2025-12-09-llm-model-evaluation-selection/">https://linn0813.github.io/2025/12/09/2025-12-09-llm-model-evaluation-selection/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">版权所有，转载请注明出处。</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Claude/">Claude</a><a class="post-meta__tags" href="/tags/GPT-4/">GPT-4</a><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0/">模型评估</a><a class="post-meta__tags" href="/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/">模型选型</a><a class="post-meta__tags" href="/tags/Llama/">Llama</a><a class="post-meta__tags" href="/tags/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B/">开源模型</a></div><div class="post-share"><div class="social-share" data-image="/img/llm-model-evaluation-selection.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/12/08/2025-12-08-llm-rag-deep-integration/" title="🧠 主题4｜解决&quot;幻觉&quot;：RAG机制与外部知识融合"><img class="cover" src="/img/llm-rag-deep-integration.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">🧠 主题4｜解决"幻觉"：RAG机制与外部知识融合</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 4 篇   上一篇我们掌握了 Prompt 工程的三大核心技巧，实现了稳定、可解析的结构化输出。   本篇，我们将深入解析 RAG（检索增强生成）机制，构建抗幻觉的知识增强系统，突破 LLM 的知识时效性和准确性限制。   🚀 导言 — 突破 LLM 知识的”围墙”在前三篇中，我们掌握了 LLM 的工作原理、Prompt 工程技巧和结构化输出方法。 但当你真正用 LLM 做项目时，会发现三个令人头疼的问题：  模型的知识截止到训练时间，无法获取最新信息；模型可能产生”幻觉”，编造不存在的信息；模型无法访问私有知识库或专业文档。  这不是模型能力的问题，而是 知识来源的问题。 RAG（Retrieval-Augmented Generation，检索增强生成）机制应运而生，它将 LLM 从被动的”百科全书”升级为“有据可查的专家”。 本篇将深入解析 RAG 的三阶段工作流、核心组件及进阶优化策略，帮助你构建高精度、可追溯的知识增强系统。  📋 一、RAG 核心机制：三阶段工作流RAG...</div></div></div></a><a class="pagination-related" href="/2025/12/10/2025-12-10-llm-agent-concept-overview/" title="🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？"><img class="cover" src="/img/llm-agent-concept-overview.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" loading='lazy'><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 6 篇   上一篇我们全面对比了主流 LLM 模型，掌握了如何根据需求选择合适的模型。   本篇，我们将进入 Part II: Agent 核心架构与决策机制，系统理解 Agent 的本质，揭秘 LLM 如何进化为具有”行动能力”的智能体。   🚀 导言 — 从”大模型”到”智能体”在 Part I 中，我们已经掌握了：  LLM 的工作原理（Token、Transformer） Prompt 工程技巧（角色、ReAct、Schema） RAG 机制（检索、增强、生成） 模型评估与选型  但纯粹的 LLM 是 被动的 —— 它只能在你问它时才回应，只能生成文本，无法执行实际任务。 当你想要：  让 LLM 自动查询数据库、调用 API、生成报告、发送邮件…让 LLM 能够自主分解复杂任务，一步步完成…让 LLM 能够根据执行结果调整策略，直到完成任务…  这时，你需要 Agent（智能体）。 Agent 将 LLM 从”会说话的模型”升级为”能做事、会思考、能修正”的智能系统。 本篇将系统解析...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/07/30/2025-07-30-cursor-region-limit-solution/" title="🌐解决 Cursor 地区限制报错：Claude、GPT-4 无法使用的应对方案分享"><img class="cover" src="/img/cursor-error.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-30</div><div class="info-item-2">🌐解决 Cursor 地区限制报错：Claude、GPT-4 无法使用的应对方案分享</div></div><div class="info-2"><div class="info-item-1">🌐解决 Cursor 地区限制报错：Claude、GPT-4 无法使用的应对方案分享 本文仅出于技术学习和经验分享目的，帮助开发者了解和解决 Cursor 使用海外模型时遇到的地区限制问题。   🚨问题描述：Cursor 使用海外模型报错近期 Cursor 编译器在使用 Claude、GPT-4 等海外模型时，部分用户（特别是中国大陆 IP）会遇到如下错误提示： ❌ Model not available  This model provider doesn&#x27;t serve your region.  Visit https://docs.cursor.com/account/regions for more information.  如图所示：   这意味着 Cursor 的模型服务商对地区进行了限制，尤其是 Claude 和 GPT-4 类模型在中国大陆区域默认不可用。  ✅解决方案（需配置 VPN）目前应对方式主要有两种路径，均依赖于你已配置好 VPN 环境：  🧭方案一：配置代理服务器在 Cursor 中手动设置代理服务器地址，使其网络请求通过 VPN...</div></div></div></a><a class="pagination-related" href="/2025/10/27/2025-10-27-langchain-framework/" title="🧠 LangChain：让大语言模型真正“动起来”的框架"><img class="cover" src="/img/langchain.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-27</div><div class="info-item-2">🧠 LangChain：让大语言模型真正“动起来”的框架</div></div><div class="info-2"><div class="info-item-1">🧠 LangChain：让大语言模型真正“动起来”的框架 从Prompt到Agent，从单轮问答到任务编排——这篇文章帮你彻底理解LangChain的核心思想与实践路径。    一、为什么需要LangChain？🌍 语言模型的局限大语言模型（LLM）很擅长生成文本、总结内容或推理，但它不会记忆上下文、无法访问外部数据、也不会执行真实操作。举个例子：   “帮我根据数据库里上周的测试结果生成一份风险分析报告。”   仅靠 GPT 或 Claude，模型根本无法：   连接数据库  读取测试结果  调用外部计算逻辑  于是开发者开始手动拼接 prompt、加 API 调用、做状态管理……直到——  🚀 LangChain 出现LangChain 由 Harrison Chase 于 2022 年发布，它的目标是让 LLM 不只是“聊天工具”，而是能理解上下文、调用外部工具、执行逻辑、形成完整工作流的“可编程智能体”。  一句话概括：   LangChain 是连接大语言模型与真实世界的中间层。    二、LangChain 的设计理念：模块化、可组合、可观测LangChain...</div></div></div></a><a class="pagination-related" href="/2025/10/21/2025-10-21-llm-agent-guide/" title="🧠 LLM 与智能体（Agent）知识记录"><img class="cover" src="/img/LLM-Agent.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-21</div><div class="info-item-2">🧠 LLM 与智能体（Agent）知识记录</div></div><div class="info-2"><div class="info-item-1"> 📘 本文旨在系统记录 LLM 与 Agent 的概念、组成、原理、应用与实践要点，形成长期可复用的知识材料。你可以将它作为“学习路线 + 实践清单”的参考。✅   基础认知一、LLM（Large Language Model，大语言模型） 🤖1.1 定义LLM 是基于深度学习与海量文本训练的模型，能够理解、生成、推理自然语言，是现代智能体的“核心大脑”。 1.2 核心特性   特性 描述    理解能力 能理解问题、文档、上下文与意图   生成能力 能生成文章、代码、摘要、对话等   推理能力 能做基础逻辑判断与归纳总结   可扩展性 可与知识库、工具、API 联动   局限性 幻觉（hallucination）、知识截至训练时间、上下文窗口有限   1.3 关键概念 Prompt：向模型输入的指令或问题，告诉模型“要做什么”。 Token：模型处理文本的最小单位；长文本消耗更多资源。 Spec（规范&#x2F;说明书）：约束输入输出格式，定义任务规则。 RAG（Retrieval-Augmented...</div></div></div></a><a class="pagination-related" href="/2025/11/29/2025-11-29-llm-agent-core-concepts-guide/" title="🚀 告别浅尝辄止：《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列开篇"><img class="cover" src="/img/llm-agent-core-concepts-guide.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-29</div><div class="info-item-2">🚀 告别浅尝辄止：《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列开篇</div></div><div class="info-2"><div class="info-item-1">💡 为什么要启动这个系列？过去一年，LLM（大语言模型）和 Agent（智能体）几乎占据了整个技术圈的”热搜榜”。从写代码、自动化测试，到智能客服、知识问答、流程自动化，各种 Demo 和产品层出不穷。 然而，许多学习者都面临这样的困惑：  “我知道它能用，但我真的不理解它为什么能做到。”  学习了大量术语 —— Prompt、Token、Embedding、RAG、ReAct、Agentic Loop —— 却始终感觉知识散落成碎片。做项目时更是容易陷入”一知半解”的尴尬处境。 我以前写过一篇《LLM 与智能体（Agent）知识记录》，虽然系统梳理了概念，但更多像是一份”词汇表”，缺少对底层机制的深入拆解，也没有给出能真正指导实践的”心法”。 为了解决这一痛点，我决定启动这个全新的、面向新手到进阶开发者的系列：  《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》—— 比传统教程更清晰，比纯概念科普更务实。  这个系列将聚焦两大核心问题：  Why？ —— 这些机制为什么重要？它们解决了什么问题？ How？ ——...</div></div></div></a><a class="pagination-related" href="/2025/12/02/2025-12-02-llm-working-principle-token-embedding-transformer/" title="🧠 主题1｜LLM 工作原理深度解析：Token、向量、Transformer，到底在算什么？"><img class="cover" src="/img/llm-working-principle-token-embedding-transformer.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-02</div><div class="info-item-2">🧠 主题1｜LLM 工作原理深度解析：Token、向量、Transformer，到底在算什么？</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 1 篇。   本篇将深入解析 LLM 的工作原理：从 Token 分词、Embedding 向量化到 Transformer 架构。未来，我们将继续探讨 Prompt 工程、RAG、Agent 等核心概念，带你系统理解”AI 是怎么运作的”。   🚀 导言：理解大模型最重要的三件事当你对 ChatGPT 问一句：”给我写一篇晚会主持稿”，它几秒内能生成近千字内容。 这不是魔法，本质上，它只是在执行一件事：  根据输入，预测下一个最可能出现的 Token。  而理解它如何预测，你只需要掌握三件事：  Token（语言最小粒度）  Embedding（文字转数字的向量空间）  Transformer（让模型”看懂上下文”的架构）   搞懂它们，你就搞懂了 LLM 的底层”物理学”。  🧩 一、最小单位：Tokenization（分词）1. 什么是 Token？Token ≠ 字 Token ≠ 词 Token 是...</div></div></div></a><a class="pagination-related" href="/2025/12/04/2025-12-04-llm-prompt-engineering-practices/" title="🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出"><img class="cover" src="/img/llm-prompt-engineering-practices.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-04</div><div class="info-item-2">🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 3 篇   上一篇我们理解了 LLM 的”语言”：Prompt、上下文窗口和 In-Context Learning。   本篇，我们从实战角度，掌握 Prompt 工程的三大核心技巧，实现稳定、可解析的结构化输出。   🚀 导言 — 从”聊天”到”高效工作”在前两篇中，我们掌握了 LLM 的底层机制（Token、Transformer）和交互基础（Prompt、ICL）。 当你开始真正用 LLM 做项目时，会发现一个令人头疼的问题：  你希望得到 JSON，却得到了一段解释文字；你希望表格化输出，结果模型输出了自由文本；你希望模型调用工具，但它只是”说”要调用，却不按格式输出。  这不是模型能力的问题，而是 Prompt 设计的问题。 实际开发 Agent 或自动化流程时，最令人头疼的问题往往不是模型能力不够，而是输出格式不稳定、行为不可控。  💡 Prompt 工程是什么，不是什么？在深入技巧之前，我们需要先澄清一个关键问题：什么是 Prompt 工程？ 常见的误解很多人以为 Prompt...</div></div></div></a><a class="pagination-related" href="/2025/12/03/2025-12-03-llm-prompt-context-in-context-learning/" title="🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning"><img class="cover" src="/img/llm-prompt-context-in-context-learning.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-03</div><div class="info-item-2">🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 2 篇   上一篇我们讲了 LLM 的”物理基础”：Token、Embedding、Transformer。   本篇，我们从”人机对话”的角度，理解如何让 LLM 从”会说话”变成”按指令办事”。   🚀 导言 — 与 LLM 沟通的艺术当你对 ChatGPT 说”帮我写一份测试计划”，它几秒内就能生成结构化的文档。 这不是魔法，本质上，它只是在执行一件事：  根据输入，预测下一个最可能出现的 Token。   但问题是：预测本身 ≠ 执行任务  核心挑战：LLM 不会”理解”文本，它会”对齐你给的上下文模式”。你给它怎样的上下文，它就呈现怎样的能力。   大多数人使用大模型时，只把它当作”聪明的聊天工具”。但真正要发挥 LLM 的能力，你必须理解：LLM 有一套独特的”语言体系”。 它并不是以”人类语言”来思考，而是依靠：  Prompt（提示词） — 给 LLM 的”指令语言” Context Window（上下文窗口） — 模型的”思维环境” In-Context...</div></div></div></a><a class="pagination-related" href="/2025/12/08/2025-12-08-llm-rag-deep-integration/" title="🧠 主题4｜解决&quot;幻觉&quot;：RAG机制与外部知识融合"><img class="cover" src="/img/llm-rag-deep-integration.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-08</div><div class="info-item-2">🧠 主题4｜解决&quot;幻觉&quot;：RAG机制与外部知识融合</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 4 篇   上一篇我们掌握了 Prompt 工程的三大核心技巧，实现了稳定、可解析的结构化输出。   本篇，我们将深入解析 RAG（检索增强生成）机制，构建抗幻觉的知识增强系统，突破 LLM 的知识时效性和准确性限制。   🚀 导言 — 突破 LLM 知识的”围墙”在前三篇中，我们掌握了 LLM 的工作原理、Prompt 工程技巧和结构化输出方法。 但当你真正用 LLM 做项目时，会发现三个令人头疼的问题：  模型的知识截止到训练时间，无法获取最新信息；模型可能产生”幻觉”，编造不存在的信息；模型无法访问私有知识库或专业文档。  这不是模型能力的问题，而是 知识来源的问题。 RAG（Retrieval-Augmented Generation，检索增强生成）机制应运而生，它将 LLM 从被动的”百科全书”升级为“有据可查的专家”。 本篇将深入解析 RAG 的三阶段工作流、核心组件及进阶优化策略，帮助你构建高精度、可追溯的知识增强系统。  📋 一、RAG 核心机制：三阶段工作流RAG...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">yuxiaoling</div><div class="author-info-description">分享软件测试学习、实战经验和踩坑历程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">94</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">363</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Linn0813"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Linn0813" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yuxiaoling.yxl@qq.com" target="_blank" title="Email"><i class="fa fa-envelope-open-text"></i></a><a class="social-icon" href="javascript:alert('微信公众号：Linn的技术笔记')" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://weibo.com/Linn0813" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">下雨就不想上班 / 出太阳也不想上班</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%80-%E5%AF%BC%E8%A8%80-%E2%80%94-%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%BA%8B%E5%8D%8A%E5%8A%9F%E5%80%8D"><span class="toc-number">1.</span> <span class="toc-text">🚀 导言 — 选择合适的模型，事半功倍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E4%B8%80%E3%80%81%E8%AF%84%E4%BC%B0%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BA%94%E5%A4%A7%E6%A0%B8%E5%BF%83%E7%BB%B4%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">📊 一、评估模型的五大核心维度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%8F%82%E6%95%B0%E9%87%8F%EF%BC%88Parameters%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 参数量（Parameters）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%8E%A8%E7%90%86%E9%80%9F%E5%BA%A6%EF%BC%88Inference-Speed%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 推理速度（Inference Speed）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%88%90%E6%9C%AC%EF%BC%88Cost%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 成本（Cost）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E8%83%BD%E5%8A%9B%EF%BC%88Capabilities%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 能力（Capabilities）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%8F%AF%E6%8E%A7%E6%80%A7%EF%BC%88Control%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">1.5 可控性（Control）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%8D-%E4%BA%8C%E3%80%81%E4%B8%BB%E6%B5%81%E6%A8%A1%E5%9E%8B%E5%85%A8%E9%9D%A2%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">🔍 二、主流模型全面对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%97%AD%E6%BA%90%E6%A8%A1%E5%9E%8B%EF%BC%88API-%E6%9C%8D%E5%8A%A1%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 闭源模型（API 服务）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-GPT-4-GPT-4-Turbo"><span class="toc-number">3.2.</span> <span class="toc-text">🤖 GPT-4 &#x2F; GPT-4 Turbo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9A%A1-GPT-3-5-Turbo"><span class="toc-number">3.3.</span> <span class="toc-text">⚡ GPT-3.5 Turbo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9B%A1%EF%B8%8F-Claude-3-Claude-3-5-Sonnet"><span class="toc-number">3.4.</span> <span class="toc-text">🛡️ Claude 3 &#x2F; Claude 3.5 Sonnet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8C%9F-Gemini-Pro-Gemini-Ultra"><span class="toc-number">3.5.</span> <span class="toc-text">🌟 Gemini Pro &#x2F; Gemini Ultra</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%AF%E8%87%AA%E9%83%A8%E7%BD%B2%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">2.2 开源模型（可自部署）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A6%99-Llama-2-Llama-3"><span class="toc-number">4.1.</span> <span class="toc-text">🦙 Llama 2 &#x2F; Llama 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9A%80-Mistral-7B-Mixtral-8x7B"><span class="toc-number">4.2.</span> <span class="toc-text">🚀 Mistral 7B &#x2F; Mixtral 8x7B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%87%A8%F0%9F%87%B3-Qwen-2-Qwen-2-5"><span class="toc-number">4.3.</span> <span class="toc-text">🇨🇳 Qwen 2 &#x2F; Qwen 2.5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E4%B8%89%E3%80%81%E9%80%89%E5%9E%8B%E5%86%B3%E7%AD%96%E6%8C%87%E5%8D%97"><span class="toc-number">5.</span> <span class="toc-text">🎯 三、选型决策指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%A0%B9%E6%8D%AE%E4%BB%BB%E5%8A%A1%E5%A4%8D%E6%9D%82%E5%BA%A6%E9%80%89%E6%8B%A9"><span class="toc-number">5.1.</span> <span class="toc-text">3.1 根据任务复杂度选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%A0%B9%E6%8D%AE%E6%88%90%E6%9C%AC%E9%A2%84%E7%AE%97%E9%80%89%E6%8B%A9"><span class="toc-number">5.2.</span> <span class="toc-text">3.2 根据成本预算选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%A0%B9%E6%8D%AE%E6%95%B0%E6%8D%AE%E9%9A%90%E7%A7%81%E8%A6%81%E6%B1%82%E9%80%89%E6%8B%A9"><span class="toc-number">5.3.</span> <span class="toc-text">3.3 根据数据隐私要求选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%A0%B9%E6%8D%AE%E6%8A%80%E6%9C%AF%E8%83%BD%E5%8A%9B%E9%80%89%E6%8B%A9"><span class="toc-number">5.4.</span> <span class="toc-text">3.4 根据技术能力选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E7%9F%A9%E9%98%B5"><span class="toc-number">5.5.</span> <span class="toc-text">3.5 综合决策矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1-%E5%9B%9B%E3%80%81%E5%AE%9E%E6%88%98%E5%BB%BA%E8%AE%AE"><span class="toc-number">6.</span> <span class="toc-text">💡 四、实战建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8%E7%AD%96%E7%95%A5"><span class="toc-number">6.1.</span> <span class="toc-text">4.1 混合使用策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">6.2.</span> <span class="toc-text">4.2 成本优化技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">6.3.</span> <span class="toc-text">4.3 性能测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%8D-%E6%80%BB%E7%BB%93%EF%BC%9A%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8E%9F%E5%88%99"><span class="toc-number">7.</span> <span class="toc-text">🔍 总结：模型选型的核心原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB%EF%BC%88%E5%90%AB%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE%E9%93%BE%E6%8E%A5%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">📚 延伸阅读（含可直接访问链接）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%8A-%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95"><span class="toc-number">8.1.</span> <span class="toc-text">📊 模型评估与基准测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%8D-%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">8.2.</span> <span class="toc-text">🔍 模型对比与分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%92%B0-%E6%88%90%E6%9C%AC%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">8.3.</span> <span class="toc-text">💰 成本对比与分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2"><span class="toc-number">8.4.</span> <span class="toc-text">🛠️ 开源模型部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%87%A8%F0%9F%87%B3-%E4%B8%AD%E6%96%87%E6%A8%A1%E5%9E%8B%E8%B5%84%E6%BA%90"><span class="toc-number">8.5.</span> <span class="toc-text">🇨🇳 中文模型资源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%94-%E4%B8%8B%E4%B8%80%E7%AF%87%E9%A2%84%E5%91%8A"><span class="toc-number">9.</span> <span class="toc-text">🔔 下一篇预告</span></a></li></ol></div></div><div class="card-widget card-post-series"><div class="item-headline"><i class="fa-solid fa-layer-group"></i><span>系列文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"><img src="/img/llm-agent-future-summary.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结" loading='lazy'></a><div class="content"><a class="title" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结">🌐 主题19｜Agent 工程未来：趋势、机会与系列总结</a><time datetime="2026-01-05T10:00:00.000Z" title="发表于 2026-01-05 18:00:00">2026-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"><img src="/img/llm-agent-ethical-boundaries.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI" loading='lazy'></a><div class="content"><a class="title" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI">⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI</a><time datetime="2026-01-04T10:00:00.000Z" title="发表于 2026-01-04 18:00:00">2026-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"><img src="/img/llm-agent-enterprise-applications.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地" loading='lazy'></a><div class="content"><a class="title" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地">🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地</a><time datetime="2026-01-03T10:00:00.000Z" title="发表于 2026-01-03 18:00:00">2026-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/02/2026-01-02-llm-agent-capability-tuning/" title="🔬 主题16｜Agent 能力调优：微调与 Prompt 工程进阶"><img src="/img/llm-agent-capability-tuning.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🔬 主题16｜Agent 能力调优：微调与 Prompt 工程进阶" loading='lazy'></a><div class="content"><a class="title" href="/2026/01/02/2026-01-02-llm-agent-capability-tuning/" title="🔬 主题16｜Agent 能力调优：微调与 Prompt 工程进阶">🔬 主题16｜Agent 能力调优：微调与 Prompt 工程进阶</a><time datetime="2026-01-02T10:00:00.000Z" title="发表于 2026-01-02 18:00:00">2026-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/27/2025-12-27-llm-agent-glossary/" title="📚 工具篇｜LLM/Agent 系列术语速查手册"><img src="/img/llm-agent-glossary.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📚 工具篇｜LLM/Agent 系列术语速查手册" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/27/2025-12-27-llm-agent-glossary/" title="📚 工具篇｜LLM/Agent 系列术语速查手册">📚 工具篇｜LLM/Agent 系列术语速查手册</a><time datetime="2025-12-27T12:00:00.000Z" title="发表于 2025-12-27 20:00:00">2025-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/24/2025-12-24-llm-agent-evaluation/" title="📊 主题15｜Agent 评估：指标体系与避坑指南"><img src="/img/llm-agent-evaluation.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📊 主题15｜Agent 评估：指标体系与避坑指南" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/24/2025-12-24-llm-agent-evaluation/" title="📊 主题15｜Agent 评估：指标体系与避坑指南">📊 主题15｜Agent 评估：指标体系与避坑指南</a><time datetime="2025-12-24T10:00:00.000Z" title="发表于 2025-12-24 18:00:00">2025-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/23/2025-12-23-llm-agent-multi-agent-collaboration/" title="👥 主题14｜多 Agent 协作：像团队一样工作的一群智能体"><img src="/img/llm-agent-multi-agent-collaboration.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="👥 主题14｜多 Agent 协作：像团队一样工作的一群智能体" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/23/2025-12-23-llm-agent-multi-agent-collaboration/" title="👥 主题14｜多 Agent 协作：像团队一样工作的一群智能体">👥 主题14｜多 Agent 协作：像团队一样工作的一群智能体</a><time datetime="2025-12-23T10:00:00.000Z" title="发表于 2025-12-23 18:00:00">2025-12-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/22/2025-12-22-llm-agent-security-governance/" title="🔒 主题13｜Agent 安全治理：日志、审计、可观测性与安全审计"><img src="/img/llm-agent-security-governance.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🔒 主题13｜Agent 安全治理：日志、审计、可观测性与安全审计" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/22/2025-12-22-llm-agent-security-governance/" title="🔒 主题13｜Agent 安全治理：日志、审计、可观测性与安全审计">🔒 主题13｜Agent 安全治理：日志、审计、可观测性与安全审计</a><time datetime="2025-12-22T10:00:00.000Z" title="发表于 2025-12-22 18:00:00">2025-12-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/21/2025-12-21-llm-agent-spec-design/" title="📐 主题12｜Spec 设计：用 Schema 限制 Agent 输出，提升稳定性"><img src="/img/llm-agent-spec-design.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📐 主题12｜Spec 设计：用 Schema 限制 Agent 输出，提升稳定性" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/21/2025-12-21-llm-agent-spec-design/" title="📐 主题12｜Spec 设计：用 Schema 限制 Agent 输出，提升稳定性">📐 主题12｜Spec 设计：用 Schema 限制 Agent 输出，提升稳定性</a><time datetime="2025-12-21T10:00:00.000Z" title="发表于 2025-12-21 18:00:00">2025-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/20/2025-12-20-llm-agent-framework-comparison/" title="🏗️ 主题11｜Agent 框架对比：LangChain、AutoGPT、LlamaIndex 深度解析"><img src="/img/llm-agent-framework-comparison.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🏗️ 主题11｜Agent 框架对比：LangChain、AutoGPT、LlamaIndex 深度解析" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/20/2025-12-20-llm-agent-framework-comparison/" title="🏗️ 主题11｜Agent 框架对比：LangChain、AutoGPT、LlamaIndex 深度解析">🏗️ 主题11｜Agent 框架对比：LangChain、AutoGPT、LlamaIndex 深度解析</a><time datetime="2025-12-20T10:00:00.000Z" title="发表于 2025-12-20 18:00:00">2025-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/19/2025-12-19-llm-agent-task-planning/" title="🎯 主题10｜任务规划：Agent 如何把复杂任务拆成可执行步骤？"><img src="/img/llm-agent-task-planning.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🎯 主题10｜任务规划：Agent 如何把复杂任务拆成可执行步骤？" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/19/2025-12-19-llm-agent-task-planning/" title="🎯 主题10｜任务规划：Agent 如何把复杂任务拆成可执行步骤？">🎯 主题10｜任务规划：Agent 如何把复杂任务拆成可执行步骤？</a><time datetime="2025-12-19T10:00:00.000Z" title="发表于 2025-12-19 18:00:00">2025-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/18/2025-12-18-llm-agent-tool-system/" title="🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接"><img src="/img/llm-agent-tool-system.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/18/2025-12-18-llm-agent-tool-system/" title="🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接">🛠️ 主题9｜Agent 工具系统：Function Calling 与外部世界连接</a><time datetime="2025-12-18T10:00:00.000Z" title="发表于 2025-12-18 18:00:00">2025-12-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/17/2025-12-17-llm-agent-memory-management/" title="🧠 主题8｜Agent 记忆管理：打造长期且健忘的智能体"><img src="/img/llm-agent-memory-management.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 主题8｜Agent 记忆管理：打造长期且健忘的智能体" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/17/2025-12-17-llm-agent-memory-management/" title="🧠 主题8｜Agent 记忆管理：打造长期且健忘的智能体">🧠 主题8｜Agent 记忆管理：打造长期且健忘的智能体</a><time datetime="2025-12-17T10:00:00.000Z" title="发表于 2025-12-17 18:00:00">2025-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/16/2025-12-16-llm-agent-decision-engine/" title="🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用"><img src="/img/llm-agent-decision-engine.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/16/2025-12-16-llm-agent-decision-engine/" title="🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用">🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用</a><time datetime="2025-12-16T10:00:00.000Z" title="发表于 2025-12-16 18:00:00">2025-12-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/2025-12-10-llm-agent-concept-overview/" title="🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？"><img src="/img/llm-agent-concept-overview.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/10/2025-12-10-llm-agent-concept-overview/" title="🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？">🧠 主题6｜Agent 从 LLM 进化而来：为什么需要 Agent？</a><time datetime="2025-12-10T10:00:00.000Z" title="发表于 2025-12-10 18:00:00">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/09/2025-12-09-llm-model-evaluation-selection/" title="🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比"><img src="/img/llm-model-evaluation-selection.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/09/2025-12-09-llm-model-evaluation-selection/" title="🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比">🧠 主题5｜评估与选型：参数量、推理速度、开源/闭源模型对比</a><time datetime="2025-12-09T08:00:00.000Z" title="发表于 2025-12-09 16:00:00">2025-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/08/2025-12-08-llm-rag-deep-integration/" title="🧠 主题4｜解决&quot;幻觉&quot;：RAG机制与外部知识融合"><img src="/img/llm-rag-deep-integration.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 主题4｜解决&quot;幻觉&quot;：RAG机制与外部知识融合" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/08/2025-12-08-llm-rag-deep-integration/" title="🧠 主题4｜解决&quot;幻觉&quot;：RAG机制与外部知识融合">🧠 主题4｜解决&quot;幻觉&quot;：RAG机制与外部知识融合</a><time datetime="2025-12-08T10:00:00.000Z" title="发表于 2025-12-08 18:00:00">2025-12-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/04/2025-12-04-llm-prompt-engineering-practices/" title="🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出"><img src="/img/llm-prompt-engineering-practices.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/04/2025-12-04-llm-prompt-engineering-practices/" title="🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出">🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出</a><time datetime="2025-12-04T10:00:00.000Z" title="发表于 2025-12-04 18:00:00">2025-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/03/2025-12-03-llm-prompt-context-in-context-learning/" title="🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning"><img src="/img/llm-prompt-context-in-context-learning.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/03/2025-12-03-llm-prompt-context-in-context-learning/" title="🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning">🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning</a><time datetime="2025-12-03T10:00:00.000Z" title="发表于 2025-12-03 18:00:00">2025-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/02/2025-12-02-llm-working-principle-token-embedding-transformer/" title="🧠 主题1｜LLM 工作原理深度解析：Token、向量、Transformer，到底在算什么？"><img src="/img/llm-working-principle-token-embedding-transformer.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧠 主题1｜LLM 工作原理深度解析：Token、向量、Transformer，到底在算什么？" loading='lazy'></a><div class="content"><a class="title" href="/2025/12/02/2025-12-02-llm-working-principle-token-embedding-transformer/" title="🧠 主题1｜LLM 工作原理深度解析：Token、向量、Transformer，到底在算什么？">🧠 主题1｜LLM 工作原理深度解析：Token、向量、Transformer，到底在算什么？</a><time datetime="2025-12-02T10:00:00.000Z" title="发表于 2025-12-02 18:00:00">2025-12-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/29/2025-11-29-llm-agent-core-concepts-guide/" title="🚀 告别浅尝辄止：《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》系列开篇"><img src="/img/llm-agent-core-concepts-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🚀 告别浅尝辄止：《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》系列开篇" loading='lazy'></a><div class="content"><a class="title" href="/2025/11/29/2025-11-29-llm-agent-core-concepts-guide/" title="🚀 告别浅尝辄止：《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》系列开篇">🚀 告别浅尝辄止：《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》系列开篇</a><time datetime="2025-11-29T10:00:00.000Z" title="发表于 2025-11-29 18:00:00">2025-11-29</time></div></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的"><img src="/img/performance-monitoring-dashboard-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📊 压测时，我是如何一步步「读懂」性能监控面板的"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/07/2026-01-07-performance-monitoring-dashboard-guide/" title="📊 压测时，我是如何一步步「读懂」性能监控面板的">📊 压测时，我是如何一步步「读懂」性能监控面板的</a><time datetime="2026-01-07T12:00:00.000Z" title="发表于 2026-01-07 20:00:00">2026-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"><img src="/img/server-performance-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/" title="🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会">🚀 服务器性能问题排查完全指南：从 OOM、CPU 高到压测配合，测试工程师必知必会</a><time datetime="2026-01-06T12:00:00.000Z" title="发表于 2026-01-06 20:00:00">2026-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"><img src="/img/llm-agent-future-summary.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/05/2026-01-05-llm-agent-future-summary/" title="🌐 主题19｜Agent 工程未来：趋势、机会与系列总结">🌐 主题19｜Agent 工程未来：趋势、机会与系列总结</a><time datetime="2026-01-05T10:00:00.000Z" title="发表于 2026-01-05 18:00:00">2026-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"><img src="/img/llm-agent-ethical-boundaries.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/04/2026-01-04-llm-agent-ethical-boundaries/" title="⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI">⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI</a><time datetime="2026-01-04T10:00:00.000Z" title="发表于 2026-01-04 18:00:00">2026-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"><img src="/img/llm-agent-enterprise-applications.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/03/2026-01-03-llm-agent-enterprise-applications/" title="🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地">🏭 主题17｜Agent 企业应用：RPA、流程自动化与企业落地</a><time datetime="2026-01-03T10:00:00.000Z" title="发表于 2026-01-03 18:00:00">2026-01-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By yuxiaoling</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'Linn0813/Linn0813.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script src="/js/blog-enhancements.js"></script><script src="/js/category-enhancements.js"></script><script src="/js/series-enhancements.js"></script><script src="/js/post-series-meta.js"></script><script src="/js/archive-enhancements.js"></script><script src="/js/tag-enhancements.js"></script><script src="/js/index-enhancements.js"></script><script src="/js/sidebar-series-card.js"></script><script src="/js/theme-switcher-ui.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章、分类、标签..." type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

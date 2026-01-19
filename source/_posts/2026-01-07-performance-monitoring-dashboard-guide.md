@@ -275,4 +275,4 @@ noticeOutdate: false
 
 ### 相关文章
 
-- [服务器性能问题排查完全指南](/技术学习与行业趋势/开发与技术栈/2026-01-06-server-performance-troubleshooting-guide/)
+- [服务器性能问题排查完全指南](/2026/01/06/2026-01-06-server-performance-troubleshooting-guide/)

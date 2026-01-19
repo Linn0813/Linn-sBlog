@@ -8,6 +8,10 @@ hexo server
 # 生成静态文件并部署
 hexo g -d
 
+   npm run deploy:both
+
+   npm run preview:both
+
 # 使用部署重试脚本（推荐，包含自动重试机制）
 ./deploy_with_retry.sh
 

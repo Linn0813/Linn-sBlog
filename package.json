@@ -7,8 +7,18 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
+    "server:auto": "lsof -ti:4000 | xargs kill -9 2>/dev/null; hexo server",
     "generate-series": "node scripts/generate_series_pages.js",
-    "sync-blog": "node tools/sync-blog-posts.js"
+    "sync-blog": "node tools/sync-blog-posts.js",
+    "theme:butterfly": "node tools/theme-switcher.js butterfly",
+    "theme:fluid": "node tools/theme-switcher.js fluid",
+    "switch:butterfly": "node tools/theme-switcher.js butterfly && hexo clean && hexo generate",
+    "switch:fluid": "node tools/theme-switcher.js fluid && hexo clean && hexo generate",
+    "setup:fluid": "bash tools/setup-fluid-theme.sh",
+    "deploy:both": "bash tools/deploy-both-themes.sh",
+    "preview:butterfly": "node tools/theme-switcher.js butterfly && hexo clean && hexo generate && hexo server",
+    "preview:fluid": "node tools/theme-switcher.js fluid && hexo clean && hexo generate && hexo server",
+    "preview:both": "bash tools/preview-both-themes.sh"
   },
   "hexo": {
     "version": "7.3.0"
@@ -30,6 +40,7 @@
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-theme-butterfly": "^5.3.5",
+    "hexo-theme-fluid": "^1.9.8",
     "hexo-theme-landscape": "^1.0.0",
     "hexo-wordcount": "^6.0.1"
   }
