@@ -16,6 +16,7 @@
     "switch:fluid": "node tools/theme-switcher.js fluid && hexo clean && hexo generate",
     "setup:fluid": "bash tools/setup-fluid-theme.sh",
     "deploy:both": "bash tools/deploy-both-themes.sh",
+    "deploy:fluid": "bash tools/deploy-fluid-theme.sh",
     "preview:butterfly": "node tools/theme-switcher.js butterfly && hexo clean && hexo generate && hexo server",
     "preview:fluid": "node tools/theme-switcher.js fluid && hexo clean && hexo generate && hexo server",
     "preview:both": "bash tools/preview-both-themes.sh"
