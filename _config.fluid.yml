@@ -440,6 +440,10 @@ open_graph:
   fb_admins:
   fb_app_id:
 
+# 自定义 head 内容，支持 HTML
+# Custom head content, supports HTML
+custom_head: '<meta name="msvalidate.01" content="C0AF818C725A2A1E112A1537E1064EA8" />'
+
 
 #---------------------------
 # 页脚

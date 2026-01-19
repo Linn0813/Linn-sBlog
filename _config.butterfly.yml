@@ -1354,6 +1354,7 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/blog-enhancements.css">
+    - <meta name="msvalidate.01" content="C0AF818C725A2A1E112A1537E1064EA8" />
   bottom:
     - <script src="/js/blog-enhancements.js"></script>
     - <script src="/js/category-enhancements.js"></script>
