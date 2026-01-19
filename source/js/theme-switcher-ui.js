@@ -25,15 +25,17 @@
    * 获取当前主题
    */
   function getCurrentTheme() {
-    // 优先从 URL 参数获取
-    const urlParams = new URLSearchParams(window.location.search);
-    const themeFromUrl = urlParams.get('theme');
-    if (themeFromUrl && THEMES[themeFromUrl]) {
-      return themeFromUrl;
+    // 首先根据路径判断当前实际使用的主题
+    const currentPath = window.location.pathname;
+    const isFluidPath = currentPath.startsWith('/fluid') || currentPath.startsWith('/fluid-blog');
+    
+    // 如果路径是 Fluid 路径，当前主题是 fluid
+    if (isFluidPath) {
+      return 'fluid';
     }
     
-    // 从 localStorage 获取
-    return localStorage.getItem(THEME_STORAGE_KEY) || 'butterfly';
+    // 否则当前主题是 butterfly（根路径）
+    return 'butterfly';
   }
 
   /**

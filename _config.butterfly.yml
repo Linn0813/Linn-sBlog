@@ -213,7 +213,8 @@ disable_top_img: false
 default_top_img: /img/default_top_img.jpg 
 
 # 主页的横幅图片
-index_img: /img/background.jpg
+# index_img: /img/background.jpg  # 文件不存在，已注释
+index_img: false  # 不使用背景图片
 
 # 归档页的横幅图片
 archive_img: /img/archive.jpg
