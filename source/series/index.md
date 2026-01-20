@@ -13,7 +13,7 @@ comments: false
   <ul class="category-list">
     <li class="category-list-item">
       <a class="category-list-link" href="/series/🏗️-测试平台开发实战手记.html">🏗️ 测试平台开发实战手记</a>
-      <span class="category-list-count">5</span>
+      <span class="category-list-count">6</span>
     </li>
     <li class="category-list-item">
       <a class="category-list-link" href="/series/📊-SACA神策分析师认证：数据分析实战笔记.html">📊 SACA神策分析师认证：数据分析实战笔记</a>
