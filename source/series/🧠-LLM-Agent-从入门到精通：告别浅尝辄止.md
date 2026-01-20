@@ -264,15 +264,15 @@ series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
     </div>
   </div>
   <div class="article-sort-item">
-    <a class="article-sort-item-img" href="/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/" title="🧠 工具篇｜项目里调用大模型，到底是在调用什么？">
-      <img src="/img/llm-integration-what-are-you-calling.png" alt="🧠 工具篇｜项目里调用大模型，到底是在调用什么？" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
+    <a class="article-sort-item-img" href="/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/" title="🧠 项目里调用大模型，到底是在调用什么？">
+      <img src="/img/llm-integration-what-are-you-calling.png" alt="🧠 项目里调用大模型，到底是在调用什么？" onerror="this.onerror=null;this.src='/img/404.jpg'" loading="lazy">
     </a>
     <div class="article-sort-item-info">
       <div class="article-sort-item-time">
         <i class="far fa-calendar-alt"></i>
         <time class="post-meta-date-created" datetime="2026-01-20T02:00:00.000Z" title="发表于 2026-01-20">2026-01-20</time>
       </div>
-      <a class="article-sort-item-title" href="/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/" title="🧠 工具篇｜项目里调用大模型，到底是在调用什么？">🧠 工具篇｜项目里调用大模型，到底是在调用什么？</a>
+      <a class="article-sort-item-title" href="/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/" title="🧠 项目里调用大模型，到底是在调用什么？">🧠 项目里调用大模型，到底是在调用什么？</a>
     </div>
   </div>
 </div>
