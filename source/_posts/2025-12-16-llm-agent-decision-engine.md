@@ -1,9 +1,10 @@
 ---
 title: 🧠 主题7｜决策引擎 ReAct：代码级拆解 Agent 推理与工具调用
 date: 2025-12-16 18:00:00
-series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
+updated: {{current_date_time}}
+
 categories:
-  - 技术学习与行业趋势
+  - 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
   - AI与研究
 tags:
   - LLM
@@ -32,7 +33,7 @@ aside: true
 noticeOutdate: false
 ---
 
-> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 7 篇**
+> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 7 篇**
 
 > 上一篇我们系统理解了 Agent 的本质，揭秘了 LLM 如何进化为具有"行动能力"的智能体。
 

@@ -8,8 +8,8 @@ tags:
   - 前后端分离
   - 开发配置
 categories:
+  - 🐍 全栈开发底座：Python 进阶与前后端工程化
   - 技术学习与行业趋势
-  - 开发与技术栈
 updated: {{current_date_time}}
 keywords: API地址配置, 环境变量, Vite代理, 前后端分离, 开发配置
 description: '分享前后端分离项目中 API 请求地址的两种配置方案：使用环境变量（baseUrl）和 Vite 代理，对比其优缺点并给出最佳实践建议！'

@@ -2,7 +2,7 @@
 title: 🚀 Pytest自动化测试框架入门到实战：我的学习笔记与实战经验
 subtitle: 从基础到高级，从理论到实践，全面掌握Python测试利器
 date: 2025-10-01 18:00:00
-series: 🚀 Pytest 自动化测试修炼手册
+
 tags:
   - pytest
   - 自动化测试
@@ -11,7 +11,7 @@ tags:
   - 学习笔记
   - Python
 categories:
-  - 自动化测试与工具开发
+  - ⚙️ 自动化测试工程化：工具、实战与体系建设
   - 自动化测试体系
 updated: {{current_date_time}}
 keywords: pytest, 自动化测试, Python测试, 测试框架, 学习笔记, Python

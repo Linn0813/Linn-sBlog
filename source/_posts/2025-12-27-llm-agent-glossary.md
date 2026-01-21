@@ -1,10 +1,10 @@
 ---
 title: 📚 工具篇｜LLM/Agent 系列术语速查手册
 date: 2025-12-27 20:00:00
-updated: 2025-12-27 20:00:00
-series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
+updated: {{current_date_time}}
+
 categories:
-  - 技术学习与行业趋势
+  - 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
   - AI与研究
 tags:
   - LLM
@@ -31,7 +31,7 @@ aside: true
 noticeOutdate: false
 ---
 
-> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列的工具篇**
+> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列的工具篇**
 
 > 本文档是本系列的**术语速查手册**，按主题分类整理了所有核心概念，提供简洁定义和文章链接，方便你快速检索和理解。
 
@@ -841,7 +841,7 @@ results = cursor.fetchall()
 ## 🔗 相关资源
 
 - [系列开篇：告别浅尝辄止](/2025/11/29/2025-11-29-llm-agent-core-concepts-guide/)
-- [系列目录](/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)
+- [系列目录](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)
 - [基础知识回顾：LLM 与智能体知识记录](/2025/10/21/2025-10-21-llm-agent-guide/)
 
 ---

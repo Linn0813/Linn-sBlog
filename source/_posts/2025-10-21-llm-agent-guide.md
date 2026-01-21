@@ -1,9 +1,10 @@
 ---
 title: 🧠 LLM 与智能体（Agent）知识记录
 date: 2025-10-21 21:00:00
+updated: {{current_date_time}}
 categories:
+  - 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
   - 技术学习与行业趋势
-  - AI与研究
 tags:
   - LLM
   - Agent

@@ -124,7 +124,6 @@ menu:
   分类: /categories/ || fa fa-archive
   标签: /tags/ || fa fa-tags
   归档: /archives/ || fa fa-folder-open
-  系列: /series/ || fa fa-book
   # 生活 || fas fa-list:
     # 分享: /shuoshuo/ || fa fa-comments-o
     # 相册: /photos/ || fa fa-camera-retro
@@ -548,7 +547,7 @@ aside:
     sort_order:
   card_post_series:
     # 是否显示系列文章卡片
-    enable: true
+    enable: false
     # 标题显示系列名称
     series_title: false
     # 排序方式：title 或 date
@@ -1200,7 +1199,7 @@ lightbox: fancybox
 # 系列
 series:
   # 是否启用系列
-  enable: true
+  enable: false
   # 按标题或日期排序
   orderBy: 'title'
   # 排序方式。1, asc 为升序; -1, desc 为降序
@@ -1358,12 +1357,9 @@ inject:
   bottom:
     - <script src="/js/blog-enhancements.js"></script>
     - <script src="/js/category-enhancements.js"></script>
-    - <script src="/js/series-enhancements.js"></script>
-    - <script src="/js/post-series-meta.js"></script>
     - <script src="/js/archive-enhancements.js"></script>
     - <script src="/js/tag-enhancements.js"></script>
     - <script src="/js/index-enhancements.js"></script>
-    - <script src="/js/sidebar-series-card.js"></script>
     - <script src="/js/theme-switcher-ui.js"></script>
 
 # CDN 设置

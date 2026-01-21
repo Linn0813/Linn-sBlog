@@ -372,7 +372,6 @@ navbar:
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
-    - { key: "series", link: "/series/", icon: "iconfont icon-book-fill", name: "系列" }
     - { key: "qa", link: "/qa/", icon: "iconfont icon-chat-fill", name: "知识库问答" }
     - { key: "links", link: "/links/", icon: "iconfont icon-link-fill", name: "友链" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill", name: "关于笔者" }

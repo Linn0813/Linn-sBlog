@@ -6,9 +6,10 @@ tags:
   - 编码规范
   - 编程指南
 categories:
-  - 技术学习与行业趋势
+  - 🐍 全栈开发底座：Python 进阶与前后端工程化
   - 学习与工具
 updated: {{current_date_time}}
+
 keywords: Python, 编码规范, 编程指南
 description: '分享Python关键编码规范，涵盖命名、缩进、注释、导入、函数设计等方面，适合初学者和项目开发者参考。'
 top_img: /img/python-coding-standards.png

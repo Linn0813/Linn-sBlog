@@ -2,7 +2,7 @@
 title: Fiddler 入门与基础抓包 🕵️‍♂️
 subtitle: 从零开始，轻松掌握HTTP/HTTPS网络请求拦截与分析
 date: 2025-08-19 21:48:21
-series: 🕵️‍♂️ Fiddler 抓包实战全攻略
+
 tags:
   - Fiddler
   - 抓包工具
@@ -12,7 +12,7 @@ tags:
   - 接口测试
   - 移动端抓包
 categories:
-  - 项目实战与案例经验
+  - 📡 抓包与网络调优：Fiddler & Charles 实战指南
   - 测试经验与落地
 updated: {{current_date_time}}
 keywords: Fiddler, 抓包工具, HTTP/HTTPS, 中间人代理, 网络调试, 接口测试, 移动端抓包
@@ -198,5 +198,4 @@ Fiddler 是一个 **中间人代理（Man-in-the-Middle Proxy）** 工具，能�
 * 保存抓包记录，进行分析和复盘
 
 > 💡 下一步建议：掌握基础抓包后，可以学习 **Fiddler 拦截与修改请求**，模拟异常接口、修改请求参数，提高测试覆盖率。
-
 

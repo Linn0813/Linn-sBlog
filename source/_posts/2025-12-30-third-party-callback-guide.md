@@ -1,10 +1,10 @@
 ---
 title: 🔄 第三方平台回调接口完整指南：从 OAuth 授权到 Webhook 设计
 date: 2025-12-30 20:00:00
-updated: 2025-12-30 20:00:00
+updated: {{current_date_time}}
 categories:
+  - 🐍 全栈开发底座：Python 进阶与前后端工程化
   - 技术学习与行业趋势
-  - 开发与技术栈
 tags:
   - OAuth
   - 回调接口

@@ -1,7 +1,7 @@
 ---
 title: 🐢 Charles 抓包工具从入门到实战使用教程
 date: 2026-01-19 10:00:00
-series: 🕵️‍♂️ Fiddler 抓包实战全攻略
+
 tags:
   - Charles
   - 抓包工具
@@ -11,7 +11,7 @@ tags:
   - 弱网
   - 问题定位
 categories:
-  - 项目实战与案例经验
+  - 📡 抓包与网络调优：Fiddler & Charles 实战指南
   - 测试经验与落地
 updated: {{current_date_time}}
 keywords: Charles, 抓包, HTTPS, 代理, 接口调试, Breakpoints, Rewrite, Map Local, Map Remote, Throttle, DNS Spoofing

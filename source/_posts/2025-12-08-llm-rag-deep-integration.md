@@ -1,9 +1,10 @@
 ---
 title: 🧠 主题4｜解决"幻觉"：RAG机制与外部知识融合
 date: 2025-12-08 18:00:00
-series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
+updated: {{current_date_time}}
+
 categories:
-  - 技术学习与行业趋势
+  - 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
   - AI与研究
 tags:
   - LLM
@@ -31,7 +32,7 @@ aside: true
 noticeOutdate: false
 ---
 
-> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 4 篇**
+> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 4 篇**
 
 > 上一篇我们掌握了 Prompt 工程的三大核心技巧，实现了稳定、可解析的结构化输出。
 

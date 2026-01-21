@@ -8,8 +8,8 @@ tags:
   - GPT-4
   - VPN
 categories:
+  - 🛠️ 程序员生产力工具：AI 赋能开发实战
   - 技术学习与行业趋势
-  - 学习与工具
 updated: {{current_date_time}}
 keywords: Cursor, 地区限制, Claude, GPT-4, VPN, 代理设置, TUN模式
 description: '分享解决 Cursor 使用 Claude、GPT-4 等海外模型时遇到的地区限制报错的应对方案，涵盖代理服务器配置、TUN 模式开启及附加配置等内容，助你合法合规恢复模型使用！'

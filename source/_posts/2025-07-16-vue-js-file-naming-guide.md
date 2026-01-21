@@ -12,7 +12,7 @@ tags:
 updated: {{current_date_time}}
 
 categories:
-  - 技术学习与行业趋势
+  - 🐍 全栈开发底座：Python 进阶与前后端工程化
   - 开发与技术栈
 keywords: Vue, JS文件命名, 命名规范, 代码规范, 前端规范, JavaScript
 description: '全面介绍 Vue 项目中 JS 文件的命名规范，涵盖不同命名格式、适用场景、命名建议及注意事项，助你让项目代码结构更清晰、维护更高效！'

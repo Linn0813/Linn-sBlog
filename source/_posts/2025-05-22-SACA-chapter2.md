@@ -2,10 +2,9 @@
 title: SA分析师认证课程 - 第二章 了解数据采集基础📚
 date: 2025-05-22 17:49:57
 updated: {{current_date_time}}
-series: 📊 SACA神策分析师认证：数据分析实战笔记
 
 categories:
-  - 测试基础与理论
+  - 📊 SACA神策分析师认证：数据分析实战笔记
   - 测试知识沉淀
 tags:
   - 数据分析

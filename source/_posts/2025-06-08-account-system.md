@@ -2,9 +2,9 @@
 title: 🚀 测试平台开发实录：账号体系模块设计与实现
 date: 2025-06-08 15:05:50
 updated: {{current_date_time}}
-series: 🏗️ 测试平台开发实战手记
+
 categories:
-  - 自动化测试与工具开发
+  - 🏗️ 测试平台开发实战手记
   - 工具与平台开发
 tags:
   - 测试平台

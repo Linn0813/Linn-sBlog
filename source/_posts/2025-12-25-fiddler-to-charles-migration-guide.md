@@ -1,7 +1,7 @@
 ---
 title: 从 Fiddler 到 Charles：Windows 切换到 Mac 的抓包实践分享 🍎
 date: 2025-12-25 18:00:00
-series: 🕵️‍♂️ Fiddler 抓包实战全攻略
+
 tags:
   - Fiddler
   - Charles
@@ -11,7 +11,7 @@ tags:
   - HTTPS
   - 工具迁移
 categories:
-  - 项目实战与案例经验
+  - 📡 抓包与网络调优：Fiddler & Charles 实战指南
   - 测试经验与落地
 updated: {{current_date_time}}
 keywords: Fiddler, Charles, 抓包工具, Mac, Windows, HTTPS, 工具迁移, 抓包实践

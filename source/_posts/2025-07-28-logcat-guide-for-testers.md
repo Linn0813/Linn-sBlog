@@ -7,8 +7,8 @@ tags:
   - 日志分析
   - 自动化测试
 categories:
+  - 🎨 职场进阶与测试思维：从小白到资深
   - 项目实战与案例经验
-  - 测试经验与落地
 updated: {{current_date_time}}
 keywords: Logcat, 日志等级, 日志过滤, 异常排查, 自动化测试, 日志分析
 description: '全面介绍 Android 系统的 Logcat 日志工具，涵盖日志类型、等级、常用命令、过滤技巧，以及测试工程师实战应用和日志抓取方法，助你高效定位问题，提升测试工作效率！'

@@ -2,7 +2,7 @@
 title: 📚 pytest学习指南：白月黑羽vs码尚教育课程对比与学习策略
 subtitle: 如何高效结合两门课程，系统掌握pytest自动化测试框架
 date: 2025-10-02 20:00:00
-series: 🚀 Pytest 自动化测试修炼手册
+
 tags:
   - pytest
   - 学习方法
@@ -12,7 +12,7 @@ tags:
   - Python
   - 测试学习
 categories:
-  - 自动化测试与工具开发
+  - ⚙️ 自动化测试工程化：工具、实战与体系建设
   - 自动化测试体系
 updated: {{current_date_time}}
 keywords: pytest, 学习方法, 课程对比, 自动化测试, 测试框架, Python, 测试学习

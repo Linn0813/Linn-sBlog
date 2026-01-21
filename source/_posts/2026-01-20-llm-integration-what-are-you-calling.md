@@ -1,10 +1,10 @@
 ---
-title: "🧠 项目里调用大模型，到底是在调用什么？"
+title: "🤖 项目里调用大模型，到底是在调用什么？"
 date: 2026-01-20 10:00:00
-updated: 2026-01-20 10:00:00
-series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
+updated: {{current_date_time}}
+
 categories:
-  - 技术学习与行业趋势
+  - 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
   - AI与研究
 tags:
   - LLM
@@ -34,7 +34,7 @@ aside: true
 noticeOutdate: false
 ---
 
-> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列的工具篇**
+> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列的工具篇**
 
 # 🧠 项目里调用大模型，到底是在调用什么？
 

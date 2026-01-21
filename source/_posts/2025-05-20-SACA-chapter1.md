@@ -2,10 +2,9 @@
 title: SA分析师认证课程 - 第一章 走进数据分析📊
 date: 2025-05-20 17:26:12
 updated: {{current_date_time}}
-series: 📊 SACA神策分析师认证：数据分析实战笔记
 
 categories:
-  - 测试基础与理论
+  - 📊 SACA神策分析师认证：数据分析实战笔记
   - 测试知识沉淀
 tags:
   - 数据分析

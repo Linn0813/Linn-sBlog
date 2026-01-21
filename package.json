@@ -8,7 +8,6 @@
     "deploy": "hexo deploy",
     "server": "hexo server",
     "server:auto": "lsof -ti:4000 | xargs kill -9 2>/dev/null; hexo server",
-    "generate-series": "node scripts/generate_series_pages.js",
     "sync-blog": "node tools/sync-blog-posts.js",
     "theme:butterfly": "node tools/theme-switcher.js butterfly",
     "theme:fluid": "node tools/theme-switcher.js fluid",

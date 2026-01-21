@@ -8,8 +8,8 @@ tags:
   - API规范
   - 系统设计
 categories:
+  - 🐍 全栈开发底座：Python 进阶与前后端工程化
   - 技术学习与行业趋势
-  - 开发与技术栈
 updated: {{current_date_time}}
 keywords: 错误码, 错误码设计, 错误处理, API规范, 系统设计, 错误码体系
 description: '分享如何构建一个清晰、统一、可扩展的错误码体系，提升系统效率与用户体验，涵盖设计原则、方案对比、实战示例等内容！'

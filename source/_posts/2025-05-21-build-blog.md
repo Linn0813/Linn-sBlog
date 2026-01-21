@@ -3,8 +3,8 @@ title: Hexo和Markdown搭建个人博客教程🎈
 date: 2025-05-21 18:17:26
 updated: {{current_date_time}} 
 categories:
+  - 🐍 全栈开发底座：Python 进阶与前后端工程化
   - 技术学习与行业趋势
-  - 学习与工具
 tags:
   - Hexo
   - Markdown

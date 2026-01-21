@@ -1,10 +1,10 @@
 ---
 title: 🗄️ 一文看懂当下主流数据库：从关系型、NoSQL 到 DDB / DynamoDB 的全景认知地图
 date: 2025-12-28 20:00:00
-updated: 2025-12-28 20:00:00
+updated: {{current_date_time}}
 categories:
+  - 🐍 全栈开发底座：Python 进阶与前后端工程化
   - 技术学习与行业趋势
-  - 开发与技术栈
 tags:
   - 数据库
   - MySQL

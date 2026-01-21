@@ -7,9 +7,10 @@ tags:
   - 日志查询
   - 测试实战
 categories:
-  - 项目实战与案例经验
+  - 🐧 服务端进阶：Linux 日志、性能与监控实战
   - 问题与解决
 updated: {{current_date_time}}
+
 keywords: OpenSearch Dashboards, DQL, 日志查询, 测试实战
 description: '本文分享 OpenSearch Dashboards 日志查询全攻略，涵盖 DQL 查询技巧、半结构化日志处理方法以及测试实战经验，帮助你快速掌握日志查询技能，提升问题排查效率。'
 top_img: /img/opensearch-dashboards.png
@@ -199,5 +200,4 @@ log:/EventName.*eventType=1/
 * 测试经验分享：日志分析是验证触发、排查异常和测试验证的核心环节
 
 🎯 掌握这些技巧，你可以在测试、回归、性能和问题排查中快速定位日志，显著提高效率。
-
 

@@ -8,9 +8,10 @@ tags:
   - 心态调整
   - 行动策略
 categories:
-  - 职业成长与思考
+  - 🎨 职场进阶与测试思维：从小白到资深
   - 个人成长
 updated: {{current_date_time}}
+
 keywords: 加班, 学习成长, 时间管理, 心态调整, 行动策略
 description: '分享在加班状态下如何保持学习和成长的经历，包括心态调整方法、具体行动策略以及阶段性方法论总结，助力在忙碌工作中找到学习节奏！'
 top_img: /img/busy-and-growth-maintaining-learning.png

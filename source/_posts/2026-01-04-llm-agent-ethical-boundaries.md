@@ -1,9 +1,10 @@
 ---
 title: ⚖️ 主题18｜Agent 伦理边界：偏见、问责制与负责任的 AI
 date: 2026-01-04 18:00:00
-series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
+updated: {{current_date_time}}
+
 categories:
-  - 技术学习与行业趋势
+  - 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
   - AI与研究
 tags:
   - LLM
@@ -31,7 +32,7 @@ aside: true
 noticeOutdate: false
 ---
 
-> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 18 篇**
+> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 18 篇**
 
 > 上一篇我们聚焦 Agent 在企业级应用的前沿，探讨了 RPA、流程自动化与企业落地策略。
 

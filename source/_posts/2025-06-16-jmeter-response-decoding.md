@@ -9,8 +9,8 @@ tags:
   - 问题解决
 updated: {{current_date_time}} 
 categories:
+  - ⚙️ 自动化测试工程化：工具、实战与体系建设
   - 性能、安全与专项测试
-  - 性能类测试
 keywords: JMeter, 接口压测, 响应解码, Base64编码, gzip压缩, 断言失效, 问题解决
 description: 分享在接口压测中使用JMeter对Base64编码+gzip压缩的接口响应字段进行解码时，遇到断言失效问题的排查过程及解决方案，帮助提高接口压测效率。
 top_img: /img/jmeter-response-decoding.png

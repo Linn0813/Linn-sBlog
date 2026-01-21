@@ -8,9 +8,10 @@ tags:
   - 连接池
   - SQLAlchemy
 categories:
-  - 项目实战与案例经验
+  - 🐧 服务端进阶：Linux 日志、性能与监控实战
   - 问题与解决
 updated: {{current_date_time}}
+
 keywords: MySQL, 数据库连接, 连接泄露, 连接池, SQLAlchemy
 description: '记录一次测试平台中 MySQL 连接数暴涨问题的排查过程，分享使用连接池和自动释放机制解决连接泄露的方案，并给出优化建议！'
 top_img: /img/mysql-connection-leak-fix.png
@@ -30,7 +31,6 @@ aside: true
 abcjs: false
 noticeOutdate: falsetags
 ---
-
 
 # 🐛一次数据库连接数暴涨的排查实录：我在测试平台踩的坑
 

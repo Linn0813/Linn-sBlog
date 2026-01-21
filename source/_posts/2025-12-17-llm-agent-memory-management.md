@@ -1,9 +1,10 @@
 ---
 title: 🧠 主题8｜Agent 记忆管理：打造长期且健忘的智能体
 date: 2025-12-17 18:00:00
-series: 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
+updated: {{current_date_time}}
+
 categories:
-  - 技术学习与行业趋势
+  - 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
   - AI与研究
 tags:
   - LLM
@@ -31,7 +32,7 @@ aside: true
 noticeOutdate: false
 ---
 
-> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/series/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 8 篇**
+> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 8 篇**
 
 > 上一篇我们深入解析了 Agent 的决策引擎，掌握了 ReAct、Self-Ask 和 Tree of Thoughts 等高级策略。
 

@@ -1,10 +1,10 @@
 ---
 title: ⏰ 时间格式全科普：从 ISO 到 UNIX 时间戳，从理论到实践
 date: 2025-12-29 20:00:00
-updated: 2025-12-29 20:00:00
+updated: {{current_date_time}}
 categories:
+  - 🐍 全栈开发底座：Python 进阶与前后端工程化
   - 技术学习与行业趋势
-  - 开发与技术栈
 tags:
   - 时间格式
   - ISO 8601

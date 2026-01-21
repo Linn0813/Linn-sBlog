@@ -1,8 +1,10 @@
 ---
 title: 深入理解「可序列化」：开发与测试都绕不开的隐形规则
 date: 2025-10-14 01:00:00
+updated: {{current_date_time}}
+
 categories:
-  - 技术学习与行业趋势
+  - 🐍 全栈开发底座：Python 进阶与前后端工程化
   - 开发与技术栈
 tags:
   - 序列化

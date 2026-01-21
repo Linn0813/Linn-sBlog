@@ -1,14 +1,14 @@
 ---
 title: Fiddler 移动端抓包与实战技巧 📱🕵️‍♂️
 date: 2025-08-26 21:49:29
-series: 🕵️‍♂️ Fiddler 抓包实战全攻略
+
 tags:
   - Fiddler
   - 抓包工具
   - 实战技巧
   - 移动端抓包
 categories:
-  - 项目实战与案例经验
+  - 📡 抓包与网络调优：Fiddler & Charles 实战指南
   - 测试经验与落地
 updated: {{current_date_time}}
 keywords: Fiddler, 移动端抓包, 实战技巧
@@ -225,5 +225,4 @@ noticeOutdate: false
 > * 文章 4：移动端抓包与实战技巧
 
 结合四篇文章，你可以形成完整 Fiddler 技能体系，无论是 PC 端、移动端、接口调试、性能分析还是团队协作，都能高效完成抓包与调试工作。
-
 
