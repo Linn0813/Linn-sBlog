@@ -30,8 +30,6 @@ aside: true
 noticeOutdate: false
 ---
 
-# 🧠 用 Python 操作 XMind：从读懂到生成的完整入门指南
-
 很多人都会用 XMind 画思维导图，但一旦进入“工程化”阶段，往往会遇到这些问题：
 
 * 想把 XMind 转成 Markdown / CSV / 测试用例
