@@ -11,7 +11,7 @@ permalink: /qa/
 <div id="app"></div>
 
 <!-- 加载 Vue 应用 JS - 使用 defer 确保在 DOM 加载后执行 -->
-<script type="module" crossorigin src="/qa/assets/index.CS08gt_K.js" defer></script>
+<script type="module" crossorigin src="/qa/assets/index.BwXeKSfW.js" defer></script>
 
 <script>
   // 确保在 DOM 加载完成后检查 Vue 应用

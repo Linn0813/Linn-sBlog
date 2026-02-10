@@ -1,0 +1,414 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>🤖 项目里调用大模型，其实在调用什么？ | Linn's Blog</title><meta name="author" content="yuxiaoling"><meta name="copyright" content="yuxiaoling"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="当你说“项目里接入大模型”时，究竟在接入什么？用四层结构（模型层&#x2F;推理服务层&#x2F;接入方式层&#x2F;责任边界层）把 Ollama、ChatGPT API、Azure OpenAI 等名词放回正确位置。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🤖 项目里调用大模型，其实在调用什么？">
+<meta property="og:url" content="https://linn0813.github.io/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/index.html">
+<meta property="og:site_name" content="Linn&#39;s Blog">
+<meta property="og:description" content="当你说“项目里接入大模型”时，究竟在接入什么？用四层结构（模型层&#x2F;推理服务层&#x2F;接入方式层&#x2F;责任边界层）把 Ollama、ChatGPT API、Azure OpenAI 等名词放回正确位置。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linn0813.github.io/img/llm-integration-what-are-you-calling.png">
+<meta property="article:published_time" content="2026-01-20T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-26T12:19:33.509Z">
+<meta property="article:author" content="yuxiaoling">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="模型选型">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="推理服务">
+<meta property="article:tag" content="Ollama">
+<meta property="article:tag" content="OpenAI API">
+<meta property="article:tag" content="Azure OpenAI">
+<meta property="article:tag" content="术语对照">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linn0813.github.io/img/llm-integration-what-are-you-calling.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "🤖 项目里调用大模型，其实在调用什么？",
+  "url": "https://linn0813.github.io/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/",
+  "image": "https://linn0813.github.io/img/llm-integration-what-are-you-calling.png",
+  "datePublished": "2026-01-20T02:00:00.000Z",
+  "dateModified": "2026-01-26T12:19:33.509Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "yuxiaoling",
+      "url": "https://linn0813.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="https://linn0813.github.io/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="Xj7zV_DKnHFmJ7sXNRvdl5-UTfG4NLy-s7hDk1DZt4A"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":true,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '🤖 项目里调用大模型，其实在调用什么？',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/blog-enhancements.css"><meta name="msvalidate.01" content="C0AF818C725A2A1E112A1537E1064EA8" /><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">389</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">44</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/llm-integration-what-are-you-calling.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.jpg" alt="Logo" loading='lazy'><span class="site-name">Linn's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">🤖 项目里调用大模型，其实在调用什么？</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/qa/"><i class="fa-fw fa fa-comments"></i><span> 知识库问答</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">🤖 项目里调用大模型，其实在调用什么？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-01-20T02:00:00.000Z" title="发表于 2026-01-20 10:00:00">2026-01-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-26T12:19:33.509Z" title="更新于 2026-01-26 20:19:33">2026-01-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%F0%9F%A7%A0-LLM-Agent-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A%EF%BC%9A%E5%91%8A%E5%88%AB%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2/">🧠 LLM/Agent 从入门到精通：告别浅尝辄止</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%F0%9F%A7%A0-LLM-Agent-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A%EF%BC%9A%E5%91%8A%E5%88%AB%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2/AI%E4%B8%8E%E7%A0%94%E7%A9%B6/">AI与研究</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<p><strong>这是<a href="/categories/%F0%9F%A7%A0-LLM-Agent-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A%EF%BC%9A%E5%91%8A%E5%88%AB%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2/">《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》</a>系列的工具篇</strong></p>
+</blockquote>
+<p>当我们说“在项目里接入大模型”时，往往并不是在讨论一件单独的事情，而是在同时讨论<strong>多层不同的技术选择</strong>。</p>
+<p>混乱通常来自于：</p>
+<ul>
+<li>模型能力</li>
+<li>模型运行方式</li>
+<li>接入方式</li>
+<li>责任与边界</li>
+</ul>
+<p>这些本来不在同一层的问题，经常被放在一起比较，导致 <strong>Ollama、ChatGPT API、Azure OpenAI 被当成同一类东西来选</strong>。</p>
+<p>这篇文章只做一件事：</p>
+<blockquote>
+<p><strong>用一套清晰的分层结构，把常见的大模型相关名词放回它们各自的位置。</strong></p>
+</blockquote>
+<hr>
+<h2 id="1-模型层：能力从哪里来"><a href="#1-模型层：能力从哪里来" class="headerlink" title="1. 模型层：能力从哪里来"></a>1. 模型层：能力从哪里来</h2><p>这一层只关心一件事：<strong>模型本身是谁训练的，能力大概在什么水平。</strong></p>
+<h3 id="常见模型"><a href="#常见模型" class="headerlink" title="常见模型"></a>常见模型</h3><ul>
+<li>GPT-4 &#x2F; GPT-4o（OpenAI）</li>
+<li>Claude（Anthropic）</li>
+<li>Gemini（Google）</li>
+<li>Qwen &#x2F; LLaMA &#x2F; DeepSeek（开源模型）</li>
+</ul>
+<h3 id="这一层决定什么"><a href="#这一层决定什么" class="headerlink" title="这一层决定什么"></a>这一层决定什么</h3><ul>
+<li>语言理解与生成能力</li>
+<li>推理、代码、多模态等能力上限</li>
+</ul>
+<h3 id="关键认知"><a href="#关键认知" class="headerlink" title="关键认知"></a>关键认知</h3><blockquote>
+<p><strong>模型只决定能力上限，不决定使用方式。</strong></p>
+</blockquote>
+<p>同一个 GPT-4：</p>
+<ul>
+<li>可以被做成 ChatGPT 产品</li>
+<li>可以通过 API 给程序调用</li>
+<li>也可以被云厂商托管后提供给企业</li>
+</ul>
+<p>仅仅知道“用了什么模型”，<strong>并不能说明你的项目是如何接入大模型的</strong>。</p>
+<hr>
+<h2 id="2-推理服务层：模型在哪里跑"><a href="#2-推理服务层：模型在哪里跑" class="headerlink" title="2. 推理服务层：模型在哪里跑"></a>2. 推理服务层：模型在哪里跑</h2><p>模型是“能力描述”，<br><strong>推理服务才是真正让模型跑起来的系统。</strong></p>
+<p>这一层，是理解 Ollama 与云 API 差异的关键。</p>
+<hr>
+<h3 id="2-1-自管推理服务（自己跑模型）"><a href="#2-1-自管推理服务（自己跑模型）" class="headerlink" title="2.1 自管推理服务（自己跑模型）"></a>2.1 自管推理服务（自己跑模型）</h3><h4 id="典型工具"><a href="#典型工具" class="headerlink" title="典型工具"></a>典型工具</h4><ul>
+<li>Ollama</li>
+<li>LM Studio</li>
+<li>vLLM（偏生产）</li>
+</ul>
+<h4 id="在做什么"><a href="#在做什么" class="headerlink" title="在做什么"></a>在做什么</h4><ul>
+<li>将模型部署在本地或自有服务器</li>
+<li>负责模型加载、推理和资源占用</li>
+<li>对外提供一个 HTTP 接口</li>
+</ul>
+<h4 id="一句话理解-Ollama"><a href="#一句话理解-Ollama" class="headerlink" title="一句话理解 Ollama"></a>一句话理解 Ollama</h4><blockquote>
+<p><strong>Ollama 是一个把开源模型跑起来，并对外提供 API 的工具。</strong></p>
+</blockquote>
+<h4 id="适合场景"><a href="#适合场景" class="headerlink" title="适合场景"></a>适合场景</h4><ul>
+<li>内部工具</li>
+<li>测试平台</li>
+<li>数据不出网</li>
+<li>并发要求不高</li>
+</ul>
+<h4 id="📚-扩展阅读"><a href="#📚-扩展阅读" class="headerlink" title="📚 扩展阅读"></a>📚 扩展阅读</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://ollama.com/docs">Ollama 官方文档</a> - 了解如何安装、配置和使用 Ollama</li>
+</ul>
+<hr>
+<h3 id="2-2-云端推理服务（模型即服务）"><a href="#2-2-云端推理服务（模型即服务）" class="headerlink" title="2.2 云端推理服务（模型即服务）"></a>2.2 云端推理服务（模型即服务）</h3><h4 id="典型服务"><a href="#典型服务" class="headerlink" title="典型服务"></a>典型服务</h4><ul>
+<li>OpenAI API（ChatGPT API）</li>
+<li>Claude API</li>
+<li>Gemini API</li>
+</ul>
+<h4 id="在做什么-1"><a href="#在做什么-1" class="headerlink" title="在做什么"></a>在做什么</h4><ul>
+<li>模型运行在厂商云端</li>
+<li>你通过 HTTP API 调用模型能力</li>
+<li>不需要关心硬件、部署和扩容</li>
+</ul>
+<h4 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h4><ul>
+<li><p><strong>ChatGPT ≠ ChatGPT API</strong></p>
+<ul>
+<li>ChatGPT 是面向人的产品</li>
+<li>ChatGPT API 是面向程序的接口</li>
+</ul>
+</li>
+</ul>
+<h4 id="适合场景-1"><a href="#适合场景-1" class="headerlink" title="适合场景"></a>适合场景</h4><ul>
+<li>产品原型</li>
+<li>快速验证</li>
+<li>对效果要求高</li>
+<li>不想维护模型</li>
+</ul>
+<hr>
+<h3 id="2-3-企业级托管推理服务"><a href="#2-3-企业级托管推理服务" class="headerlink" title="2.3 企业级托管推理服务"></a>2.3 企业级托管推理服务</h3><h4 id="典型平台"><a href="#典型平台" class="headerlink" title="典型平台"></a>典型平台</h4><ul>
+<li>Azure OpenAI</li>
+<li>AWS Bedrock</li>
+<li>GCP Vertex AI</li>
+</ul>
+<h4 id="在做什么-2"><a href="#在做什么-2" class="headerlink" title="在做什么"></a>在做什么</h4><ul>
+<li>使用的仍然是 GPT &#x2F; Claude 等模型</li>
+<li>运行在云厂商的企业级体系中</li>
+<li>提供账号、权限、审计、网络隔离等能力</li>
+</ul>
+<h4 id="一句话理解-Azure-OpenAI"><a href="#一句话理解-Azure-OpenAI" class="headerlink" title="一句话理解 Azure OpenAI"></a>一句话理解 Azure OpenAI</h4><blockquote>
+<p><strong>Azure OpenAI &#x3D; OpenAI 模型 + Azure 的企业级治理能力。</strong></p>
+</blockquote>
+<h4 id="适合场景-2"><a href="#适合场景-2" class="headerlink" title="适合场景"></a>适合场景</h4><ul>
+<li>企业内部系统</li>
+<li>ToB 产品</li>
+<li>对合规和数据边界要求高</li>
+</ul>
+<hr>
+<h2 id="3-接入方式层：你是怎么用模型的"><a href="#3-接入方式层：你是怎么用模型的" class="headerlink" title="3. 接入方式层：你是怎么用模型的"></a>3. 接入方式层：你是怎么用模型的</h2><p>这一层经常被忽略，但却是概念混乱的重要来源。</p>
+<h3 id="常见说法"><a href="#常见说法" class="headerlink" title="常见说法"></a>常见说法</h3><ul>
+<li>Chat &#x2F; 对话</li>
+<li>API</li>
+<li>SDK</li>
+<li>Function Calling &#x2F; 工具调用</li>
+</ul>
+<h3 id="它们的关系"><a href="#它们的关系" class="headerlink" title="它们的关系"></a>它们的关系</h3><ul>
+<li><strong>API</strong>：模型能力的访问入口</li>
+<li><strong>SDK</strong>：对 API 的代码封装</li>
+<li><strong>Chat</strong>：一种交互形式，不是技术本质</li>
+</ul>
+<p>同一个模型能力，可以：</p>
+<ul>
+<li>被包装成聊天界面</li>
+<li>被后端服务调用</li>
+<li>被嵌入业务流程中</li>
+</ul>
+<blockquote>
+<p><strong>看起来像聊天，不代表只能聊天。</strong></p>
+</blockquote>
+<hr>
+<h2 id="4-责任与边界层：出问题谁负责"><a href="#4-责任与边界层：出问题谁负责" class="headerlink" title="4. 责任与边界层：出问题谁负责"></a>4. 责任与边界层：出问题谁负责</h2><p>这是技术选型之外，最现实的一层。</p>
+<h3 id="三种典型责任模式"><a href="#三种典型责任模式" class="headerlink" title="三种典型责任模式"></a>三种典型责任模式</h3><h4 id="4-1-全部自己负责"><a href="#4-1-全部自己负责" class="headerlink" title="4.1 全部自己负责"></a>4.1 全部自己负责</h4><ul>
+<li>自建模型 &#x2F; 自管推理（如 Ollama）</li>
+<li>数据、安全、稳定性都由你承担</li>
+</ul>
+<h4 id="4-2-能力由厂商负责"><a href="#4-2-能力由厂商负责" class="headerlink" title="4.2 能力由厂商负责"></a>4.2 能力由厂商负责</h4><ul>
+<li>OpenAI API &#x2F; Claude API</li>
+<li>你负责业务逻辑</li>
+<li>厂商负责模型服务</li>
+</ul>
+<h4 id="4-3-能力与合规由平台负责"><a href="#4-3-能力与合规由平台负责" class="headerlink" title="4.3 能力与合规由平台负责"></a>4.3 能力与合规由平台负责</h4><ul>
+<li>Azure OpenAI &#x2F; Bedrock</li>
+<li>平台提供企业级治理能力</li>
+</ul>
+<p>同一个 GPT-4，<br>在不同责任边界下，<br><strong>会变成完全不同的技术方案。</strong></p>
+<hr>
+<h2 id="5-常见名词的正确位置"><a href="#5-常见名词的正确位置" class="headerlink" title="5. 常见名词的正确位置"></a>5. 常见名词的正确位置</h2><p>现在可以重新理解这些常见名词：</p>
+<ul>
+<li><strong>Ollama</strong>：自管推理服务层</li>
+<li><strong>ChatGPT API</strong>：云端推理服务层</li>
+<li><strong>Azure OpenAI</strong>：企业级托管推理服务层</li>
+</ul>
+<p>它们并不在竞争同一件事，<br>而是在解决<strong>不同层级的问题</strong>。</p>
+<hr>
+<h2 id="6-名词会变，但结构不会"><a href="#6-名词会变，但结构不会" class="headerlink" title="6. 名词会变，但结构不会"></a>6. 名词会变，但结构不会</h2><p>今天你看到的是：</p>
+<ul>
+<li>Ollama</li>
+<li>vLLM</li>
+<li>Bedrock</li>
+</ul>
+<p>明天一定还会出现新的名字。</p>
+<p>但只要记住这四层结构：</p>
+<ol>
+<li>模型层</li>
+<li>推理服务层</li>
+<li>接入方式层</li>
+<li>责任与边界层</li>
+</ol>
+<p>任何新名词，都可以被快速归类。</p>
+<hr>
+<h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h2><p>好的技术科普，不是让你记住更多工具名，<br>而是：</p>
+<blockquote>
+<p><strong>让你看到任何新名词，都知道它在解决哪一层的问题。</strong></p>
+</blockquote>
+<p>当你建立了这套结构：</p>
+<ul>
+<li>不需要死记结论</li>
+<li>不容易被营销话术带偏</li>
+<li>技术选型会自然清晰</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linn0813.github.io">yuxiaoling</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linn0813.github.io/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/">https://linn0813.github.io/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">版权所有，转载请注明出处。</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/">模型选型</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><a class="post-meta__tags" href="/tags/%E6%8E%A8%E7%90%86%E6%9C%8D%E5%8A%A1/">推理服务</a><a class="post-meta__tags" href="/tags/Ollama/">Ollama</a><a class="post-meta__tags" href="/tags/OpenAI-API/">OpenAI API</a><a class="post-meta__tags" href="/tags/Azure-OpenAI/">Azure OpenAI</a><a class="post-meta__tags" href="/tags/%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7/">术语对照</a></div><div class="post-share"><div class="social-share" data-image="/img/llm-integration-what-are-you-calling.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/01/19/2026-01-19-charles-capture-beginner-to-practical-guide/" title="🐢 Charles 抓包工具从入门到实战使用教程"><img class="cover" src="/img/charles.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">🐢 Charles 抓包工具从入门到实战使用教程</div></div><div class="info-2"><div class="info-item-1">🐢 Charles 抓包工具从入门到实战使用教程 适合人群：  测试工程师 &#x2F; 测开 后端 &#x2F; 前端开发 对网络请求、接口调试、问题定位感兴趣的同学   如果你在日常工作中遇到过下面这些问题：  🤔 接口到底有没有发请求？ 🤔 请求参数对不对？ 🤔 为什么前端&#x2F;客户端显示异常，但后端说接口没问题？  那 Charles 基本是一个绕不开的工具。 这篇文章会从 页面介绍 → 基础使用 → 常见操作 → 实战场景 一步一步带你真正「用会」Charles，而不是只停留在“知道有这个工具”。  1️⃣ Charles 是什么？能解决什么问题？Charles 是一个 HTTP &#x2F; HTTPS 抓包代理工具，它可以：  捕获客户端发出的所有网络请求 查看请求 &#x2F; 响应的详细内容 修改请求或响应（Mock &#x2F; 调试神器） 重放请求、验证接口逻辑 模拟弱网、做“网络侧”的问题复现  📌 一句话总结：  只要是走网络的请求，理论上 Charles 都能看到。   2️⃣ Charles...</div></div></div></a><a class="pagination-related" href="/2026/01/20/2026-01-20-frontend-file-extensions-guide/" title="📄 一篇搞懂前端常见文件后缀：ts / tsc / jsx / tsx / scss"><img class="cover" src="/img/frontend-file-extensions-guide.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" loading='lazy'><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">📄 一篇搞懂前端常见文件后缀：ts / tsc / jsx / tsx / scss</div></div><div class="info-2"><div class="info-item-1"> 这是《🏗️ 测试平台开发实战手记》系列的工具篇  📄 一篇真正从工程里搞懂前端常见文件后缀 写在前面： 这篇文章并不是我一开始就想写的。 在给测试平台补前端页面的时候，我连续踩了几个看似“很基础”的坑：  有的文件明明只是加了个组件，却必须从 .ts 改成 .tsx scss 嵌套一多，样式开始完全不受控 tsc 报错时，新人第一反应是「关掉它」  回头一看才发现，本质问题只有一个：我并没有真正理解这些文件后缀在工程里的分工。 所以有了这篇文章 —— 不是从定义开始，而是从真实工程视角，把 ts / tsc / jsx / tsx / scss 一次讲清楚。   一、先统一一个认知：浏览器到底认识什么？这是所有前端工程化问题的起点，也是很多混乱的源头。 浏览器只认识三样东西：  HTML（结构） CSS（样式） JavaScript（逻辑）  👉 结论很残酷但很重要：  .ts、.tsx、.jsx、.scss，浏览器一个都不认识。  那问题来了：  既然浏览器不认识，为什么真实项目里却几乎都在用？  答案只有一句话：  这些文件，是给「人 +...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/12/09/2025-12-09-llm-model-evaluation-selection/" title="🧠 主题5｜评估与选型：参数量、推理速度、开源&#x2F;闭源模型对比"><img class="cover" src="/img/llm-model-evaluation-selection.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-09</div><div class="info-item-2">🧠 主题5｜评估与选型：参数量、推理速度、开源&#x2F;闭源模型对比</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 5 篇   上一篇我们深入解析了 RAG 机制，构建了抗幻觉的知识增强系统。   本篇，我们将全面对比主流 LLM 模型，从参数量、推理速度、成本到适用场景，帮你根据实际需求选择最合适的模型。   🚀 导言 — 选择合适的模型，事半功倍在前四篇中，我们掌握了 LLM 的工作原理、Prompt 工程技巧和 RAG 机制。 但当你真正要做一个项目时，会发现一个关键问题：  市面上有这么多模型，GPT-4、Claude、Llama、Gemini… 我该选哪个？参数量越大越好吗？开源和闭源模型有什么区别？如何平衡性能、成本和可控性？  选择合适的模型，能让你的项目事半功倍；选错了，可能既浪费成本又达不到效果。 本篇将从参数量、推理速度、成本、能力、适用场景等多个维度，全面对比主流 LLM 模型，帮你做出明智的选择。  📊 一、评估模型的五大核心维度在选择模型之前，我们需要理解评估模型的五大核心维度： 1.1 参数量（Parameters）定义：模型中的可训练参数数量，通常以...</div></div></div></a><a class="pagination-related" href="/2025/10/24/2025-10-24-mind-your-tone/" title="🧩 Mind Your Tone：为什么我们不必再对 AI 太客气"><img class="cover" src="/img/Mind-Your-Tone.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-24</div><div class="info-item-2">🧩 Mind Your Tone：为什么我们不必再对 AI 太客气</div></div><div class="info-2"><div class="info-item-1">🧩 Mind Your Tone：为什么我们不必再对 AI 太客气 一、引言：AI 不只是看内容，也在“听语气”过去几年里，随着 ChatGPT、Claude、Gemini 等大语言模型的普及，“提示工程（Prompt Engineering）”成了很多人提升效率的关键能力。许多早期教程都会提醒你：  “和 AI 说话要有礼貌，比如多加 please、thank you，它会更愿意帮你。”  然而，最新一篇研究《Mind Your Tone: Investigating How Prompt Politeness Affects LLM Accuracy》却发现——  越客气，AI 答得越不准。  这篇博文，我们来看看：  研究到底发现了什么？ 为什么“要客气”变成了“别太客气”？ 作为中文用户，我们又该如何写出更高效的提示？   二、研究介绍：粗鲁的语气，反而让模型更聪明？研究来源：  论文标题： Mind Your Tone: Investigating How Prompt Politeness Affects LLM...</div></div></div></a><a class="pagination-related" href="/2025/10/27/2025-10-27-langchain-framework/" title="🧠 LangChain：让大语言模型真正“动起来”的框架"><img class="cover" src="/img/langchain.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-27</div><div class="info-item-2">🧠 LangChain：让大语言模型真正“动起来”的框架</div></div><div class="info-2"><div class="info-item-1">🧠 LangChain：让大语言模型真正“动起来”的框架 从Prompt到Agent，从单轮问答到任务编排——这篇文章帮你彻底理解LangChain的核心思想与实践路径。    一、为什么需要LangChain？🌍 语言模型的局限大语言模型（LLM）很擅长生成文本、总结内容或推理，但它不会记忆上下文、无法访问外部数据、也不会执行真实操作。举个例子：   “帮我根据数据库里上周的测试结果生成一份风险分析报告。”   仅靠 GPT 或 Claude，模型根本无法：   连接数据库  读取测试结果  调用外部计算逻辑  于是开发者开始手动拼接 prompt、加 API 调用、做状态管理……直到——  🚀 LangChain 出现LangChain 由 Harrison Chase 于 2022 年发布，它的目标是让 LLM 不只是“聊天工具”，而是能理解上下文、调用外部工具、执行逻辑、形成完整工作流的“可编程智能体”。  一句话概括：   LangChain 是连接大语言模型与真实世界的中间层。    二、LangChain 的设计理念：模块化、可组合、可观测LangChain...</div></div></div></a><a class="pagination-related" href="/2025/10/21/2025-10-21-llm-agent-guide/" title="🧠 LLM 与智能体（Agent）知识记录"><img class="cover" src="/img/LLM-Agent.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-21</div><div class="info-item-2">🧠 LLM 与智能体（Agent）知识记录</div></div><div class="info-2"><div class="info-item-1"> 📘 本文旨在系统记录 LLM 与 Agent 的概念、组成、原理、应用与实践要点，形成长期可复用的知识材料。你可以将它作为“学习路线 + 实践清单”的参考。✅   基础认知一、LLM（Large Language Model，大语言模型） 🤖1.1 定义LLM 是基于深度学习与海量文本训练的模型，能够理解、生成、推理自然语言，是现代智能体的“核心大脑”。 1.2 核心特性   特性 描述    理解能力 能理解问题、文档、上下文与意图   生成能力 能生成文章、代码、摘要、对话等   推理能力 能做基础逻辑判断与归纳总结   可扩展性 可与知识库、工具、API 联动   局限性 幻觉（hallucination）、知识截至训练时间、上下文窗口有限   1.3 关键概念 Prompt：向模型输入的指令或问题，告诉模型“要做什么”。 Token：模型处理文本的最小单位；长文本消耗更多资源。 Spec（规范&#x2F;说明书）：约束输入输出格式，定义任务规则。 RAG（Retrieval-Augmented...</div></div></div></a><a class="pagination-related" href="/2025/12/03/2025-12-03-llm-prompt-context-in-context-learning/" title="🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning"><img class="cover" src="/img/llm-prompt-context-in-context-learning.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-03</div><div class="info-item-2">🧠 主题2｜理解 LLM 的&quot;语言&quot;：Prompt、上下文与 In‑Context Learning</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 2 篇   上一篇我们讲了 LLM 的”物理基础”：Token、Embedding、Transformer。   本篇，我们从”人机对话”的角度，理解如何让 LLM 从”会说话”变成”按指令办事”。   🚀 导言 — 与 LLM 沟通的艺术当你对 ChatGPT 说”帮我写一份测试计划”，它几秒内就能生成结构化的文档。 这不是魔法，本质上，它只是在执行一件事：  根据输入，预测下一个最可能出现的 Token。   但问题是：预测本身 ≠ 执行任务  核心挑战：LLM 不会”理解”文本，它会”对齐你给的上下文模式”。你给它怎样的上下文，它就呈现怎样的能力。   大多数人使用大模型时，只把它当作”聪明的聊天工具”。但真正要发挥 LLM 的能力，你必须理解：LLM 有一套独特的”语言体系”。 它并不是以”人类语言”来思考，而是依靠：  Prompt（提示词） — 给 LLM 的”指令语言” Context Window（上下文窗口） — 模型的”思维环境” In-Context...</div></div></div></a><a class="pagination-related" href="/2025/11/29/2025-11-29-llm-agent-core-concepts-guide/" title="🚀 告别浅尝辄止：《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列开篇"><img class="cover" src="/img/llm-agent-core-concepts-guide.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-29</div><div class="info-item-2">🚀 告别浅尝辄止：《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列开篇</div></div><div class="info-2"><div class="info-item-1">💡 为什么要启动这个系列？过去一年，LLM（大语言模型）和 Agent（智能体）几乎占据了整个技术圈的”热搜榜”。从写代码、自动化测试，到智能客服、知识问答、流程自动化，各种 Demo 和产品层出不穷。 然而，许多学习者都面临这样的困惑：  “我知道它能用，但我真的不理解它为什么能做到。”  学习了大量术语 —— Prompt、Token、Embedding、RAG、ReAct、Agentic Loop —— 却始终感觉知识散落成碎片。做项目时更是容易陷入”一知半解”的尴尬处境。 我以前写过一篇《LLM 与智能体（Agent）知识记录》，虽然系统梳理了概念，但更多像是一份”词汇表”，缺少对底层机制的深入拆解，也没有给出能真正指导实践的”心法”。 为了解决这一痛点，我决定启动这个全新的、面向新手到进阶开发者的系列：  《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》—— 比传统教程更清晰，比纯概念科普更务实。  这个系列将聚焦两大核心问题：  Why？ —— 这些机制为什么重要？它们解决了什么问题？ How？ ——...</div></div></div></a><a class="pagination-related" href="/2025/12/02/2025-12-02-llm-working-principle-token-embedding-transformer/" title="🧠 主题1｜LLM 工作原理深度解析：Token、向量、Transformer，到底在算什么？"><img class="cover" src="/img/llm-working-principle-token-embedding-transformer.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-02</div><div class="info-item-2">🧠 主题1｜LLM 工作原理深度解析：Token、向量、Transformer，到底在算什么？</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 1 篇。   本篇将深入解析 LLM 的工作原理：从 Token 分词、Embedding 向量化到 Transformer 架构。未来，我们将继续探讨 Prompt 工程、RAG、Agent 等核心概念，带你系统理解”AI 是怎么运作的”。   🚀 导言：理解大模型最重要的三件事当你对 ChatGPT 问一句：”给我写一篇晚会主持稿”，它几秒内能生成近千字内容。 这不是魔法，本质上，它只是在执行一件事：  根据输入，预测下一个最可能出现的 Token。  而理解它如何预测，你只需要掌握三件事：  Token（语言最小粒度）  Embedding（文字转数字的向量空间）  Transformer（让模型”看懂上下文”的架构）   搞懂它们，你就搞懂了 LLM 的底层”物理学”。  🧩 一、最小单位：Tokenization（分词）1. 什么是 Token？Token ≠ 字 Token ≠ 词 Token 是...</div></div></div></a><a class="pagination-related" href="/2025/12/04/2025-12-04-llm-prompt-engineering-practices/" title="🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出"><img class="cover" src="/img/llm-prompt-engineering-practices.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-04</div><div class="info-item-2">🧠 主题3｜Prompt 工程实战：三大核心技巧与结构化输出</div></div><div class="info-2"><div class="info-item-1"> 这是《🧠 LLM&#x2F;Agent 从入门到精通：告别浅尝辄止》系列第 3 篇   上一篇我们理解了 LLM 的”语言”：Prompt、上下文窗口和 In-Context Learning。   本篇，我们从实战角度，掌握 Prompt 工程的三大核心技巧，实现稳定、可解析的结构化输出。   🚀 导言 — 从”聊天”到”高效工作”在前两篇中，我们掌握了 LLM 的底层机制（Token、Transformer）和交互基础（Prompt、ICL）。 当你开始真正用 LLM 做项目时，会发现一个令人头疼的问题：  你希望得到 JSON，却得到了一段解释文字；你希望表格化输出，结果模型输出了自由文本；你希望模型调用工具，但它只是”说”要调用，却不按格式输出。  这不是模型能力的问题，而是 Prompt 设计的问题。 实际开发 Agent 或自动化流程时，最令人头疼的问题往往不是模型能力不够，而是输出格式不稳定、行为不可控。  💡 Prompt 工程是什么，不是什么？在深入技巧之前，我们需要先澄清一个关键问题：什么是 Prompt 工程？ 常见的误解很多人以为 Prompt...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">yuxiaoling</div><div class="author-info-description">分享软件测试学习、实战经验和踩坑历程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">389</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">44</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Linn0813"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Linn0813" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:yuxiaoling.yxl@qq.com" target="_blank" title="Email"><i class="fa fa-envelope-open-text"></i></a><a class="social-icon" href="javascript:alert('微信公众号：Linn的技术笔记')" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://weibo.com/Linn0813" target="_blank" title="微博"><i class="fab fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">下雨就不想上班 / 出太阳也不想上班</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A8%A1%E5%9E%8B%E5%B1%82%EF%BC%9A%E8%83%BD%E5%8A%9B%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5"><span class="toc-number">1.</span> <span class="toc-text">1. 模型层：能力从哪里来</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">常见模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E4%B8%80%E5%B1%82%E5%86%B3%E5%AE%9A%E4%BB%80%E4%B9%88"><span class="toc-number">1.2.</span> <span class="toc-text">这一层决定什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AE%A4%E7%9F%A5"><span class="toc-number">1.3.</span> <span class="toc-text">关键认知</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%8E%A8%E7%90%86%E6%9C%8D%E5%8A%A1%E5%B1%82%EF%BC%9A%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%93%AA%E9%87%8C%E8%B7%91"><span class="toc-number">2.</span> <span class="toc-text">2. 推理服务层：模型在哪里跑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E8%87%AA%E7%AE%A1%E6%8E%A8%E7%90%86%E6%9C%8D%E5%8A%A1%EF%BC%88%E8%87%AA%E5%B7%B1%E8%B7%91%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 自管推理服务（自己跑模型）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.1.</span> <span class="toc-text">典型工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-number">2.1.2.</span> <span class="toc-text">在做什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%90%86%E8%A7%A3-Ollama"><span class="toc-number">2.1.3.</span> <span class="toc-text">一句话理解 Ollama</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%82%E5%90%88%E5%9C%BA%E6%99%AF"><span class="toc-number">2.1.4.</span> <span class="toc-text">适合场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%9A-%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="toc-number">2.1.5.</span> <span class="toc-text">📚 扩展阅读</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BA%91%E7%AB%AF%E6%8E%A8%E7%90%86%E6%9C%8D%E5%8A%A1%EF%BC%88%E6%A8%A1%E5%9E%8B%E5%8D%B3%E6%9C%8D%E5%8A%A1%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 云端推理服务（模型即服务）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.2.1.</span> <span class="toc-text">典型服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">在做什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-number">2.2.3.</span> <span class="toc-text">常见误区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%82%E5%90%88%E5%9C%BA%E6%99%AF-1"><span class="toc-number">2.2.4.</span> <span class="toc-text">适合场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E4%BC%81%E4%B8%9A%E7%BA%A7%E6%89%98%E7%AE%A1%E6%8E%A8%E7%90%86%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 企业级托管推理服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%B9%B3%E5%8F%B0"><span class="toc-number">2.3.1.</span> <span class="toc-text">典型平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">在做什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%90%86%E8%A7%A3-Azure-OpenAI"><span class="toc-number">2.3.3.</span> <span class="toc-text">一句话理解 Azure OpenAI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%82%E5%90%88%E5%9C%BA%E6%99%AF-2"><span class="toc-number">2.3.4.</span> <span class="toc-text">适合场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8E%A5%E5%85%A5%E6%96%B9%E5%BC%8F%E5%B1%82%EF%BC%9A%E4%BD%A0%E6%98%AF%E6%80%8E%E4%B9%88%E7%94%A8%E6%A8%A1%E5%9E%8B%E7%9A%84"><span class="toc-number">3.</span> <span class="toc-text">3. 接入方式层：你是怎么用模型的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%AF%B4%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">常见说法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%83%E4%BB%AC%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.2.</span> <span class="toc-text">它们的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%B4%A3%E4%BB%BB%E4%B8%8E%E8%BE%B9%E7%95%8C%E5%B1%82%EF%BC%9A%E5%87%BA%E9%97%AE%E9%A2%98%E8%B0%81%E8%B4%9F%E8%B4%A3"><span class="toc-number">4.</span> <span class="toc-text">4. 责任与边界层：出问题谁负责</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E5%85%B8%E5%9E%8B%E8%B4%A3%E4%BB%BB%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">三种典型责任模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E5%85%A8%E9%83%A8%E8%87%AA%E5%B7%B1%E8%B4%9F%E8%B4%A3"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1 全部自己负责</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E8%83%BD%E5%8A%9B%E7%94%B1%E5%8E%82%E5%95%86%E8%B4%9F%E8%B4%A3"><span class="toc-number">4.1.2.</span> <span class="toc-text">4.2 能力由厂商负责</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E8%83%BD%E5%8A%9B%E4%B8%8E%E5%90%88%E8%A7%84%E7%94%B1%E5%B9%B3%E5%8F%B0%E8%B4%9F%E8%B4%A3"><span class="toc-number">4.1.3.</span> <span class="toc-text">4.3 能力与合规由平台负责</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%B8%B8%E8%A7%81%E5%90%8D%E8%AF%8D%E7%9A%84%E6%AD%A3%E7%A1%AE%E4%BD%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">5. 常见名词的正确位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%90%8D%E8%AF%8D%E4%BC%9A%E5%8F%98%EF%BC%8C%E4%BD%86%E7%BB%93%E6%9E%84%E4%B8%8D%E4%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">6. 名词会变，但结构不会</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">7. 总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/26/2026-01-26-localhost-wifi-access-guide/" title="同一 Wi‑Fi 访问本地服务：网络模型、配置方式与边界说明"><img src="/img/localhost-wifi-access-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="同一 Wi‑Fi 访问本地服务：网络模型、配置方式与边界说明"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/26/2026-01-26-localhost-wifi-access-guide/" title="同一 Wi‑Fi 访问本地服务：网络模型、配置方式与边界说明">同一 Wi‑Fi 访问本地服务：网络模型、配置方式与边界说明</a><time datetime="2026-01-26T02:00:00.000Z" title="发表于 2026-01-26 10:00:00">2026-01-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/21/2026-01-21-sitemap-search-engine-seo-guide/" title="🧭 如何把个人博客挂到搜索引擎上？"><img src="/img/sitemap-search-engine-seo-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🧭 如何把个人博客挂到搜索引擎上？"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/21/2026-01-21-sitemap-search-engine-seo-guide/" title="🧭 如何把个人博客挂到搜索引擎上？">🧭 如何把个人博客挂到搜索引擎上？</a><time datetime="2026-01-21T11:00:00.000Z" title="发表于 2026-01-21 19:00:00">2026-01-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/21/2026-01-21-python-xmind-operation-guide/" title="🗺️ 用 Python 操作 XMind：从读懂到生成的完整入门指南"><img src="/img/python-xmind-operation-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🗺️ 用 Python 操作 XMind：从读懂到生成的完整入门指南"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/21/2026-01-21-python-xmind-operation-guide/" title="🗺️ 用 Python 操作 XMind：从读懂到生成的完整入门指南">🗺️ 用 Python 操作 XMind：从读懂到生成的完整入门指南</a><time datetime="2026-01-21T07:00:00.000Z" title="发表于 2026-01-21 15:00:00">2026-01-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/20/2026-01-20-frontend-file-extensions-guide/" title="📄 一篇搞懂前端常见文件后缀：ts / tsc / jsx / tsx / scss"><img src="/img/frontend-file-extensions-guide.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="📄 一篇搞懂前端常见文件后缀：ts / tsc / jsx / tsx / scss"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/20/2026-01-20-frontend-file-extensions-guide/" title="📄 一篇搞懂前端常见文件后缀：ts / tsc / jsx / tsx / scss">📄 一篇搞懂前端常见文件后缀：ts / tsc / jsx / tsx / scss</a><time datetime="2026-01-20T08:00:00.000Z" title="发表于 2026-01-20 16:00:00">2026-01-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/" title="🤖 项目里调用大模型，其实在调用什么？"><img src="/img/llm-integration-what-are-you-calling.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="🤖 项目里调用大模型，其实在调用什么？"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/01/20/2026-01-20-llm-integration-what-are-you-calling/" title="🤖 项目里调用大模型，其实在调用什么？">🤖 项目里调用大模型，其实在调用什么？</a><time datetime="2026-01-20T02:00:00.000Z" title="发表于 2026-01-20 10:00:00">2026-01-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By yuxiaoling</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+  const getUtterancesTheme = theme => theme === 'dark' ? 'photon-dark' : 'github-light'
+
+  const loadUtterances = (el = document, key) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyUtterances = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const config = {
+      src: 'https://utteranc.es/client.js',
+      repo: 'Linn0813/Linn0813.github.io',
+      theme: getUtterancesTheme(document.documentElement.getAttribute('data-theme')),
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      'issue-term': isShuoshuo ? key : (option && option['issue-term']) || 'pathname'
+    }
+
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => ele.setAttribute(key, value))
+    el.querySelector('#utterances-wrap').appendChild(ele)
+  }
+
+  const changeUtterancesTheme = theme => {
+    const iframe = document.querySelector('#utterances-wrap iframe')
+    if (iframe) {
+      const message = {
+        type: 'set-theme',
+        theme: getUtterancesTheme(theme)
+      };
+      iframe.contentWindow.postMessage(message, 'https://utteranc.es')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeUtterancesTheme, 'utterances')
+
+  if (isShuoshuo) {
+    'Utterances' === 'Utterances'
+      ? window.shuoshuoComment = { loadComment: loadUtterances }
+      : window.loadOtherComment = loadUtterances
+    return
+  }
+  
+  if ('Utterances' === 'Utterances' || !false) {
+    if (false) btf.loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+    else loadUtterances()
+  } else {
+    window.loadOtherComment = loadUtterances
+  }
+})()</script></div><script src="/js/blog-enhancements.js"></script><script src="/js/category-enhancements.js"></script><script src="/js/archive-enhancements.js"></script><script src="/js/tag-enhancements.js"></script><script src="/js/index-enhancements.js"></script><script src="/js/theme-switcher-ui.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章、分类、标签..." type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// Hexo Filter: 在生成后自动复制 QA 前端资源文件到 public/qa/assets/
-// 这样用户直接使用 hexo generate 时也会自动复制资源文件
+// Hexo Filter: 在生成后自动复制 QA 前端资源文件到当前 public_dir/qa/assets/
+// 使用 hexo.config.public_dir，这样生成到 public-butterfly 时资源也会在正确位置
 
 // 使用全局变量防止重复执行（在同一个 Node 进程内）
 const globalKey = Symbol('hexo-qa-assets-copied');
@@ -23,7 +23,8 @@ hexo.on('generateAfter', function() {
   setTimeout(() => {
     try {
       const qaDistPath = path.join(hexo.base_dir, 'qa-service', 'frontend', 'dist', 'assets');
-      const qaTargetPath = path.join(hexo.base_dir, 'public', 'qa', 'assets');
+      const publicDir = hexo.config.public_dir || 'public';
+      const qaTargetPath = path.join(hexo.base_dir, publicDir, 'qa', 'assets');
       
       // 检查源目录是否存在
       if (!fs.existsSync(qaDistPath)) {
@@ -37,7 +38,7 @@ hexo.on('generateAfter', function() {
       }
       
       // 复制文件
-      console.log('INFO  Copying QA assets to public/qa/assets/...');
+      console.log('INFO  Copying QA assets to ' + publicDir + '/qa/assets/...');
       const files = fs.readdirSync(qaDistPath);
       let copiedCount = 0;
       
@@ -55,6 +56,27 @@ hexo.on('generateAfter', function() {
       if (copiedCount > 0) {
         console.log(`INFO  ✓ Copied ${copiedCount} QA asset files`);
         global[globalKey] = true; // 标记为已执行
+        // 用实际资源文件名修正生成的 QA 页面，避免 source 中旧 hash 导致 JS 404
+        try {
+          const qaIndexPath = path.join(hexo.base_dir, publicDir, 'qa', 'index.html');
+          const distIndexPath = path.join(hexo.base_dir, 'qa-service', 'frontend', 'dist', 'index.html');
+          if (fs.existsSync(qaIndexPath) && fs.existsSync(distIndexPath)) {
+            const distHtml = fs.readFileSync(distIndexPath, 'utf8');
+            const jsMatch = distHtml.match(/\/qa\/assets\/(index\.[^"']+\.js)/);
+            const cssMatch = distHtml.match(/\/qa\/assets\/(index\.[^"']+\.css)/);
+            if (jsMatch && cssMatch) {
+              const actualJs = jsMatch[1];
+              const actualCss = cssMatch[1];
+              let qaHtml = fs.readFileSync(qaIndexPath, 'utf8');
+              qaHtml = qaHtml.replace(/\/qa\/assets\/index\.[^"']+\.js/g, '/qa/assets/' + actualJs);
+              qaHtml = qaHtml.replace(/\/qa\/assets\/index\.[^"']+\.css/g, '/qa/assets/' + actualCss);
+              fs.writeFileSync(qaIndexPath, qaHtml, 'utf8');
+              console.log('INFO  ✓ Updated QA page asset references to ' + actualJs + ', ' + actualCss);
+            }
+          }
+        } catch (err) {
+          console.warn('WARN  Could not update QA page asset refs:', err.message);
+        }
       } else {
         console.log('WARN  No QA asset files found to copy');
       }

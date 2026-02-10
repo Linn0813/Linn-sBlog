@@ -137,22 +137,31 @@ class BlogDocumentLoader:
         Returns:
             文章 URL
         """
+        # 优先使用 front matter 中的 permalink（如果存在）
+        if metadata.get("permalink"):
+            permalink = metadata["permalink"]
+            # 确保 permalink 以 / 开头
+            if not permalink.startswith("/"):
+                permalink = "/" + permalink
+            # 确保 permalink 以 / 结尾
+            if not permalink.endswith("/"):
+                permalink = permalink + "/"
+            return permalink
+        
         # Hexo permalink 规则: :year/:month/:day/:title/
-        # 从文件名提取日期：YYYY-MM-DD-title.md
-        filename = post_file.stem
+        # Hexo 的 :title 使用的是完整的文件名（去掉扩展名），而不是只提取标题部分
+        # 例如：2026-01-26-localhost-wifi-access-guide.md -> /2026/01/26/2026-01-26-localhost-wifi-access-guide/
+        filename = post_file.stem  # 去掉扩展名，例如：2026-01-26-localhost-wifi-access-guide
         date_match = re.match(r'(\d{4})-(\d{2})-(\d{2})-(.+)', filename)
         
         if date_match:
-            year, month, day, title = date_match.groups()
-            # 将标题转换为 URL 友好的格式
-            title_slug = re.sub(r'[^\w\s-]', '', title).strip().lower()
-            title_slug = re.sub(r'[-\s]+', '-', title_slug)
-            return f"/{year}/{month}/{day}/{title_slug}/"
+            year, month, day, title_part = date_match.groups()
+            # Hexo 使用完整的文件名作为 :title，所以应该返回完整的文件名
+            # 而不是只返回 title_part
+            return f"/{year}/{month}/{day}/{filename}/"
         else:
             # 如果没有日期前缀，使用文件名
-            title_slug = re.sub(r'[^\w\s-]', '', filename).strip().lower()
-            title_slug = re.sub(r'[-\s]+', '-', title_slug)
-            return f"/{title_slug}/"
+            return f"/{filename}/"
 
     def _clean_markdown(self, content: str) -> str:
         """

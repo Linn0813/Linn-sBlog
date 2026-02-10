@@ -1,42 +1,16 @@
 <template>
   <div class="knowledge-base-container">
-    <div class="header">
-      <h1>知识库问答</h1>
-      <p class="subtitle">基于博客文章的智能问答系统</p>
-    </div>
-
-    <div class="content">
-      <!-- 问答区域 -->
-      <el-card class="qa-card" shadow="hover">
-        <template #header>
-          <div class="card-header">
-          <span>智能问答</span>
+    <!-- 问答区域 -->
+    <el-card class="qa-card" shadow="hover">
+      <template #header>
+        <div class="card-header">
+          <div class="header-content">
+            <h1>知识库问答</h1>
+            <p class="subtitle">基于博客文章的智能问答系统</p>
           </div>
-        </template>
-        <div class="qa-content">
-          <!-- 博客分类选择 -->
-          <div class="space-selector" style="margin-bottom: 15px;">
-            <el-select
-              v-model="selectedCategory"
-              placeholder="选择博客分类（不选择则搜索所有文章）"
-              clearable
-              style="width: 100%"
-              :loading="loadingCategories"
-            >
-              <el-option
-                v-for="category in categories"
-                :key="category.space_id"
-                :label="category.name"
-                :value="category.space_id"
-              >
-                <span>{{ category.name }}</span>
-                <span v-if="category.description" style="color: #8492a6; font-size: 12px; margin-left: 10px;">
-                  {{ category.description }}
-                </span>
-              </el-option>
-            </el-select>
-          </div>
-
+        </div>
+      </template>
+      <div class="qa-content">
           <!-- 问题输入 -->
           <div class="question-input">
             <el-input
@@ -47,15 +21,6 @@
               @keydown.ctrl.enter="handleAsk"
               @keydown.meta.enter="handleAsk"
             />
-            <!-- 网络搜索选项 -->
-            <div class="web-search-option">
-              <el-checkbox v-model="useWebSearch">
-                <span>🌐 启用网络搜索</span>
-                <el-tooltip content="当知识库结果不理想时，自动使用网络搜索补充信息" placement="top">
-                  <span style="margin-left: 5px; color: #909399; cursor: help;">❓</span>
-                </el-tooltip>
-              </el-checkbox>
-            </div>
             <div class="input-actions">
               <el-button
                 type="primary"
@@ -87,45 +52,6 @@
               </el-alert>
             </div>
 
-            <!-- 网络搜索建议按钮 -->
-            <div v-if="currentAnswer.suggest_web_search && !currentAnswer.has_web_search && currentAnswer.sources && currentAnswer.sources.length > 0" class="web-search-suggestion">
-              <el-alert
-                type="warning"
-                :closable="false"
-                show-icon
-              >
-                <template #title>
-                  <div class="suggestion-content">
-                    <p v-if="currentAnswer.max_similarity < 0.5">
-                      💡 知识库文档相似度较低（{{ (currentAnswer.max_similarity * 100).toFixed(1) }}%），建议使用网络搜索获取更多信息
-                    </p>
-                    <p v-else-if="currentAnswer.max_similarity < 0.7">
-                      💡 知识库文档相似度中等（{{ (currentAnswer.max_similarity * 100).toFixed(1) }}%），如需更详细的信息，建议使用网络搜索补充
-                    </p>
-                    <p v-else>
-                      💡 如需更详细的信息，建议使用网络搜索补充
-                    </p>
-                    <el-button
-                      type="primary"
-                      size="small"
-                      :loading="asking"
-                      @click="searchWithWeb"
-                      style="margin-top: 10px;"
-                    >
-                      🌐 使用网络搜索
-                    </el-button>
-                  </div>
-                </template>
-              </el-alert>
-            </div>
-
-            <!-- 已使用网络搜索提示 -->
-            <div v-if="currentAnswer.has_web_search" class="web-search-used">
-              <el-tag type="success" size="small">
-                ✓ 已使用网络搜索补充信息
-              </el-tag>
-            </div>
-
             <!-- 引用来源 / 文档列表 -->
             <div v-if="currentAnswer.sources && currentAnswer.sources.length > 0" class="sources-section">
               <h4>{{ currentAnswer.question_type === 'document_list' ? '文档列表' : '引用来源' }}</h4>
@@ -142,7 +68,6 @@
                   <span v-if="source.similarity > 0" class="similarity">
                     {{ currentAnswer.question_type === 'document_list' ? '相关性' : '相似度' }}: {{ (source.similarity * 100).toFixed(1) }}%
                   </span>
-                  <span v-else-if="source.source === 'web_search'" class="web-source">🌐 网络搜索</span>
                 </li>
               </ul>
             </div>
@@ -174,14 +99,13 @@
               </div>
             </div>
           </div>
-        </div>
-      </el-card>
-    </div>
+      </div>
+    </el-card>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { aiApi } from '@/apis/ai'
 
@@ -189,11 +113,6 @@ const question = ref('')
 const asking = ref(false)
 const currentAnswer = ref(null)
 const history = ref([])
-const categories = ref([]) // 博客分类列表
-const selectedCategory = ref(null) // 选中的博客分类
-const loadingCategories = ref(false) // 加载分类列表状态
-const useWebSearch = ref(false) // 是否启用网络搜索
-const lastQuestion = ref('') // 保存上次的问题，用于网络搜索
 
 const handleAsk = async () => {
   if (!question.value.trim()) {
@@ -203,22 +122,19 @@ const handleAsk = async () => {
 
   asking.value = true
   const currentQuestion = question.value.trim()
-  lastQuestion.value = currentQuestion // 保存问题，用于网络搜索
 
   try {
-    // 传递选中的分类和网络搜索选项
+    // 不限定分类，搜索所有文章
     const response = await aiApi.askQuestion(
       currentQuestion, 
-      selectedCategory.value || null,
-      useWebSearch.value
+      null,
+      false // 不使用网络搜索
     )
     if (response.data && response.data.code === 0) {
       const data = response.data.data
       currentAnswer.value = {
         answer: data.answer,
         sources: data.sources || [],
-        suggest_web_search: data.suggest_web_search || false,
-        has_web_search: data.has_web_search || false,
         max_similarity: data.max_similarity || 0,
         question_type: data.question_type || 'content_qa' // 记录问题类型
       }
@@ -232,8 +148,7 @@ const handleAsk = async () => {
       history.value.unshift({
         question: currentQuestion,
         answer: data.answer,
-        sources: data.sources || [],
-        has_web_search: data.has_web_search || false
+        sources: data.sources || []
       })
 
       // 清空问题输入
@@ -247,78 +162,6 @@ const handleAsk = async () => {
     ElMessage.error('提问失败: ' + errorMsg)
   } finally {
     asking.value = false
-  }
-}
-
-// 使用网络搜索
-const searchWithWeb = async () => {
-  if (!lastQuestion.value.trim()) {
-    ElMessage.warning('没有可搜索的问题')
-    return
-  }
-
-  asking.value = true
-  try {
-    // 使用相同的问题，但启用网络搜索
-    const response = await aiApi.askQuestion(
-      lastQuestion.value,
-      selectedCategory.value || null,
-      true // 启用网络搜索
-    )
-    if (response.data && response.data.code === 0) {
-      const data = response.data.data
-      currentAnswer.value = {
-        answer: data.answer,
-        sources: data.sources || [],
-        suggest_web_search: false, // 已经使用了，不再建议
-        has_web_search: data.has_web_search || false,
-        max_similarity: data.max_similarity || 0
-      }
-
-      // 更新历史记录中的最后一条
-      if (history.value.length > 0 && history.value[0].question === lastQuestion.value) {
-        history.value[0] = {
-          question: lastQuestion.value,
-          answer: data.answer,
-          sources: data.sources || [],
-          has_web_search: true
-        }
-      }
-
-      ElMessage.success('已使用网络搜索补充信息')
-    } else {
-      ElMessage.error(response.data?.message || '网络搜索失败')
-    }
-  } catch (error) {
-    console.error('网络搜索失败:', error)
-    ElMessage.error('网络搜索失败: ' + (error.message || '未知错误'))
-  } finally {
-    asking.value = false
-  }
-}
-
-// 加载博客分类列表
-const loadCategories = async () => {
-  loadingCategories.value = true
-  try {
-    const response = await aiApi.getWikiSpaces()
-    if (response.data && response.data.code === 0) {
-      const data = response.data.data
-      if (data.success && data.spaces) {
-        categories.value = data.spaces
-      } else {
-        ElMessage.warning(data.message || '获取分类列表失败')
-      }
-    } else {
-      const errorMsg = response.data?.message || response.data?.detail || '获取分类列表失败'
-        ElMessage.error(errorMsg)
-    }
-  } catch (error) {
-    console.error('加载分类列表失败:', error)
-    const errorMsg = error.response?.data?.detail || error.response?.data?.message || error.message || '未知错误'
-    ElMessage.error('加载分类列表失败: ' + errorMsg)
-  } finally {
-    loadingCategories.value = false
   }
 }
 
@@ -336,112 +179,83 @@ const formatAnswer = (text) => {
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
 }
 
-onMounted(async () => {
-  // 加载博客分类列表
-  await loadCategories()
-})
 </script>
 
 <style scoped>
 .knowledge-base-container {
   width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.header h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  color: #666;
-  font-size: 14px;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  min-height: 100%;
 }
 
 .qa-card {
-  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 8px;
+  border: none !important;
+}
+
+.qa-card :deep(.el-card) {
+  border: none !important;
+}
+
+.qa-card :deep(.el-card__body) {
+  border: none;
 }
 
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 0;
+}
+
+.header-content {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.header-content h1 {
+  font-size: 24px;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #303133;
+}
+
+.subtitle {
+  color: #909399;
+  font-size: 13px;
+  margin: 0;
 }
 
 .qa-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  padding: 4px 0;
 }
 
 .question-input {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.web-search-option {
-  display: flex;
-  align-items: center;
-  padding: 8px 0;
-}
-
-.web-search-suggestion {
-  margin-top: 20px;
-}
-
-.suggestion-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.suggestion-content p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.web-search-used {
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-
-.web-source {
-  color: #67c23a;
-  font-size: 12px;
-  font-weight: 500;
+  gap: 12px;
 }
 
 .input-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: flex-end;
+  margin-top: 4px;
 }
 
 .answer-section {
   padding: 20px;
   background: #f5f7fa;
-  border-radius: 4px;
+  border-radius: 8px;
+  border: 1px solid #e4e7ed;
 }
 
 .answer-section h3 {
   margin-top: 0;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   font-size: 18px;
+  font-weight: 600;
+  color: #303133;
 }
 
 .answer-content {
@@ -451,7 +265,7 @@ onMounted(async () => {
 }
 
 .sources-section {
-  margin-top: 20px;
+  margin-top: 24px;
   padding-top: 20px;
   border-top: 1px solid #e4e7ed;
 }
@@ -505,7 +319,9 @@ onMounted(async () => {
 }
 
 .history-section {
-  margin-top: 30px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e4e7ed;
 }
 
 .history-section h3 {

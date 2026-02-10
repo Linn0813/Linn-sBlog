@@ -1,19 +1,6 @@
 User-agent: *
 Allow: /
 
-# 明确允许百度爬虫
-User-agent: Baiduspider
-Allow: /
-
-# Sitemap
+# Sitemap（主站 + 子路径站点）
 Sitemap: https://linn0813.github.io/sitemap.xml
-
-# 禁止爬取的文件和目录
-Disallow: /css/
-Disallow: /js/
-Disallow: /img/
-# 允许爬取重要内容页面
-Allow: /archives/
-Allow: /categories/
-Allow: /tags/
-Allow: /series/
+Sitemap: https://linn0813.github.io/fluid-blog/sitemap.xml

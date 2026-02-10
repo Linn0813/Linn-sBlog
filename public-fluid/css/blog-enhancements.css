@@ -1204,4 +1204,121 @@ body .post-list .post-list-title {
   color: var(--theme-color);
 }
 
+/* ==================== 分类页视觉增强：现代极简风格 ==================== */
+#page .category-lists {
+  padding: 20px 0;
+}
+
+/* 隐藏所有默认列表样式 */
+.category-list, .category-list-child {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 大专题项容器 */
+.category-list > .category-list-item {
+  margin-bottom: 40px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 大专题标题 */
+.category-list > .category-list-item > .category-list-link {
+  font-size: 1.4rem !important;
+  font-weight: 800 !important;
+  color: #1f2d3d !important;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+  display: block;
+  border-bottom: 2px solid #f0f2f5;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* 标题下面的装饰线 */
+.category-list > .category-list-item > .category-list-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: #49b1f5;
+  transition: width 0.4s ease;
+}
+
+.category-list > .category-list-item:hover > .category-list-link {
+  color: #49b1f5 !important;
+}
+
+.category-list > .category-list-item:hover > .category-list-link::after {
+  width: 120px;
+}
+
+/* 大专题计数 */
+.category-list > .category-list-item > .category-list-count {
+  font-size: 0.9rem;
+  color: #909399 !important;
+  font-weight: normal;
+  margin-left: 10px;
+}
+.category-list > .category-list-item > .category-list-count::before { content: '('; }
+.category-list > .category-list-item > .category-list-count::after { content: ')'; }
+
+/* 子分类胶囊列表 */
+.category-list-child {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 10px !important;
+}
+
+/* 子分类胶囊项 */
+.category-list-child .category-list-item {
+  display: inline-block !important;
+}
+
+.category-list-child .category-list-link {
+  display: inline-block;
+  padding: 6px 16px !important;
+  background: #f4f7f9 !important;
+  color: #5a6a7a !important;
+  border-radius: 20px !important;
+  font-size: 0.9rem !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid transparent;
+}
+
+.category-list-child .category-list-link:hover {
+  background: #fff !important;
+  color: #49b1f5 !important;
+  border-color: #49b1f5;
+  box-shadow: 0 4px 8px rgba(73, 177, 245, 0.15);
+  transform: translateY(-1px);
+}
+
+/* 子分类计数（隐藏或小化） */
+.category-list-child .category-list-count {
+  display: none !important; /* 胶囊内不显示数字，保持纯净 */
+}
+
+/* 暗黑模式适配 */
+[data-theme='dark'] .category-list > .category-list-item > .category-list-link {
+  color: #e0e0e0 !important;
+  border-bottom-color: #333;
+}
+
+[data-theme='dark'] .category-list-child .category-list-link {
+  background: #2c2c2c !important;
+  color: #b0b0b0 !important;
+}
+
+[data-theme='dark'] .category-list-child .category-list-link:hover {
+  background: #3d3d3d !important;
+  color: #49b1f5 !important;
+}
+
 
