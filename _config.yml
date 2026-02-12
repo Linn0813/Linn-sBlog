@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Linn's Blog
-subtitle: 记录软件测试成长与技术探索的个人博客
-description: '分享软件测试学习、实战经验和踩坑历程'
-keywords: 软件测试,测试博客,自动化测试,测试开发,测试经验
+title: Linn｜测试笔记   
+subtitle: 记录 AI 测试成长与技术探索的个人博客
+description: AI 系统测试与测试工程化｜大模型质量评估、Prompt 回归、Agent 链路测试｜自动化与平台实践
+keywords: AI测试,大模型测试,LLM评估,Prompt回归测试,Agent测试,RAG测试,测试工程化,自动化测试,接口测试,测试平台,质量保障,性能监控
 author: yuxiaoling
 # language: en
 language: zh-CN
