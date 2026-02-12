@@ -112,12 +112,14 @@ class LLMService:
                     if hasattr(e, 'response') and e.response is not None:
                         try:
                             response_text = e.response.text[:500]  # 取前500字符
-                            try:
-                                response_json = e.response.json()
-                            except:
-                                pass
-                        except:
-                            pass
+                        except (AttributeError, ValueError) as text_error:
+                            log.debug(f"无法读取响应文本: {text_error}")
+                        
+                        try:
+                            response_json = e.response.json()
+                        except (ValueError, AttributeError) as json_error:
+                            log.debug(f"响应不是有效的 JSON: {json_error}")
+                            response_json = None
                     
                     # 记录详细的错误信息
                     log.error(f"❌ Azure OpenAI 认证失败 (401):")
@@ -284,6 +286,7 @@ class LLMService:
         try:
             response = requests.get(f"{self.base_url}/api/tags", timeout=5)
             return response.status_code == 200
-        except:
+        except (requests.exceptions.RequestException, requests.exceptions.Timeout, ConnectionError) as e:
+            log.debug(f"LLM 服务检查失败: {e}")
             return False
 

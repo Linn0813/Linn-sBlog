@@ -1,4 +1,4 @@
-name: Deploy Themes
+name: Deploy Blog
 
 on:
   # 移除自动触发，改为手动触发或通过 webhook 触发后台部署
@@ -12,8 +12,8 @@ on:
   workflow_dispatch: # 仅手动触发（如果需要）
 
 jobs:
-  deploy-butterfly:
-    name: Deploy Butterfly Theme
+  deploy:
+    name: Deploy Blog
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,59 +34,10 @@ jobs:
       - name: Generate static files
         run: hexo clean && hexo generate
       
-      - name: Deploy Butterfly to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
           cname: linn0813.github.io  # 如果有自定义域名，取消注释并填写
-
-  deploy-fluid:
-    name: Deploy Fluid Theme
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Switch to Fluid theme
-        run: node tools/theme-switcher.js fluid
-      
-      - name: Configure root path for subdirectory
-        run: |
-          # 配置 root 路径（部署在子路径时需要）
-          # 检查是否已有 root 配置
-          if grep -q "^root:" _config.yml; then
-            # 更新现有的 root 配置
-            sed -i 's|^root:.*|root: /fluid-blog/|' _config.yml
-          else
-            # 在 url 配置后添加 root
-            sed -i '/^url:/a root: /fluid-blog/' _config.yml
-          fi
-      
-      - name: Generate static files
-        run: hexo clean && hexo generate
-      
-      - name: Deploy Fluid to separate repository
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          # 部署到项目仓库（可以是任意名称，访问地址会是 username.github.io/仓库名）
-          # 访问地址：https://linn0813.github.io/fluid-blog
-          external_repository: Linn0813/fluid-blog
-          publish_dir: ./public
-          publish_branch: main
-          # 注意：部署到其他仓库需要配置 personal_token
-          # 如果部署失败，请：
-          # 1. 创建 Personal Access Token（需要 repo 权限）
-          # 2. 在仓库 Secrets 中添加 FLUID_DEPLOY_TOKEN
-          # 3. 将下面的 github_token 改为 personal_token: ${{ secrets.FLUID_DEPLOY_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}

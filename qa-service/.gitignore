@@ -72,11 +72,9 @@ backend/.pytest_cache/
 backend/.coverage
 backend/htmlcov/
 
-# 前端构建产物（保留 dist 用于部署）
-# frontend/dist/  # 如果需要部署，可以保留
-frontend/.vite/
-frontend/.env.local
-frontend/.env.*.local
+# 后端运行结果（查询历史等）
+backend/data/query_results/*.json
+!backend/data/query_results/.gitkeep
 
 # 存储目录（统一使用项目根目录的 storage）
 storage/uploads/*

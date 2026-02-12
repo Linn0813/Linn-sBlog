@@ -3,14 +3,16 @@ hexo new draft "新的数据库搭建教程"
 # 编辑草稿内容
 # 发布草稿
 hexo publish "新的数据库搭建教程"
+
 # 本地预览
 hexo server
+# 或
+npm run preview
+
 # 生成静态文件并部署
 hexo g -d
-
-   npm run deploy:both
-
-   npm run preview:both
+# 或
+npm run deploy
 
 # 使用部署重试脚本（推荐，包含自动重试机制）
 ./deploy_with_retry.sh

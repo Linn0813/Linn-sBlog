@@ -28,8 +28,6 @@ qa-service/
 ```bash
 cd backend
 pip install -e .
-# 或
-pip install -r requirements.txt  # 如果有 requirements.txt
 ```
 
 **前端：**
@@ -41,22 +39,20 @@ npm install
 ### 配置环境变量
 
 **后端：**
-创建 `backend/.env` 文件：
 ```bash
-AI_DEMO_LLM_BASE_URL=http://localhost:11434
-AI_DEMO_DEFAULT_MODEL=qwen2.5:7b
-AI_DEMO_CORS_ORIGINS=https://linn0813.github.io,http://localhost:4000
-FEISHU_APP_ID=your_app_id
-FEISHU_APP_SECRET=your_app_secret
-FEISHU_REDIRECT_URI=http://localhost:8113/api/v1/feishu/oauth/callback
-FRONTEND_URL=http://localhost:4000
+cd qa-service/backend
+cp .env.example .env
+# 编辑 .env 文件，填入实际的环境变量值
 ```
 
 **前端：**
-创建 `frontend/.env.production` 文件：
 ```bash
-VITE_API_BASE_URL=http://localhost:8113
+cd qa-service/frontend
+cp .env.example .env.production
+# 编辑 .env.production 文件，设置后端 API 地址
 ```
+
+详细的环境变量说明请参考 [环境变量配置文档](./README_ENV.md)。
 
 ### 启动服务
 
@@ -83,8 +79,17 @@ npm run build
 使用集成脚本将前端构建并集成到博客：
 
 ```bash
-cd /Users/yuxiaoling/Blog
-./scripts/integrate-qa.sh
+# 在博客项目根目录执行
+cd qa-service
+npm run build  # 如果需要先构建前端
+cd ..
+./integrate-qa.sh
+```
+
+或者如果已经在博客项目根目录：
+
+```bash
+./integrate-qa.sh
 ```
 
 脚本会自动：
@@ -95,9 +100,7 @@ cd /Users/yuxiaoling/Blog
 ## 📝 相关文档
 
 - [迁移说明](./MIGRATION.md) - 了解如何迁移到博客项目
-- [集成指南](../QA_INTEGRATION_GUIDE.md) - 详细的集成步骤
-- [完整方案文档](../INTEGRATION_PLAN.md) - 所有集成方案对比
-- [环境变量配置](../scripts/qa-env-example.md) - 环境变量详细说明
+- [环境变量配置](./README_ENV.md) - 详细的环境变量配置说明
 
 ## ⚠️ 注意事项
 

@@ -5,7 +5,9 @@
 
 set -e
 
-BLOG_DIR="/Users/yuxiaoling/Blog"
+# 获取脚本所在目录的父目录（博客根目录）
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BLOG_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$BLOG_DIR"
 
 echo "🧹 开始清理多余文件..."

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Hexo Filter: 在生成后自动复制 QA 前端资源文件到当前 public_dir/qa/assets/
-// 使用 hexo.config.public_dir，这样生成到 public-butterfly 时资源也会在正确位置
+// 使用 hexo.config.public_dir，确保资源在正确位置
 
 // 使用全局变量防止重复执行（在同一个 Node 进程内）
 const globalKey = Symbol('hexo-qa-assets-copied');

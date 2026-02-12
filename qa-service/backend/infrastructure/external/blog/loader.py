@@ -95,7 +95,8 @@ class BlogDocumentLoader:
             elif isinstance(date, str):
                 try:
                     date = datetime.fromisoformat(date.replace('Z', '+00:00')).timestamp()
-                except:
+                except (ValueError, AttributeError) as date_error:
+                    log.debug(f"无法解析日期格式 '{date}': {date_error}，使用文件修改时间")
                     date = post_file.stat().st_mtime
 
             # 生成文章 URL（基于 Hexo permalink 规则）

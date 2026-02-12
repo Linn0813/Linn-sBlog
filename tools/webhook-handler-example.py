@@ -86,7 +86,7 @@ def deploy_webhook():
         
         # 执行部署脚本
         result = subprocess.run(
-            ['bash', 'tools/deploy-both-themes.sh'],
+            ['bash', 'deploy_with_retry.sh'],
             capture_output=True,
             text=True,
             timeout=600  # 10 分钟超时
