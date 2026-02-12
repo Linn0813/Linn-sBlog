@@ -1361,7 +1361,6 @@ inject:
     - <script src="/js/archive-enhancements.js"></script>
     - <script src="/js/tag-enhancements.js"></script>
     - <script src="/js/index-enhancements.js"></script>
-    - <script src="/js/theme-switcher-ui.js"></script>
 
 # CDN 设置
 # 除非你知道它们的工作原理，否则不要修改以下设置
