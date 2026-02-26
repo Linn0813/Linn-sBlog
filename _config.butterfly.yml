@@ -217,7 +217,6 @@ social:
   fab fa-github:  https://github.com/Linn0813 || GitHub  # GitHub链接
   fa fa-envelope-open-text: mailto:yuxiaoling.yxl@qq.com || Email  # 邮箱链接
   fab fa-weixin: javascript:alert('微信公众号：Linn的技术笔记') || 微信  # 微信（使用弹窗）
-  fab fa-weibo: https://weibo.com/Linn0813 || 微博  # 微博链接
 
 
 # ============================================
@@ -871,12 +870,12 @@ share:
   # Share.js 配置
   # https://github.com/overtrue/share.js
   sharejs:
-    sites: facebook,twitter,wechat,weibo,qq  # 启用的分享平台
+    sites: wechat,qq  # 启用的分享平台
 
   # AddToAny 配置
   # https://www.addtoany.com/
   addtoany:
-    item: facebook,twitter,wechat,sina_weibo,facebook_messenger,email,copy_link  # 分享项
+    item: wechat,qq,email,copy_link  # 分享项
 
 # ============================================
 # 评论系统配置
