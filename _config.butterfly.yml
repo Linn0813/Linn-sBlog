@@ -23,7 +23,7 @@ timezone:  Asia/Shanghai    # 时区设置，影响文章发布时间显示
 # URL
 ## 设置你的网站URL，如果使用GitHub Pages，设置为 'https://username.github.io/project'
 url: https://Linn0813.github.io  # 网站根URL，必须与GitHub Pages域名一致
-permalink: :year/:month/:day/:title/  # 文章永久链接格式，:year/:month/:day/:title/ 表示 年/月/日/标题/
+permalink: :title/  # 文章永久链接格式，:year/:month/:day/:title/ 表示 年/月/日/标题/
 permalink_defaults:  # 永久链接的默认值
 pretty_urls:
   trailing_index: true # 设置为 false 时，永久链接末尾不包含 'index.html'

@@ -149,20 +149,11 @@ class BlogDocumentLoader:
                 permalink = permalink + "/"
             return permalink
         
-        # Hexo permalink 规则: :year/:month/:day/:title/
+        # Hexo permalink 规则: :title/
         # Hexo 的 :title 使用的是完整的文件名（去掉扩展名），而不是只提取标题部分
-        # 例如：2026-01-26-localhost-wifi-access-guide.md -> /2026/01/26/2026-01-26-localhost-wifi-access-guide/
+        # 例如：2026-01-26-localhost-wifi-access-guide.md -> /2026-01-26-localhost-wifi-access-guide/
         filename = post_file.stem  # 去掉扩展名，例如：2026-01-26-localhost-wifi-access-guide
-        date_match = re.match(r'(\d{4})-(\d{2})-(\d{2})-(.+)', filename)
-        
-        if date_match:
-            year, month, day, title_part = date_match.groups()
-            # Hexo 使用完整的文件名作为 :title，所以应该返回完整的文件名
-            # 而不是只返回 title_part
-            return f"/{year}/{month}/{day}/{filename}/"
-        else:
-            # 如果没有日期前缀，使用文件名
-            return f"/{filename}/"
+        return f"/{filename}/"
 
     def _clean_markdown(self, content: str) -> str:
         """

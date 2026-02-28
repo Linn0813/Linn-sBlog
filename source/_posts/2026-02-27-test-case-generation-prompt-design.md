@@ -563,5 +563,5 @@ PRD 内容：{{prd_content}}
 
 ## 延伸阅读
 
-- [AI 生成测试用例工具设计：围绕测试流程，而非直接扔 PRD](/2026/02/25/ai-test-case-generation-tool-design/) — 讲流程拆解与分阶段生成，与本文互补
-- [Prompt 工程实战：三大核心技巧与结构化输出](/2025/12/04/llm-prompt-engineering-practices/) — 通用 Prompt 方法论（角色、思维链、结构化输出），本文是其测试用例场景的落地
+- [AI 生成测试用例工具设计：围绕测试流程，而非直接扔 PRD](/2026-02-25-ai-test-case-generation-tool-design/) — 讲流程拆解与分阶段生成，与本文互补
+- [Prompt 工程实战：三大核心技巧与结构化输出](/2025-12-04-llm-prompt-engineering-practices/) — 通用 Prompt 方法论（角色、思维链、结构化输出），本文是其测试用例场景的落地

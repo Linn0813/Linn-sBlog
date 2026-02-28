@@ -38,7 +38,7 @@ noticeOutdate: false
 
 # 🔍 Pytest高级特性实战：从码尚教育课程中学到的进阶技巧
 
-👋 大家好！继上次分享[pytest入门到实战的学习笔记](/2025/10/01/pytest-automation-testing-guide/)后，我又学习了码尚教育的pytest课程，收获了很多高级特性和实战技巧！今天就把这些进阶内容整理出来，作为上一篇文章的补充，希望能帮助大家更深入地理解和应用pytest。
+👋 大家好！继上次分享[pytest入门到实战的学习笔记](/2025-10-01-pytest-automation-testing-guide/)后，我又学习了码尚教育的pytest课程，收获了很多高级特性和实战技巧！今天就把这些进阶内容整理出来，作为上一篇文章的补充，希望能帮助大家更深入地理解和应用pytest。
 
 🎬 本文基于码尚教育的pytest自动化测试框架课程，课程链接分享给大家：
 - **视频课程**：[pytest自动化测试框架 - 哔哩哔哩](https://www.bilibili.com/video/BV14i4y1c7Jo?vd_source=65c2968c09490f4b218154711916b4d8&spm_id_from=333.788.videopod.episodes)

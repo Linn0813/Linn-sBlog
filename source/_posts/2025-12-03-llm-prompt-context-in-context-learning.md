@@ -1,8 +1,7 @@
 ---
-title: 🧠 主题2｜理解 LLM 的"语言"：Prompt、上下文与 In‑Context Learning
+title: 模型答非所问？理解 Prompt、上下文与 In-Context Learning
 date: 2025-12-03 18:00:00
 updated: {{current_date_time}}
-
 categories:
   - 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
   - AI与研究
@@ -32,42 +31,17 @@ aside: true
 noticeOutdate: false
 ---
 
-> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 2 篇**
+你让模型"总结这篇文章"，它照做了；你换个说法"用三点概括核心观点"，它也能懂。但当你把同样的问题丢进一个长对话、或者加上 10 个示例再问——**效果可能天差地别**。
 
-> 上一篇我们讲了 LLM 的"物理基础"：Token、Embedding、Transformer。
+为什么？因为 LLM 不会"理解"你的意图，它只会**对齐你给的上下文模式**。你给它怎样的 Prompt、多大的上下文、多少示例，它就呈现怎样的能力。
 
-> 本篇，我们从"人机对话"的角度，理解如何让 LLM 从"会说话"变成"按指令办事"。
+这不是玄学，而是三个可操作的概念：
 
----
+1. **Prompt（提示）** — 你给模型的"剧本"，决定它做什么、怎样做
+2. **Context Window（上下文窗口）** — 模型的"短期记忆"，一次能"看到"多少内容
+3. **In‑Context Learning（上下文学习）** — 通过示例让模型"即学即用"，无需微调
 
-## 🚀 导言 — 与 LLM 沟通的艺术
-
-当你对 ChatGPT 说"帮我写一份测试计划"，它几秒内就能生成结构化的文档。
-
-这不是魔法，本质上，它只是在执行一件事：
-
-> **根据输入，预测下一个最可能出现的 Token。**
-
-* **但问题是**：预测本身 ≠ 执行任务
-
-* **核心挑战**：LLM 不会"理解"文本，它会"对齐你给的上下文模式"。你给它怎样的上下文，它就呈现怎样的能力。
-
-大多数人使用大模型时，只把它当作"聪明的聊天工具"。但真正要发挥 LLM 的能力，你必须理解：**LLM 有一套独特的"语言体系"**。
-
-它并不是以"人类语言"来思考，而是依靠：
-* **Prompt（提示词）** — 给 LLM 的"指令语言"
-* **Context Window（上下文窗口）** — 模型的"思维环境"
-* **In-Context Learning（上下文学习）** — 模型真正的"学习方式"
-
-掌握它们，你就掌握了与 LLM 有效对话的核心技巧。
-
-本篇我们聚焦三大关键概念：
-
-1. **Prompt（提示 / 指令）** — 给 LLM 的"剧本"
-
-2. **Context Window（上下文窗口）** — 模型的短期记忆
-
-3. **In‑Context Learning（上下文学习）** — LLM 的"即学即用"魔法
+搞懂它们，你就知道为什么同一个模型有时靠谱、有时跑偏，以及**怎么设计 Prompt 才能稳定发挥**。
 
 ---
 
@@ -75,7 +49,7 @@ noticeOutdate: false
 
 Prompt 就像导演给演员的剧本，告诉 LLM **做什么、怎样做、输出什么格式**。
 
-> 💡 **Prompt 的处理流程**：你输入的 Prompt → Tokenize（分词，见[第一篇](/技术学习与行业趋势/AI与研究/2025-12-02-llm-working-principle-token-embedding-transformer/)）→ Embedding（向量化）→ 进入 Transformer 处理 → 生成输出
+> 💡 **Prompt 的处理流程**：你输入的 Prompt → Tokenize（分词，见[第一篇](/2025-12-02-llm-working-principle-token-embedding-transformer/)）→ Embedding（向量化）→ 进入 Transformer 处理 → 生成输出
 
 ### 1.1 按示例数量分类的 Prompt 类型<a id="prompt-types-by-examples"></a>
 
@@ -94,7 +68,7 @@ Prompt 就像导演给演员的剧本，告诉 LLM **做什么、怎样做、输
 
 > 💡 **选择建议**：
 > * **简单任务**：Zero‑Shot 通常足够
-> * **中等复杂度**：Few‑Shot 效果更好
+> * **中等复杂度**：Few‑Shot 效果更好（如客服话术风格、工单分类——给 2–3 个示例即可对齐输出格式）
 > * **复杂任务**：Many‑Shot 可能有效，但要注意 Context Window 限制
 
 ### 1.2 User Prompt（用户指令）
@@ -141,6 +115,8 @@ System Prompt 是 LLM 的"身份设定"，它常具有比用户 Prompt 更高的
 
 ### 1.4 User Prompt vs System Prompt
 
+> 💡 **两个维度的区别**：User/System 是按「谁发送」划分；Zero/Few/Many-Shot 是按「是否提供示例」划分。两者可以组合使用，例如 User Prompt 可以是 Zero-Shot 或 Few-Shot。
+
 在实际使用中，LLM 通常接收两种类型的 Prompt：
 
 | 类型 | 定义 | 特点 | 使用场景 |
@@ -164,19 +140,17 @@ User Prompt（每次对话）：
 
 ## 🪟 二、Context Window —— 模型的"短期记忆"
 
-LLM 不可能"无限记忆"，它有一个长度限制 —— **Context Window**
+LLM 不可能"无限记忆"，它有一个长度限制 —— **Context Window**。
 
 ### 2.1 什么是 Context Window
 
 * **定义**：模型在一次推理中"看到"的最大 Token 数
 
-  > 💡 **为什么用 Token 衡量？** 因为 Token 是模型处理的最小单位（见[第一篇](/技术学习与行业趋势/AI与研究/2025-12-02-llm-working-principle-token-embedding-transformer/)），所有输入都必须先 Tokenize 才能进入模型。
+  > 💡 **为什么用 Token 衡量？** 因为 Token 是模型处理的最小单位（见[第一篇](/2025-12-02-llm-working-principle-token-embedding-transformer/)），所有输入都必须先 Tokenize 才能进入模型。
 
-* **组成部分**：System Prompt + 历史对话 + 当前输入 + 模型的中间输出
+* **组成部分**：System Prompt + 历史对话 + 当前输入 + 模型已生成的内容（自回归生成时作为上下文）
 
-* **物理限制**：由于 Transformer 中 Self‑Attention 的计算复杂度与 Token 数量平方相关（见[第一篇的 Self-Attention 部分](/技术学习与行业趋势/AI与研究/2025-12-02-llm-working-principle-token-embedding-transformer/#self-attention)），
-
-  当 Token 数量过多时，计算代价将迅速上涨（如 1000 Token 需要 100 万次计算，10000 Token 需要 1 亿次计算）
+* **物理限制**：Transformer 中 Self‑Attention 的计算复杂度与 Token 数量平方相关（见[第一篇的 Self-Attention 部分](/2025-12-02-llm-working-principle-token-embedding-transformer/#self-attention)）。当 Token 数量过多时，计算代价将迅速上涨（如 1000 Token 需要 100 万次计算，10000 Token 需要 1 亿次计算）
 
 * **实际示例**：
   * 一段 1000 字的中文文章 ≈ 500-800 Token（取决于分词方式）
@@ -206,7 +180,7 @@ LLM 不可能"无限记忆"，它有一个长度限制 —— **Context Window**
 3. 记忆模块：将关键结论存入数据库，后续可直接检索
 ```
 
-> 💡 **最佳实践**：用摘要 / Memory / RAG 结合起来，是处理长对话 / 文档时的常见实践。RAG 会在主题4中详细讲解。
+> 💡 **最佳实践**：用摘要 / Memory / RAG 结合起来，是处理长对话 / 文档时的常见实践。RAG 会在[第 4 篇](/2025-12-08-llm-rag-deep-integration/)中详细讲解。
 
 ---
 
@@ -224,7 +198,7 @@ ICL 允许 LLM **无需微调**，仅通过 Prompt（尤其 Few‑Shot + 示例�
 
 * **效果**：快速上手新任务、无需大量数据
 
-> 比喻：就像老师黑板上写几个例子，学生看懂规则，就能回答新问题
+> **比喻**：就像老师黑板上写几个例子，学生看懂规则，就能回答新问题
 
 ### 3.2 成功应用 — 思维链 (Chain‑of‑Thought, CoT)
 
@@ -258,7 +232,7 @@ CoT 是 ICL 的经典用法，在复杂推理、逻辑题、数学题中尤其�
 
 ### 3.3 Fine‑Tuning（微调）详解
 
-既然提到了 Fine‑Tuning，我们有必要深入了解它，以便在 ICL 和 Fine‑Tuning 之间做出正确选择。
+既然提到了 Fine‑Tuning，我们有必要了解其基础，以便在 ICL 和 Fine‑Tuning 之间做出正确选择。**Agent 能力调优中的微调实践**（LoRA、PEFT、RLHF-A）详见[第 16 篇](/2026-01-02-llm-agent-capability-tuning/)。
 
 #### 3.3.1 什么是 Fine‑Tuning
 
@@ -301,7 +275,7 @@ Fine‑Tuning 的核心流程：
 
 > 💡 **LoRA 是目前最流行的 Fine‑Tuning 方法**：
 > 
-> **简单理解**：想象模型是一个巨大的调音台，有 1000 个旋钮（参数）。全量微调需要调整所有 1000 个旋钮，而 LoRA 只添加几个"小旋钮"（通常 < 10 个），通过这几个小旋钮就能控制整个调音台的效果。
+> **简单理解**：想象模型是一个巨大的调音台，有 1000 个旋钮（参数）。全量微调需要调整所有 1000 个旋钮，而 LoRA 只添加少量"小旋钮"（参数量 < 1%），通过这些小旋钮就能控制整个调音台的效果。
 > 
 > **技术原理**：LoRA 不直接修改原始模型参数，而是在模型旁边添加**小型适配器**。这些适配器只包含极少的参数（通常 < 1%），但通过巧妙的数学方法，能够"模拟"全量微调的效果。
 > 
@@ -347,15 +321,13 @@ Fine‑Tuning 的核心流程：
 
 ## 🔍 总结 — 与 LLM 有效对话的三把"钥匙"
 
-* **Prompt = 剧本**，Clear / Proper 的 Prompt 是控制 LLM 的基础
+* **Prompt = 剧本**，清晰、具体的 Prompt 是控制 LLM 的基础
 
 * **Context Window = 桌面**，合理管理上下文，防止"记忆溢出"
 
 * **ICL / CoT = 魔法**，通过示例 + 思考链，让模型迅速适应新任务
 
-掌握它们，就可以设计结构化、高稳定性的 Prompt，实现复杂任务处理
-
-> 💡 **下一步**：理解了这些概念后，如何在实战中用好它们？下一篇我们将介绍 **Prompt 工程的三大核心技巧**（明确角色、思维链进阶、结构化输出），帮你实现稳定、可解析的高质量输出。
+掌握它们，就可以设计结构化、高稳定性的 Prompt，实现复杂任务处理。
 
 ---
 
@@ -425,19 +397,15 @@ Fine‑Tuning 的核心流程：
 
 ---
 
-# 🔔 下一篇预告
+# 🔔 系列说明
 
-**第 3 篇将进入实战技巧**：
-
-> 如何设计结构化、高稳定性的 Prompt？
-
-> 如何确保输出格式稳定、可解析？
+> 本文是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 2 篇。上一篇：[ChatGPT 几秒出千字？背后只做了一件事](/2025-12-02-llm-working-principle-token-embedding-transformer/)。下一篇：[想要 JSON 却得到废话？Prompt 工程的三大核心技巧](/2025-12-04-llm-prompt-engineering-practices/) —— 如何设计结构化、高稳定性的 Prompt？如何确保输出格式稳定、可解析？
 
 ---
 
 # 💡 扩展：为什么 Fine‑Tuning 需要 GPU/TPU？<a id="gpu-tpu-training"></a>
 
-在文章中提到 Fine‑Tuning 需要 GPU/TPU 训练，这到底意味着什么？普通用户能进行 Fine‑Tuning 吗？
+微调工程实践（LoRA、PEFT、RLHF-A）详见[第 16 篇能力调优](/2026-01-02-llm-agent-capability-tuning/)。本篇补充：Fine‑Tuning 需要 GPU/TPU 训练，这到底意味着什么？普通用户能进行 Fine‑Tuning 吗？
 
 ## 什么是 GPU 和 TPU？
 

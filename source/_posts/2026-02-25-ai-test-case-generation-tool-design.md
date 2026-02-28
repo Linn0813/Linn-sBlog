@@ -251,6 +251,6 @@ AI 生成测试用例是否可行，不取决于模型能力，而取决于**流
 
 ## 延伸阅读
 
-- [测试用例生成 Prompt 的完整设计](/2026/02/27/test-case-generation-prompt-design/) — 流程确定后，Prompt 结构、Few-Shot、变量如何设计
-- [AI 测试与传统测试的本质差异](/2026/02/12/ai-testing-vs-traditional-testing/)
-- [手把手教你用 Coze 打造专属测试用例编写助手](/2025/10/15/coze-testcase-assistant/)
+- [测试用例生成 Prompt 的完整设计](/2026-02-27-test-case-generation-prompt-design/) — 流程确定后，Prompt 结构、Few-Shot、变量如何设计
+- [AI 测试与传统测试的本质差异](/2026-02-12-ai-testing-vs-traditional-testing/)
+- [手把手教你用 Coze 打造专属测试用例编写助手](/2025-10-15-coze-testcase-assistant/)

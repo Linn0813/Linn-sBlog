@@ -2,7 +2,6 @@
 title: 📚 工具篇｜LLM/Agent 系列术语速查手册
 date: 2025-12-27 20:00:00
 updated: {{current_date_time}}
-
 categories:
   - 🧠 LLM/Agent 从入门到精通：告别浅尝辄止
   - AI与研究
@@ -53,56 +52,56 @@ noticeOutdate: false
 ### **LLM (Large Language Model)**
 **定义**：大语言模型，基于 Transformer 架构的深度学习模型，能够理解和生成自然语言。
 
-**详细讲解**：[主题1｜LLM 工作原理深度解析](/技术学习与行业趋势/AI与研究/2025-12-02-llm-working-principle-token-embedding-transformer/)
+**详细讲解**：[主题1｜LLM 工作原理深度解析](/2025-12-02-llm-working-principle-token-embedding-transformer/)
 
 ---
 
 ### **Token**
 **定义**：LLM 处理文本的最小单位，可以是单词、词根、汉字或符号。
 
-**详细讲解**：[主题1｜LLM 工作原理深度解析](/技术学习与行业趋势/AI与研究/2025-12-02-llm-working-principle-token-embedding-transformer/)
+**详细讲解**：[主题1｜LLM 工作原理深度解析](/2025-12-02-llm-working-principle-token-embedding-transformer/)
 
 ---
 
 ### **Embedding (向量嵌入)**
 **定义**：将文本转换为数值向量的过程，让计算机能够"理解"文字的含义。
 
-**详细讲解**：[主题1｜LLM 工作原理深度解析](/技术学习与行业趋势/AI与研究/2025-12-02-llm-working-principle-token-embedding-transformer/)
+**详细讲解**：[主题1｜LLM 工作原理深度解析](/2025-12-02-llm-working-principle-token-embedding-transformer/)
 
 ---
 
 ### **Transformer**
 **定义**：LLM 的核心架构，通过 Self-Attention 机制让模型理解上下文关系。
 
-**详细讲解**：[主题1｜LLM 工作原理深度解析](/技术学习与行业趋势/AI与研究/2025-12-02-llm-working-principle-token-embedding-transformer/)
+**详细讲解**：[主题1｜LLM 工作原理深度解析](/2025-12-02-llm-working-principle-token-embedding-transformer/)
 
 ---
 
 ### **Self-Attention (自注意力机制)**
 **定义**：Transformer 的核心机制，让模型能够关注输入序列中不同位置的关系。
 
-**详细讲解**：[主题1｜LLM 工作原理深度解析](/技术学习与行业趋势/AI与研究/2025-12-02-llm-working-principle-token-embedding-transformer/)
+**详细讲解**：[主题1｜LLM 工作原理深度解析](/2025-12-02-llm-working-principle-token-embedding-transformer/)
 
 ---
 
 ### **Context Window (上下文窗口)**
 **定义**：LLM 能够处理的输入文本长度限制，超过此长度的信息会被"遗忘"。
 
-**详细讲解**：[主题2｜理解 LLM 的"语言"](/技术学习与行业趋势/AI与研究/2025-12-03-llm-prompt-context-in-context-learning/)
+**详细讲解**：[主题2｜理解 LLM 的"语言"](/2025-12-03-llm-prompt-context-in-context-learning/)
 
 ---
 
 ### **In-Context Learning (ICL)**
 **定义**：LLM 通过上下文中的示例学习任务模式，无需微调即可执行新任务。
 
-**详细讲解**：[主题2｜理解 LLM 的"语言"](/技术学习与行业趋势/AI与研究/2025-12-03-llm-prompt-context-in-context-learning/)
+**详细讲解**：[主题2｜理解 LLM 的"语言"](/2025-12-03-llm-prompt-context-in-context-learning/)
 
 ---
 
 ### **Few-Shot Learning (少样本学习)**
 **定义**：在 Prompt 中提供少量示例，让模型学习任务模式。
 
-**详细讲解**：[主题2｜理解 LLM 的"语言"](/技术学习与行业趋势/AI与研究/2025-12-03-llm-prompt-context-in-context-learning/)
+**详细讲解**：[主题2｜理解 LLM 的"语言"](/2025-12-03-llm-prompt-context-in-context-learning/)
 
 ---
 
@@ -111,49 +110,49 @@ noticeOutdate: false
 ### **Prompt (提示词)**
 **定义**：输入给 LLM 的指令或问题，是人与模型交互的接口。
 
-**详细讲解**：[主题2｜理解 LLM 的"语言"](/技术学习与行业趋势/AI与研究/2025-12-03-llm-prompt-context-in-context-learning/)、[主题3｜Prompt 工程实战](/技术学习与行业趋势/AI与研究/2025-12-04-llm-prompt-engineering-practices/)
+**详细讲解**：[主题2｜理解 LLM 的"语言"](/2025-12-03-llm-prompt-context-in-context-learning/)、[主题3｜Prompt 工程实战](/2025-12-04-llm-prompt-engineering-practices/)
 
 ---
 
 ### **Prompt Engineering (提示工程)**
 **定义**：设计和优化 Prompt 的技巧，让 LLM 更准确地理解和执行任务。
 
-**详细讲解**：[主题3｜Prompt 工程实战](/技术学习与行业趋势/AI与研究/2025-12-04-llm-prompt-engineering-practices/)
+**详细讲解**：[主题3｜Prompt 工程实战](/2025-12-04-llm-prompt-engineering-practices/)
 
 ---
 
 ### **Chain-of-Thought (CoT)**
 **定义**：思维链提示，让模型逐步推理，展示思考过程。
 
-**详细讲解**：[主题3｜Prompt 工程实战](/技术学习与行业趋势/AI与研究/2025-12-04-llm-prompt-engineering-practices/)
+**详细讲解**：[主题3｜Prompt 工程实战](/2025-12-04-llm-prompt-engineering-practices/)
 
 ---
 
 ### **ReAct (Reasoning + Acting)**
 **定义**：结合推理和行动的提示范式，让模型先思考再行动。
 
-**详细讲解**：[主题3｜Prompt 工程实战](/技术学习与行业趋势/AI与研究/2025-12-04-llm-prompt-engineering-practices/)、[主题7｜决策引擎 ReAct](/技术学习与行业趋势/AI与研究/2025-12-16-llm-agent-decision-engine/)
+**详细讲解**：[主题3｜Prompt 工程实战](/2025-12-04-llm-prompt-engineering-practices/)、[主题7｜决策引擎 ReAct](/2025-12-16-llm-agent-decision-engine/)
 
 ---
 
 ### **Schema (模式/规范)**
 **定义**：定义输出格式的结构化规范，如 JSON Schema、Pydantic 模型。
 
-**详细讲解**：[主题3｜Prompt 工程实战](/技术学习与行业趋势/AI与研究/2025-12-04-llm-prompt-engineering-practices/)、[主题12｜Spec 设计](/技术学习与行业趋势/AI与研究/2025-12-21-llm-agent-spec-design/)
+**详细讲解**：[主题3｜Prompt 工程实战](/2025-12-04-llm-prompt-engineering-practices/)、[主题12｜Spec 设计](/2025-12-21-llm-agent-spec-design/)
 
 ---
 
 ### **结构化输出 (Structured Output)**
 **定义**：让 LLM 按照预定义的格式（JSON、YAML、Markdown）输出内容。
 
-**详细讲解**：[主题3｜Prompt 工程实战](/技术学习与行业趋势/AI与研究/2025-12-04-llm-prompt-engineering-practices/)
+**详细讲解**：[主题3｜Prompt 工程实战](/2025-12-04-llm-prompt-engineering-practices/)
 
 ---
 
 ### **Self-Correction (自我纠正)**
 **定义**：让模型检查并修正自己的输出，提高准确性。
 
-**详细讲解**：[主题3｜Prompt 工程实战](/技术学习与行业趋势/AI与研究/2025-12-04-llm-prompt-engineering-practices/)
+**详细讲解**：[主题3｜Prompt 工程实战](/2025-12-04-llm-prompt-engineering-practices/)
 
 ---
 
@@ -162,35 +161,35 @@ noticeOutdate: false
 ### **RAG (Retrieval-Augmented Generation)**
 **定义**：检索增强生成，通过检索外部知识库来增强 LLM 的生成能力，解决幻觉问题。
 
-**详细讲解**：[主题4｜RAG 机制](/技术学习与行业趋势/AI与研究/2025-12-08-llm-rag-deep-integration/)
+**详细讲解**：[主题4｜RAG 机制](/2025-12-08-llm-rag-deep-integration/)
 
 ---
 
 ### **Vector Database (向量数据库)**
 **定义**：存储 Embedding 向量的数据库，用于快速检索相似文本。
 
-**详细讲解**：[主题4｜RAG 机制](/技术学习与行业趋势/AI与研究/2025-12-08-llm-rag-deep-integration/)
+**详细讲解**：[主题4｜RAG 机制](/2025-12-08-llm-rag-deep-integration/)
 
 ---
 
 ### **Chunking (分块)**
 **定义**：将长文档切分成小块，便于向量化和检索。
 
-**详细讲解**：[主题4｜RAG 机制](/技术学习与行业趋势/AI与研究/2025-12-08-llm-rag-deep-integration/)
+**详细讲解**：[主题4｜RAG 机制](/2025-12-08-llm-rag-deep-integration/)
 
 ---
 
 ### **Re-ranking (重排序)**
 **定义**：对检索到的文档按相关性重新排序，提高检索质量。
 
-**详细讲解**：[主题4｜RAG 机制](/技术学习与行业趋势/AI与研究/2025-12-08-llm-rag-deep-integration/)
+**详细讲解**：[主题4｜RAG 机制](/2025-12-08-llm-rag-deep-integration/)
 
 ---
 
 ### **Query Transformation (查询转换)**
 **定义**：将用户查询转换为更适合检索的形式，如关键词提取、查询扩展。
 
-**详细讲解**：[主题4｜RAG 机制](/技术学习与行业趋势/AI与研究/2025-12-08-llm-rag-deep-integration/)
+**详细讲解**：[主题4｜RAG 机制](/2025-12-08-llm-rag-deep-integration/)
 
 ---
 
@@ -199,63 +198,63 @@ noticeOutdate: false
 ### **Agent (智能体)**
 **定义**：能够在环境中自主感知、规划、行动、反馈的智能系统。
 
-**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/技术学习与行业趋势/AI与研究/2025-12-10-llm-agent-concept-overview/)
+**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/2025-12-10-llm-agent-concept-overview/)
 
 ---
 
 ### **Agentic Loop (智能体循环)**
 **定义**：Agent 的自主循环：感知 → 规划 → 行动 → 反馈 → 感知...
 
-**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/技术学习与行业趋势/AI与研究/2025-12-10-llm-agent-concept-overview/)
+**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/2025-12-10-llm-agent-concept-overview/)
 
 ---
 
 ### **Perception (感知)**
 **定义**：Agent 接收用户输入和环境反馈的能力。
 
-**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/技术学习与行业趋势/AI与研究/2025-12-10-llm-agent-concept-overview/)
+**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/2025-12-10-llm-agent-concept-overview/)
 
 ---
 
 ### **Planning (规划)**
 **定义**：Agent 分解任务、制定执行计划的能力。
 
-**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/技术学习与行业趋势/AI与研究/2025-12-10-llm-agent-concept-overview/)、[主题9｜任务规划](/技术学习与行业趋势/AI与研究/2025-12-19-llm-agent-task-planning/)
+**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/2025-12-10-llm-agent-concept-overview/)、[主题9｜任务规划](/2025-12-19-llm-agent-task-planning/)
 
 ---
 
 ### **Action (行动)**
 **定义**：Agent 调用工具执行具体操作的能力。
 
-**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/技术学习与行业趋势/AI与研究/2025-12-10-llm-agent-concept-overview/)、[主题13｜工具封装](/技术学习与行业趋势/AI与研究/2025-12-18-llm-agent-tool-system/)
+**详细讲解**：[主题6｜Agent 从 LLM 进化而来](/2025-12-10-llm-agent-concept-overview/)、[主题13｜工具封装](/2025-12-18-llm-agent-tool-system/)
 
 ---
 
 ### **Memory (记忆)**
 **定义**：Agent 保存和检索历史信息的能力，包括短期记忆和长期记忆。
 
-**详细讲解**：[主题8｜记忆管理](/技术学习与行业趋势/AI与研究/2025-12-17-llm-agent-memory-management/)
+**详细讲解**：[主题8｜记忆管理](/2025-12-17-llm-agent-memory-management/)
 
 ---
 
 ### **STM (Short-Term Memory)**
 **定义**：短期记忆，保存在 Context Window 中的当前对话信息。
 
-**详细讲解**：[主题8｜记忆管理](/技术学习与行业趋势/AI与研究/2025-12-17-llm-agent-memory-management/)
+**详细讲解**：[主题8｜记忆管理](/2025-12-17-llm-agent-memory-management/)
 
 ---
 
 ### **LTM (Long-Term Memory)**
 **定义**：长期记忆，保存在外部存储（如向量数据库）中的重要信息。
 
-**详细讲解**：[主题8｜记忆管理](/技术学习与行业趋势/AI与研究/2025-12-17-llm-agent-memory-management/)
+**详细讲解**：[主题8｜记忆管理](/2025-12-17-llm-agent-memory-management/)
 
 ---
 
 ### **ExM (External Memory)**
 **定义**：外部记忆，从知识库检索的外部知识。
 
-**详细讲解**：[主题8｜记忆管理](/技术学习与行业趋势/AI与研究/2025-12-17-llm-agent-memory-management/)
+**详细讲解**：[主题8｜记忆管理](/2025-12-17-llm-agent-memory-management/)
 
 ---
 
@@ -264,49 +263,49 @@ noticeOutdate: false
 ### **Decision Engine (决策引擎)**
 **定义**：Agent 的核心决策模块，决定下一步行动。
 
-**详细讲解**：[主题7｜决策引擎 ReAct](/技术学习与行业趋势/AI与研究/2025-12-16-llm-agent-decision-engine/)
+**详细讲解**：[主题7｜决策引擎 ReAct](/2025-12-16-llm-agent-decision-engine/)
 
 ---
 
 ### **Tool (工具)**
 **定义**：Agent 可以调用的外部功能，如 API、数据库、文件系统等。
 
-**详细讲解**：[主题13｜工具封装](/技术学习与行业趋势/AI与研究/2025-12-18-llm-agent-tool-system/)
+**详细讲解**：[主题13｜工具封装](/2025-12-18-llm-agent-tool-system/)
 
 ---
 
 ### **Tool Calling (工具调用)**
 **定义**：Agent 调用外部工具执行操作的过程。
 
-**详细讲解**：[主题13｜工具封装](/技术学习与行业趋势/AI与研究/2025-12-18-llm-agent-tool-system/)
+**详细讲解**：[主题13｜工具封装](/2025-12-18-llm-agent-tool-system/)
 
 ---
 
 ### **Function Calling**
 **定义**：LLM 调用预定义函数的能力，是工具调用的基础。
 
-**详细讲解**：[主题13｜工具封装](/技术学习与行业趋势/AI与研究/2025-12-18-llm-agent-tool-system/)
+**详细讲解**：[主题13｜工具封装](/2025-12-18-llm-agent-tool-system/)
 
 ---
 
 ### **Tool Description (工具描述)**
 **定义**：描述工具功能、参数、返回值的文档，帮助 Agent 选择合适的工具。
 
-**详细讲解**：[主题13｜工具封装](/技术学习与行业趋势/AI与研究/2025-12-18-llm-agent-tool-system/)
+**详细讲解**：[主题13｜工具封装](/2025-12-18-llm-agent-tool-system/)
 
 ---
 
 ### **Human-in-the-Loop (HITL)**
 **定义**：人类在循环中，关键操作需要人工审批或确认。
 
-**详细讲解**：[主题13｜工具封装](/技术学习与行业趋势/AI与研究/2025-12-18-llm-agent-tool-system/)
+**详细讲解**：[主题13｜工具封装](/2025-12-18-llm-agent-tool-system/)
 
 ---
 
 ### **Idempotency (幂等性)**
 **定义**：同一个操作执行一次和执行多次的效果是一样的。
 
-**详细讲解**：[主题13｜工具封装](/技术学习与行业趋势/AI与研究/2025-12-18-llm-agent-tool-system/)
+**详细讲解**：[主题13｜工具封装](/2025-12-18-llm-agent-tool-system/)
 
 ---
 
@@ -315,21 +314,21 @@ noticeOutdate: false
 ### **Spec (规范)**
 **定义**：定义 Agent 输入输出格式的结构化规范。
 
-**详细讲解**：[主题12｜Spec 设计](/技术学习与行业趋势/AI与研究/2025-12-21-llm-agent-spec-design/)
+**详细讲解**：[主题12｜Spec 设计](/2025-12-21-llm-agent-spec-design/)
 
 ---
 
 ### **JSON Schema**
 **定义**：用于定义 JSON 数据结构的规范格式。
 
-**详细讲解**：[主题12｜Spec 设计](/技术学习与行业趋势/AI与研究/2025-12-21-llm-agent-spec-design/)
+**详细讲解**：[主题12｜Spec 设计](/2025-12-21-llm-agent-spec-design/)
 
 ---
 
 ### **Pydantic**
 **定义**：Python 的数据验证库，常用于定义 Agent 的输出规范。
 
-**详细讲解**：[主题12｜Spec 设计](/技术学习与行业趋势/AI与研究/2025-12-21-llm-agent-spec-design/)
+**详细讲解**：[主题12｜Spec 设计](/2025-12-21-llm-agent-spec-design/)
 
 ---
 
@@ -338,14 +337,14 @@ noticeOutdate: false
 ### **LangChain**
 **定义**：流行的 Agent 开发框架，提供 Agent、工具、记忆等组件。
 
-**详细讲解**：[主题11｜Agent 框架对比](/技术学习与行业趋势/AI与研究/2025-12-20-llm-agent-framework-comparison/)、[LangChain 框架详解](/技术学习与行业趋势/AI与研究/2025-10-27-langchain-framework/)
+**详细讲解**：[主题11｜Agent 框架对比](/2025-12-20-llm-agent-framework-comparison/)、[LangChain 框架详解](/2025-10-27-langchain-framework/)
 
 ---
 
 ### **LangSmith**
 **定义**：LangChain 的可观测性平台，用于调试、追踪和监控 Agent 执行。
 
-**详细讲解**：[LangChain 框架详解](/技术学习与行业趋势/AI与研究/2025-10-27-langchain-framework/)
+**详细讲解**：[LangChain 框架详解](/2025-10-27-langchain-framework/)
 
 ---
 
@@ -370,21 +369,21 @@ chain = prompt | llm | output_parser
 ### **Chain (链)**
 **定义**：将多个组件（Prompt、LLM、工具）串联起来的工作流。
 
-**详细讲解**：[LangChain 框架详解](/技术学习与行业趋势/AI与研究/2025-10-27-langchain-framework/)
+**详细讲解**：[LangChain 框架详解](/2025-10-27-langchain-framework/)
 
 ---
 
 ### **LlamaIndex**
 **定义**：专注于 RAG 和知识管理的框架。
 
-**详细讲解**：[主题11｜Agent 框架对比](/技术学习与行业趋势/AI与研究/2025-12-20-llm-agent-framework-comparison/)
+**详细讲解**：[主题11｜Agent 框架对比](/2025-12-20-llm-agent-framework-comparison/)
 
 ---
 
 ### **AutoGPT**
 **定义**：自动化的 Agent 系统，能够自主完成复杂任务。
 
-**详细讲解**：[主题11｜Agent 框架对比](/技术学习与行业趋势/AI与研究/2025-12-20-llm-agent-framework-comparison/)
+**详细讲解**：[主题11｜Agent 框架对比](/2025-12-20-llm-agent-framework-comparison/)
 
 ---
 
@@ -450,28 +449,28 @@ chain = prompt | llm | output_parser
 ### **Security Governance (安全治理)**
 **定义**：Agent 的安全管理机制，包括权限控制、审计、监控。
 
-**详细讲解**：[主题14｜Agent 安全治理](/技术学习与行业趋势/AI与研究/2025-12-22-llm-agent-security-governance/)
+**详细讲解**：[主题14｜Agent 安全治理](/2025-12-22-llm-agent-security-governance/)
 
 ---
 
 ### **Audit (审计)**
 **定义**：记录 Agent 的所有操作，便于追溯和复盘。
 
-**详细讲解**：[主题14｜Agent 安全治理](/技术学习与行业趋势/AI与研究/2025-12-22-llm-agent-security-governance/)
+**详细讲解**：[主题14｜Agent 安全治理](/2025-12-22-llm-agent-security-governance/)
 
 ---
 
 ### **Observability (可观测性)**
 **定义**：监控 Agent 的执行状态、性能指标和异常情况。
 
-**详细讲解**：[主题14｜Agent 安全治理](/技术学习与行业趋势/AI与研究/2025-12-22-llm-agent-security-governance/)
+**详细讲解**：[主题14｜Agent 安全治理](/2025-12-22-llm-agent-security-governance/)
 
 ---
 
 ### **Replay (回放)**
 **定义**：重现 Agent 的历史执行过程，用于调试和分析。
 
-**详细讲解**：[主题14｜Agent 安全治理](/技术学习与行业趋势/AI与研究/2025-12-22-llm-agent-security-governance/)
+**详细讲解**：[主题14｜Agent 安全治理](/2025-12-22-llm-agent-security-governance/)
 
 ---
 
@@ -480,21 +479,21 @@ chain = prompt | llm | output_parser
 ### **Multi-Agent Collaboration (多 Agent 协作)**
 **定义**：多个 Agent 像团队一样协作完成复杂任务。
 
-**详细讲解**：[主题14｜多 Agent 协作](/技术学习与行业趋势/AI与研究/2025-12-23-llm-agent-multi-agent-collaboration/)
+**详细讲解**：[主题14｜多 Agent 协作](/2025-12-23-llm-agent-multi-agent-collaboration/)
 
 ---
 
 ### **Role (角色)**
 **定义**：为 Agent 设定的身份和职责，如"测试工程师"、"产品经理"。
 
-**详细讲解**：[主题14｜多 Agent 协作](/技术学习与行业趋势/AI与研究/2025-12-23-llm-agent-multi-agent-collaboration/)
+**详细讲解**：[主题14｜多 Agent 协作](/2025-12-23-llm-agent-multi-agent-collaboration/)
 
 ---
 
 ### **Message Flow (消息流)**
 **定义**：多个 Agent 之间传递信息和协作的流程。
 
-**详细讲解**：[主题14｜多 Agent 协作](/技术学习与行业趋势/AI与研究/2025-12-23-llm-agent-multi-agent-collaboration/)
+**详细讲解**：[主题14｜多 Agent 协作](/2025-12-23-llm-agent-multi-agent-collaboration/)
 
 ---
 
@@ -503,35 +502,35 @@ chain = prompt | llm | output_parser
 ### **Evaluation (评估)**
 **定义**：评估 Agent 的性能，包括准确性、效率、成本等指标。
 
-**详细讲解**：[主题15｜Agent 评估](/技术学习与行业趋势/AI与研究/2025-12-24-llm-agent-evaluation/)
+**详细讲解**：[主题15｜Agent 评估](/2025-12-24-llm-agent-evaluation/)
 
 ---
 
 ### **Metrics (指标)**
 **定义**：衡量 Agent 性能的量化指标，如成功率、响应时间、Token 消耗。
 
-**详细讲解**：[主题15｜Agent 评估](/技术学习与行业趋势/AI与研究/2025-12-24-llm-agent-evaluation/)
+**详细讲解**：[主题15｜Agent 评估](/2025-12-24-llm-agent-evaluation/)
 
 ---
 
 ### **Model Evaluation (模型评估)**
 **定义**：评估和选择适合的 LLM 模型。
 
-**详细讲解**：[主题5｜评估与选型](/技术学习与行业趋势/AI与研究/2025-12-09-llm-model-evaluation-selection/)
+**详细讲解**：[主题5｜评估与选型](/2025-12-09-llm-model-evaluation-selection/)
 
 ---
 
 ### **Parameters (参数量)**
 **定义**：LLM 模型中的参数数量，通常反映模型的复杂度。
 
-**详细讲解**：[主题5｜评估与选型](/技术学习与行业趋势/AI与研究/2025-12-09-llm-model-evaluation-selection/)
+**详细讲解**：[主题5｜评估与选型](/2025-12-09-llm-model-evaluation-selection/)
 
 ---
 
 ### **Inference Speed (推理速度)**
 **定义**：LLM 生成文本的速度，通常用 Token/秒衡量。
 
-**详细讲解**：[主题5｜评估与选型](/技术学习与行业趋势/AI与研究/2025-12-09-llm-model-evaluation-selection/)
+**详细讲解**：[主题5｜评估与选型](/2025-12-09-llm-model-evaluation-selection/)
 
 ---
 
@@ -840,9 +839,9 @@ results = cursor.fetchall()
 
 ## 🔗 相关资源
 
-- [系列开篇：告别浅尝辄止](/2025/11/29/2025-11-29-llm-agent-core-concepts-guide/)
+- [系列开篇：告别浅尝辄止](/2025-11-29-llm-agent-core-concepts-guide/)
 - [系列目录](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)
-- [基础知识回顾：LLM 与智能体知识记录](/2025/10/21/2025-10-21-llm-agent-guide/)
+- [基础知识回顾：LLM 与智能体知识记录](2025-10-21-llm-agent-guide/)
 
 ---
 

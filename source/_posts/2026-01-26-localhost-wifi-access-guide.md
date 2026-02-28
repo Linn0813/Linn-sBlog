@@ -2,7 +2,6 @@
 title: "同一 Wi‑Fi 下让别人访问你的本地前后端：完整操作指南"
 date: 2026-01-26 10:00:00
 updated: {{current_date_time}}
-permalink: 2026/01/26/localhost-wifi-access-guide/
 categories:
   - 🏗️ 测试平台开发实战手记
   - 技术科普

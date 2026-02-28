@@ -197,7 +197,7 @@ Charles 本质上是一个 **代理服务器（Proxy）**：
 
 你之前那篇文章已经把安装、证书、移动端配置写得很完整，这里不再重复展开，建议先把“能抓到 HTTPS”这件事打通：
 
-- [从 Fiddler 到 Charles：Windows 切换到 Mac 的抓包实践分享 🍎](/2025/12/25/2025-12-25-fiddler-to-charles-migration-guide/)
+- [从 Fiddler 到 Charles：Windows 切换到 Mac 的抓包实践分享 🍎](/2025-12-25-fiddler-to-charles-migration-guide/)
 
 📌 快速记忆（只记结论）：
 

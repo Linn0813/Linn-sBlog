@@ -1,5 +1,5 @@
 ---
-title: 🔬 主题16｜Agent 能力调优：微调与 Prompt 工程进阶
+title: Agent 能力怎么提升？微调与 Prompt 工程进阶
 date: 2026-01-02 18:00:00
 updated: {{current_date_time}}
 
@@ -32,25 +32,9 @@ aside: true
 noticeOutdate: false
 ---
 
-> **这是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 16 篇**
+Agent 在 70% 的场景表现不错，但一到复杂边界就崩——**怎么提升到专业级可靠？**
 
-> 上一篇我们深入解析了 Agent 评估，掌握了如何评估和优化 Agent 的性能。
-
-> 本篇，我们将深入 Agent 能力调优，探索通过 Prompt 工程进阶和模型微调，将 Agent 性能从"可用"提升到专业级可靠。
-
----
-
-## 🚀 导言 — 从通用模型到专业化 Agent
-
-未经优化的 Agent 可能在 70% 的时间表现良好，但在处理复杂边界条件时容易失败。要将成功率提升到 95%+，并确保其在特定领域（如金融、法律）专业可靠，就必须进行针对性的能力调优。
-
-本篇深入解析 Agent 调优的两条核心路径：
-
-1. **Prompt Engineering 进阶**：无需修改模型参数，通过优化 Prompt 提升规划和推理能力。
-
-2. **模型微调（Fine-Tuning）**：修改模型参数，使 Agent 在特定任务和领域稳定表现。
-
-同时提供**策略选择指南**和工程实践示例。
+能力调优有两条路径：**Prompt 工程进阶**（不碰模型参数，优化思维链和工具 Schema）和**模型微调**（LoRA/PEFT，让 Agent 在特定领域稳定表现）。本篇解析两者策略选择与工程实践。
 
 ---
 
@@ -60,7 +44,7 @@ noticeOutdate: false
 
 ### 1.1 思维链结构优化（Structured CoT）
 
-ReAct 思维链在实际工程中可能产生跳跃或模糊的 Thought。通过**强制结构化**：
+金融风控 Agent 判断是否放贷——Thought 跳跃或模糊会导致误判。ReAct 思维链在实际工程中可能产生跳跃或模糊的 Thought。通过**强制结构化**：
 
 ```text
 
@@ -202,11 +186,5 @@ Agent 调优体现 LLM 工程的最高价值。通过：
 
 ---
 
-## 🔔 下一篇预告
-
-完成 Agent 构建、治理与调优后，我们将聚焦宏观——Agent 在企业级应用和流程自动化（RPA）中的落地。
-
-**第 17 篇标题：**
-
-### 《Agent 企业应用：RPA、流程自动化与企业落地》
+> 本文是[《🧠 LLM/Agent 从入门到精通：告别浅尝辄止》](/categories/🧠-LLM-Agent-从入门到精通：告别浅尝辄止/)系列第 16 篇。上一篇：[Agent 好不好怎么衡量？评估指标体系与避坑指南](/2025-12-24-llm-agent-evaluation/)。下一篇：[Agent 怎么落地企业？RPA、流程自动化与实践](/2026-01-03-llm-agent-enterprise-applications/)。
 
